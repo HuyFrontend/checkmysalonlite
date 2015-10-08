@@ -1,0 +1,13 @@
+header.header
+  .row
+    .col-sm-4.col-xs-5.logo.left
+      +link-img('logo-loreal.png', 'LOREAL Business School', '/home.html').text-middle
+    .col-sm-8.col-xs-7.logo.right
+      .logo-center
+        +link-img('logo-check-mysalon.png', 'Check My Salon').logo-mysalon
+    .header-bottom
+      ul.utility
+        li
+          +link-utility('logout','logout-modal')(data-logout="", data-modal="mess-confirm-error", data-url="login.html").icon-logout.icon-responsive
+        li
+          +link-utility('setting','setting-modal')(data-setting="").icon-setting.icon-responsive

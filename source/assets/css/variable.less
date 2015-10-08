@@ -1,0 +1,80 @@
+// Typography
+// -------------------------
+@basefont: 26;
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base:        "Proximanova Regular", @font-family-sans-serif;
+@font-family-Arial:       "Arial", sans-serif;
+@font-family-proximanova-light:   "Proximanova Light", @font-family-sans-serif;
+@font-family-proximanova-semibold:    "Proximanova SemiBold", @font-family-sans-serif;
+@font-family-proximanova-bold:    "Proximanova Bold", @font-family-sans-serif;
+@font-size-base:          14px;
+@font-size-larger:        ceil(@font-size-base * 4.3); // ~60px
+@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
+@font-size-medium:        ceil(@font-size-base * 1.43);  // ~20px
+@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
+
+@font-size-h1:            floor(@font-size-base * 2.6); // ~36px
+@font-size-h2:            floor(@font-size-base * 2.15); // ~30px
+@font-size-h3:            ceil(@font-size-base * 1.7); // ~24px
+@font-size-h4:            ceil(@font-size-base * 1.25); // ~18px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil(@font-size-base * 0.85); // ~12px
+
+@line-height-base:        1.428571429; // 20/14
+@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
+
+@headings-font-family:    @font-family-proximanova-light;
+@headings-font-weight:    300;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+
+
+// Color
+@color:       #1d1c24;
+@link-blue: #169;
+@black:       #000;
+@white:       #fff;
+@white-1:     #f8f8f8;
+@white-2:     #f5f3ef;
+@green:       #b49b25;
+@green-1:     #9c8721;
+@green-2:     #b39a33;
+@green-3: #dfd9c1;
+@cyan:        #9ebdb5;
+@yellow:      #bab5a1;
+@violet:      #8d7688;
+
+@text-color: @color;
+@placeholder-color: @grey-3;
+
+// Grey Color
+@grey-1:        #323232;
+@grey-2:        #444242;
+@grey-3:        #555;
+@grey-4:        #606065;
+@grey-5:        #9c9a98;
+@grey-6:        #cbcbcd;
+@grey-7:        #d2d2d3;
+@grey-8:        #e8e8e9;
+@grey-9:        #ebe9e6;
+@gray-10:       #ededee;
+@gray-11:       #eeeef0;
+// Background color
+@bgcolor:       #f5f5f7;
+@grey-1-rgba:   rgba(29,28,36,.7);
+@bg-btn-1:      @color;
+@bg-btn-2:      @grey-7;
+@bg-search:     @white-2;
+
+// Border color
+@border-color:  @grey-7;
+@border-tab:    @grey-8;
+
+// Link
+@link-color: @green;
+@link-hover-color: darken(@link-color, 15%);
+@link-active-color: darken(@link-color, 10%);
+@link-visited-color: darken(@link-color, 5%);
+@img-path:'../images/';

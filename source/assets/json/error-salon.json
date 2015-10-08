@@ -1,0 +1,13 @@
+{
+  "status": "ERROR",
+  "message": [
+    "Phone must be numeric.",
+    "Employees must be numeric.",
+    "Visits / month must be numeric.",
+    "Haircuts / month must be numeric."
+  ]
+}
+
+// {"success": false,"mess": "Email or password is wrong!"}
+
+// {"success": true,"mess": "Email or password is wrong!"}
