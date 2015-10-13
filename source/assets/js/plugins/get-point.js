@@ -48,14 +48,14 @@
       element = $('[data-quiz-content].item.active');
     }
     var item = element.find('.rating[data-answer]'),
-    itemLenght = item.length,
-    totalPoint = itemLenght * 10,
-    listPoint = 0,
-    percent = 0;
-    $.each(item, function () {
-      var itemPoint = parseInt($(this).attr('data-answer'));
-      listPoint += itemPoint;
-    });
+        itemLenght = item.length,
+        totalPoint = itemLenght * 10,
+        listPoint = 0,
+        percent = 0;
+        $.each(item, function () {
+          var itemPoint = parseInt($(this).attr('data-answer'));
+          listPoint += itemPoint;
+        });
     percent = (100 * listPoint)/ totalPoint ;
     return Math.round(percent);
   };

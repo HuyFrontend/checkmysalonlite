@@ -43,12 +43,11 @@
       var thatChangeTitle = that.data('reset-title');
 
       if(this.options.isModalLogout) {
-        var btnConfirm = modal.find('#mess-confirm-error-ok');
-        btnConfirm.off('click').on('click', function () {
-          // go to landing page, for local host
-          // window.location.href = '//' + window.location.host + '/landing.html';
-          //  for dev server
-          window.location.href = '//' + window.location.host;
+        modal.off('click.logout', '#mess-confirm-error-ok').on('click.logout', '#mess-confirm-error-ok', function () {
+          var linkTo = $(body).find('[data-logout]').attr('data-logout');
+          // console.log('linkTo', linkTo);
+          window.location.replace(linkTo);
+          // window.location.href = linkTo ;
         });
       }
 
