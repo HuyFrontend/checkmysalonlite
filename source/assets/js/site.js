@@ -9,9 +9,7 @@ var Site = (function($, window, undefined) {
         btnRegister = body.find('[data-register]'),
         btnLostPass = body.find('[data-lost-password]'),
         bntLogout = body.find('[data-logout]'),
-        btnSetting = body.find('[data-setting]'),
-        btnAssessment = body.find('[data-assessment]'),
-        btmEmotion = body.find('[data-emotion]');
+        btnSetting = body.find('[data-setting]');
 
     var emotionModal = body.find('#quiz-emotion-modal'),
         assessmentModal = body.find('#quiz-assessment-modal');
@@ -35,20 +33,13 @@ var Site = (function($, window, undefined) {
       modal: '#setting-modal'
     });
 
-    btnAssessment['showing-modal']({
-      modal: '#quiz-assessment-modal'
-    });
+    // emotionModal['get-point']({
+    //   content: '#item-emotion'
+    // });
+    // assessmentModal['get-point']({
+    //   content: '#item-assessment'
+    // });
 
-    btmEmotion['showing-modal']({
-      modal: '#quiz-emotion-modal'
-    });
-
-    emotionModal['get-point']({
-      content: '#item-emotion'
-    });
-    assessmentModal['get-point']({
-      content: '#item-assessment'
-    });
     btnLostPass['showing-modal']({
       modal: '#forgot-pass'
     });

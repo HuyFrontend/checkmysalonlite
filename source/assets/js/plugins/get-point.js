@@ -12,7 +12,7 @@
  *
  */
 ;(function($, window, undefined) {
-  var pluginName = 'get-point',
+  var pluginName = 'get-point-a',
       L10n = window.L10n;
 
   var isCheckedAll = function(element){
@@ -128,7 +128,7 @@
         }
       });
 
-      element.off('click.cancel', '[data-dismiss]').on('click.cancel', '[data-dismiss]', function(){
+      element.off('click.cancelQuiz', '[data-dismiss]').on('click.cancelQuiz', '[data-dismiss]', function(){
 
         updateElement(content, initList);
       });

@@ -12,14 +12,6 @@
  */
 ;(function($, window, undefined) {
   var pluginName = 'showing-modal';
-  var getQuizLiss = function () {
-    $.ajax({
-      type: 'GET',
-      url: '',
-      success: function () {
-      }
-    });
-  };
 
   function Plugin(element, options) {
     this.element = $(element);
@@ -45,9 +37,7 @@
       if(this.options.isModalLogout) {
         modal.off('click.logout', '#mess-confirm-error-ok').on('click.logout', '#mess-confirm-error-ok', function () {
           var linkTo = $(body).find('[data-logout]').attr('data-logout');
-          // console.log('linkTo', linkTo);
           window.location.replace(linkTo);
-          // window.location.href = linkTo ;
         });
       }
 

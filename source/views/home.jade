@@ -12,12 +12,12 @@ block main
     .quiz-option
       .assessment-block.col-sm-6.col-xs-5
         .wrapper-block()
-          .group-content(data-assessment="")
+          .group-content(data-modal-ajax="true", data-modal="true", data-target="quiz-assessment-modal", data-link="begining-list.html", data-id="assessment")
             .group-text.text-white
               p.text-1 Begin
               p.text-2 your
               p.text-3 assessment
       .emotion-block.col-sm-6.col-xs-5
-        +link-img('logo-salon-emotion.png', 'Emotion')(data-emotion="")
+        +link-img('logo-salon-emotion.png', 'Emotion')(data-modal-ajax="true", data-target="quiz-emotion-modal", data-link="question-list.html", data-id="emotion")
   .layer.overlay.hidden
 
