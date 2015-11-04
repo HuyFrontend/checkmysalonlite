@@ -86,7 +86,7 @@
           btnCancel = element.find('[data-dismiss]'),
           initList = '';
 
-      element.off('click.doRate', '[data-point]').on('click.doRate', '[data-point]', function(){
+      element.off('click.doRate', '[data-point-a]').on('click.doRate', '[data-point-a]', function(){
         var me = $(this),
             thisPoint = parseInt(me.attr('data-point'));
             answer = 0;

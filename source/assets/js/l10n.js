@@ -29,8 +29,8 @@ var L10n = {
     firstname: 'Firstname must be alphabet and more than 6 character',
     lastname: 'Lastname is customized valid and value must equal to "test custom"',
     matchpassword: "Your passwords doesn't match",
+    allQuiz: 'Please answer all questions before validating your quiz',
     quizcheck : 'Please answer all questions before validating your quiz',
-    allQuiz: 'Please answer all questions before validating your quiz'
   },
   confirm: {
     password: 'Are you sure you want to delete?',
@@ -40,7 +40,8 @@ var L10n = {
     editSuccess:'Edit successfully',
     register: 'Your account has been created successfully',
     submitQuestionError: 'Submit to serve unsuccessfully',
-    ajax: 'Ajax is error'
+    quizIsNotCheckedFull : 'Please answer all questions before validating your quiz',
+    ajaxError: 'Ajax is error'
   },
   chart: {
     serieName: 'Actual Spending',
