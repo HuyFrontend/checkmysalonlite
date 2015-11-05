@@ -39,16 +39,16 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           '<%= meta.build %>js/modernizr.js': '<%= meta.assets %>js/libs/modernizr-2.7.1.js',
-          '<%= meta.build %>js/excanvas.js': '<%= meta.assets %>js/libs/excanvas.compiled.js',
+          // '<%= meta.build %>js/excanvas.js': '<%= meta.assets %>js/libs/excanvas.compiled.js',
           '<%= meta.build %>js/libs.js': ['<%= meta.assets %>js/libs/jquery-1.11.1.js', '<%= meta.assets %>js/libs/plugins/*.js'],
           '<%= meta.build %>js/l10n.js': '<%= meta.assets %>js/l10n.js',
           '<%= meta.build %>js/script.js': ['<%= meta.assets %>js/site.js', '<%= meta.assets %>js/plugins/viewport.js', '<%= meta.assets %>js/plugins/*.js'],
-          '<%= meta.build %>js/html5shiv.js': ['<%= meta.assets %>js/libs/html5shiv.min.js'],
-          '<%= meta.build %>js/respond.js': ['<%= meta.assets %>js/libs/respond.min.js'],
-          '<%= meta.build %>js/highcharts.js': ['<%= meta.assets %>js/libs/highcharts.src.js'],
-          '<%= meta.build %>js/highcharts-more.js': ['<%= meta.assets %>js/libs/highcharts-more.js'],
-          '<%= meta.build %>js/exporting.js': ['<%= meta.assets %>js/libs/exporting.js'],
-          '<%= meta.build %>js/spiderweb.js': ['<%= meta.assets %>js/module/spiderweb.js']
+          // '<%= meta.build %>js/html5shiv.js': ['<%= meta.assets %>js/libs/html5shiv.min.js'],
+          // '<%= meta.build %>js/respond.js': ['<%= meta.assets %>js/libs/respond.min.js'],
+          // '<%= meta.build %>js/highcharts.js': ['<%= meta.assets %>js/libs/highcharts.src.js'],
+          // '<%= meta.build %>js/highcharts-more.js': ['<%= meta.assets %>js/libs/highcharts-more.js'],
+          // '<%= meta.build %>js/exporting.js': ['<%= meta.assets %>js/libs/exporting.js'],
+          // '<%= meta.build %>js/spiderweb.js': ['<%= meta.assets %>js/module/spiderweb.js']
         }]
       }
     },
@@ -298,7 +298,7 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           '<%= meta.build %>js/modernizr.js': '<%= meta.assets %>js/libs/modernizr-2.7.1.js',
-          '<%= meta.build %>js/excanvas.js': '<%= meta.assets %>js/libs/excanvas.compiled.js',
+          // '<%= meta.build %>js/excanvas.js': '<%= meta.assets %>js/libs/excanvas.compiled.js',
           '<%= meta.build %>js/libs.js': ['<%= meta.assets %>js/libs/jquery-1.11.1.js', '<%= meta.assets %>js/libs/plugins/*.js'],
           '<%= meta.build %>js/l10n.js': '<%= meta.assets %>js/l10n.js',
           '<%= meta.build %>js/script.js': ['<%= meta.assets %>js/site.js', '<%= meta.assets %>js/plugins/*.js']
@@ -417,11 +417,11 @@ module.exports = function(grunt) {
   });
   grunt.file.expand('./node_modules/grunt-*/tasks').forEach(grunt.loadTasks);
   require('time-grunt')(grunt);
-  grunt.registerTask('build', ['clean', 'concat', 'less', 'jade', 'copy', 'autoprefixer', 'htmlhint', 'jshint'/*, 'csslint'*/]);
+  grunt.registerTask('build', ['clean', 'concat', 'less', 'jade', 'copy', 'autoprefixer', /*'htmlhint',*/ 'jshint'/*, 'csslint'*/]);
   grunt.registerTask('default', ['build', 'concurrent:local']);
   grunt.registerTask('test', ['connect:server', 'qunit']);
   grunt.registerTask('wa', ['accessibility']);
-  grunt.registerTask('html', ['html-validation']);
+  // grunt.registerTask('html', ['html-validation']);
   grunt.registerTask('css', ['css-validation']);
   grunt.registerTask('report', ['plato:local']);
   grunt.registerTask('release', ['build', 'test', 'html', 'css', 'imagemin', 'uglify', 'cssmin']);

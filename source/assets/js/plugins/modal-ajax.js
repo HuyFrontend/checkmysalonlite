@@ -21,8 +21,16 @@
       });
       return listQuestionsDone.length === 0;
     };
+    var showAlertModal = function (modal, alertText) {
+      
+      var alertModal = $('#' + modal),
+          contentModal = alertModal.find('.message-group');
 
-    function RequestAjax (successModal, errorModal){
+        contentModal.empty();
+        contentModal.append('<p>' + alertText + '</p>');
+        alertModal.modal('show');
+    };
+    function RequestAjax (successModal, errorModal, offModal){
       this.sendRequest = function (url, success, error, methodType, params) {
         // Feature detection, url: url, success/error: callback when ajax done, method: get/post, params: data
         if ( !window.XMLHttpRequest ) {
@@ -30,7 +38,6 @@
         }
         // Create new request
         var request = new XMLHttpRequest();
-
         // Setup callbacks
         request.onreadystatechange = function () {
           // If the request is complete
@@ -38,13 +45,13 @@
               // If the request failed
             if ( request.status !== 200 ) {
               if ( error && typeof error === 'function' ) {
-                  error( request.responseText, request );
+                error( request.responseText, request );
               }
               return;
             }
             // If the request succeeded
             if ( success && typeof success === 'function' ) {
-                success( request.responseText, request );
+              success( request.responseText, request );
             }
           }
         };
@@ -54,20 +61,67 @@
         }
         request.open( methodType, url );
         request.send(params);
+
       };
       this.getSuccess = function (data) {
+
         var questionModal = $('#' + successModal),
             content = questionModal.find('[data-replace]');
+
         content.html(data);
         questionModal.modal('show');
-      };
-      this.getError = function (data) {
-        var alertModal = $('#' + errorModal),
-            contentModal = alertModal.find('.message-group');
 
-        contentModal.empty();
-        contentModal.append('<p>' + data + '</p>');
-        alertModal.modal('show');
+      };
+      this.getError = function (err) {
+
+        showAlertModal(errorModal, err);
+
+      };
+      this.postSuccess = function (dataContent) {
+        // console.log(data);
+        if(dataContent) {
+          if(typeof dataContent !== 'object') {
+            dataContent = JSON.parse(dataContent);
+          }
+          if(dataContent.status !== 'OK') {
+            var saveError  = L10n.alert.ajaxError;
+            showAlertModal(saveError);
+          }
+          else {
+            var percent = Math.round(dataContent.percent),
+                content = dataContent.content;
+
+            var resultModal = $('#' + successModal),
+                chartContainer = resultModal.find('[data-smpiechart]'),
+                chart = chartContainer.data('easyPieChart'),
+                spanPercent = chartContainer.find('.pertcent'),
+                textContainer = resultModal.find('[data-change-text]');
+
+            textContainer.html(content);
+            spanPercent.html(percent + '%');
+
+            $('#' + offModal).modal('hide');
+            resultModal.modal('show');
+
+            resultModal.off('shown.bs.modal');
+            resultModal.on('shown.bs.modal', function() {
+
+              chart.update(percent);
+
+            });
+            resultModal.off('hidden.bs.modal');
+            resultModal.on('hidden.bs.modal', function() {
+
+              spanPercent.html(0 + '%');
+              chart.update(0);
+
+            });
+          }
+        }
+      };
+      this.possError = function (err) {
+        console.log(err);
+        showAlertModal(errorModal, err);
       };
     }
 
@@ -99,22 +153,25 @@
               'id': me.data('id')
             };
 
+          $('#' + qModal).find('[data-button-validate]').attr('id', me.data('id'));
           var request = new RequestAjax(qModal, opt.alertModal);
-          request.sendRequest(url, request.getSuccess, request.getError, 'GET', params);
+          request.sendRequest(url, request.getSuccess, request.getError, opt.getMethod, params);
         });
 
         //choose answer
-        quizModal.off('click.chooseAnswer', '[data-point]').on('click.chooseAnswer', '[data-point]', function(){
+        quizModal.off('click.chooseAnswer', '[data-point]').on('click.chooseAnswer', '[data-point]', function () {
           var me = $(this);
-          me.siblings('[data-point]').removeClass('active');
-          me.nextAll().addClass('active');
-          me.addClass('active');
+          me.siblings('[data-point]').removeClass(opt.classActive);
+          me.nextAll().addClass(opt.classActive);
+          me.addClass(opt.classActive);
         });
 
         // save
-        quizModal.off('click.Save', '[data-button-validate]').on('click.Save', '[data-button-validate]', function(){
+        quizModal.off('click.Save', '[data-button-validate]').on('click.Save', '[data-button-validate]', function () {
 
           var me = $(this),
+              categoryId = me.data('id'),
+              linkPost = me.data('link'),
               blockQuestion = me.closest('.modal-dialog').find('.quiz-content');
 
           if(isCheckedAll(blockQuestion)) {
@@ -128,15 +185,29 @@
 
               });*/
             var questions = blockQuestion.find('[data-question-id]'),
-                arrayQuestion = [],
-                id = me.data('id');
+                arrayQuestion = [];
 
             for(var i = 0, len = questions.length; i < len; i++) {
               var question = $(questions[i]);
-              var answer = { 'category_id': id, 'question_id': question.data('question-id'), 'point': question.find('.active').length };
+              var answer = { 'category_id': categoryId, 'question_id': question.data('question-id'), 'point': question.find('.active').length };
               arrayQuestion.push(answer);
             }
-            console.log('arrayQuestion',arrayQuestion);
+
+            if(arrayQuestion.length) {
+              var objData = {
+                'survey': arrayQuestion
+              };
+
+              var arrayData = [];
+              arrayData.push(objData);
+
+              var params = {
+                answerString: JSON.stringify(arrayData)
+              };
+              var request = new RequestAjax(opt.scoreModal, opt.alertModal, opt.questionModal);
+              request.sendRequest(linkPost, request.postSuccess, request.postError, opt.getMethod, params);
+            }
+            
           }
           else {
             var alertIfNotCheckAll = L10n.valid.quizcheck;
@@ -292,7 +363,10 @@
       option: 'value',
       scoreModal: 'score-modal',
       questionModal: '',
-      alertModal: 'error-modal'
+      alertModal: 'error-modal',
+      classActive: 'active',
+      postMethod: 'post',
+      getMethod: 'get'
     };
 
     $(function() {
