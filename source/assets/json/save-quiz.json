@@ -1,4 +1,5 @@
 {
   "status": "OK",
-  "message": "Saved survey successfully."
+  "percent": 55,
+  "content": "Saved survey successfully."
 }
