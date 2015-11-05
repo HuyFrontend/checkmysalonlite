@@ -15,20 +15,61 @@
     var pluginName = 'modal-ajax',
         L10n = window.L10n;
 
-    var isCheckedAll = function(element){
+    var isCheckedAll = function (element) {
       var listQuestionsDone = element.find('[data-question-id] .rating').filter( function () {
         return !$(this).children().filter('.active').length;
       });
       return listQuestionsDone.length === 0;
     };
 
-    var showError = function (textError) {
-      var modal = $('#error-modal'),
-      contentModal = modal.find('.message-group');
-      contentModal.empty();
-      contentModal.append('<p>' + textError + '</p>');
-      modal.modal('show');
-    };
+    function RequestAjax (successModal, errorModal){
+      this.sendRequest = function (url, success, error, methodType, params) {
+        // Feature detection, url: url, success/error: callback when ajax done, method: get/post, params: data
+        if ( !window.XMLHttpRequest ) {
+          return;
+        }
+        // Create new request
+        var request = new XMLHttpRequest();
+
+        // Setup callbacks
+        request.onreadystatechange = function () {
+          // If the request is complete
+          if ( request.readyState === 4 ) {
+              // If the request failed
+            if ( request.status !== 200 ) {
+              if ( error && typeof error === 'function' ) {
+                  error( request.responseText, request );
+              }
+              return;
+            }
+            // If the request succeeded
+            if ( success && typeof success === 'function' ) {
+                success( request.responseText, request );
+            }
+          }
+        };
+        // Get the HTML
+        if(!methodType) {
+          methodType = 'GET';
+        }
+        request.open( methodType, url );
+        request.send(params);
+      };
+      this.getSuccess = function (data) {
+        var questionModal = $('#' + successModal),
+            content = questionModal.find('[data-replace]');
+        content.html(data);
+        questionModal.modal('show');
+      };
+      this.getError = function (data) {
+        var alertModal = $('#' + errorModal),
+            contentModal = alertModal.find('.message-group');
+
+        contentModal.empty();
+        contentModal.append('<p>' + data + '</p>');
+        alertModal.modal('show');
+      };
+    }
 
     function Plugin(element, options) {
       this.element = $(element);
@@ -49,11 +90,21 @@
         var quizModal = $('#' + opt.questionModal);
 
         elm.off('click.showAjaxModal').on('click.showAjaxModal', function () {
-          that.getList(that.appendQuestionToModal);
+          // that.getList(that.appendQuestionToModal);
+            var me = $(this),
+                url = me.data('link'),
+                qModal = me.data('target');
+
+            var params = {
+              'id': me.data('id')
+            };
+
+          var request = new RequestAjax(qModal, opt.alertModal);
+          request.sendRequest(url, request.getSuccess, request.getError, 'GET', params);
         });
 
         //choose answer
-        modal.off('click.chooseAnswer', '[data-point]').on('click.chooseAnswer', '[data-point]', function(){
+        quizModal.off('click.chooseAnswer', '[data-point]').on('click.chooseAnswer', '[data-point]', function(){
           var me = $(this);
           me.siblings('[data-point]').removeClass('active');
           me.nextAll().addClass('active');
@@ -61,12 +112,13 @@
         });
 
         // save
-        modal.off('click.Save', '[data-button-validate]').on('click.Save', '[data-button-validate]', function(){
+        quizModal.off('click.Save', '[data-button-validate]').on('click.Save', '[data-button-validate]', function(){
 
           var me = $(this),
               blockQuestion = me.closest('.modal-dialog').find('.quiz-content');
 
           if(isCheckedAll(blockQuestion)) {
+            /*
             that.saveData(modal, me)
               .then(function (data) {
                 return that.showResultModal(data);
@@ -74,11 +126,20 @@
               .then(function (data) {
               }, function (err) {
 
-              });
+              });*/
+            var questions = blockQuestion.find('[data-question-id]'),
+                arrayQuestion = [],
+                id = me.data('id');
+
+            for(var i = 0, len = questions.length; i < len; i++) {
+              var question = $(questions[i]);
+              var answer = { 'category_id': id, 'question_id': question.data('question-id'), 'point': question.find('.active').length };
+              arrayQuestion.push(answer);
+            }
+            console.log('arrayQuestion',arrayQuestion);
           }
           else {
             var alertIfNotCheckAll = L10n.valid.quizcheck;
-            // showError(alertIfNotCheckAll);
             that.showAlertModal(alertIfNotCheckAll);
           }
         });
@@ -165,7 +226,6 @@
           }
           if(dataContent.status !== 'OK') {
             var saveError  = L10n.alert.ajaxError;
-            // showError(saveError);
             that.showAlertModal(saveError);
           }
           else {
