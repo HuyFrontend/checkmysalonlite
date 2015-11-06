@@ -45,10 +45,10 @@ module.exports = function(grunt) {
           '<%= meta.build %>js/script.js': ['<%= meta.assets %>js/site.js', '<%= meta.assets %>js/plugins/viewport.js', '<%= meta.assets %>js/plugins/*.js'],
           // '<%= meta.build %>js/html5shiv.js': ['<%= meta.assets %>js/libs/html5shiv.min.js'],
           // '<%= meta.build %>js/respond.js': ['<%= meta.assets %>js/libs/respond.min.js'],
-          // '<%= meta.build %>js/highcharts.js': ['<%= meta.assets %>js/libs/highcharts.src.js'],
-          // '<%= meta.build %>js/highcharts-more.js': ['<%= meta.assets %>js/libs/highcharts-more.js'],
-          // '<%= meta.build %>js/exporting.js': ['<%= meta.assets %>js/libs/exporting.js'],
-          // '<%= meta.build %>js/spiderweb.js': ['<%= meta.assets %>js/module/spiderweb.js']
+          '<%= meta.build %>js/highcharts.js': ['<%= meta.assets %>js/libs/highcharts.src.js'],
+          '<%= meta.build %>js/highcharts-more.js': ['<%= meta.assets %>js/libs/highcharts-more.js'],
+          '<%= meta.build %>js/exporting.js': ['<%= meta.assets %>js/libs/exporting.js'],
+          '<%= meta.build %>js/spiderweb.js': ['<%= meta.assets %>js/module/spiderweb.js']
         }]
       }
     },

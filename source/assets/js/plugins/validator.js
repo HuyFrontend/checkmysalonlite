@@ -19,16 +19,22 @@
     var modal = $('#error-modal'),
     contentModal = modal.find('.message-group'),
     errorInput = form.find('input.error'),
-    errorLabel = errorInput.parent().find('.text-danger');
+    errorLabels = errorInput.parent().find('.text-danger');
 
-    errorLabel.hide();
+    errorLabels.hide();
     contentModal.empty();
 
-    $.each(errorLabel, function () {
-      var me = $(this),
-          text = me.text();
-      contentModal.append('<p class="message">'+ text + '</p>');
-    });
+    // $.each(errorLabels, function () {
+    //   var me = $(this),
+    //       text = me.text();
+    //   contentModal.append('<p class="message">'+ text + '</p>');
+    // });
+
+    for(var i = 0, len = errorLabels.length; i < len; i++) {
+      var thisLabel = errorLabels[i],
+          thisText = thisLabel.text();
+      contentModal.append('<p class="message">'+ thisText + '</p>');
+    }
 
     modal.modal('show');
   }
