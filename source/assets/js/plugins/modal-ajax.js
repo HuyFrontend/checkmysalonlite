@@ -13,7 +13,8 @@
    */
   ;(function($, window, undefined) {
     var pluginName = 'modal-ajax',
-        L10n = window.L10n;
+        L10n = window.L10n,
+        doc = document;
 
     var isCheckedAll = function (element) {
       var listQuestionsDone = element.find('[data-question-id] .rating').filter( function () {
@@ -22,7 +23,7 @@
       return listQuestionsDone.length === 0;
     };
     var showAlertModal = function (modal, alertText) {
-      
+
       var alertModal = $('#' + modal),
           contentModal = alertModal.find('.message-group');
 
@@ -65,12 +66,20 @@
       };
       this.getSuccess = function (data) {
 
-        var questionModal = $('#' + successModal),
-            content = questionModal.find('[data-replace]');
+        // var questionModal = $('#' + successModal),
+        //     content = questionModal.find('[data-replace]');
 
-        content.html(data);
-        questionModal.modal('show');
+        // content.html(data);
+        // questionModal.modal('show');
 
+        var elmQuestionModal = doc.querySelector('#' + successModal);
+
+        var objQuestionModal = new Modal(elmQuestionModal, {
+          content: data,
+          containElement: 'data-replace'
+        });
+
+        objQuestionModal.open();
       };
       this.getError = function (err) {
 
@@ -93,34 +102,70 @@
 
             var resultModal = $('#' + successModal),
                 chartContainer = resultModal.find('[data-smpiechart]'),
-                chart = chartContainer.data('easyPieChart'),
-                spanPercent = chartContainer.find('.pertcent'),
-                textContainer = resultModal.find('[data-change-text]');
+                chart = chartContainer.data('easyPieChart');
+                // spanPercent = chartContainer.find('.pertcent'),
+                // textContainer = resultModal.find('[data-change-text]');
 
-            textContainer.html(content);
-            spanPercent.html(percent + '%');
+            chart.update(0);
+            // textContainer.html(content);
+            // spanPercent.html(percent + '%');
 
-            $('#' + offModal).modal('hide');
-            resultModal.modal('show');
 
-            resultModal.off('shown.bs.modal');
-            resultModal.on('shown.bs.modal', function() {
+            // $('#' + offModal).modal('hide');
+            // resultModal.modal('show');
+            // resultModal.off('shown.bs.modal');
+            // resultModal.on('shown.bs.modal', function() {
+            //   chart.update(percent);
+            // });
+            // resultModal.off('hidden.bs.modal');
+            // resultModal.on('hidden.bs.modal', function() {
+            //   spanPercent.html(0 + '%');
+            //   chart.update(0);
+            // });
+            // hide quiz modal
+            var elmQuizModal = doc.querySelector('#' + offModal),
+                objQuizModal = new Modal(elmQuizModal);
+            objQuizModal.close();
 
-              chart.update(percent);
+            // SETUP SCORE MODAL
+            var elmScoredModal = doc.querySelector('#' + successModal),
+                objScoredModal = new Modal(elmScoredModal);
+            var spanPercent = elmScoredModal.querySelector('.pertcent'),
+                textContainer = elmScoredModal.querySelector('[data-change-text]');
 
+            textContainer.innerHTML = content;
+            spanPercent.innerHTML = percent + '%';
+
+            // add listener
+
+            elmScoredModal.addEventListener('show.bs.modal', function (e) {
+              // not run
             });
-            resultModal.off('hidden.bs.modal');
-            resultModal.on('hidden.bs.modal', function() {
 
-              spanPercent.html(0 + '%');
-              chart.update(0);
-
+            elmScoredModal.addEventListener('hide.bs.modal', function (e) {
+              // not run
             });
+
+            // open score modal
+            objScoredModal.open();
+            chart.update(percent);
+            //demo myCarousel demonstrating the slid and slide events
+            // var mainSlider = document.getElementById('myCarousel');
+            // mainSlider.addEventListener('slid.bs.carousel', function(e) {
+            //   // get the caption of current active item before slide
+            //   var active = mainSlider.querySelector('.item.active .carousel-caption');
+            //   active.classList.remove('slide')
+            // });
+            // mainSlider.addEventListener('slide.bs.carousel', function(e) {
+            //   // get the caption of new active item after slide
+            //   var active = mainSlider.querySelector('.item.active .carousel-caption');
+            //   active.classList.add('slide')
+            // });
+
           }
         }
       };
       this.possError = function (err) {
-        console.log(err);
         showAlertModal(errorModal, err);
       };
     }
@@ -207,7 +252,7 @@
               var request = new RequestAjax(opt.scoreModal, opt.alertModal, opt.questionModal);
               request.sendRequest(linkPost, request.postSuccess, request.postError, opt.getMethod, params);
             }
-            
+
           }
           else {
             var alertIfNotCheckAll = L10n.valid.quizcheck;

@@ -22,16 +22,16 @@ var Site = (function($, window, undefined) {
       modal: '#register-modal'
     });
 
-    bntLogout['showing-modal']({
-      isModalLogout: true,
-      hasLayer: true,
-      message: L10n.confirm.logout,
-      modal: '#mess-confirm-error'
-    });
+    // bntLogout['showing-modal']({
+    //   isModalLogout: true,
+    //   hasLayer: true,
+    //   message: L10n.confirm.logout,
+    //   modal: '#mess-confirm-error'
+    // });
 
-    btnSetting['showing-modal']({
-      modal: '#setting-modal'
-    });
+    // btnSetting['showing-modal']({
+    //   modal: '#setting-modal'
+    // });
 
     // emotionModal['get-point']({
     //   content: '#item-emotion'

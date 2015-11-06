@@ -15,7 +15,7 @@ mixin link-tab(title, text)
       !=text
 mixin link-utility(title, href, data)
   - if (typeof(href) === 'undefined') href = '#'
-  a(href=href, title=title, data-toggle='modal').wi-icon&attributes(attributes)
+  a(href=href, title=title).wi-icon&attributes(attributes)
     if block
       block
     else
