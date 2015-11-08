@@ -1,0 +1,11 @@
+#confirm-modal.modal.fade.mess-error.confirm-modal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', data-toggle="manage-modal")
+  .content.grey-content
+    .wi-icon.close(data-dismiss='modal')
+
+    form.form-error.form#form-confirm-error(name="error", data-placeholder)
+      p.message(data-replace) This  email address has never been  used  to  access  to  the website.
+      .form-group.wapper-button
+        .col-xs-6
+          button#mess-cancel.btn.button-green.pull-left(type='button', data-dismiss='modal') No
+        .col-xs-6
+          button#mess-confirm.btn.button-green.pull-right(type='button', data-href) Yes

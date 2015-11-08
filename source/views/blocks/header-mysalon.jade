@@ -8,6 +8,6 @@ header.header
     .header-bottom
       ul.utility
         li
-          +link-utility('logout','javascript:void(0);')(data-show-modal=true,data-logout="", data-modal="mess-confirm-error", data-url="login.html").icon-logout.icon-responsive
+          +link-utility('logout','javascript:void(0);')(data-toggle="opening-modal", data-target="confirm-modal", data-content="Do you really want to quit you session?", data-backdrop=true, data-href="landing.html").icon-logout.icon-responsive
         li
-          +link-utility('setting', 'javascript:void(0);')(data-show-modal=true, data-setting="", data-modal="setting-modal").icon-setting.icon-responsive
+          +link-utility('setting', 'javascript:void(0);')(data-toggle="opening-modal", data-target="setting-modal").icon-setting.icon-responsive
