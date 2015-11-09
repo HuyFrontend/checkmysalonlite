@@ -48,9 +48,9 @@
   Plugin.prototype = {
     init: function() {
       var that = this.element,
-        loginForm = that.find('#form-login'),
-        registerForm = that.find('#form-registered'),
-        settingForm = that.find('#form-setting');
+        loginForm = that.find('#form-login-1'),
+        registerForm = that.find('#form-registered-1'),
+        settingForm = that.find('#form-setting-1');
 
       // validate login form
       loginForm.smValidator({

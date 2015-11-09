@@ -47,7 +47,7 @@
 
     actions : function() {
       var self = this, elm = self.element, opt = self.options;
-      
+
       self.toggleRate = function (e) {
         var me = e.target || e.srcElement ;
         if(me.hasAttribute(opt.ratingElement) || me.parentNode.hasAttribute(opt.ratingElement)) {
@@ -64,10 +64,10 @@
               else {
                 choice.addClass(opt.classActive);
               }
-            } 
+            }
             else {
               if(choice.classList) {
-                choice.classList.remove(opt.classActive); 
+                choice.classList.remove(opt.classActive);
               }
               else {
                 choice.removeClass(opt.classActive);
@@ -81,7 +81,7 @@
           // window.location.replace(me.getAttribute('data-href'));
         }
       };
-      self.ajax = function () {
+      self.otherMethod = function () {
 
       };
     }
@@ -90,15 +90,15 @@
   // ManageModal DATA API
   // =================
   var ManageModals = document.querySelectorAll('[data-toggle="manage-modal"]');
-  for (var i = 0, modalLength = ManageModals.length; i < modalLength; i++ ) {
-      var elmModal = ManageModals[i],
+  for (var i = 0, len = ManageModals.length; i < len; i++ ) {
+      var element = ManageModals[i],
           options = {
             ratingLine : '[data-question-id] .rating',
             ratingElement: 'data-point',
             btnLinkTo: 'data-href',
             classActive: 'active'
           };
-    new ManageModal(elmModal, options);
+    new ManageModal(element, options);
   }
 
   return ManageModal;

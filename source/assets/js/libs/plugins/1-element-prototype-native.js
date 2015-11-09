@@ -26,32 +26,30 @@ Element.prototype.toggleClass = function (className) {
         this.className += ' ' + className;
     }
 };
-// Change addEventListener to attachEvent on IE8-
-Element.prototype.fallBackListener = function (element, event, targetFunction, isDefault) {
-    if(element.addEventListener) {
-        element.addEventListener (event, targetFunction, isDefault);
-    }
-    else if (element.attachEvent) {
-        element.attachEvent('on' + event, ( function (el){
-            return function () {
-                targetFunction.call(el, window.event);
-            };
-        } (element)));
-        element = null;
-    }
-};
 // same fallback
 Element.prototype.addEventListenerOrAttachEvent = function (targetFunction, event, isDefault) {
     if (!this.addEventListener) {
         this.attachEvent('on' + event, targetFunction);
     }
     else {
-        this.addEventListener(event, targetFunction, isDefault);        
+        this.addEventListener(event, targetFunction, isDefault);
     }
 };
 // append prototype to document, window
 window.constructor.prototype.addEventListenerOrAttachEvent = document.constructor.prototype.addEventListenerOrAttachEvent = Element.prototype.addEventListenerOrAttachEvent;
-// window.constructor.prototype.removeEventListener = document.constructor.prototype.removeEventListener = Element.prototype.removeEventListener = removeEventListener;
+
+Element.prototype.addEventListenerOrAttachEventMultiEvent = function (targetFunction, eventList, isDefault) {
+    for ( var i = 0, len = eventList.length; i < len; i++ ) {
+        if (!this.addEventListener) {
+        this.attachEvent('on' + eventList[i], targetFunction);
+        }
+        else {
+            this.addEventListener(eventList[i], targetFunction, isDefault);
+        }
+    }
+
+};
+window.constructor.prototype.addEventListenerOrAttachEventMultiEvent = document.constructor.prototype.addEventListenerOrAttachEventMultiEvent = Element.prototype.addEventListenerOrAttachEventMultiEvent;
 // Element closest id, class, attribute
 Element.prototype.closestId = function (value) {
     var element = this.parentNode;
@@ -66,19 +64,27 @@ Element.prototype.closestId = function (value) {
     }
     return element;
 };
-Element.prototype.closest = function (value, type) {
-
+Element.prototype.closestClass = function (value) {
+    var parent = this.parentNode;
+    while (parent != document.body) {
+            if ((parent) && (!!parent.className.match(new RegExp('(\\s|^)' + value + '(\\s|$)')))) {
+                return parent;
+            }
+            else {
+                parent = parent.parentNode;
+            }
+    }
+    return null;
 };
-
-// Element.prototype.closestClass = function (className) {
-//     var parent = this.parentNode;
-//     while (parent !== document.body) {
-//         if (parent && parent.hasClass(className)) {
-//             return parent;
-//         }
-//         else {
-//             parent = parent.parentNode;
-//         }
-//     }
-//     return null;
-// }
+Element.prototype.closestAtributeName = function (value) {
+    var parent = this.parentNode;
+    while (parent != document.body) {
+            if ( (parent) && (parent.getAttribute(value) !== null)) {
+                return parent;
+            }
+            else {
+                parent = parent.parentNode;
+            }
+    }
+    return null;
+};

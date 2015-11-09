@@ -11,8 +11,16 @@
           form.form-login.form-setting.form-horizontal#form-login(name="form-login", action="json/error-salon.json", data-placeholder, novalidate="")
             .row
               .col-sm-7.col-sm-offset-2
-                +input-text-setting('email','email','Email', 'Email')
-                +input-password('password', 'Password', 'password')
+                .form-group
+                  label.control-label.col-sm-4(for="email") Email
+                  .col-sm-8
+                    input.form-control(type='text', id="email", placeholder="Email", name="email", value='', required="required" pattern ="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")
+                .form-group
+                  label.control-label.col-sm-4(for="password") Password
+                  .col-sm-8
+                    input.form-control(type='password', id="password", placeholder="Password", name="email", value='',required="required", minLength="6")
+                //- +input-text-setting('email','email','Email', 'Email')
+                //- +input-password('password', 'Password', 'password')
                 .form-group.text-right
                   .col-sm-8.col-sm-push-4
                     +link('Lost password?').link-grey(data-lost-password="")

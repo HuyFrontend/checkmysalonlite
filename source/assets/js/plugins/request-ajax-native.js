@@ -77,12 +77,11 @@
 
   // RequestAjax DATA API
   // =================
-  var RequestAjaxs = document.querySelectorAll('[data-toggle="opening-modal"]'), 
-      i = 0, 
-      modalLength = RequestAjaxs.length;
-  for (i; i < modalLength; i++ ) {
-    var elmShowModal = RequestAjaxs[i], options;
-    new RequestAjax(elmShowModal, options);
+  var RequestAjaxs = document.querySelectorAll('[data-toggle="opening-modal"]');
+
+  for (i = 0, len = RequestAjaxs.length; i < len; i++ ) {
+    var element = RequestAjaxs[i], options;
+    new RequestAjax(element, options);
   }
 
   return RequestAjax;
