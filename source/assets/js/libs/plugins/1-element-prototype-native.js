@@ -67,24 +67,24 @@ Element.prototype.closestId = function (value) {
 Element.prototype.closestClass = function (value) {
     var parent = this.parentNode;
     while (parent != document.body) {
-            if ((parent) && (!!parent.className.match(new RegExp('(\\s|^)' + value + '(\\s|$)')))) {
-                return parent;
-            }
-            else {
-                parent = parent.parentNode;
-            }
+        if ((parent) && (!!parent.className.match(new RegExp('(\\s|^)' + value + '(\\s|$)')))) {
+            return parent;
+        }
+        else {
+            parent = parent.parentNode;
+        }
     }
     return null;
 };
 Element.prototype.closestAtributeName = function (value) {
     var parent = this.parentNode;
     while (parent != document.body) {
-            if ( (parent) && (parent.getAttribute(value) !== null)) {
-                return parent;
-            }
-            else {
-                parent = parent.parentNode;
-            }
+        if ( parent && parent.getAttribute(value) !== null ) {
+            return parent;
+        }
+        else {
+            parent = parent.parentNode;
+        }
     }
     return null;
 };

@@ -19,7 +19,7 @@
 
   // OpeningModal DEFINITION
   // ===================
-  var OpeningModal = function( element, option ) {
+  var OpeningModal = function( element, options ) {
     options = options || {};
     this.element = typeof element === 'object' ? element : document.querySelector(element);
     // this.option = typeof option === 'string' ? option : null;
