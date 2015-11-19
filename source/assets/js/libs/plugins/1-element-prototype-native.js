@@ -76,7 +76,7 @@ Element.prototype.closestClass = function (value) {
     }
     return null;
 };
-Element.prototype.closestAtributeName = function (value) {
+Element.prototype.closestAttributeName = function (value) {
     var parent = this.parentNode;
     while (parent != document.body) {
         if ( parent && parent.getAttribute(value) !== null ) {
@@ -87,4 +87,13 @@ Element.prototype.closestAtributeName = function (value) {
         }
     }
     return null;
+};
+Element.prototype.getCSSValue = function (cssType) {
+    /*cssType: margin, left...*/
+    var cssValue = null;
+    if (this.currentStyle) {
+        cssValue = this.currentStyle[cssType];
+    } else if (window.getComputedStyle) {
+        cssValue = window.getComputedStyle(this, null).getPropertyValue(cssType);
+    }
 };
