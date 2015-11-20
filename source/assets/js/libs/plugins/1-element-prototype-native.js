@@ -29,7 +29,7 @@ Element.prototype.toggleClass = function (className) {
 // same fallback
 Element.prototype.addEventListenerOrAttachEvent = function (targetFunction, event, isDefault) {
     if (!this.addEventListener) {
-        this.attachEvent('on' + event, targetFunction);
+        this.attachEvent('on' + event, targetFunction, isDefault);
     }
     else {
         this.addEventListener(event, targetFunction, isDefault);
@@ -41,7 +41,7 @@ window.constructor.prototype.addEventListenerOrAttachEvent = document.constructo
 Element.prototype.addEventListenerOrAttachEventMultiEvent = function (targetFunction, eventList, isDefault) {
     for ( var i = 0, len = eventList.length; i < len; i++ ) {
         if (!this.addEventListener) {
-        this.attachEvent('on' + eventList[i], targetFunction);
+        this.attachEvent('on' + eventList[i], targetFunction, isDefault);
         }
         else {
             this.addEventListener(eventList[i], targetFunction, isDefault);
@@ -50,6 +50,21 @@ Element.prototype.addEventListenerOrAttachEventMultiEvent = function (targetFunc
 
 };
 window.constructor.prototype.addEventListenerOrAttachEventMultiEvent = document.constructor.prototype.addEventListenerOrAttachEventMultiEvent = Element.prototype.addEventListenerOrAttachEventMultiEvent;
+// remove listener
+Element.prototype.removeEventListenerOrDetachEventMultiEvent = function (targetFunction, eventList, isDefault) {
+    // eventList = ['click', 'touchstart', 'mouseenter'...];
+    for ( var i = 0, len = eventList.length; i < len; i++ ) {
+        if (!this.removeEventListener) {
+        this.detachEvent('on' + eventList[i], targetFunction, isDefault);
+        }
+        else {
+            this.addEventListener(eventList[i], targetFunction, isDefault);
+        }
+    }
+
+};
+window.constructor.prototype.removeEventListenerOrDetachEventMultiEvent = document.constructor.prototype.removeEventListenerOrDetachEventMultiEvent = Element.prototype.removeEventListenerOrDetachEventMultiEvent;
+
 // Element closest id, class, attribute
 Element.prototype.closestId = function (value) {
     var element = this.parentNode;
@@ -67,24 +82,33 @@ Element.prototype.closestId = function (value) {
 Element.prototype.closestClass = function (value) {
     var parent = this.parentNode;
     while (parent != document.body) {
-            if ((parent) && (!!parent.className.match(new RegExp('(\\s|^)' + value + '(\\s|$)')))) {
-                return parent;
-            }
-            else {
-                parent = parent.parentNode;
-            }
+        if ((parent) && (!!parent.className.match(new RegExp('(\\s|^)' + value + '(\\s|$)')))) {
+            return parent;
+        }
+        else {
+            parent = parent.parentNode;
+        }
     }
     return null;
 };
-Element.prototype.closestAtributeName = function (value) {
+Element.prototype.closestAttributeName = function (value) {
     var parent = this.parentNode;
     while (parent != document.body) {
-            if ( (parent) && (parent.getAttribute(value) !== null)) {
-                return parent;
-            }
-            else {
-                parent = parent.parentNode;
-            }
+        if ( parent && parent.getAttribute(value) !== null ) {
+            return parent;
+        }
+        else {
+            parent = parent.parentNode;
+        }
     }
     return null;
+};
+Element.prototype.getCSSValue = function (cssType) {
+    /*cssType: margin, left...*/
+    var cssValue = null;
+    if (this.currentStyle) {
+        cssValue = this.currentStyle[cssType];
+    } else if (window.getComputedStyle) {
+        cssValue = window.getComputedStyle(this, null).getPropertyValue(cssType);
+    }
 };

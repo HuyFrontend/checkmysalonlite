@@ -1,24 +1,11 @@
 
-(function(factory){
-  // CommonJS/RequireJS and 'native' compatibility
-  if(typeof module !== 'undefined' && typeof exports === 'object') {
-    // A commonJS/RequireJS environment
-    if(typeof window !== 'undefined') {
-      // Window and document exist, so return the factory's return value.
-      module.exports = factory();
-    } else {
-      // Let the user give the factory a Window and Document.
-      module.exports = factory;
-    }
-  } else {
-    // Assume a traditional browser.
-    window.VALIDATIONFORM = factory();
-  }
+(function(factory){  
+  window.VALIDATIONFORM = factory();
 })(function(){
 
   // VALIDATIONFORM DEFINITION
   // ===================
-  var VALIDATIONFORM = function( element, option ) {
+  var VALIDATIONFORM = function( element, options ) {
     options = options || {};
     this.element = typeof element === 'object' ? element : document.querySelector(element);
     this.options = {};
@@ -178,13 +165,13 @@
   // =================
   var VALIDATIONFORMs = document.querySelectorAll('[id="form-login"]');
   for (var i = 0, len = VALIDATIONFORMs.length; i < len; i++ ) {
-      var element = VALIDATIONFORMs[i],
-          options = {
-            value : '',
-            fieldGroup: 'form-group',
-            fieldParent: '',
-            classError: 'has-error'
-          };
+    var element = VALIDATIONFORMs[i],
+        options = {
+          value : '',
+          fieldGroup: 'form-group',
+          fieldParent: '',
+          classError: 'has-error'
+        };
     new VALIDATIONFORM(element, options);
   }
 

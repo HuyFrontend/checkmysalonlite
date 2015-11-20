@@ -18,7 +18,7 @@
 
   // ManageModal DEFINITION
   // ===================
-  var ManageModal = function( element, option ) {
+  var ManageModal = function( element, options ) {
     options = options || {};
     this.element = typeof element === 'object' ? element : document.querySelector(element);
     // this.option = typeof option === 'string' ? option : null;
