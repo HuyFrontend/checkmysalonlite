@@ -41,7 +41,6 @@
       elm.noValidate = true;
       elm.addEventListenerOrAttachEvent(self.validateForm, 'submit');
 
-      //
       elm.addEventListenerOrAttachEventMultiEvent(function (event) {
         event = event || window.event;
         var thisElement = event.target || event.srcElement;
