@@ -1,80 +1,89 @@
+
+
 (function(factory){
-  window.HoverElement = factory();
+  // CommonJS/RequireJS and "native" compatibility
+  if(typeof module !== "undefined" && typeof exports === "object") {
+    // A commonJS/RequireJS environment
+    if(typeof window !== "undefined") {
+      // Window and document exist, so return the factory's return value.
+      module.exports = factory();
+    } else {
+      // Let the user give the factory a Window and Document.
+      module.exports = factory;
+    }
+  } else {
+    // Assume a traditional browser.
+    window.RequestAjax = factory();
+  }
 })(function(){
 
-  // HoverElement DEFINITION
+  // RequestAjax DEFINITION
   // ===================
-  var HoverElement = function( element, options ) {
+  var RequestAjax = function( element, options ) {
     options = options || {};
     this.element = typeof element === 'object' ? element : document.querySelector(element);
-    this.options = typeof options === 'object' ? options : {};
+    // this.option = typeof option === 'string' ? option : null;
+    this.options = options;
 
     this.init();
   };
 
-  // HoverElement METHODS
+  // RequestAjax METHODS
   // ================
-  HoverElement.prototype = {
-
-    init : function() {
-      var self = this, elm = self.element/*, opt = self.options*/;
-      this.actions();
-
-      elm.removeEventListenerOrDetachEventMultiEvent (self.hover, ['click', 'mouseenter']);
-      elm.addEventListenerOrAttachEventMultiEvent (self.hover, ['click', 'mouseenter']);
-      
-      elm.removeEventListenerOrDetachEventMultiEvent (self.offHover, ['mouseout']);
-      elm.addEventListenerOrAttachEventMultiEvent (self.offHover, ['mouseout']);
-    },
-
-    actions : function() {
-      var self = this, /*elm = self.element, */opt = self.options;
-
-      self.hover = function (e) {
-        var me = e.target || e.srcElement;
-        var itemHover = me.getAttribute(opt.item) ? me : me.closestAttributeName(opt.item);
-        if(itemHover) {
-          var elementTarget = itemHover.getAttribute(opt.target) ? document.querySelector('[' + itemHover.getAttribute(opt.target) + ']') : null;
-          if(elementTarget) {
-            opt.elementTarget = elementTarget;
-            if(elementTarget.classList) {
-              elementTarget.classList.add(opt.classActive);
-            }
-            else {
-              elementTarget.addClass(opt.classActive);
-            }
-          }
-        }
-      };
-      self.offHover = function () {
-        if(opt.elementTarget) {
-          if ( opt.elementTarget.classList && opt.elementTarget.classList.contains ( opt.classList ) ){
-            opt.elementTarget.classList.remove(opt.classActive);
-          }
-          else if ( opt.elementTarget.hasClass ( opt.classActive ) ) {
-            opt.elementTarget.removeClass ( opt.classActive );
-          }
-        }
-      };
-      self.otherMethod = function () {
-      };
+  RequestAjax.prototype.init = function() {
+    var self = this;
+  };
+  RequestAjax.prototype.sendRequest = function (url, success, error, methodType, params) {
+    // Feature detection, url: url, success/error: callback when ajax done, method: get/post, params: data
+    if ( !window.XMLHttpRequest ) {
+      return;
     }
+    // Create new request
+    var request = new XMLHttpRequest();
+    // Setup callbacks
+    request.onreadystatechange = function () {
+      // If the request is complete
+      if ( request.readyState === 4 ) {
+          // If the request failed
+        if ( request.status !== 200 ) {
+          if ( error && typeof error === 'function' ) {
+            error( request.responseText, request );
+          } else {
+            this.error(request.responseText, request);
+          }
+          return;
+        }
+        // If the request succeeded
+        if ( success && typeof success === 'function' ) {
+          success( request.responseText, request );
+        } else {
+          this.success(request.responseText, request);
+        }
+      }
+    };
+    if(!methodType) {
+      methodType = 'GET';
+    }
+    request.open( methodType, url );
+    request.send(params);
+
+  };
+  RequestAjax.prototype.success = function (data) {
+    return data;
+  };
+  RequestAjax.prototype.error = function (err) {
+    return err;
   };
 
-  // HoverElement DATA API
+  // RequestAjax DATA API
   // =================
-  var HoverElements = document.querySelectorAll('[data-active-contact]');
-  for (var i = 0, len = HoverElements.length; i < len; i++ ) {
-      var element = HoverElements[i],
-          options = {
-            value : '',
-            item: 'data-hover',
-            target: 'data-target',
-            elementTarget: '',
-            classActive: 'active',
-            classHide: 'hide'
-          };
-    new HoverElement(element, options);
+  var RequestAjaxs = document.querySelectorAll('[data-toggle="NoRequestAjax"]');
+
+  for (i = 0, len = RequestAjaxs.length; i < len; i++ ) {
+    var element = RequestAjaxs[i], options;
+    new RequestAjax(element, options);
   }
-  return HoverElement;
+
+  return RequestAjax;
+
 });
