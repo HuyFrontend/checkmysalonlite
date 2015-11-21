@@ -21,16 +21,15 @@
   DEFAULTMODULE.prototype = {
 
     init : function() {
-      var self = this, elm = self.element, opt = self.options;
+      var self = this, elm = self.element/*, opt = self.options*/;
       this.actions();
-      // elm.addEventListener('click', self.toggleRate, true);
-      // fix for all
-      elm.addEventListenerOrAttachEvent(self.toggleRate, 'click', true);
+      elm.addEventListenerOrAttachEventMultiEvent(self.toggleRate, ['click']);
     },
 
     actions : function() {
       var self = this, elm = self.element, opt = self.options;
       self.method = function () {
+        console.log(elm,opt);
       };
       self.otherMethod = function () {
       };

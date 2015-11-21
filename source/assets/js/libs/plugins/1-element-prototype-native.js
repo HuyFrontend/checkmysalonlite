@@ -39,29 +39,47 @@ Element.prototype.addEventListenerOrAttachEvent = function (targetFunction, even
 window.constructor.prototype.addEventListenerOrAttachEvent = document.constructor.prototype.addEventListenerOrAttachEvent = Element.prototype.addEventListenerOrAttachEvent;
 
 Element.prototype.addEventListenerOrAttachEventMultiEvent = function (targetFunction, eventList, isDefault) {
+    // eventList = ['click', 'touchstart', 'mouseenter'...];
     for ( var i = 0, len = eventList.length; i < len; i++ ) {
         if (!this.addEventListener) {
-        this.attachEvent('on' + eventList[i], targetFunction, isDefault);
+            if(isDefault) {
+                this.attachEvent( 'on' + eventList[i], targetFunction, isDefault );
+            }
+            else {
+                this.attachEvent( 'on' + eventList[i], targetFunction );   
+            }
         }
         else {
-            this.addEventListener(eventList[i], targetFunction, isDefault);
+            if(isDefault) {
+                this.addEventListener(eventList[i], targetFunction, isDefault);
+            }
+            else {
+                this.addEventListener(eventList[i], targetFunction);
+            }
         }
     }
-
 };
 window.constructor.prototype.addEventListenerOrAttachEventMultiEvent = document.constructor.prototype.addEventListenerOrAttachEventMultiEvent = Element.prototype.addEventListenerOrAttachEventMultiEvent;
 // remove listener
 Element.prototype.removeEventListenerOrDetachEventMultiEvent = function (targetFunction, eventList, isDefault) {
-    // eventList = ['click', 'touchstart', 'mouseenter'...];
     for ( var i = 0, len = eventList.length; i < len; i++ ) {
         if (!this.removeEventListener) {
-        this.detachEvent('on' + eventList[i], targetFunction, isDefault);
+            if(isDefault) {
+                this.detachEvent('on' + eventList[i], targetFunction, isDefault);
+            }
+            else {
+                this.detachEvent('on' + eventList[i], targetFunction);
+            }
         }
         else {
-            this.addEventListener(eventList[i], targetFunction, isDefault);
+            if(isDefault) {
+                this.removeEventListener( eventList[i], targetFunction, isDefault );
+            }
+            else {
+                this.removeEventListener( eventList[i], targetFunction );
+            }
         }
     }
-
 };
 window.constructor.prototype.removeEventListenerOrDetachEventMultiEvent = document.constructor.prototype.removeEventListenerOrDetachEventMultiEvent = Element.prototype.removeEventListenerOrDetachEventMultiEvent;
 
@@ -105,10 +123,12 @@ Element.prototype.closestAttributeName = function (value) {
 };
 Element.prototype.getCSSValue = function (cssType) {
     /*cssType: margin, left...*/
-    var cssValue = null;
-    if (this.currentStyle) {
-        cssValue = this.currentStyle[cssType];
-    } else if (window.getComputedStyle) {
-        cssValue = window.getComputedStyle(this, null).getPropertyValue(cssType);
+    var value = null;
+    if ( this.currentStyle ) {
+        value = this.currentStyle[cssType];
+    } 
+    else if ( window.getComputedStyle ) {
+        value = window.getComputedStyle( this, null ).getPropertyValue( cssType );
     }
+    return value;
 };
