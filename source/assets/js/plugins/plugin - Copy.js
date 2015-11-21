@@ -20,13 +20,11 @@
       var self = this, elm = self.element/*, opt = self.options*/;
       this.actions();
 
-      elm
-        .removeEventListenerOrDetachEventMultiEvent ( self.hover, ['click', 'mouseenter'] )
-        .addEventListenerOrAttachEventMultiEvent ( self.hover, ['click', 'mouseenter'] );
+      elm.removeEventListenerOrDetachEventMultiEvent (self.hover, ['click', 'mouseenter']);
+      elm.addEventListenerOrAttachEventMultiEvent (self.hover, ['click', 'mouseenter']);
       
-      elm
-        .removeEventListenerOrDetachEventMultiEvent ( self.offHover, [ 'mouseout' ] )
-        .addEventListenerOrAttachEventMultiEvent ( self.offHover, [ 'mouseout' ] );
+      elm.removeEventListenerOrDetachEventMultiEvent (self.offHover, ['mouseout']);
+      elm.addEventListenerOrAttachEventMultiEvent (self.offHover, ['mouseout']);
     },
 
     actions : function() {
@@ -34,9 +32,9 @@
 
       self.hover = function (e) {
         var me = e.target || e.srcElement;
-        var itemHover = me.getAttribute(opt.item) ? me.getAttribute(opt.item) : me.closestAttributeName(opt.item);
+        var itemHover = me.getAttribute(opt.item) ? me : me.closestAttributeName(opt.item);
         if(itemHover) {
-          var elementTarget = itemHover.getAttribute(opt.target) ? document.querySelector('[' + itemHover.getAttribute(opt.target) + ']') : '';
+          var elementTarget = itemHover.getAttribute(opt.target) ? document.querySelector('[' + itemHover.getAttribute(opt.target) + ']') : null;
           if(elementTarget) {
             opt.elementTarget = elementTarget;
             if(elementTarget.classList) {
