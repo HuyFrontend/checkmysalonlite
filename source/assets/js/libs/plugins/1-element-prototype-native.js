@@ -1,3 +1,4 @@
+/* element prototype */
 Element.prototype.hasClass = function (className) {
   return new RegExp(' ' + className + ' ').test(' ' + this.className + ' ');
 };
@@ -73,24 +74,15 @@ Element.prototype.addEventListenerOrAttachEventMultiEvent = function (targetFunc
 window.constructor.prototype.addEventListenerOrAttachEventMultiEvent = document.constructor.prototype.addEventListenerOrAttachEventMultiEvent = Element.prototype.addEventListenerOrAttachEventMultiEvent;
 // remove listener
 Element.prototype.removeEventListenerOrDetachEventMultiEvent = function (targetFunction, eventList, isDefault) {
-    for ( var i = 0, len = eventList.length; i < len; i++ ) {
-        if (!this.removeEventListener) {
-            if(isDefault) {
-                this.detachEvent('on' + eventList[i], targetFunction, isDefault);
-            }
-            else {
-                this.detachEvent('on' + eventList[i], targetFunction);
-            }
-        }
-        else {
-            if(isDefault) {
-                this.removeEventListener( eventList[i], targetFunction, isDefault );
-            }
-            else {
-                this.removeEventListener( eventList[i], targetFunction );
-            }
-        }
+  isDefault = isDefault || false;
+  for ( var i = 0, len = eventList.length; i < len; i++ ) {
+    if (!this.removeEventListener) {
+      this.detachEvent('on' + eventList[i], targetFunction, isDefault);
     }
+    else {
+      this.removeEventListener( eventList[i], targetFunction, isDefault );          
+    }
+  }
 };
 window.constructor.prototype.removeEventListenerOrDetachEventMultiEvent = document.constructor.prototype.removeEventListenerOrDetachEventMultiEvent = Element.prototype.removeEventListenerOrDetachEventMultiEvent;
 
@@ -143,3 +135,41 @@ Element.prototype.getCSSValue = function (cssType) {
     }
     return value;
 };
+
+/* window event */
+/* scrollToElement
+item.addEventListener('click', function(){
+  scrollToElement(document.getElementById('id-scrollToElement'), 10000);
+});
+*/
+window.scrollToElement = ( function () {
+  var timer, start, factor;
+  
+  return function (targetElement, duration) {
+
+    var target = targetElement.offsetTop || 0,
+        offset = window.pageYOffset,
+        delta  = target - offset; // Y-offset difference
+    duration = duration || 1000;              // default 1 sec animation
+    start = Date.now();                       // get start time
+    factor = 0;
+    
+    if( timer ) {
+      clearInterval( timer ); // stop any running animations
+    }
+    
+    function step() {
+      var y;
+      factor = ( Date.now() - start ) / duration; // get interpolation factor
+      if( factor >= 1 ) {
+        clearInterval( timer ); // stop animation
+        factor = 1;           // clip to max 1.0
+      } 
+      y = factor * delta + offset;
+      window.scrollBy( 0, y - window.pageYOffset );
+    }
+    
+    timer = setInterval( step, 10 );
+    return timer;
+  };
+}());

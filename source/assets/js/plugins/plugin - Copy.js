@@ -1,20 +1,7 @@
 
 
 (function(factory){
-  // CommonJS/RequireJS and "native" compatibility
-  if(typeof module !== "undefined" && typeof exports === "object") {
-    // A commonJS/RequireJS environment
-    if(typeof window !== "undefined") {
-      // Window and document exist, so return the factory's return value.
-      module.exports = factory();
-    } else {
-      // Let the user give the factory a Window and Document.
-      module.exports = factory;
-    }
-  } else {
-    // Assume a traditional browser.
     window.RequestAjax = factory();
-  }
 })(function(){
 
   // RequestAjax DEFINITION
