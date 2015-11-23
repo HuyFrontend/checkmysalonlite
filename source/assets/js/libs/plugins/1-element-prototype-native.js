@@ -58,7 +58,7 @@ Element.prototype.addEventListenerOrAttachEventMultiEvent = function (targetFunc
                 this.attachEvent( 'on' + eventList[i], targetFunction, isDefault );
             }
             else {
-                this.attachEvent( 'on' + eventList[i], targetFunction );   
+                this.attachEvent( 'on' + eventList[i], targetFunction );
             }
         }
         else {
@@ -80,7 +80,7 @@ Element.prototype.removeEventListenerOrDetachEventMultiEvent = function (targetF
       this.detachEvent('on' + eventList[i], targetFunction, isDefault);
     }
     else {
-      this.removeEventListener( eventList[i], targetFunction, isDefault );          
+      this.removeEventListener( eventList[i], targetFunction, isDefault );
     }
   }
 };
@@ -129,7 +129,7 @@ Element.prototype.getCSSValue = function (cssType) {
     var value = null;
     if ( this.currentStyle ) {
         value = this.currentStyle[cssType];
-    } 
+    }
     else if ( window.getComputedStyle ) {
         value = window.getComputedStyle( this, null ).getPropertyValue( cssType );
     }
@@ -137,14 +137,16 @@ Element.prototype.getCSSValue = function (cssType) {
 };
 
 /* window event */
+
 /* scrollToElement
+usage example:
 item.addEventListener('click', function(){
   scrollToElement(document.getElementById('id-scrollToElement'), 10000);
 });
 */
 window.scrollToElement = ( function () {
   var timer, start, factor;
-  
+
   return function (targetElement, duration) {
 
     var target = targetElement.offsetTop || 0,
@@ -153,23 +155,98 @@ window.scrollToElement = ( function () {
     duration = duration || 1000;              // default 1 sec animation
     start = Date.now();                       // get start time
     factor = 0;
-    
+
     if( timer ) {
       clearInterval( timer ); // stop any running animations
     }
-    
+
     function step() {
       var y;
       factor = ( Date.now() - start ) / duration; // get interpolation factor
       if( factor >= 1 ) {
         clearInterval( timer ); // stop animation
         factor = 1;           // clip to max 1.0
-      } 
+      }
       y = factor * delta + offset;
       window.scrollBy( 0, y - window.pageYOffset );
     }
-    
+
     timer = setInterval( step, 10 );
     return timer;
   };
+}());
+
+/*
+// slideUpSlideDownElement
+usage-example:
+var targetElement = document.querySelector('#' + opt.target);
+window.slideUpSlideDownElement(targetElement);
+*/
+
+window.slideUpSlideDownElement = ( function () {
+  'use strict';
+  /**
+  * getHeight - for elements with display:none
+   */
+  var getHeight = function(el) {
+        var el_style      = window.getComputedStyle(el),
+            el_display    = el_style.display,
+            el_position   = el_style.position,
+            el_visibility = el_style.visibility,
+            el_max_height = el_style.maxHeight.replace('px', '').replace('%', ''),
+
+            wanted_height = 0;
+
+
+        // if its not hidden we just return normal height
+        if(el_display !== 'none' && el_max_height !== '0') {
+            return el.offsetHeight;
+        }
+
+        // the element is hidden so:
+        // making the el block so we can meassure its height but still be hidden
+        el.style.position   = 'absolute';
+        el.style.visibility = 'hidden';
+        el.style.display    = 'block';
+
+        wanted_height     = el.offsetHeight;
+
+        // reverting to the original values
+        el.style.display    = el_display;
+        el.style.position   = el_position;
+        el.style.visibility = el_visibility;
+
+          return wanted_height;
+      };
+
+
+  /**
+  * toggleSlide mimics the jQuery version of slideDown and slideUp
+  * all in one function comparing the max-heigth to 0
+   */
+  var  toggleSlide = function (el) {
+        var el_max_height = 0;
+        if(el.getAttribute('data-max-height')) {
+          // we've already used this before, so everything is setup
+          if(el.style.maxHeight.replace('px', '').replace('%', '') === '0') {
+            el.style.maxHeight = el.getAttribute('data-max-height');
+          } else {
+            el.style.maxHeight = '0';
+          }
+        }
+        else {
+          el_max_height                  = getHeight(el) + 'px';
+          el.style['transition']         = 'max-height 0.5s ease-in-out';
+          el.style.overflowY             = 'hidden';
+          el.style.maxHeight             = '0';
+          el.setAttribute('data-max-height', el_max_height);
+          el.style.display               = 'block';
+
+          // we use setTimeout to modify maxHeight later than display (to we have the transition effect)
+          setTimeout(function() {
+              el.style.maxHeight = el_max_height;
+          }, 10);
+        }
+      };
+  return toggleSlide;
 }());
