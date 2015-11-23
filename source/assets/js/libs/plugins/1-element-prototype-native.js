@@ -1,4 +1,14 @@
 /* element prototype */
+/*
+          ______________________________________
+          ______________________________________
+          ______________________________________
+          ELEMENT PROTOTYPE - VO XUAN HUY
+          0942404202 - xuanhuy@mail.com
+          ______________________________________
+          ______________________________________
+          ______________________________________
+*/
 Element.prototype.hasClass = function (className) {
   return new RegExp(' ' + className + ' ').test(' ' + this.className + ' ');
 };
@@ -136,7 +146,17 @@ Element.prototype.getCSSValue = function (cssType) {
     return value;
 };
 
-/* window event */
+/* window function */
+/*
+          ______________________________________
+          ______________________________________
+          ______________________________________
+          WINDOW FUNCTION - VO XUAN HUY
+          0942404202 - xuanhuy@mail.com
+          ______________________________________
+          ______________________________________
+          ______________________________________
+*/
 /* scrollToElement
 item.addEventListener('click', function(){
   scrollToElement(document.getElementById('id-scrollToElement'), 10000);
