@@ -135,18 +135,57 @@ Element.prototype.closestAttributeName = function (value) {
   return null;
 };
 Element.prototype.getCSSValue = function (cssType) {
-    /*cssType: margin, left...*/
-    var value = null;
-    if ( this.currentStyle ) {
-        value = this.currentStyle[cssType];
+  /*cssType: margin, left...*/
+  var value = null;
+  if ( this.currentStyle ) {
+    value = this.currentStyle[cssType];
+  }
+  else if ( window.getComputedStyle ) {
+    value = window.getComputedStyle( this, null ).getPropertyValue( cssType );
+  }
+  return value;
+};
+/*
+name: fadeInFaceOut
+usage: 
+//fadeIn
+fadeInFaceOut('in', 750, true);
+//fadeOut
+fadeInFaceOut('out', 750, true);
+*/
+Element.prototype.fadeInFaceOut = function (type, duration, isIE) {
+    var el = this;
+    var isIn = type === 'in',
+    opacity = isIn ? 0 : 1,
+    interval = 50,
+    gap = interval / duration;
+
+    if(isIn) {
+         el.style.display = 'block';
+         el.style.opacity = opacity;
+         if(isIE) {
+            el.style.filter = 'alpha(opacity=' + opacity + ')';
+            el.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + opacity + ')';
+        }
     }
-    else if ( window.getComputedStyle ) {
-        value = window.getComputedStyle( this, null ).getPropertyValue( cssType );
+
+    function func() {
+        opacity = isIn ? opacity + gap : opacity - gap;
+        el.style.opacity = opacity;
+        if(isIE) {
+            el.style.filter = 'alpha(opacity=' + opacity * 100 + ')';
+            el.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + opacity * 100 + ')';
+        }
+
+        if(opacity <= 0 || opacity >= 1) window.clearInterval(fading);
+        if(opacity <= 0) el.style.display = 'none';
     }
-    return value;
+
+    var fading = window.setInterval(func, interval);
 };
 
-/* window function */
+
+/* window event */
 /*
           ______________________________________
           ______________________________________
@@ -157,8 +196,10 @@ Element.prototype.getCSSValue = function (cssType) {
           ______________________________________
           ______________________________________
 */
-/* scrollToElement
-usage example:
+
+/* 
+name: scrollToElement
+usage:
 item.addEventListener('click', function(){
   scrollToElement(document.getElementById('id-scrollToElement'), 10000);
 });
@@ -195,77 +236,38 @@ window.scrollToElement = ( function () {
   };
 }());
 
-/*
-// slideUpSlideDownElement
-usage-example:
-var targetElement = document.querySelector('#' + opt.target);
-window.slideUpSlideDownElement(targetElement);
+
+/* 
+name: findMiddleElementOfScreenWhenScroll
+usage:
+window.removeEventListener('scroll resize', A);
+window.addEventListener('scroll resize', function A(){
+  findMiddleElementOfScreenWhenScroll();
+});
+or
+window.addEventLisener('scroll resize', findMiddleElementOfScreenWhenScroll);
 */
 
-window.slideUpSlideDownElement = ( function () {
-  'use strict';
-  /**
-  * getHeight - for elements with display:none
-   */
-  var getHeight = function(el) {
-        var el_style      = window.getComputedStyle(el),
-            el_display    = el_style.display,
-            el_position   = el_style.position,
-            el_visibility = el_style.visibility,
-            el_max_height = el_style.maxHeight.replace('px', '').replace('%', ''),
-
-            wanted_height = 0;
-
-
-        // if its not hidden we just return normal height
-        if(el_display !== 'none' && el_max_height !== '0') {
-            return el.offsetHeight;
+var findMiddleElementOfScreenWhenScroll = ( function (docElm) {
+    var viewportHeight = docElm.clientHeight,
+        // here i'm using pre-cached DIV elements, but you can use anything you want.
+        // Cases where elements are generated dynamically are more CPU intense ofc.
+        elements = document.querySelecterAll('div'); 
+    return function (e) {
+        var middleElement;
+        if( e && e.type == 'resize' ) {
+            viewportHeight = docElm.clientHeight;
         }
+        elements.each(function(){
+            var pos = this.getBoundingClientRect().top;
+            // if an element is more or less in the middle of the viewport
+            if( pos > viewportHeight/2.5 && pos < viewportHeight/1.5 ){
+                middleElement = this;
+                return false; // stop iteration
+            }
+        });
 
-        // the element is hidden so:
-        // making the el block so we can meassure its height but still be hidden
-        el.style.position   = 'absolute';
-        el.style.visibility = 'hidden';
-        el.style.display    = 'block';
+        console.log(middleElement);
+    }
+})(document.documentElement);
 
-        wanted_height     = el.offsetHeight;
-
-        // reverting to the original values
-        el.style.display    = el_display;
-        el.style.position   = el_position;
-        el.style.visibility = el_visibility;
-
-          return wanted_height;
-      };
-
-
-  /**
-  * toggleSlide mimics the jQuery version of slideDown and slideUp
-  * all in one function comparing the max-heigth to 0
-   */
-  var  toggleSlide = function (el) {
-        var el_max_height = 0;
-        if(el.getAttribute('data-max-height')) {
-          // we've already used this before, so everything is setup
-          if(el.style.maxHeight.replace('px', '').replace('%', '') === '0') {
-            el.style.maxHeight = el.getAttribute('data-max-height');
-          } else {
-            el.style.maxHeight = '0';
-          }
-        }
-        else {
-          el_max_height                  = getHeight(el) + 'px';
-          el.style['transition']         = 'max-height 0.5s ease-in-out';
-          el.style.overflowY             = 'hidden';
-          el.style.maxHeight             = '0';
-          el.setAttribute('data-max-height', el_max_height);
-          el.style.display               = 'block';
-
-          // we use setTimeout to modify maxHeight later than display (to we have the transition effect)
-          setTimeout(function() {
-              el.style.maxHeight = el_max_height;
-          }, 10);
-        }
-      };
-  return toggleSlide;
-}());
