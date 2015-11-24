@@ -136,10 +136,45 @@ Element.prototype.getCSSValue = function (cssType) {
     return value;
 };
 
-/* window event */
+/*
+usage: fadeInFaceOut
+//fadeIn
+fade('in', 750, true);
+//fadeOut
+fade('out', 750, true);
+*/
+Element.prototype.fadeInFaceOut = function (type, duration, isIE) {
+    var el = this;
+    var isIn = type === 'in',
+    opacity = isIn ? 0 : 1,
+    interval = 50,
+    gap = interval / duration;
 
+    if(isIn) {
+         el.style.display = 'block';
+         el.style.opacity = opacity;
+         if(isIE) {
+            el.style.filter = 'alpha(opacity=' + opacity + ')';
+            el.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + opacity + ')';
+        }
+    }
+
+    function func() {
+        opacity = isIn ? opacity + gap : opacity - gap;
+        el.style.opacity = opacity;
+        if(isIE) {
+            el.style.filter = 'alpha(opacity=' + opacity * 100 + ')';
+            el.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + opacity * 100 + ')';
+        }
+
+        if(opacity <= 0 || opacity >= 1) window.clearInterval(fading);
+        if(opacity <= 0) el.style.display = 'none';
+    }
+
+    var fading = window.setInterval(func, interval);
+};
+/* window event */
 /* scrollToElement
-usage example:
 item.addEventListener('click', function(){
   scrollToElement(document.getElementById('id-scrollToElement'), 10000);
 });
@@ -175,13 +210,7 @@ window.scrollToElement = ( function () {
     return timer;
   };
 }());
-
-/*
-// slideUpSlideDownElement
-usage-example:
-var targetElement = document.querySelector('#' + opt.target);
-window.slideUpSlideDownElement(targetElement);
-*/
+  // slide up/ slide down
 
 window.slideUpSlideDownElement = ( function () {
   'use strict';
@@ -237,8 +266,9 @@ window.slideUpSlideDownElement = ( function () {
         else {
           el_max_height                  = getHeight(el) + 'px';
           el.style['transition']         = 'max-height 0.5s ease-in-out';
-          el.style.overflowY             = 'hidden';
+          // el.style.overflowY             = 'hidden';
           el.style.maxHeight             = '0';
+          // alert(12);
           el.setAttribute('data-max-height', el_max_height);
           el.style.display               = 'block';
 
