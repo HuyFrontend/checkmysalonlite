@@ -1,0 +1,156 @@
+html, body {
+  .square(100%);
+}
+.img-responsive {
+  display: inline-block;
+}
+// Structure
+#container {
+  margin: 0 auto;
+  max-width: 1024px;
+  > .inner {
+    width: 100%;
+    margin: 0 auto;
+    .clearfix();
+  }
+}
+.header {
+  background-color: @color;
+  padding:20px 20px 14px 20px;
+  overflow: hidden;
+  .logo {
+    .font-size(30px);
+    img {
+      .size(133px,30px);
+    }
+  }
+  .logo-center {
+    width: 50% ;
+    text-align: center;
+    margin-left: -7px ;
+    float: left;
+    a {
+      cursor: default;
+    }
+  }
+  .header-setting {
+    text-align: right;
+    float: right;
+  }
+
+
+  .right a {
+    &.logo-emotion img,
+    &.logo-mysalon img{ .square(100px);}
+  }
+  .container {
+    position: relative;
+  }
+}
+.header-bottom {
+  clear: both;
+  margin-top: -107px;
+  float: right;
+  padding-left: 15px;
+  position: relative;
+  z-index: 1;
+}
+.utility {
+  white-space: nowrap;
+  margin:0 0 0 10px;
+  overflow: hidden;
+  li {
+    float: left;
+    padding-right: 20px;
+    span {
+      .size(20px,24px);
+      background-position: -39px -79px;
+    }
+    .salon-name {
+      margin-left: 0;
+      white-space: normal;
+      p {
+        padding-left: 23px;
+        line-height: 1em;
+        &.text-1{
+          color: @white;
+          .font-size(16px);
+          margin-bottom: 2px;
+          white-space: normal;
+        }
+        &.text-2{
+          .font-size(12px);
+          text-transform: uppercase;
+          font-family: @font-family-proximanova-bold;
+        }
+      }
+    }
+    .change-salon {
+      padding: 0 0 0 10px;
+      a {
+        .font-size(12px);
+        color: @grey-2;
+        border-bottom: 1px solid @grey-2;
+        font-family: @font-family-proximanova-bold;
+        &:hover {
+          color: @white;
+          border-bottom-color: @white;
+        }
+        &:focus {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+#main {
+  float: right;
+  padding: 10px;
+  width: 710px;
+  background: @bgcolor;
+  .border-radius(3px);
+  box-shadow: 0 1px 1px;
+}
+
+/* HEADER CHECK MY SALON */
+#emotion {
+  .header {
+    .right a {
+      &.logo-emotion img { margin-left: 0; }
+      &.logo-mysalon img { margin-left: -15px; }
+    }
+  }
+}
+
+body.modal-open {
+  // overflow: visible;
+  padding-right: 0!important;
+}
+
+/* logo login */
+.header-login {
+  background-color: @color;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  padding: 20px;
+}
+.logo-login {
+  text-align: left;
+  padding: 5px 20px;
+  display: inline-block;
+  a { display: inline-block;}
+}
+
+
+.sub-nav{
+  width: 100%;
+  > .content{
+    overflow: hidden;
+    .item{
+      float: left;
+      position: relative;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.modal.fade#login-modal.default-modal(tabindex='-1',aria-hidden='true')
+  .modal-dialog
+    .inner
+      .carousel
+        .setting-title
+          h2.headline-4
+            span.wi-icon.icon-add-1
+            span(data-title) Login
+          span.wi-icon.close(data-dismiss='modal')
+        .carousel-inner
+          form.form-login.form-setting.form-horizontal#form-login(name="form-login", action="json/error-salon.json", data-placeholder, novalidate="")
+            .row
+              .col-sm-7.col-sm-offset-2
+                +input-text-setting('email','email','Email', 'Email')
+                +input-password('password', 'Password', 'password')
+                .form-group.text-right
+                  .col-sm-8.col-sm-push-4
+                    +link('Lost password?').link-grey(data-lost-password="")
+                .btn-group.footer-setting
+                  .col-xs-5
+                    button.btn.btn-cancel(type="button", data-dismiss="modal")!='Cancel'
+                  .col-xs-7
+                    button.btn.btn-confirm(type="submit")
+                      span.icon-btn-check
+                      | OK

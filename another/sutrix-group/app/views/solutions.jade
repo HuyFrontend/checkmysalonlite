@@ -1,0 +1,22 @@
+extends layouts/layout
+
+block vars
+  -title = $i18n.sutrix_solutions
+  -bodyClass = 'solutions-page orange-theme'
+  //- -bgdContact = '#dfdee0'
+  //- -bgdTalkUs = 'bgd-talk-to-us-orange.png'
+  //- -colorWhite = 'black'
+  -isPage = 'solutions'
+  -isChange = true
+  //- -bgdAbout = "#fcfcfc"
+  //- -isGreen = "#73c4b3"
+  //- -isOrange = "#ea7a62"
+
+block container
+  main
+    include blocks/slider
+    include blocks/about
+    include blocks/our-expertise
+    include blocks/overview
+    include blocks/career
+    include blocks/contact

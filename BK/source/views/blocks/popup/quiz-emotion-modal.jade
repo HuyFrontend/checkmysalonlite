@@ -1,0 +1,22 @@
+#quiz-emotion-modal.quiz-modal.modal.fade.default-modal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog
+    .setting-title
+      h2.headline-4
+        | Salon Emotion
+      span.wi-icon.close(data-dismiss='modal')
+    .carousel-3.carousel.slide(data-ride="carousel", data-interval="false")
+      .carousel-inner(role="listbox")
+        #item-emotion.item-emotion.item.active(data-quiz-content="", data-replace)
+          //- ul.quiz-content
+          //-   +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','16')
+          //-   +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','17')
+          //-   +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','18')
+          //-   +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','19')
+          //-   +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','20')
+          //-   +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','21')
+      .block-page
+        ul.page-list.col-sm-9.carousel-indicators
+    .col-sm-3.col-sx-12.btn-outer
+      button.btn.btn-confirm.pull-right(type="button", data-button-validate="true")
+        span.icon-btn-check
+        | VALIDATE

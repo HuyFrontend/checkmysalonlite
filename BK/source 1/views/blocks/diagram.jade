@@ -1,0 +1,41 @@
+.diagram.item
+  .row
+    .col-sm-7.col-sm-push-5
+      .container-chart.chart-block
+    .send-email
+      span.wi-icon.icon-send-email
+      +link('Send via email')(data-btn-send-email="true")
+    .col-sm-5.col-sm-pull-7
+      .content-block
+        h2.headline-2
+          | The 7 key steps of the client’s emotionnal journey
+        p(data-emotion-recommendation="") Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+      .step-list-block
+        ul
+          li.step-detail
+            +link('Before','javascript:void(0);','BEFORE')(data-showing-modal='true', data-modal='step-detail-modal')
+          li.step-detail
+            +link('Reception','javascript:void(0);','RECEPTION')(data-showing-modal='true', data-modal='step-detail-modal')
+          li.step-detail
+            +link('Diagnosis','javascript:void(0);','DIAGNOSIS')(data-showing-modal='true', data-modal='step-detail-modal')
+          li.step-detail
+            +link('Back Bar','javascript:void(0);','BACK BAR')(data-showing-modal='true', data-modal='step-detail-modal')
+          li.step-detail
+            +link('Technique','javascript:void(0);','TECHNIQUE')(data-showing-modal='true', data-modal='step-detail-modal')
+          li.step-detail
+            +link('Shopping','javascript:void(0);','SHOPPING')(data-showing-modal='true', data-modal='step-detail-modal')
+
+          li.step-detail
+            +link('Login','javascript:void(0);','Login')(data-showing-modal='true', data-modal='login-modal')
+          li.step-detail
+            +link('Registration','javascript:void(0);','Registration')(data-showing-modal='true', data-modal='registration-modal')
+
+        //- +list([
+        //-   {"title":"Before", "data-get-step": "true","href":"", "text": "BEFORE"},
+        //-   {"title":"Reception", "href":"", "text": "RECEPTION"},
+        //-   {"title":"Diagnosis", "href":"", "text": "DIAGNOSIS"},
+        //-   {"title":"Back Bar", "href":"", "text": "BACK BAR"},
+        //-   {"title":"Technique", "href":"", "text": "TECHNIQUE"},
+        //-   {"title":"Shopping", "href":"", "text": "SHOPPING"},
+        //-   ])
+

@@ -1,0 +1,26 @@
+.modal.fade#setting-modal.setting-modal.default-modal(tabindex='-1',aria-hidden='true')
+  .modal-dialog
+    .inner
+      .carousel
+        .setting-title.step-title
+          h2.headline-4
+            span.wi-icon.icon-add-1
+            span(data-title) Setting
+          span.wi-icon.close(data-dismiss='modal')
+        .carousel-inner
+          form.form-setting.form-horizontal#form-setting(name="register-form", action="json/error-salon.json", data-placeholder, novalidate="")
+            .row
+              .col-sm-7.col-sm-offset-2
+                +input-text-setting('name','name','Firstname', 'Firstname')
+                +input-text-setting('last-name','last-name','Lastname', 'Lastname')
+                +input-text-setting('email','email','E-mail', 'E-mail')
+                +input-text-setting('salon','salon','Salon name', 'Salon name')
+                +input-text-setting('city','city','City', 'City')
+                +input-password('Password', 'password', 'password')
+                .btn-group.footer-setting
+                  .col-xs-5
+                    button.btn.btn-cancel(type="button", data-dismiss="modal")!='Cancel'
+                  .col-xs-7
+                    button.btn.btn-confirm(type="submit")
+                      span.icon-btn-check
+                      | OK

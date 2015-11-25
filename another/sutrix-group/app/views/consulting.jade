@@ -1,0 +1,21 @@
+extends layouts/layout
+
+block vars
+  -title = $i18n.sutrix_consulting
+  -bodyClass = 'consulting-page green-theme'
+  //- -bgdContact = '#2c414e'
+  //- -bgdTalkUs = 'bgd-talk-to-us-green.png'
+  //- -colorWhite = 'white'
+  -isChange = true
+  //- -isGreen = "#73c4b3"
+  //- -isOrange = "#ea7a62"
+  -isPage = "consulting"
+
+block container
+  main
+    include blocks/slider
+    include blocks/about
+    include blocks/our-expertise
+    include blocks/overview
+    include blocks/career
+    include blocks/contact

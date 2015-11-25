@@ -1,0 +1,42 @@
+.modal.fade#add-salon-modal.default-modal(tabindex='-1',aria-hidden='true')
+  .modal-dialog
+    .inner
+      .carousel.slide#carousel-add(data-ride="carousel", data-interval="false")
+        .setting-title
+          h2.headline-4
+            span.wi-icon.icon-add-1
+            | Add A Salon
+          span.wi-icon.close(data-dismiss='modal')
+        .carousel-inner(role="listbox")
+          .salon.item.active
+            .block-1.hidden.clearfix(data-header-container="true")
+              .salon-name
+                span.wi-icon
+                p.text-1(data-salon-name="true")!='Salon Lorem ipsum'
+                p.text-2(data-salon-city="true")!='Paris'
+              .change-salon
+                +link('Change salon')(data-search='true')
+            form.form-setting.form-horizontal.clearfix#add-salon(name="salon", action="json/save-salon.json", data-placeholder,novalidate="")
+              .col-xs-12.col-sm-6.block-1
+
+                +input-text-setting('name','add-name','Name','Name')
+                +input-text-setting('address','add-address','Address','Address')
+                +input-text-setting('zip-code','add-zip-code','Zip code','Zip code')
+                +input-text-setting('city','add-city','City','City')
+                +input-text-setting('area','add-area','Area','Area')
+                +input-text-setting('country','add-country','Country','Country')
+                +input-text-setting('phone','add-phone','Phone','Phone')
+                +input-text-setting('email','add-email','E-mail','Email')
+              .col-xs-12.col-sm-6.pull-right.block-2
+                +input-text-setting('salon-code','add-salon-code','Salon code','Salon code')
+                +input-text-1('salon-size','add-salon-size','Salon size', 'Salon size')
+                +input-text-setting('employees','add-employees','Employees','Employees')
+                +input-text-setting('visits-month','add-visits-month','Visits / month','Visits / month')
+                +input-text-setting('haircut-month','add-haircut-month','Haircuts / month','Haircuts / month')
+                +input-text-setting('active-clients','add-active-clients','Active clients','Active clients')
+                .btn-group.footer-setting
+                  .col-xs-11.pull-right
+                    button.btn.btn-confirm(type="submit")
+                      span.icon-btn-check
+                      | Confirm changes
+

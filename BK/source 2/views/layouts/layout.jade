@@ -1,0 +1,45 @@
+include ../mixins/all
+
+block vars
+  -title = 'Site'
+  -bodyClass = ''
+
+doctype html
+//[if IE 8]><html lang="en" class="no-js ie ie8"><![endif]
+//[if IE 9]><html lang="en" class="no-js ie ie9"><![endif]
+//[if gte IE 8]><html lang="en" class="no-js ie"><![endif]
+//[if gt IE 9]><!
+html(class="no-js", lang="en")
+  //<![endif]
+  head
+    meta(charset="utf-8")
+    //[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><![endif]
+    title=title
+    meta(name="description", content="")
+    meta(name="keywords", content="")
+    meta(name="robots", content="index, follow")
+    meta(name="author", content="")
+    meta(name="viewport", content="width=device-width, minimal-ui, initial-scale=1, user-scalable=no")
+    link(rel="shortcut icon", href="favicon.ico", type="image/x-icon")
+    link(rel="stylesheet", href="css/style.css")
+    //[if lte IE 9]><link rel="stylesheet" href="css/ie.css"><![endif]
+    link(rel="stylesheet", href="css/print.css", media="print")
+    script(src="js/modernizr.js")
+    //[if IE]><script type="text/javascript" src="js/excanvas.js"></script><![endif]
+  body(class=bodyClass, data-viewport)
+    include ../blocks/header-mysalon
+
+    //- include ../blocks/popup/quiz
+    //- include ../blocks/popup/quiz-cms
+    include ../blocks/popup/setting-modal
+    include ../blocks/popup/mess-confirm-error
+    +popup-send-email()
+    include ../blocks/scripts
+
+    //[if lt IE 8]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]
+    noscript JavaScript is off. Please enable to view full site.
+    script(src="js/highcharts.js")
+    script(src="js/highcharts-more.js")
+    script(src="js/exporting.js")
+    script(src="js/spiderweb.js")
+    script(src="js/respond.js")

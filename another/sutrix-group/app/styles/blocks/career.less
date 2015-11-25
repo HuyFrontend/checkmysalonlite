@@ -1,0 +1,82 @@
+.career {
+  color: white;
+  .px2em(~"padding", 60px 0);
+  .positions-apply {
+    > .title {
+      .px2em(~"font-size", 31px);
+      font-family: @font-raleway-bold;
+      .px2em(~"margin-bottom", 15px);
+      span {font-family: 'RalewayRegular';}
+    }
+  }
+  .row {
+    .title {
+      font-family: @font-raleway-medium;
+      .px2em(~"font-size", 16px);
+      text-transform: uppercase;
+    }
+    p {
+      .px2em(~"margin-top", 20px);
+      .px2em(~"font-size", 13px);
+      .px2em(~"line-height", 24px);
+      &:first-child {margin-top: 0;}
+    }
+  }
+  .content {
+    .px2em(~"padding-top", 25px);
+    dt {
+      .px2em(~"margin-top", 15px);
+      .px2em(~"font-size", 15px);
+      font-family: @font-raleway-bold;
+      &:first-child {margin-top: 0;}
+    }
+    dd {
+      .px2em(~"margin-top", 5px);
+      .px2em(~"padding-left", 5px);
+    }
+  }
+  .custom-padding {.px2em(~"padding-left", 60px);}
+  .open-position {
+    ul {
+      background: white;
+      background: rgba(255, 255, 255, 0.1)
+    }
+    li {
+      border-bottom: dotted 1px white;
+      a {
+        position: relative;
+        display: block;
+        .px2em(~"padding", 10px 0 10px 15px);
+        .px2em(~"font-size", 13px);
+        &:hover, &:active {
+          transition: color 0.8s ease;
+          color: @gray-dark;
+          .icon-arrow {
+            right: 3px;
+          }
+        }
+      }
+      &:first-child {border-top: dotted 1px white;}
+    }
+    .content {position: relative;}
+    .ajax-overlay {
+      .px2em(~"width", 28px);
+      .px2em(~"height", 28px);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      .px2em(~"margin-top", -14px);
+      .px2em(~"margin-left", -14px);
+    }
+  }
+  .back-btn {
+    .px2em(~"margin-top", 15px);
+    span {.px2em(~"padding", 7.5px 20px);}
+  }
+  .positions-detail {
+    .max-height {
+      overflow: auto;
+      .px2em(~"max-height", 335px);
+    }
+  }
+}

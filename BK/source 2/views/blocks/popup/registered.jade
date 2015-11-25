@@ -1,0 +1,29 @@
+#registered.modal.fade.default-modal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+  .modal-dialog
+    .inner
+      .content
+        form#form-registered.form-registered.form(name="registered", data-placeholder, novalidate="")
+          .form-group.col-sm-12
+            select#country.default.form-control.form-select
+              option Choose your country
+              option Option 1
+              option Option 2
+              option Option 3
+          .form-group.row
+            .col-sm-12
+              div.col-sm-6
+                +input('text', 'input-first-name', 'input-first-name', 'First name')(maxlength="50").form-control.col-xs-12
+              div.col-sm-6
+                +input('text', 'input-last-name', 'input-last-name', 'Last name')(maxlength="50").form-control.col-xs-12
+          .form-group.col-sm-12
+            +input('email', 'input-email-register', 'input-email-register', 'Email')(maxlength="50").form-control
+          .form-group.col-sm-12
+            +input('password', 'input-password', 'input-password', 'Password').form-control
+          .form-group.col-sm-12
+            +input('password', 'input-cofirm-password', 'input-cofirm-password', 'Confirm your password').form-control
+          .form-group.row
+            .col-sm-12
+              .col-xs-6
+                button(type="button", class="btn  btn-cancel pull-left", data-dismiss="modal") Cancel
+              .col-xs-6
+                button(type="submit", class="pull-right btn btn-confirm button-validate") Ok

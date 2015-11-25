@@ -1,0 +1,22 @@
+extends layouts/layout-home
+
+block vars
+  -title = 'Homepage'
+  -bodyClass = 'home'
+  -menuIndex = 0
+
+
+
+block main
+  main
+    .quiz-option
+      .assessment-block.col-sm-6.col-xs-5
+        .wrapper-block(data-assessment="", data-active-item="item-assessment")
+          .group-text.text-white
+            p.text-1 Begin
+            p.text-2 your
+            p.text-3 assessment
+      .emotion-block.col-sm-6.col-xs-5
+        +link-img('logo-salon-emotion.png', 'Emotion')(data-emotion="", data-active-item="item-emotion")
+  .layer.overlay.hidden
+

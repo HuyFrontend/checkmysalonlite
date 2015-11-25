@@ -1,0 +1,76 @@
+{
+  "status": "OK",
+  "data": {
+    "salon": {
+      "id": "6",
+      "name": "Royal",
+      "address": "Q.1",
+      "zip_code": "80000",
+      "area": "central city",
+      "phone": "01664330909",
+      "email": "vuongabc@wiki.com",
+      "size": "12",
+      "country_id": "5",
+      "city": "Ho cHi Minh",
+      "country": "Viet Nam",
+      "salon_code": "33241",
+      "employees": "22",
+      "visits_month": "122",
+      "haircuts_month": "33",
+      "active_clients": "1",
+      "created_date": "2014-12-29 02:01:51",
+      "modified_date": "2014-12-29 02:01:51"
+    },
+    "categories": [
+      {
+        "category_id": "11",
+        "category_name": "Before_ja1",
+        "current_user_rate": 62,
+        "avg_rate": 20
+      },
+      {
+        "category_id": "22",
+        "category_name": "Before_ja2",
+        "current_user_rate": 76,
+        "avg_rate": 48
+      },
+      {
+        "category_id": "33",
+        "category_name": "Before_ja3",
+        "current_user_rate": 21,
+        "avg_rate": 50
+      },
+      {
+        "category_id": "44",
+        "category_name": "Before_ja4",
+        "current_user_rate": 34,
+        "avg_rate": 30
+      },
+      {
+        "category_id": "55",
+        "category_name": "Before_ja5",
+        "current_user_rate": 26,
+        "avg_rate": 19
+      },
+      {
+        "category_id": "66",
+        "category_name": "Before_ja6",
+        "current_user_rate": 42,
+        "avg_rate": 24
+      },
+      {
+        "category_id": "77",
+        "category_name": "Before_ja7",
+        "current_user_rate": 35,
+        "avg_rate": 25
+      },
+      {
+        "category_id": "total",
+        "category_name": "AVERAGE",
+        "current_user_rate": 42,
+        "avg_rate": 30
+      }
+    ],
+    "emotion_recommendation": "Behavior\nProgress bars use CSS3 transitions, so if you dynamically adjust the width via javascript, it will smoothly resize.\nIf you use the .active class, your .progress-striped progress bars will animate the stripes left to right."
+  }
+}

@@ -1,0 +1,70 @@
+  "our_expertise": {
+    "main_title": "Our expertise",
+    "consulting": {
+      "expertise1": {
+        "title": "AXA PHILIPPINES",
+        "date": "2015",
+        "info": "On-site Consultant to support AXA website development in Manila",
+        "list_item": {
+          "item1": {
+            "title": "Market study",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          },
+          "item2": {
+            "title": "Pre-sales coaching",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          },
+          "item3": {
+            "title": "Process optimization",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          },
+          "item4": {
+            "title": "Business Audit",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          },
+          "item5": {
+            "title": "Big/Global Platform",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          },
+          "item6": {
+            "title": "Technical support",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          }
+        }
+      }
+    },
+    "solutions": {
+      "expertise1": {
+        "title": "HENNESSY",
+        "date": "2015",
+        "info": "Hennessy portal withe 8 languages",
+        "list_item": {
+          "item1": {
+            "title": "Need Analysis",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          },
+          "item2": {
+            "title": "Specifications",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          },
+          "item3": {
+            "title": "Design",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          },
+          "item4": {
+            "title": "Development",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          },
+          "item5": {
+            "title": "Testing",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          },
+          "item6": {
+            "title": "Maintenance",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          }
+        }
+      }
+    },
+    "link_view": "View all case studies"
+  },

@@ -1,5 +1,5 @@
 
-(function(factory){  
+(function(factory){
   window.VALIDATIONFORM = factory();
 })(function(){
 

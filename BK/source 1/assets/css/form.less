@@ -1,0 +1,219 @@
+// Form
+.form {
+  margin-top: 28px;
+  .form-label {
+    height: 40px;
+    color: @grey-1;
+    text-transform: capitalize;
+    text-align: right;
+    vertical-align: middle;
+    min-width: 120px;
+  }
+  .form-text {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    padding: 12px 5px;
+    outline: none;
+    border: 1px solid @border-color;
+    .border-radius(2px);
+    .placeholder(@color);
+    color: @color;
+  }
+}
+.form-horizontal {
+  .control-label {
+    padding:0 4px 0 0;
+    font-family: @font-family-proximanova-light;
+    .font-size(15px);
+    color: @grey-2;
+    margin-top: 14px;
+    &:hover {
+      cursor: default;
+    }
+  }
+}
+.form-group {
+  .button-list {
+    float: right;
+    margin-top: 48px;
+    width: 100%;
+  }
+}
+#profile {
+    margin-top: 100px;
+}
+
+/* FORM LOGIN */
+body .modal {  overflow-y: auto;}
+.login {
+  #container,
+  .inner,
+  main {
+    height: 100%;
+  }
+  main { padding-top: 116px}
+  &.modal-open {
+    .default-modal {
+      background: #fff;
+      .inner { min-height: 100%}
+    }
+  }
+}
+
+.form-login {
+  margin-top: 0;
+  .form-text{
+    margin-left: 0;
+    margin-bottom: 0;
+    width: 100%;
+  }
+}
+.form-select{
+  padding-top: 8px;
+}
+
+
+/* FORM FORGOT */
+
+.title-form {
+  padding: 0 15px;
+  margin-top: 15px;
+}
+
+#forgot-pass .content p,
+#sendmail-modal .content p {
+  margin: 10px 0;
+}
+
+#forgot-pass .content, #sendmail-modal .content {
+  h2 {
+    font-weight: normal;
+    font-family: @font-family-base;
+  }
+  p,h2 { color: @grey-2 }
+}
+
+// #mess-error.modal .content p { margin: 40px 0 20px; }
+
+.form-select {
+  padding-top: 8px
+}
+.form-forgot {
+  .form-text {
+    margin-left: 0;
+    color: @black;
+  }
+  .btn { min-width: initial}
+}
+
+form {
+  .control-label {
+    line-height: 1.2em;
+  }
+  .form-control {
+    padding: 12px;
+  }
+}
+
+#forgot-pass,
+#sendmail-modal {
+  .title-form { padding: 0}
+  .close {
+    margin: 10px 7px 0 0;
+    .square(50px);
+    background-position: 0 -240px;
+    &:hover {
+      background: url('@{img-path}icon-close-fogot-hove.png') no-repeat;
+    }
+  }
+}
+
+/* FORM ADD SALON */
+
+#salon-add {
+  .clearfix();
+}
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="password"] {
+  -webkit-appearance: none;
+  -moz-appearance: none; /* mobile firefox too! */
+}
+input[type="checkbox"] {
+  display: none;
+}
+.checkbox label {
+  padding-left: 0;
+}
+input[type="checkbox"] + label:before {
+  background-size: 30px auto;
+  content: "\e007";
+  display: inline-block;
+  position: absolute;
+  top: 1px;
+  .font-size(30px);
+}
+input[type="checkbox"]:checked + label:before {
+  background-size: 30px auto;
+  content: "\e006";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  color: @green;
+  .font-size(30px);
+}
+
+
+// Button
+.btn {
+  min-height: 47px;
+  min-width: 120px;
+  padding:0 20px;
+  border: none;
+  .font-size(16px);
+  color: @white;
+  text-transform: uppercase;
+  vertical-align: middle;
+  .border-radius(3px);
+  &:hover {
+    .opacity(0.9);
+    color: @white;
+  }
+}
+
+.btn-confirm {
+  background-color: @bg-btn-1;
+  // color: @white;
+}
+.btn-cancel {
+  background-color: @bg-btn-2;
+}
+.button-green {
+  background-color: @green;
+}
+
+/* form error */
+
+.mess-error.mess-popup-left p { text-align: left;}
+.form-error {
+  overflow: hidden;
+  margin-top: 50px;
+}
+.mess-confirm-error {
+  .wapper-button {
+    padding: 0 10px;
+  }
+  p {
+    padding: 0 20px;
+  }
+  .grey-content {
+    background-color: #504A4A;
+  }
+}
+.form-login,
+.form-registered,
+.form-setting {
+  margin-top: 111px;
+}

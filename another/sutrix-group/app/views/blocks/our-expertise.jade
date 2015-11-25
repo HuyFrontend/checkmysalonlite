@@ -1,0 +1,150 @@
+if (isPage === "consulting")
+  section.our-expertise
+    .grid-fluid
+      h2.title!=$i18n.our_expertise.main_title
+      .list-expertise(data-slide, data-type="ourExpertise")
+        .inner.item-expertise
+          h3.sub-title!=$i18n.our_expertise.consulting.expertise1.title
+            span!=$i18n.our_expertise.consulting.expertise1.date
+          p.desc!=$i18n.our_expertise.consulting.expertise1.info
+          .line-separator
+          .row
+            .col-sm-4.col-sm-push-4.images
+              +img('../images/upload/expertise-consulting.png',$i18n.our_expertise.consulting.expertise1.title)
+            .col-sm-4.col-sm-pull-4.col-left
+              +item-expertise({
+                title: $i18n.our_expertise.consulting.expertise1.list_item.item1.title,
+                content: $i18n.our_expertise.consulting.expertise1.list_item.item1.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.consulting.expertise1.list_item.item2.title,
+                content: $i18n.our_expertise.consulting.expertise1.list_item.item2.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.consulting.expertise1.list_item.item3.title,
+                content: $i18n.our_expertise.consulting.expertise1.list_item.item3.content
+              })
+            .col-sm-4.col-right
+              +item-expertise({
+                title: $i18n.our_expertise.consulting.expertise1.list_item.item4.title,
+                content: $i18n.our_expertise.consulting.expertise1.list_item.item4.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.consulting.expertise1.list_item.item5.title,
+                content: $i18n.our_expertise.consulting.expertise1.list_item.item5.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.consulting.expertise1.list_item.item6.title,
+                content: $i18n.our_expertise.consulting.expertise1.list_item.item6.content
+              })
+        .inner.item-expertise
+          h3.sub-title!=$i18n.our_expertise.solutions.expertise1.title
+            span!=$i18n.our_expertise.solutions.expertise1.date
+          p.desc!=$i18n.our_expertise.solutions.expertise1.info
+          .line-separator
+          .row
+            .col-sm-4.col-sm-push-4.images
+              +img('../images/upload/expertise-solutions.png',$i18n.our_expertise.solutions.expertise1.title)
+            .col-sm-4.col-sm-pull-4.col-left
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item1.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item1.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item2.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item2.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item3.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item3.content
+              })
+            .col-sm-4.col-right
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item4.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item4.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item5.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item5.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item6.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item6.content
+              })
+      //- .link-view
+      //-   +link($i18n.our_expertise.link_view).btn.btn-black
+else
+  section.our-expertise
+    .grid-fluid
+      h2.title!=$i18n.our_expertise.main_title
+      .list-expertise(data-slide, data-type="ourExpertise")
+        .inner.item-expertise
+          h3.sub-title!=$i18n.our_expertise.solutions.expertise1.title
+            span!=$i18n.our_expertise.solutions.expertise1.date
+          p.desc!=$i18n.our_expertise.solutions.expertise1.info
+          .line-separator
+          .row
+            .col-sm-4.col-sm-push-4.images
+              +img('../images/upload/expertise-solutions.png',$i18n.our_expertise.solutions.expertise1.title)
+            .col-sm-4.col-sm-pull-4.col-left
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item1.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item1.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item2.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item2.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item3.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item3.content
+              })
+            .col-sm-4.col-right
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item4.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item4.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item5.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item5.content
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.solutions.expertise1.list_item.item6.title,
+                content: $i18n.our_expertise.solutions.expertise1.list_item.item6.content
+              })
+        .inner.item-expertise
+          h3.sub-title!=$i18n.our_expertise.consulting_sub_title
+            span!=$i18n.our_expertise.consulting_sub_title_date
+          p.desc!=$i18n.our_expertise.consulting_info
+          .line-separator
+          .row
+            .col-sm-4.col-sm-push-4.images
+              +img('../images/upload/expertise-consulting.png',$i18n.our_expertise.consulting_sub_title)
+            .col-sm-4.col-sm-pull-4.col-left
+              +item-expertise({
+                title: $i18n.our_expertise.consulting_item1_title,
+                content: $i18n.our_expertise.consulting_item1_desc
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.consulting_item2_title,
+                content: $i18n.our_expertise.consulting_item2_desc
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.consulting_item3_title,
+                content: $i18n.our_expertise.consulting_item3_desc
+              })
+            .col-sm-4.col-right
+              +item-expertise({
+                title: $i18n.our_expertise.consulting_item4_title,
+                content: $i18n.our_expertise.consulting_item4_desc
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.consulting_item5_title,
+                content: $i18n.our_expertise.consulting_item5_desc
+              })
+              +item-expertise({
+                title: $i18n.our_expertise.consulting_item6_title,
+                content: $i18n.our_expertise.consulting_item6_desc
+              })
+      //- .link-view
+      //-   +link($i18n.our_expertise.link_view).btn.btn-black

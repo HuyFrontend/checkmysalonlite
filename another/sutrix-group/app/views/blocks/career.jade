@@ -1,0 +1,97 @@
+section.career#career
+  .grid-fluid
+    .positions-apply
+      h2.title Careers&nbsp;
+        span We are always looking for talent
+      .row
+        .col-md-6.col-sm-6
+          h3.title Benefits
+          .content
+            p You’ll have the opportunity to work on major projects with global clients. We enable continuous learning and career development,and promote from within frequently so the opportunity for career advancement is excellent. in return, we expect that you are prepared to perform at an international standard level. 
+            p If you would like to join the Sutrix Media team we welcome you and encourage you to post your resume. We are always open to meeting new people and we offer competitive salaries to those that have the skills required to perform the position applied for.
+        .col-md-6.col-sm-6.open-position.custom-padding
+          h3.title Open positions
+          .content
+            ul
+              li
+                +link-1('PHP Developer - HCMC-Vietnam')
+                  span.icon-arrow
+              li
+                +link-1('QC - HCMC-Vietnam')
+                  span.icon-arrow
+              li
+                +link-1('Front-ent Developer - HCMC-Vietnam')
+                  span.icon-arrow
+              li
+                +link-1('Java Developer')
+                  span.icon-arrow
+              li
+                +link-1('Project Manager')
+                  span.icon-arrow
+            .ajax-overlay.hide
+              +img('../images/ajax_loader.gif')
+    .positions-detail
+      .row
+        .col-md-6.col-sm-6.max-height
+          h3.title PHP Developer - HCMC-Vietnam
+          .content
+            dl
+              dt Position
+              dd PHP Developer
+              dt Location
+              dd HCMC-Vietnam
+              dt Responsibilities
+              dd
+                p Design and write high-performance, reliable and maintainable PHP code. Be able to design and build high quality user interfaces. Work as part of a team across a wide range of projects to create innovative web applications.
+              dt Requirements
+              dd
+                p A university degree in Computer Science or a related discipline is required. At least 2 year experience programming in PHP and familiarity with Wordpress, Joomla and Drupal. Knowledge of e-commerce workflow and issues is a plus.
+        .col-md-6.col-sm-6.custom-padding
+          h3.title Post your resume
+          .content
+            form(action='', method='post', novalidate, name='resumeform').form-1.resume-form#resume-form
+              .row
+                .col-md-6.col-sm-6
+                  .form-group
+                    label Name
+                      span.orange *
+                    +input('text', 'username', '', 'username')
+                    span.error-message.hide Please enter your first name
+                  .form-group
+                    label Last name
+                      span.orange *
+                    +input('text', 'lastname', '', 'lastname')
+                    span.error-message.hide Please enter your last name
+                  .form-group
+                    label Email
+                      span.orange *
+                    +input('text', 'email', '', 'email')
+                    span.error-message.hide Please enter email address
+                  .form-group
+                    label Upload CV
+                      span.orange *
+                    .upload
+                      +input('file', 'file')
+                      +input('text', 'upload', '', 'upload')
+                      span.bgd-orange Browse
+                    span.error-message.hide Please select your resume
+                .col-md-6.col-sm-6
+                  .form-group
+                    label Comments
+                      span.orange *
+                    textarea(id="comment", name='comment')
+                  .form-group.capcha
+                    label Security images
+                      span.orange *
+                    .field-capcha
+                      +img('../images/photo-capcha.jpg', '')
+                    .field-security
+                      +input('text', 'security', '', 'security')
+                      span.error-message.hide Please enter code
+                  .form-group
+                    button(type="submit", name="submit").send-btn.btn.btn-color
+                      span Send
+                    button(type="button", name="").send-btn.btn.btn-color.clear-btn
+                      span Clear
+      button(type="button", name="back").back-btn.btn.btn-color
+        span Back

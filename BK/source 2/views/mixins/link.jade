@@ -1,0 +1,36 @@
+mixin link(title, href, text)
+  - if (typeof(text) === 'undefined') text = title
+  - if (typeof(href) === 'undefined') href = '#'
+  a(href=href, title=title)&attributes(attributes)
+    if block
+      block
+    else
+      !=text
+mixin link-tab(title, text)
+  - if (typeof(text) === 'undefined') text = title
+  a(class='text-center',href='#'+title, title=title, role='tab', data-toggle='tab')&attributes(attributes)
+    if block
+      block
+    else
+      !=text
+mixin link-utility(title, href, data)
+  - if (typeof(href) === 'undefined') href = '#'
+  a(href=href, title=title, data-toggle='modal').wi-icon&attributes(attributes)
+    if block
+      block
+    else
+      !=text
+
+mixin link-img(src, title, href)
+  - if (typeof(alt) === 'undefined') alt = title
+  - if (typeof(src) === 'undefined') src = 'images/transparent.png'
+  - if (typeof(href) === 'undefined') href = '#'
+  a(href="#{href}", title="#{title}")&attributes(attributes)
+    +img(src, title).img-responsive
+
+mixin link-img-upload(src, title , href)
+  - if (typeof(alt) === 'undefined') alt = title
+  - if (typeof(src) === 'undefined') src = 'images/transparent.png'
+  - if (typeof(href) === 'undefined') href = '#'
+  a(href="#{href}", title="#{title}")&attributes(attributes)
+    +img-upload(src, title)

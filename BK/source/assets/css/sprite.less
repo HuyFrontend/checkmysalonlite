@@ -1,0 +1,80 @@
+// Sprite
+.wi-icon {
+  display: inline-block;
+  background: url('@{img-path}wi-icon.png') no-repeat;
+  //text-indent: -9999px;
+  font-size: 0;
+}
+.icon-logout {
+  .square(24px);
+  background-position: 0 -40px;
+}
+.icon-setting {
+  .square(24px);
+  background-position: -40px -40px;
+}
+.icon-search {
+  .square(24px);
+  background-position: -80px -40px;
+}
+.icon-add {
+  .square(24px);
+  background-position: 0 -80px;
+}
+.icon-check {
+  .square(18px);
+  margin-right: 10px;
+  background-position: 0 0px;
+}
+.icon-btn-check {
+  float: left;
+  .square(18px);
+  margin:0 10px 0 5px;
+  background: url('@{img-path}wi-icon-hover.png') 0 0;
+  line-height: 1.2em;
+}
+.icon-diagram {
+  .square(19px);
+  margin-right: 10px;
+  background-position: -40px 0;
+}
+.icon-blan {
+  .square(19px);
+  margin-right: 10px;
+  background-position: -80px 0;
+}
+.carousel-indicators {
+  li {
+    &:hover,&:focus {
+      .wi-icon {
+        background: url('@{img-path}wi-icon-hover.png');
+      }
+      .icon-check {
+        background-position: 0 0;
+      }
+      .icon-diagram {
+        background-position: -40px 0;
+      }
+      .icon-blan {
+        background-position: -80px 0;
+      }
+    color: @green;
+    }
+
+    &.active {
+      .wi-icon {
+        background: url('@{img-path}wi-icon-hover.png');
+      }
+      .icon-check {
+        background-position: 0 0;
+      }
+      .icon-diagram {
+        background-position: -40px 0;
+      }
+      .icon-blan {
+        background-position: -80px 0;
+      }
+      color: @green;
+    }
+  }
+}

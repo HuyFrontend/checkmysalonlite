@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "question": "What your Salone name",
+    "answer_point": 4
+  },
+  {
+    "id": "123",
+    "question": "How it fine",
+    "answer_point": 3
+  },
+  {
+    "id": "28",
+    "question": "How many employees working in your Salon",
+    "answer_point": 2
+  },
+  {
+    "id": "123",
+    "question": "Question 123",
+    "answer_point": 1
+  },
+  {
+    "id": "28",
+    "question": "Question K Question K Question K Question K Question K Question K Question K Question K ",
+    "answer_point": 0
+  },
+   {
+    "id": "28",
+    "question": "Question K Question K Question K Question K Question K Question K Question K Question K Question K Question K ",
+    "answer_point": null
+  }
+]

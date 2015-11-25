@@ -1,0 +1,56 @@
+#quiz-modal.modal.fade.default-modal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel',aria-hidden='true')
+  .modal-dialog
+    .setting-title
+      h2.headline-4
+        span.number!='2'
+        | Reception
+      span.wi-icon.close
+    #carousel-3.carousel.slide(data-ride="carousel", data-interval="false")
+      .carousel-inner(role="listbox")
+        .item.active
+          ul.quiz-content
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','1')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','2')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','3')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','4')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','5')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','6')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','7')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','8')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','9')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','9')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','1')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','2')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','3')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','4')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','5')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','6')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','7')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','8')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','9')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','9')
+        .item
+          ul.quiz-content
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','10')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','11')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','12')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','13')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','14')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','15')
+        .item
+          ul.quiz-content
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','16')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','17')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','18')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','19')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','20')
+            +checkbox-star('Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempo abore','21')
+      .block-page
+        ul.page-list.col-sm-9.carousel-indicators
+          li.active(data-target="#carousel-3" data-slide-to="0")!='1'
+          li(data-target="#carousel-3" data-slide-to="1")!='2'
+          li(data-target="#carousel-3" data-slide-to="2")!='3'
+    .col-sm-3.col-sx-12.btn-outer
+      button.btn.btn-confirm.pull-right(type="button", data-button-validate="true")
+        span.icon-btn-check
+        | VALIDATE

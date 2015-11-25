@@ -1,0 +1,46 @@
+@import "variable.less";
+
+// Thumbnail homepage
+.thumbnails {
+  .content {
+    background: transparent url('@{img-path}bgd-rgba-black.png');
+  }
+}
+.form-horizontal .control-label {
+  padding-top: 0;
+}
+
+/* background ie */
+.ie8 {
+  #forgot-pass.modal .content, #sendmail-modal.modal .content { background: none}
+  .modal .content { background: url('@{img-path}bgd-popup.png') repeat; }
+  .modal .result-quiz-cms .content { background: none}
+  .chart {
+    canvas {
+      > div {
+        width: 205px !important;
+        height: 205px !important;
+      }
+    }
+  }
+
+
+  .forgot-pass.modal { overflow: hidden;}
+}
+
+.ie8 {
+  .block-right-step{
+    span {
+      &.text-first { top:20px}
+      &.text-second { top: 55px}
+      &.text-third { top: 95px}
+      &.text-last { margin-top: -5px; }
+    }
+  }
+  .modal-dialog { overflow: hidden;}
+}
+.ie8, .ie9 {
+  .center-block {
+    display: block;
+  }
+}

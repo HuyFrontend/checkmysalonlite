@@ -1,0 +1,25 @@
+extends layouts/layout
+
+block vars
+  -title = 'Homepage'
+  -bodyClass = 'home-index'
+  -menuIndex = 0
+
+block container
+  #emotion.back
+    .sub-nav.carousel-1.carousel.slide
+      +main-tab('.carousel-1')
+      .carousel-inner-custom.carousel-inner(role="listbox",data-quiz='true')
+        include blocks/check-2
+        include blocks/diagram
+        include blocks/bilan
+
+
+block container-2
+  #mysalon.front
+    .sub-nav.carousel-mysalon.carousel.slide
+      +main-tab('.carousel-mysalon')
+      .carousel-inner-custom.carousel-inner(role="listbox",data-quiz='true')
+        include blocks/check
+        include blocks/diagram
+        include blocks/bilan-cms

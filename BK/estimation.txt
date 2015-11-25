@@ -1,0 +1,31 @@
+CMS Lite
+HTML Tasks
+- Landing page
+  + Center block 0.5
+  + Logo 0.25
+  + Background 0.25
+
+- Login page 0.25
+
+- Registration page 0.25
+
+- Home page
+  + Header 0.5
+  + Begin assessment 0.3
+  + Salon emotion 0.3
+  + Personal setting 0.3
+  + Logout 0.2
+
+- Validate page
+  + Quiz list 0.7
+  + modal 0.3
+
+- Result page
+  + view score 0.5
+  + detail block 0.5
+
+- Support dev 0.5
+
+- Test 1
+
+-> total 6.6d

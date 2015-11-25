@@ -1,0 +1,32 @@
+extends layouts/layout-landing
+
+block vars
+  -title = 'Landing Page'
+  -bodyClass = 'landing'
+  -menuIndex = 0
+
+block container
+  main
+    .container
+      .block-landing
+        .wrap-image.row
+          .col-sm-4.col-sm-offset-0
+            //- +link-img('logo-landing.png', 'Logo Landing')
+            +link-img('logo-check-mysalon.png', 'Logo Landing')
+        //- .block-assess.container.col-md-6.col-sm-6.center-block
+        .vertical-center.btn-group
+          .block-assess.col-sm-6
+            .group-text
+              span.text-1 Assess
+              span.text-2  your salon
+              span
+                span.text-3  in less than
+                span.text-number.number 5
+                span.text-3 minutes!
+            .group-btn
+              .div-btn(data-link="")
+                button.btn.btn-landing(type="button", data-login="")!='Login'
+              .div-btn(data-link="")
+                button.btn.btn-landing(type="button", data-register="")!='Register'
+
+

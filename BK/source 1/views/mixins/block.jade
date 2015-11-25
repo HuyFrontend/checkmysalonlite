@@ -1,0 +1,128 @@
+mixin thumbnail(url_image,title,percent,id)
+  .thumbnails(data-toggle="modal",data-quiz-trigger="true", data-quiz-id="#{id}", data-category-id="#{id}")
+    .image
+      +img-upload(url_image,title).img-desktop
+      +img-upload(url_image,title).img-mobile
+    .content
+      h3.headline-2!=title
+      p.score
+        span!=percent
+        | &nbsp;/&nbsp;100
+
+mixin popup-send-email()
+  #email-message.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+    .content
+      .wi-icon.close(data-dismiss='modal')
+      span.wi-icon.icon-1
+      p
+        | An email with your password has been sent to you
+
+mixin input-text(name, id)
+  - if (typeof(id) === 'undefined') id = name
+  .form-group
+    label.control-label.col-sm-3(for=id)!=name
+    .col-sm-9
+      input.form-control(type='text', id=id, placeholder=name, name=name , value='')
+
+mixin input-text-2(name, id, text)
+  - if (typeof(id) === 'undefined') id = name
+  .form-group
+    label.control-label.col-sm-4(for=id)!=name
+    .col-sm-8
+      input.form-control(type='text', id=id, placeholder=name, name=text, value='')
+
+mixin input-text-setting(name, id, text, placeholder)
+  - if (typeof(id) === 'undefined') id = name
+  .form-group
+    label.control-label.col-sm-4(for=id)!=text
+    .col-sm-8
+      input.form-control(type='text', id=id, placeholder=placeholder, name=name, value='')
+
+mixin input-password(name,text,id)
+  - if (typeof(id) === 'undefined') id = name
+  .form-group
+    label.control-label.col-sm-4(for=id)!=name
+    .col-sm-8
+      input.form-control(type='password', id=id, placeholder=name, name=text, value='')
+
+mixin input-text-1(name, id, text, placeholder)
+  - if (typeof(id) === 'undefined') id = name
+  .form-group
+    label.control-label.col-sm-4(for=id)!=text
+      sup (m2)
+    .col-sm-8
+      input.form-control(type='text', id=id, placeholder=placeholder, name=id , value='')
+
+mixin input(type, name, id, placeholder)
+  - if(typeof(id) === 'undefined') id=name
+  input(type="#{type}", name="#{name}", id="#{id}", placeholder=placeholder)&attributes(attributes)
+
+mixin nav-tab-setting()
+  ul.carousel-indicators.profile
+    li.active( data-slide-to='0',data-target='#carousel-2')
+        h2.headline-1
+          | Salon
+    li(data-slide-to='1',data-target='#carousel-2')
+        h2.headline-1
+          | Profile
+
+mixin checkbox-star(text, data)
+  li.row(data-question-id='#{data}')
+    .text.col-sm-9!=text
+    .check-list.row.col-sm-3
+      .rating(data-answer='3')
+        span(data-point='4')
+        span(data-point='3')
+        span(data-point='2').active
+        span(data-point='1').active
+
+mixin popup-mess-error()
+  #mess-error.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+    .content
+      .wi-icon.close(data-dismiss='modal')
+      form#form-error.form-error.form(name="error")
+        p This  email address has never been  used  to  access  to  the website.
+        .form-group
+          button(type='submit', class='button-green') OK
+
+mixin result-chart(color,percent)
+  - if (percent > 50) color_1=color, color_2='#e5e5e5'
+  - else color_1='#e5e5e5' , color_2=color
+  .progress-main
+    .progress-pie-chart(data-percent='#{percent}' style='background-color:#{color_1}')
+      .ppc-progress
+        .ppc-progress-fill(style='background-color:#{color_2}')
+      .ppc-percents
+        .pcc-percents-wrapper
+          span(style='color:#{color}')
+          p!='SALON'
+
+mixin result-chart-remain(color,percent)
+  - if (percent > 50) color_1=color, color_2='#e5e5e5'
+  - else color_1='#e5e5e5' , color_2=color
+  .progress-remain
+    .progress-pie-chart(data-percent='#{percent}' style='background-color:#{color_1}')
+      .ppc-progress
+        .ppc-progress-fill(style='background-color:#{color_2}')
+      .ppc-percents
+    .pcc-percents-wrapper
+      span(style='color:#{color}')
+      p
+        | AVERAGE
+        br
+        | COUNTRY
+
+mixin main-tab(data)
+  ul.carousel-indicators.menus
+    li.active( data-slide-to='0', data-target=data)
+      h2.headline-1
+        span.icon-check.wi-icon
+        | Check
+    li(data-slide-to='1', data-target=data)
+      h2.headline-1
+        span.icon-diagram.wi-icon
+        | Diagram
+    li(data-slide-to='2', data-target=data)
+      h2.headline-1
+        span.icon-blan.wi-icon
+        | Bilan

@@ -1,0 +1,11 @@
+.modal.fade.mess-error#confirm-exist-quiz(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+  .content
+    .wi-icon.close(data-dismiss='modal')
+
+    form.form-error.form#form-confirm-exist(name="error", data-placeholder)
+      p Your answers won’t be saved, are you sure to close the quiz?
+      .form-group.wapper-button
+        .col-xs-6
+          button#exit-btn.btn.button-green.pull-left(type='button') OK
+        .col-xs-6
+          button.btn.button-green.pull-right(type='button', data-dismiss='modal') Cancel
