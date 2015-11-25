@@ -247,7 +247,7 @@ window.addEventListener('scroll resize', function A(){
 or
 window.addEventLisener('scroll resize', findMiddleElementOfScreenWhenScroll);
 */
-
+/*
 var findMiddleElementOfScreenWhenScroll = ( function (docElm) {
     var viewportHeight = docElm.clientHeight,
         // here i'm using pre-cached DIV elements, but you can use anything you want.
@@ -270,4 +270,34 @@ var findMiddleElementOfScreenWhenScroll = ( function (docElm) {
         console.log(middleElement);
     }
 })(document.documentElement);
-
+*/
+window.findMiddleElementOfScreenWhenScroll = ( function () {
+    var viewportHeight = document.documentElement.clientHeight/*,
+        // here i'm using pre-cached DIV elements, but you can use anything you want.
+        // Cases where elements are generated dynamically are more CPU intense ofc.
+        elements = document.querySelecterAll('div')*/; 
+    return function (e, elements) {
+        var middleElement;
+        if( e && e.type === 'resize' ) {
+            viewportHeight = document.documentElement.clientHeight;
+        }
+        console.log('viewportHeight',viewportHeight);
+        elements = document.querySelectorAll('[data-block]');
+        for(var i = 0, len = elements.length; i < len; i++) {
+          var pos = elements[i].getBoundingClientRect().top;
+          // console.log('pos',pos);
+          if(pos < viewportHeight/2 ) {
+            // alert(elements[i].toString());
+            console.log('elements[i]',elements[i]);
+          }
+          // if an element is more or less in the middle of the viewport
+          // if( pos > viewportHeight/2.5 && pos < viewportHeight/1.5 ){
+          //     middleElement = elements[i];
+          //     return false; // stop iteration
+          // }
+        }
+        if(middleElement) {
+          // alert(middleElement);
+        }
+    }
+})();
