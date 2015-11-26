@@ -1,4 +1,4 @@
-/* element prototype */
+ /*element prototype */
 Element.prototype.hasClass = function (className) {
   return new RegExp(' ' + className + ' ').test(' ' + this.className + ' ');
 };
@@ -143,7 +143,7 @@ fadeInFaceOut('in', 750, true);
 //fadeOut
 fadeInFaceOut('out', 750, true);
 */
-Element.prototype.fadeInFaceOut = function (type, duration, isIE) {
+Element.prototype.fadeInFadeOut = function (type, duration, isIE) {
     var el = this;
     var isIn = type === 'in',
     opacity = isIn ? 0 : 1,
@@ -306,3 +306,56 @@ window.slideUpSlideDownElement = ( function () {
       };
   return toggleSlide;
 }());
+window.isMobileTablet = (function (){
+  return navigator.userAgent.match(/Android|BlackBerry|BB|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
+}());
+
+Element.prototype.clickOff = function (callback, selfDestroy) {
+  var clicked = false;
+  var parent = this;
+  var destroy = selfDestroy || true;
+
+  parent.addEventListenerOrAttachEvent(function (){
+    clicked = true;
+  },'click');
+  document.addEventListenerOrAttachEvent(function (event) {
+    if(!clicked) {
+      callback (parent, event);
+    }
+    if(destroy) {
+
+    }
+    clicked = false;
+  }, 'click');
+};
+
+// $.fn.clickOff = function(callback, selfDestroy) {
+//     var clicked = false;
+//     var parent = this;
+//     var destroy = selfDestroy || true;
+    
+//     parent.click(function() {
+//         clicked = true;
+//     });
+    
+//     $(document).click(function(event) { 
+//         if (!clicked) {
+//             callback(parent, event);
+//         }
+//         if (destroy) {
+//             //parent.clickOff = function() {};
+//             //parent.off("click");
+//             //$(document).off("click");
+//             //parent.off("clickOff");
+//         };
+//         clicked = false;
+//     });
+// };
+
+/*$("#myDiv").click(function() {
+    alert('clickOn');
+});
+
+$("#myDiv").clickOff(function() {
+    alert('clickOff');
+});

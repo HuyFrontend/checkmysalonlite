@@ -37,8 +37,7 @@
       }
 
       if (navigator.userAgent.match(/Android|BlackBerry|BB|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){
-
-        elm.addEventListenerOrAttachEventMultiEvent( function activeManagementTab(e) {
+        elm.addEventListenerOrAttachEventMultiEvent( function activeManagementTab (e) {
           var me = e.target || e.srcElement;
           var itemHover = me.hasClass(opt.itemToggle) ? me : me.closestClass(opt.itemToggle);
           if(itemHover) {
@@ -60,9 +59,9 @@
               itemHover.addClass(opt.classActive);
             }
           }
-        },['touchstart']);
-
-        elm.removeEventListenerOrDetachEventMultiEvent('activeManagementTab', ['touchstart']);
+        },['click']);
+        
+        // elm.removeEventListenerOrDetachEventMultiEvent('activeManagementTab', ['touchstart']);
       }
 
     },

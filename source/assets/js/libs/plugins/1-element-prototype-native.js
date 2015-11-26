@@ -301,3 +301,24 @@ window.findMiddleElementOfScreenWhenScroll = ( function () {
         }
     }
 })();
+
+//clicko out size element
+
+//   function findClosest (element, fn) {
+//     if (!element) return undefined;
+//     return fn(element) ? element : findClosest(element.parentElement, fn);
+//   }
+//   document.addEventListener("click", function(event) {
+//     var target = findClosest(event.target, function(el) {
+//       return el.id == 'div3'
+//     });
+//     if (!target) {
+//       alert("outside");
+//     }
+//   }, false);
+
+// // If instead of using the element id, you want to apply this to all elements having a given class, you can use this function as second argument when calling findClosest:
+ 
+// function(el) {
+//   return (" " + el.className + " ").replace(/[\n\t\r]/g, " ").indexOf(" someClass ") > -1
+// }

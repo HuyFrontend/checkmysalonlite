@@ -19,7 +19,11 @@
     init : function() {
      var self = this, elm = self.element;
       this.actions();
-      elm.addEventListenerOrAttachEventMultiEvent(function (e) {
+      elm.addEventListenerOrAttachEventMultiEvent(function clickTab(e) {
+        self.clickTab(e);
+      }, ['click']);
+
+      elm.removeEventListenerOrDetachEventMultiEvent(function clickTab(e) {
         self.clickTab(e);
       }, ['click']);
     },

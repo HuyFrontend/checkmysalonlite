@@ -28,7 +28,8 @@
   Plugin.prototype = {
     init: function() {
       var that = this, elm = that.element, opt = that.options;
-      elm.off('click touchstart').on('click touchstart', 'a[data-target]', function (e) {
+
+      elm.off('click.scrollMenu touchstart.scrollMenu').on('click.scrollMenu touchstart.scrollMenu', 'a[data-target]', function (e) {
         var target = $(e.target),
           elementScrollTo = target.attr('data-target') ? $('#' + target.data('target')) : $('#' + target.closest('[data-target]').attr('data-target')),
           headerHeight = $('.header').height();
@@ -40,12 +41,16 @@
           $('#' + opt.blockEffect).removeClass(opt.classOpen);
           $('[data-target="'+ opt.blockEffect +'"]').removeClass(opt.classActive);
         }
-
-        $(window).off('scroll');
+        if(!window.isMobileTablet) {
+          $(window).off('scroll');
+        }
         if(elementScrollTo && elementScrollTo.length) {
-          $('html, body').stop().animate({
-            scrollTop: elementScrollTo.offset().top - headerHeight
-          }, 1000 );
+          setTimeout(function (){
+            $('html, body').stop().animate({
+              scrollTop: elementScrollTo.offset().top - headerHeight
+            }, 500 );
+            // $(window).off('scroll');
+          },900);          
         }
       });
 
@@ -54,16 +59,28 @@
             subMenuHeight = elm.height(),
             winHeight = $(window).height();
         if(winHeight > (subMenuHeight + headerHeight)) {
-          body.off('mouseover, mouseenter').on('mouseover, mouseenter', '#' + opt.blockEffect, function () {
-            $('body').on('wheel mousewheel', function () {
-              return false;
-            });
-          });
+          if(!window.isMobileTablet) {
+            body
+              .off('mouseover.offBodyScroll, mouseenter.offBodyScroll')
+              .on('mouseover.offBodyScroll, mouseenter.offBodyScroll', '#' + opt.blockEffect, function () {
+                $('body').on('wheel mousewheel', function () {
+                  return false;
+                });
+              });
 
-          body.off('mouseout, mouseleave').on('mouseout, mouseleave', '#' + opt.blockEffect, function () {
-            $('body').off('wheel mousewheel');
-          });
+            body
+              .off('mouseout.onBodyScroll, mouseleave.onBodyScroll')
+              .on('mouseout.onBodyScroll, mouseleave.onBodyScroll', '#' + opt.blockEffect, function () {
+                $('body').off('wheel mousewheel');
+              });
+          }
         }
+      }
+      if(window.isMobileTablet) {
+        body.off('touchstart touchmove').on('touchstart touchmove', function () {
+          // alert(1212);
+          $(window).off('scroll').on('scroll');
+        });
       }
     },
     destroy: function() {

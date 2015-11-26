@@ -18,7 +18,7 @@
   ToggleMenu.prototype = {
 
     init : function() {
-      var self = this, elm = self.element, body = document.querySelector('body'), opt = self.options;
+      var self = this, elm = self.element, opt = self.options, body = document.querySelector('body');
       var subMenu = document.getElementById('menu-wrapper') ? document.getElementById('menu-wrapper'): null;
       opt.menuHeight = subMenu ? subMenu.offsetHeight : opt.menuHeight;
       // alert(subMenu.offsetHeight);
@@ -34,7 +34,7 @@
 
       window.onscroll = function () {
         self.bodyScroll();
-      };
+      };      
     },
 
     actions : function() {
@@ -146,10 +146,6 @@
             self.activeSubMenuItem(targetItem, wrapMenu);
             break;
           }
-          // if((targetItem.offsetTop/2) === bodyScroll) {
-          //   self.activeSubMenuItem(targetItem, wrapMenu);
-          //   break;
-          // }
         }
       };
       self.activeSubMenuItem = function (targetItem, subMenu) {
