@@ -24,15 +24,15 @@
         .main-box
           if (isPage === "consulting")
             h2.title Our services&nbsp;
-              span Boost sales
-            .list-our-service(data-slide, data-type="ourService")
+              //- span Boost sales
+            .list-our-service(data-slide, data-type="ourService", data-toggle="SetHeightItem")
               .item
                 .image
                   +img('../images/degital-strategy.png', 'Digital Strategy')
                 .service-info
                   .service-title
                     h2.title-1 Digital
-                  ul
+                  ul(data-set-size="['height']")
                     li Digitail
                     li Technical Consultant
                     li Digital Architecture Strategy &amp; Development
@@ -42,21 +42,21 @@
                 .service-info
                   .service-title
                     h2.title-1 Digital Design
-                  ul
+                  ul(data-set-size="['height']")
                     li Web/Mobile design
                     li UX/Ui design
                     li Ergonomics
           else
             h2.title Our services&nbsp;
-              span Increase revenue
-            .list-our-service(data-slide, data-type="ourService")
+              //- span Increase revenue
+            .list-our-service(data-slide, data-type="ourService", data-toggle="SetHeightItem")
               .item
                 .image
                   +img('../images/web-mobile.png', 'Web & Mobile Develoment')
                 .service-info
                   .service-title
                     h2.title-1 Web &amp; Mobile Development
-                  ul
+                  ul(data-set-size="['height']")
                     li E-Commerce, CMS, Intranet
                     li Responsive Web Design
                     li Adobe AEM, Sitecore
@@ -70,7 +70,7 @@
                 .service-info
                   .service-title
                     h2.title-1 Testing
-                  ul
+                  ul(data-set-size="['height']")
                     li Integration Test
                     li Compatibility Test
                     li Performance/Stress Test
@@ -124,6 +124,7 @@
             li #{$i18n.about.brand.consulting.item4}
             li #{$i18n.about.brand.consulting.item5}
           +link($i18n.about.brand.consulting.link_discover, 'consulting.html').btn.btn-black
+            span!=$i18n.about.brand.consulting.link_discover
       .item.bgd-orange.solution-item
         .item-inner
           h3.title #{$i18n.about.brand.solution.title}
@@ -134,3 +135,5 @@
             li #{$i18n.about.brand.solution.item4}
             li #{$i18n.about.brand.solution.item5}
           +link($i18n.about.brand.solution.link_discover, 'solutions.html').btn.btn-black
+            span!=$i18n.about.brand.consulting.link_discover
+

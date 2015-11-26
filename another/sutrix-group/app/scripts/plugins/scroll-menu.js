@@ -16,6 +16,16 @@
 
   var pluginName = 'scroll-menu';
   var body = $('body');
+  var elements = function () {
+    var elements = [];
+    var idElements = document.querySelectorAll('#menu-wrapper [data-target]');
+    for (var i = 0, len = idElements.length; i < len; i++) {
+      var dataTarget = idElements[i].getAttribute('data-target');
+      var item = document.getElementById(dataTarget);
+      elements.push(item);
+    }
+    return elements;
+  };
 
   function Plugin(element, options) {
     this.element = $(element);
@@ -50,7 +60,7 @@
               scrollTop: elementScrollTo.offset().top - headerHeight
             }, 500 );
             // $(window).off('scroll');
-          },900);          
+          },300);
         }
       });
 
@@ -77,11 +87,41 @@
         }
       }
       if(window.isMobileTablet) {
-        body.off('touchstart touchmove').on('touchstart touchmove', function () {
-          // alert(1212);
+        body.off('touchstart touchmove touchend resize').on('touchstart touchmove touchend resize', function () {
           $(window).off('scroll').on('scroll');
         });
       }
+      var elms = elements();
+      function getMiddeElement (e, elements) {
+        return window.findMiddleElementOfScreenWhenScroll(e, elements);
+      }
+      function setActiveItemMenu (middleBlock, menu) {
+        if(!middleBlock || !menu) {
+          return;
+        }
+        var id = middleBlock.id;
+        var targetItem = menu.querySelector('[data-target="' + id+ '"]');
+        var activedItems = menu.querySelectorAll('li.active');
+        for(var i = 0, len = activedItems.length; i < len; i++) {
+          activedItems[i].removeClass(opt.classActive);
+        }
+        targetItem.parentNode.addClass(opt.classActive);
+      }
+
+      window.addEventListenerOrAttachEventMultiEvent(function activeMenuWhenResize(e) {
+        var middleBlock = getMiddeElement(e, elms);
+        var menu = document.getElementById(opt.blockEffect);
+        setActiveItemMenu(middleBlock, menu);
+      }, ['scroll']);
+
+      var resizeId;
+      window.addEventListenerOrAttachEventMultiEvent(function activeItemMenu(e) {
+        clearTimeout(resizeId);
+        var middleBlock = getMiddeElement(e, elms);
+        var menu = document.getElementById(opt.blockEffect);
+        var setActive = setActiveItemMenu(middleBlock, menu);
+        resizeId = setTimeout(setActive, 200);
+      }, ['resize']);
     },
     destroy: function() {
       // remove events

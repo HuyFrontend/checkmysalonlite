@@ -34,7 +34,7 @@ mixin item-service(obj)
     a(href= obj.href, data-tooltip-type="",data-toggle="TooltipElement", data-tooltip-content= "<div class='inner'><h3 class='title-tooltip'>"+obj.tooltip_title+"</h3><div class='content-tooltip'>"+obj.tooltip_content+"</p></div></div><span class='triangle'></span>")
       span.icon-services(class= obj.class)
       span.text!= obj.title
-mixin item-expertise(obj)
+mixin item-case-study(obj)
   .item&attributes(attributes)
     h4.item-title!= obj.title
     p!= obj.content

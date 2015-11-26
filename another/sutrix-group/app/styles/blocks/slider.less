@@ -76,31 +76,30 @@
 
     }
   }
-  .slick-dots {
-    position: absolute;
-    left: 50%;
-    margin-left: -33px;
-    .px2em(~"bottom", 40px);
-    li {
-      display: inline-block;
-      margin-right: 10px;
-      button {
-        .size(13px);
-        .hide-text();
-        padding: 0;
-        background-color: transparent;
-        border: 1px solid white;
-        .border-radius(100%);
-      }
+}
+.slick-dots {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  .px2em(~"bottom", 40px);
+  li {
+    display: inline-block;
+    margin-right: 10px;
+    button {
+      .size(13px);
+      .hide-text();
+      padding: 0;
+      background-color: transparent;
+      border: 1px solid white;
+      .border-radius(100%);
     }
-    .slick-active {
-      button {
-        background-color: white;
-      }
+  }
+  .slick-active {
+    button {
+      background-color: white;
     }
   }
 }
-
 @media @screen-xs-only {
   .slider-block {
     .slider-for {
@@ -127,8 +126,8 @@
         }
       }
     }
-    .slick-dots {
-      .px2em(~"bottom", 25px);
-    }
+  }
+  .slick-dots {
+    .px2em(~"bottom", 25px);
   }
 }

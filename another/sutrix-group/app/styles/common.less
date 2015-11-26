@@ -1,4 +1,32 @@
 // Common
+.keyframes(hvr-hang, {
+  0% {
+    transform: translate(0, 8px);
+  }
+
+  50% {
+    transform: translate(0, 4px);
+  }
+
+  100% {
+    transform: translate(0, 8px);
+  }
+});
+.keyframes(hvr-hang-sink, {
+  100% {
+    transform: translate(0, 8px);
+  }
+});
+.keyframes(hvr-push, {
+  50% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+});
+
 .green {
   color: @green-primary;
 }
@@ -17,135 +45,17 @@ input, textarea, button {
   appearance: normal;
 }
 
-//btn
-.btn {
-  color: white;
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  text-transform: uppercase;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  .unselectable();
-}
-.shadow-btn {
-  &:after, &:before {
-    position: absolute;
-    content: "";
-    bottom: 15px;
-    left: 10px;
-    width: 40%;
-    top: 80%;
-    max-width: 200px;
-    background-color: @gray-primary;
-    box-shadow: 0 3px 10px 3px @gray-primary;
-    transform: rotate(-6deg);
-    z-index: -1;
-  }
-  &:after {
-    transform: rotate(6deg);
-    right: 10px;
-    left: auto;
-  }
-}
-.btn-black {
-  .px2em(~"padding", 12px 40px 12px 20px);
-  background: @bg-btn url('@{img}icon-arrow.png') no-repeat 91% 50%;
-  background-size: 11px 18px;
-  font-family: @font-raleway-semibold;
-  .border-radius(3px);
-  transition: background .2s ease-in-out;
-  .shadow-btn();
-  .no-touch &:hover, &:focus {
-    color: white;
-    background-position: 95% 50%;
-  }
-}
-.btn-border {
-  .px2em(~"font-size", 20px);
-  font-family: @font-raleway-semibold;
-  .px2em(~"padding", 12px 25px, 23px);
-  border: 3px solid white;
-  transition: all .2s ease-in-out;
-  .no-touch &:hover, &:focus {
-    background-color: white;
-    color: @gray-primary;
-  }
-}
-.btn-yellow {
-  .px2em(~"font-size", 16px);
-  font-family: @font-raleway-bold;
-  .px2em(~"padding", 0);
-  background-color: transparent;
-  .border-radius(3px);
-  transition: all .2s ease-in-out;
-  .shadow-btn();
-  &:after, &:before {
-    .px2em(~"bottom", 5px);
-    top: inherit;
-    background-color: rgba(0,0,0,.43);
-    box-shadow: 0 3px 10px 3px rgba(0,0,0,.43);
-    z-index: 0;
-  }
-  span {
-    position: relative;
-    z-index: 1;
-    display: block;
-    .px2em(~"padding", 10px 45px, 16px);
-    background-color: @yellow-primary;
-    .border-radius(3px);
-    .no-touch &:hover, &:focus {
-      background-color: @bg-btn;
-      color: white;
-    }
-  }
-}
 .bgd-green {background-color: @bg-green;}
 .bgd-orange {background-color: @bg-orange;}
 .bgd-yellow {
   background-color: @bg-yellow;
 }
 
-/* Pulse Grow */
-@-webkit-keyframes pulse-grow {
-  to {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+.hvr-hang {
+  transform: translate(0, 0);
+  .no-touch &:hover {
+    animation: hvr-hang-sink .3s ease-out forwards, hvr-hang 1.5s .3s ease-in-out infinite forwards alternate;
   }
-}
-
-@keyframes pulse-grow {
-  to {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-}
-
-.pulse-grow {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
-}
-.pulse-grow:hover, .pulse-grow:focus, .pulse-grow:active {
-  -webkit-animation-name: pulse-grow;
-  animation-name: pulse-grow;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-  animation-direction: alternate;
-}
-.pulse-grow-1:hover, .pulse-grow-1:focus, .pulse-grow-1:active {
-  transform: scale(1.05, 1.05);
 }
 .link-icon {
   :before {
@@ -260,5 +170,8 @@ input, textarea, button {
 .loading {
   .px2em(~"width", 28px);
   .px2em(~"height", 28px);
-  .px2em(~"margin", 80px auto 0);
+  position: absolute;
+  .px2em(~"top", 80px);
+  left: 50%;
+  margin-left: -14px;
 }

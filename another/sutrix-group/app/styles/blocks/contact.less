@@ -11,6 +11,7 @@
       .px2em(~"margin-top", 43px);
     }
     .contact-form {
+      position: relative;
       width: 100%;
       form {
         overflow: hidden;
@@ -90,6 +91,7 @@
 }
 @media @screen-xs-only {
   .group-link-contact {text-align: center;}
+  .contact-block .grid-fluid > .title {text-align: center;}
   .block-locations {
     .px2em(~"margin-bottom",27px);
     .info {
@@ -174,8 +176,6 @@
  .contact-block {
    .grid-fluid {
     > .title {
-        text-align: center;
-        .px2em(~"font-size", 28px);
         .px2em(~"margin-bottom", 15px);
       }
     }

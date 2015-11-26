@@ -4,22 +4,27 @@
   top: 0;
   right: 0;
   z-index: 90;
+  .px2em(~"padding-bottom", 8);
+  background: url('../images/bgd-shadow.png') repeat-x bottom;
   .inner {
-    background: black;
+    // background: black;
     max-width: @width-container;
     margin: 0 auto;
     // .px2em(~"padding", 20 0);
     position: relative;
-    box-shadow: 0 4px 5px 0 rgba(50, 50, 50, .75);
+    // box-shadow: 0 4px 5px 0 rgba(50, 50, 50, .75);
+    background: black;
   }
   .logo {
     display: block;
     margin: 0 auto;
     .px2em(~"padding", 19 0);
     .px2em(~"max-width", 192);
-    .green-theme &,
+    .green-theme & {
+      .px2em(~"max-width", 216);
+    }
     .orange-theme & {
-      .px2em(~"max-width", 303);
+      .px2em(~"max-width", 198);
     }
   }
   .group {
@@ -253,6 +258,7 @@
   .header {
     .inner {
       .px2em(~"padding", 0);
+      .px2em(~"min-height", 71);
     }
     .logo {
       .px2em(~"padding", 17 0);
@@ -262,6 +268,10 @@
     }
     .logo {
       .px2em(~"max-width", 176);
+      // .green-theme &,
+      // .orange-theme & {
+      //   .px2em(~"max-width", 274);
+      // }
     }
     .top-menu {
       font-size: 0;
@@ -275,7 +285,7 @@
           top: 2px;
         }
         &-bottom {
-          top: 18px;
+          top: 16px;
         }
       }
     }

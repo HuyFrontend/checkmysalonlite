@@ -194,6 +194,22 @@
     }
   }
 }
+@media @screen-sm-up {
+  .list-our-service {
+    .item {
+      &:nth-child(3) ~ .item {
+        display: none;
+      }
+      &:not(.slick-slide) {
+        float: left;
+        width: 33%;
+      }
+    }
+    .slick-list .item:nth-child(3) ~ .item {
+      display: block;
+    }
+  }
+}
 @media @screen-xs-only {
   .list-our-service {
     .image {
@@ -214,5 +230,13 @@
         }
       }
     }
+    .item + .item {
+      display: none;
+    }
+    .slick-list .item + .item {
+      display: block;
+    }
+    .slick-next { right: -10px;}
+    .slick-prev { left: -10px;}
   }
 }

@@ -24,7 +24,7 @@
     .row
       .col-sm-7.col-xs-12
         .contact-form.left
-          form(action='/data/submit-contact.json', method='post', novalidate, name='contactform', data-validate-form).form-1#contact-form
+          form(action='/data/submit-contact.json', method='post', novalidate, name='contactform', data-validate-form, autocomplete="off").form-1#contact-form
             .form-group
               label(data-holder) Name
                 span.orange *

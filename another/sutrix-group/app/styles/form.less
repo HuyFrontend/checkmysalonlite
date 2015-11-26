@@ -49,6 +49,15 @@
     &:first-child {margin-top: 0;}
   }
 }
+.resume-form {
+  .form-group {
+    input, textarea {
+      width: 100%;
+      .px2em(~"padding", 9px 10px);
+      color: black;
+    }
+  }
+}
 @media @screen-xs-only {
   .form-1 {
     .form-group {
@@ -74,6 +83,48 @@
       }
     }
   }
+  .resume-form {
+    .form-group {
+      label {
+        color: black;
+        .px2em(~"font-size", 13px);
+      }
+      textarea {min-height: 190px;}
+      .upload {
+        input[type="file"] {
+          position: absolute;
+          opacity: 0;
+          z-index: 1;
+        }
+        input[type="text"] {.px2em(~"padding-right", 80px);}
+        > span {
+          position: absolute;
+          right: 0;
+          .px2em(~"padding", 15px);
+          font-family: @font-raleway-bold;
+        }
+      }
+      &.comment {
+        > label {
+          .px2em(~"top", 18px);
+        }
+      }
+      &.capcha {
+        label {
+          position: inherit;
+          left: 0;
+          display: block;
+          .px2em(~"margin-top", 20px);
+        }
+      }
+      .send-btn {
+        width: 142px;
+        span {width: 100%;}
+      }
+      .clear-btn {.px2em(~"margin-left", 2px);}
+    }
+    .break-line {.px2em(~"margin-top", 10px);}
+  }
 }
 
 //.resume-form
@@ -87,18 +138,13 @@
         position: inherit;
         left: 0;
       }
-      input, textarea {
-        width: 100%;
-        .px2em(~"padding", 9px 10px);
-        color: black;
-      }
       input {height: 36px;}
-      textarea {.px2em(~"min-height", 116px);}
+      textarea {.px2em(~"min-height", 117px);}
       &:first-child {padding-top: 0;}
       .upload {
         position: relative;
         cursor: pointer;
-        input[type="file"], .bgd-orange {
+        input[type="file"], > span {
           position: absolute;
           top: 0;
           right: 0;
@@ -111,10 +157,10 @@
           cursor: pointer;
         }
         input[type="text"] {.px2em(~"padding-right", 100px);}
-        .bgd-orange {
+        > span {
           .px2em(~"line-height", 38px);
           .px2em(~"padding", 0 15px);
-          font-family: @font-raleway-medium;
+          font-family: @font-raleway-bold;
           text-transform: uppercase;
         }
       }
@@ -135,12 +181,24 @@
     .resume-form .form-group {
       .upload {
         &:hover {
-          .bgd-orange {background-color: @bg-btn;}
+          > span {
+            background-color: @bg-btn;
+            color: white;
+          }
         }
       }
       .send-btn span {
         &:hover {background-color: @bg-btn;}
       }
+    }
+  }
+}
+@media @screen-sm-only {
+  .resume-form {
+    .form-group {
+      input {height: 29px;}
+      textarea {.px2em(~"min-height", 95px);}
+      .send-btn {.px2em(~"width", 71px);}
     }
   }
 }

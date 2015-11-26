@@ -147,7 +147,7 @@ Element.prototype.getCSSValue = function (cssType) {
 };
 /*
 name: fadeInFaceOut
-usage: 
+usage:
 //fadeIn
 fadeInFaceOut('in', 750, true);
 //fadeOut
@@ -197,7 +197,7 @@ Element.prototype.fadeInFaceOut = function (type, duration, isIE) {
           ______________________________________
 */
 
-/* 
+/*
 name: scrollToElement
 usage:
 item.addEventListener('click', function(){
@@ -237,7 +237,7 @@ window.scrollToElement = ( function () {
 }());
 
 
-/* 
+/*
 name: findMiddleElementOfScreenWhenScroll
 usage:
 window.removeEventListener('scroll resize', A);
@@ -252,7 +252,7 @@ var findMiddleElementOfScreenWhenScroll = ( function (docElm) {
     var viewportHeight = docElm.clientHeight,
         // here i'm using pre-cached DIV elements, but you can use anything you want.
         // Cases where elements are generated dynamically are more CPU intense ofc.
-        elements = document.querySelecterAll('div'); 
+        elements = document.querySelecterAll('div');
     return function (e) {
         var middleElement;
         if( e && e.type == 'resize' ) {
@@ -271,23 +271,30 @@ var findMiddleElementOfScreenWhenScroll = ( function (docElm) {
     }
 })(document.documentElement);
 */
+
+/* findMiddleElementOfScreenWhenScroll
+window.onscroll( function(){
+  var elements = document.queryselectorAll('li a');
+  findMiddleElementOfScreenWhenScroll(elements);
+});
+*/
 window.findMiddleElementOfScreenWhenScroll = ( function () {
     var viewportHeight = document.documentElement.clientHeight/*,
         // here i'm using pre-cached DIV elements, but you can use anything you want.
         // Cases where elements are generated dynamically are more CPU intense ofc.
-        elements = document.querySelecterAll('div')*/; 
+        elements = document.querySelecterAll('div')*/;
     return function (e, elements) {
         var middleElement;
         if( e && e.type === 'resize' ) {
             viewportHeight = document.documentElement.clientHeight;
         }
-        console.log('viewportHeight',viewportHeight);
-        elements = document.querySelectorAll('[data-block]');
+        // elements = document.querySelectorAll('[data-block]');
         for(var i = 0, len = elements.length; i < len; i++) {
           var pos = elements[i].getBoundingClientRect().top;
           // console.log('pos',pos);
           if(pos < viewportHeight/2 ) {
             // alert(elements[i].toString());
+            middleElement = elements[i];
             console.log('elements[i]',elements[i]);
           }
           // if an element is more or less in the middle of the viewport
@@ -300,7 +307,7 @@ window.findMiddleElementOfScreenWhenScroll = ( function () {
           // alert(middleElement);
         }
     }
-})();
+}());
 
 //clicko out size element
 
@@ -318,7 +325,7 @@ window.findMiddleElementOfScreenWhenScroll = ( function () {
 //   }, false);
 
 // // If instead of using the element id, you want to apply this to all elements having a given class, you can use this function as second argument when calling findClosest:
- 
+
 // function(el) {
 //   return (" " + el.className + " ").replace(/[\n\t\r]/g, " ").indexOf(" someClass ") > -1
 // }

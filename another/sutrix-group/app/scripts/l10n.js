@@ -17,6 +17,11 @@ var L10n = {
     },
     invalid: {
       email: 'Please enter valid email address'
+    },
+    ajax: {
+      contact: {
+        code: ['Please enter your name', 'Please enter your email', 'Please enter valid email address', 'Please enter message', 'Please enter security code', 'Your security code you have entered is not valid', 'Cannot send your information, please try again!', 'Send email successful !' ]
+      }
     }
   },
   // french
@@ -30,6 +35,11 @@ var L10n = {
     },
     invalid: {
       email: 'Please enter valid email address'
+    },
+    ajax: {
+      contact: {
+        code: ['Please enter your name', 'Please enter your email', 'Please enter valid email address', 'Please enter message', 'Please enter security code', 'Your security code you have entered is not valid', 'Cannot send your information, please try again!', 'Send email successful !' ]
+      }
     }
   },
   // japan
@@ -43,6 +53,11 @@ var L10n = {
     },
     invalid: {
        email: 'Please enter valid email address'
+    },
+    ajax: {
+      contact: {
+        code: ['Please enter your name', 'Please enter your email', 'Please enter valid email address', 'Please enter message', 'Please enter security code', 'Your security code you have entered is not valid', 'Cannot send your information, please try again!', 'Send email successful !' ]
+      }
     }
   }
 };

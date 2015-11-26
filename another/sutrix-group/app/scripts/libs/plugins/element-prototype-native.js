@@ -137,7 +137,8 @@ Element.prototype.getCSSValue = function (cssType) {
 };
 
 /*
-usage: fadeInFaceOut
+name : fadeInFadeOut
+usage:
 //fadeIn
 fadeInFaceOut('in', 750, true);
 //fadeOut
@@ -199,8 +200,35 @@ Element.prototype.fadeInFadeOut = function (type, duration, isIE) {
 
     var fading = window.setInterval(func, interval);
 };
+/*
+name : clickOff
+usage:
+//elemen.clickOff to check insize or out size
+*/
+Element.prototype.clickOff = function (callback, selfDestroy) {
+  var clicked = false;
+  var parent = this;
+  var destroy = selfDestroy || true;
+
+  parent.addEventListenerOrAttachEvent(function (){
+    clicked = true;
+  },'click');
+  document.addEventListenerOrAttachEvent(function (event) {
+    if(!clicked) {
+      callback (parent, event);
+    }
+    if(destroy) {
+
+    }
+    clicked = false;
+  }, 'click');
+};
+
 /* window event */
-/* scrollToElement
+
+/*
+name: scrollToElement
+usage:
 item.addEventListener('click', function(){
   scrollToElement(document.getElementById('id-scrollToElement'), 10000);
 });
@@ -236,126 +264,56 @@ window.scrollToElement = ( function () {
     return timer;
   };
 }());
-  // slide up/ slide down
-
-window.slideUpSlideDownElement = ( function () {
-  'use strict';
-  /**
-  * getHeight - for elements with display:none
-   */
-  var getHeight = function(el) {
-        var el_style      = window.getComputedStyle(el),
-            el_display    = el_style.display,
-            el_position   = el_style.position,
-            el_visibility = el_style.visibility,
-            el_max_height = el_style.maxHeight.replace('px', '').replace('%', ''),
-
-            wanted_height = 0;
 
 
-        // if its not hidden we just return normal height
-        if(el_display !== 'none' && el_max_height !== '0') {
-            return el.offsetHeight;
-        }
-
-        // the element is hidden so:
-        // making the el block so we can meassure its height but still be hidden
-        el.style.position   = 'absolute';
-        el.style.visibility = 'hidden';
-        el.style.display    = 'block';
-
-        wanted_height     = el.offsetHeight;
-
-        // reverting to the original values
-        el.style.display    = el_display;
-        el.style.position   = el_position;
-        el.style.visibility = el_visibility;
-
-          return wanted_height;
-      };
-
-
-  /**
-  * toggleSlide mimics the jQuery version of slideDown and slideUp
-  * all in one function comparing the max-heigth to 0
-   */
-  var  toggleSlide = function (el) {
-        var el_max_height = 0;
-        if(el.getAttribute('data-max-height')) {
-          // we've already used this before, so everything is setup
-          if(el.style.maxHeight.replace('px', '').replace('%', '') === '0') {
-            el.style.maxHeight = el.getAttribute('data-max-height');
-          } else {
-            el.style.maxHeight = '0';
-          }
-        }
-        else {
-          el_max_height                  = getHeight(el) + 'px';
-          el.style['transition']         = 'max-height 0.5s ease-in-out';
-          // el.style.overflowY             = 'hidden';
-          el.style.maxHeight             = '0';
-          // alert(12);
-          el.setAttribute('data-max-height', el_max_height);
-          el.style.display               = 'block';
-
-          // we use setTimeout to modify maxHeight later than display (to we have the transition effect)
-          setTimeout(function() {
-              el.style.maxHeight = el_max_height;
-          }, 10);
-        }
-      };
-  return toggleSlide;
-}());
 window.isMobileTablet = (function (){
   return navigator.userAgent.match(/Android|BlackBerry|BB|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
 }());
 
-Element.prototype.clickOff = function (callback, selfDestroy) {
-  var clicked = false;
-  var parent = this;
-  var destroy = selfDestroy || true;
+window.getMaxOfArray = (function () {
+  return function (numArray) {
+    return Math.max.apply(null, numArray);
+  };
+}());
 
-  parent.addEventListenerOrAttachEvent(function (){
-    clicked = true;
-  },'click');
-  document.addEventListenerOrAttachEvent(function (event) {
-    if(!clicked) {
-      callback (parent, event);
-    }
-    if(destroy) {
-
-    }
-    clicked = false;
-  }, 'click');
-};
-
-// $.fn.clickOff = function(callback, selfDestroy) {
-//     var clicked = false;
-//     var parent = this;
-//     var destroy = selfDestroy || true;
-    
-//     parent.click(function() {
-//         clicked = true;
-//     });
-    
-//     $(document).click(function(event) { 
-//         if (!clicked) {
-//             callback(parent, event);
-//         }
-//         if (destroy) {
-//             //parent.clickOff = function() {};
-//             //parent.off("click");
-//             //$(document).off("click");
-//             //parent.off("clickOff");
-//         };
-//         clicked = false;
-//     });
-// };
-
-/*$("#myDiv").click(function() {
-    alert('clickOn');
+window.getPositionMaxArray = (function (array) {
+  return function (array) {
+    var i = array.indexOf(Math.max.apply(Math, array));
+    return i;
+  };
+}());
+/* findMiddleElementOfScreenWhenScroll
+window.onscroll( function(){
+  var elements = document.queryselectorAll('li a');
+  findMiddleElementOfScreenWhenScroll(elements);
 });
+*/
+window.findMiddleElementOfScreenWhenScroll = ( function () {
+    var viewportHeight = document.documentElement.clientHeight/*,
+        elements = document.querySelecterAll('div')*/;
+        // here i'm using pre-cached DIV elements, but you can use anything you want.
+        // Cases where elements are generated dynamically are more CPU intense ofc.
+    return function (e, elements) {
+        var middleElement;
+        var listElement = [];
+        // alert(e.type);
+        if( e && e.type === 'resize' ) {
+            viewportHeight = document.documentElement.clientHeight;
+        }
+        // elements = document.querySelectorAll('[data-block]');
+        for(var i = 0, len = elements.length; i < len; i++) {
+          var pos = elements[i].getBoundingClientRect().top;
+          if(pos < viewportHeight/2 ) {
+            middleElement = elements[i];
+            listElement.push(middleElement);
+          }
+          // if an element is more or less in the middle of the viewport
+          /*if( pos > viewportHeight/2.5 && pos < viewportHeight/1.5 ){
+              middleElement = elements[i];
+              return false; // stop iteration
+          }*/
+        }
+        return listElement[listElement.length - 1];
 
-$("#myDiv").clickOff(function() {
-    alert('clickOff');
-});
+    }
+}());

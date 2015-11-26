@@ -19,30 +19,36 @@
 
     init : function() {
       var self = this, elm = self.element, opt = self.options, body = document.querySelector('body');
-      var subMenu = document.getElementById('menu-wrapper') ? document.getElementById('menu-wrapper'): null;
-      opt.menuHeight = subMenu ? subMenu.offsetHeight : opt.menuHeight;
-      // alert(subMenu.offsetHeight);
-      // alert(opt.targetHeight);
+      // var subMenu = document.getElementById('menu-wrapper') ? document.getElementById('menu-wrapper'): null;
+      var targetElement = document.querySelector('#' + opt.targetId);
+      // var isOpen = false;
+
+      opt.targetElement = targetElement;
+      opt.menuHeight = opt.targetElement ? opt.targetElement.offsetHeight : opt.menuHeight;
+
       this.actions();
 
-      elm.addEventListenerOrAttachEventMultiEvent(self.toggle, ['click'] );
+      elm.removeEventListenerOrDetachEventMultiEvent(self.toggle, ['click']);
+      elm.addEventListenerOrAttachEventMultiEvent(self.toggle, ['click']);
 
-      // body.removeEventListenerOrDetachEventMultiEvent( self.bodyToggle, ['click'] );
-      body.addEventListenerOrAttachEventMultiEvent( function exitMenu (e) {
-        self.bodyToggle(e);
-      }, ['click'] );
+      body.removeEventListenerOrDetachEventMultiEvent(self.bodyToggle, ['click'] );
+      body.addEventListenerOrAttachEventMultiEvent(self.bodyToggle, ['click'] );
 
-      window.onscroll = function () {
-        self.bodyScroll();
-      };      
+
+      function resizeHeightMenu () {
+        self.setHeight();
+      }
+      var resizeId;
+      window.addEventListenerOrAttachEventMultiEvent(function () {
+        clearTimeout(resizeId);
+        resizeId = setTimeout(resizeHeightMenu, 0);
+      }, ['resize']);
+
     },
-
     actions : function() {
       var self = this, elm = self.element, opt = self.options;
 
       self.toggle = function () {
-        var targetElement = document.querySelector('#' + opt.target);
-
         if(elm.classList) {
           if(elm.classList.contains(opt.classActive)) {
             elm.classList.remove(opt.classActive);
@@ -60,42 +66,38 @@
           }
         }
 
-        if(targetElement.classList) {
-          if(targetElement.classList.contains(opt.classCollapse)) {
-            targetElement.classList.remove(opt.classCollapse);
+        if(opt.targetElement.classList) {
+          if(opt.targetElement.classList.contains(opt.classOpen)) {
+            opt.targetElement.classList.remove(opt.classOpen);
           }
           else {
-            targetElement.classList.add(opt.classCollapse);
-            self.setHeight(targetElement);
+            self.setHeight();
+            opt.targetElement.classList.add(opt.classOpen);
           }
         }
         else {
-          if(targetElement.hasClass(opt.classCollapse)) {
-            targetElement.removeClass(opt.classCollapse);
+          if(opt.targetElement.hasClass(opt.classOpen)) {
+            opt.targetElement.removeClass(opt.classOpen);
           }
           else {
-            targetElement.addClass(opt.classCollapse);
-            self.setHeight(targetElement);
+            self.setHeight();
+            opt.targetElement.classList.add(opt.classOpen);
           }
         }
       };
-      self.setHeight = function (element) {
-        var screenHeight = document.documentElement.clientHeight;
-        var header = document.querySelector('.header'),
-            headerHeight = header.offsetHeight;
-        var menuHeight = opt.menuHeight;
+      self.setHeight = function () {
+        var screenHeight = document.documentElement.clientHeight ? document.documentElement.clientHeight : window.innerHeight;
+        var headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
 
-        // opt.initMenuHeight = menuHeight;
-        if( (menuHeight + headerHeight) > screenHeight) {
-          menuHeight = screenHeight - headerHeight;
-          element.style.maxHeight = menuHeight + 'px';
+        if((opt.menuHeight + headerHeight) > screenHeight) {
+          opt.targetElement.style.maxHeight = (screenHeight - headerHeight) + 'px';
         }
         else {
           if(element.style.removeProperty) {
-            element.style.removeProperty('max-height');
+            opt.targetElement.style.removeProperty('max-height');
           }
           else {
-            element.style.maxHeight =screenHeight + 'px';
+            opt.targetElement.style.maxHeight = opt.menuHeight + 'px';
           }
         }
       };
@@ -104,8 +106,8 @@
         isBtnMenu = ( thisTarget.hasAttribute('data-toggle') && (thisTarget.getAttribute('data-toggle') === 'ToggleMenu' )) ? thisTarget : '',
         isChildBntMenu = ( thisTarget.parentNode.hasAttribute('data-toggle') && (thisTarget.parentNode.getAttribute('data-toggle') === 'ToggleMenu' )) ? thisTarget.parentNode : '';
         if(!isBtnMenu && !isChildBntMenu) {
-        // if(!isBtnMenu) {
-          if(thisTarget.closestId(opt.target) || thisTarget.id === opt.target ) {
+          // if(!isBtnMenu) {
+          if(thisTarget.closestId(opt.targetId) || thisTarget.id === opt.targetId ) {
           }
           else {
             if(elm.classList) {
@@ -118,57 +120,21 @@
                 elm.removeClass(opt.classActive);
               }
             }
-            var navigationHeader = document.querySelector('#' + opt.target);
+            var navigationHeader = document.querySelector('#' + opt.targetId);
             if(navigationHeader && navigationHeader.classList) {
-              if(navigationHeader.classList.contains(opt.classCollapse)) {
-                navigationHeader.classList.remove(opt.classCollapse);
+              if(navigationHeader.classList.contains(opt.classOpen)) {
+                navigationHeader.classList.remove(opt.classOpen);
               }
             }
             else {
-              if(navigationHeader && navigationHeader.hasClass(opt.classCollapse)) {
-                navigationHeader.removeClass(opt.classCollapse);
+              if(navigationHeader && navigationHeader.hasClass(opt.classOpen)) {
+                navigationHeader.removeClass(opt.classOpen);
               }
             }
           }
         }
       };
-      self.bodyScroll = function () {
-        var bodyScroll = document.body.scrollTop;
 
-        var wrapMenu = document.querySelector('#' + opt.target),
-            menuItem = wrapMenu.querySelectorAll('[data-target]');
-
-        for(var i = 0, len = menuItem.length; i < len; i++) {
-          var eachItem = menuItem[i],
-              targetItem = document.querySelector('#' + eachItem.getAttribute('data-target'));
-
-          if(targetItem && (targetItem.offsetTop - 10) >= bodyScroll) {
-            self.activeSubMenuItem(targetItem, wrapMenu);
-            break;
-          }
-        }
-      };
-      self.activeSubMenuItem = function (targetItem, subMenu) {
-        if(targetItem) {
-          var itemId = targetItem.id;
-          var thisItem = subMenu.querySelector('[data-target="'+itemId+'"');
-          var activeItems = subMenu.querySelectorAll('.' + opt.classActive);
-          for (var len = activeItems.length, i = len - 1; i >= 0; i--) {
-            if(activeItems[i].classList) {
-              activeItems[i].classList.remove(opt.classActive);
-            }
-            else {
-              activeItems[i].removeClass(opt.classActive);
-            }
-          }
-          if (thisItem.classList) {
-            thisItem.parentNode.classList.add(opt.classActive);
-          }
-          else {
-            thisItem.parentNode.addClass(opt.classActive);
-          }
-        }
-      };
       self.otherMethod = function () {
       };
     }
@@ -181,10 +147,11 @@
       var element = ToggleMenus[i],
           options = {
             value : '',
-            target: element.getAttribute('data-target'),
-            classCollapse: 'collapse',
+            targetId: element.getAttribute('data-target'),
+            classOpen: 'collapse',
             classActive: 'active',
-            menuHeight: 0
+            menuHeight: 0,
+            targetElement: ''
           };
     new ToggleMenu(element, options);
   }

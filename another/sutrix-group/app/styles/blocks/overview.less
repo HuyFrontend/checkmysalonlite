@@ -9,12 +9,14 @@
     padding: 0 18%;
     color: white;
     text-transform: uppercase;
+    -webkit-tap-highlight-color: transparent;
     .item {
       .px2em(~"height", 180px);
       cursor: pointer;
       transition: all .2s ease;
       display: table;
       position: relative;
+      -webkit-transform: translate3d(0,0,0);
       &.active {
         .quantity {
           &:before {
@@ -75,15 +77,25 @@
 }
 .office {
   overflow: hidden;
+  .px2em(~"margin-top", -1.5px);
   .list-offices {
     text-align: center;
     .slick-list {
       margin: 0 -1px;
     }
     .partner {
+      a {
+        display: block;
+        &:hover {
+          .no-touch & {
+            animation: hvr-push .3s linear;
+          }
+        }
+      }
       .img-wraper {
         .content {
           .px2em(~"height", 170px);
+          .px2em(~"padding", 30px 10px);
           &:before {
             content: "";
             display: inline-block;
@@ -188,16 +200,29 @@
   }
 }
 @media @screen-sm-only {
-  .office .list-offices .item {
-    .info-overlay {
-      .inner {
-        .px2em(~"padding", 0 10px);
+  .office .list-offices {
+    .item {
+      .info-overlay {
+        .inner {
+          .px2em(~"padding", 0 10px);
+        }
+        .title, .address {
+          .px2em(~"margin-bottom", 10px);
+        }
       }
-      .title, .address {
-        .px2em(~"margin-bottom", 10px);
+      &:nth-child(4) ~ .item {
+        display: none;
+      }
+      &:not(.slick-slide) {
+        float: left;
+        width: 25%;
       }
     }
+    .slick-list .item:nth-child(4) ~ .item  {
+       display: block;
+    }
   }
+
 }
 @media @screen-md-down {
   .overview {
@@ -210,8 +235,22 @@
 }
 
 @media @screen-lg-up {
-  .office .list-offices .item .info-overlay .inner {
-    max-height: 81%;
+  .office .list-offices {
+    .item {
+      .info-overlay .inner {
+        max-height: 81%;
+      }
+      &:nth-child(5) ~ .item {
+        display: none;
+      }
+      &:not(.slick-slide) {
+        float: left;
+        width: 20%;
+      }
+    }
+    .slick-list .item:nth-child(5) ~ .item  {
+       display: block;
+    }
   }
 }
 @media @screen-sm-only {
@@ -320,11 +359,6 @@
     .employees, .clients {
       padding: 0;
     }
-    .clients, .technologies {
-      .item .img-wraper img {
-        margin: 30px auto;
-      }
-    }
     .list-offices {
       .item {
         width: 100%;
@@ -334,6 +368,12 @@
         .img-wraper {
           border: 0;
         }
+        & + .item {
+          display: none;
+        }
+      }
+      .slick-list .item + .item {
+        display: block;
       }
     }
   }

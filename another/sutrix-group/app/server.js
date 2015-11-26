@@ -20,10 +20,13 @@ app.use(methodOverride());
 app.use(express.static(path.join(__dirname, '../static')));
 
 app.get('/me', function(req, res){
-  res.send({
-    app: 'Frontend template',
-    version: '1.0.0'
-  });
+  setTimeout(function(){
+    res.send({
+      code: '0',
+      error: '0',
+      message: ''
+    });
+  }, 2000);
 });
 
 app.use(function(req, res){

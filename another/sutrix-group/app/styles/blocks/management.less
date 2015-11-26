@@ -3,7 +3,7 @@
     position: relative;
     z-index: 2;
     .inner {
-      max-width: 1200px;
+      max-width: 1230px;
       margin: 0 auto;
       .px2em(~"padding-right", @grid-gutter-width/2);
       .px2em(~"padding-left", @grid-gutter-width/2);
@@ -275,6 +275,12 @@
           top: -60px;
           z-index: 3;
         }
+        & + .item {
+          display: none;
+        }
+      }
+      .slick-list .item + .item {
+        display: block;
       }
     }
   }

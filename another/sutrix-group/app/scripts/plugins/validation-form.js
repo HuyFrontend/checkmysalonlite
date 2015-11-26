@@ -56,7 +56,7 @@
           }
         });
         body.off('click.offPopup touchstart.offPopup', '.' + opt.elementOverlay + ' a.close').on('click.offPopup touchstart.offPopup', '.' + opt.elementOverlay + ' a.close', function () {
-            $(this).closest('.' + opt.elementOverlay).addClass(opt.classHidden);
+          $(this).closest('.' + opt.elementOverlay).addClass(opt.classHidden);
         });
         body.off('kepress').on('keypress', 'form input', function(e) {
           var key = e.keyCode || e.which;
@@ -113,68 +113,68 @@
         };
         var ajaxSubmit = function (form, calback) {
           form = $(form);
-          var loadingIcon = '';
-          if(opt.classLoadingIcon) {
-            loadingIcon = elm.parent().find('.' + opt.classLoadingIcon);
-            if(loadingIcon.length) {
-              form.fadeOut();
-              loadingIcon.removeClass(opt.classHidden);
-              // elm.addClass(opt.classHidden);
-              setTimeout(function () {
-                loadingIcon.addClass(opt.classHidden);
-                elm.removeClass(opt.classHidden);
-                form.fadeIn();
-              }, 3000);
-            }
-          }
-          // check captcha image
-          /*var fieldCaptcha = form.find('[' + opt.captchaElement + ']');
-          var urlCaptcha = fieldCaptcha.attr(opt.captchaElement);
-          var imgCaptcha = fieldCaptcha.find('img');
-          var errorLabel = fieldCaptcha.find(opt.errorNoticeElement);*/
-          //test ajax
+
+          var textSubmit = form.find('[type="submit"] span');
+          var text  = textSubmit.html();
+
+          form.find('[required="required"]').attr('disabled', true);
+          form.find('[type="submit"]').attr('disabled', true);
+          textSubmit.html('sending');
           $.ajax({
-              method: 'get',
-              dataType: 'json',
-              data: '',
-              url: form.attr('action'),
-              success: function (res) {
-                var message = (res && res.message) ? res.message : '';
-                var popup =  $('.' + opt.classContentPopup);
-                popup.find('p').html(message);
-                popup.parent().removeClass(opt.classHidden);
-                if(calback && typeof calback === 'function') {
-                  calback;
-                }
-              },
-              error: function () {
+            method: 'get',
+            dataType: 'json',
+            data: '',
+            url: form.attr('action'),
+            // url: '/me',
+            success: function (res) {
+              // res: {error: 0/1, code: 1/2..8}
+              var isError = (res.error && res.error === 1) ? true : false;
+              var message;
+              if(isError) {
+                var errorCode = (res.code) ? res.code : 0;
+                message = L10n[lang].ajax.contact.code[parseInt(errorCode) - 1];
               }
+              var popup =  $('.' + opt.classContentPopup);
+              elm.removeClass(opt.classHidden);
+              popup.find('p').html(message);
+              popup.parent().removeClass(opt.classHidden);
+
+              form.find('[required="required"]').removeAttr('disabled');
+              form.find('[type="submit"]').removeAttr('disabled');
+              textSubmit.html(text);
+
+              if(calback && typeof calback === 'function') {
+                calback;
+              }
+            },
+            error: function () {
+            }
           });
           //real ajax
           /*
-          $.ajax({
-              method: 'post',
-              dataType: 'json',
-              url: form.attr('action'),
-              data: {
-                'action': 'ajax_contact_form_process',
-                'data' : form.serialize(),
-                'ic_form_token' : form.find('[name="ic_form_token"]').val()
-              },
-              success: function (res) {
-                if(res) {
-                  if(res.error === 0) {
+            $.ajax({
+                method: 'post',
+                dataType: 'json',
+                url: form.attr('action'),
+                data: {
+                  'action': 'ajax_contact_form_process',
+                  'data' : form.serialize(),
+                  'ic_form_token' : form.find('[name="ic_form_token"]').val()
+                },
+                success: function (res) {
+                  if(res) {
+                    if(res.error === 0) {
+                    }
+                    else {
+                    }
+                    if(calback) {
+                      calback;
+                    }
                   }
-                  else {
-                  }
-                  if(calback) {
-                    calback;
-                  }
+                },
+                error: function () {
                 }
-              },
-              error: function () {
-              }
-          });
+            });
           */
         };
 
