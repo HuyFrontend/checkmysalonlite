@@ -45,7 +45,6 @@
       }
       //
       $(document).off('click.initSlider').on('click.initSlider', '[data-item-tab]', function(e) {
-
         var target = $(e.target);
         var thisTab = target.attr('data-item-tab') ? target : target.closest('[data-item-tab]');
         var itemTarget = thisTab.attr('data-target');
@@ -101,6 +100,7 @@
         infinite: true,
         pauseOnHover: true,
         draggable: false,
+        useCSS: false,
         slidesToShow: that.options.slidetoshow,
         arrows: true,
         slidesToScroll: 1,
@@ -136,12 +136,22 @@
         pauseOnHover: true,
         draggable: false,
         slidesToShow: 4,
+        useCSS:false,
         arrows: true,
         slidesToScroll: 1,
         responsive: [{
           breakpoint: 1280,
           settings: {
-            draggable: true
+            draggable: true,
+            slidesToShow: 4,
+            slidesToScroll: 1
+          }
+        }, {
+          breakpoint: 768,
+          settings: {
+            draggable: true,
+            slidesToShow: 4,
+            slidesToScroll: 1
           }
         }, {
           breakpoint: 767,
@@ -194,6 +204,8 @@
         draggable: false,
         slidesToShow: 1,
         arrows: true,
+        useCSS: false,
+        adaptiveHeight: true,
         slidesToScroll: 1,
         responsive: [{
           breakpoint: 1280,

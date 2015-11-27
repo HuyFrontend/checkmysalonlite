@@ -61,7 +61,7 @@
           var parent = elm.parentNode;
           if(parent.querySelector('#' + opt.idTooltip)) {
             // parent.querySelector('#' + opt.idTooltip).removeClass(opt.classHide);
-            parent.querySelector('#' + opt.idTooltip).fadeInFadeOut('in', 300, '');
+            parent.querySelector('#' + opt.idTooltip).fadeInFadeOut('in', 300);
           }
           else {
             if(tooltip.classList) {
@@ -112,7 +112,7 @@
               tooltip.style.left = -distanceLeft + 'px';
             }
             tooltip.style.top = top + 'px';
-            tooltip.fadeInFadeOut('in', 300, '');
+            tooltip.fadeInFadeOut('in', 300);
             tooltip.parentNode.addClass(opt.classActive);
           }
         }

@@ -6,10 +6,24 @@
   .header .block-talk-us {
     background-image: url('@{img}bgd-talk-to-us-green.png');
   }
-  .case-study, .career {
+  .case-study {
     background-color: @green-primary;
   }
   .contact-block {background-color: @green-darker;}
+  .form-1 .form-group {
+    input, textarea {
+      &:focus {box-shadow: 0 0 5px @green-primary;}
+    }
+  }
+  .form-1 {
+    &.resume-form {
+      .form-group {
+        input, textarea {
+          border: solid 1px @green-primary;
+        }
+      }
+    }
+  }
   .btn-color span {
     background-color: @bg-green;
     .no-touch &:hover, &:focus {
@@ -25,16 +39,16 @@
           font-family: @font-raleway;
         }
       }
-      .image {background-color: @bg-green;}
     }
   }
+  .our-services .image {background-color: @bg-green;}
   .overview {
     .list-overal {
       .item {
         &.active {
           .quantity {
             &:before {
-              background-color: @green-primary;
+              background-color: @bg-green;
             }
           }
           .item-inner {
@@ -46,7 +60,7 @@
             color: @green-primary;
             .quantity {
               &:before {
-                background-color: @green-primary;
+                background-color: @bg-green;
               }
             }
           }
@@ -64,15 +78,14 @@
     }
   }
   .resume-form {
-    .btn-color span {
-      background-color: white;
-      color: @green-primary;
+    .upload .browse {
+      background-color: @bg-green;
     }
-    .upload > span {color: @green-primary;}
   }
-  .back-btn span {
-    background-color: white;
-    color: @green-primary;
+  .career {
+    .open-position {
+      ul {background: @bg-green;}
+    }
   }
 }
 .orange-theme {
@@ -83,14 +96,28 @@
   .header .block-talk-us {
     background-image: url('@{img}bgd-talk-to-us-orange.png');
   }
-  .case-study, .career {
+  .case-study {
     background-color: @orange-primary;
+  }
+  .form-1 .form-group {
+    input, textarea {      
+      &:focus {box-shadow: 0 0 5px @orange-primary;}
+    }
+  }
+  .form-1 {
+    &.resume-form {
+      .form-group {
+        input, textarea {
+          border: solid 1px @orange-primary;
+        }
+      }
+    }
   }
   .contact-block {
     background-color: #dfdee0;
     .grid-fluid {
-      .block-locations, .contact-info, > .title {color: black;}
-      .contact-info a {color: black;}
+      .block-locations, .contact-info, > .title {color: @gray-primary;}
+      .contact-info a {color: @gray-primary;}
     }
   }
   .btn-color span {
@@ -108,16 +135,16 @@
           font-family: @font-raleway;
         }
       }
-      .image {background-color:  @bg-orange;}
     }
   }
+  .our-services .image {background-color: @bg-orange;}
   .overview {
     .list-overal {
       .item {
         &.active {
           .quantity {
             &:before {
-              background-color: @orange-primary;
+              background-color:  @bg-orange;
             }
           }
           .item-inner {
@@ -129,7 +156,7 @@
             color: @orange-primary;
             .quantity {
               &:before {
-                background-color: @orange-primary;
+                background-color:  @bg-orange;
               }
             }
           }
@@ -144,6 +171,16 @@
           background: rgba(235,122,99, .8);
         }
       }
+    }
+  }
+  .resume-form {
+    .upload .browse {
+      background-color:  @bg-orange;
+    }
+  }
+  .career {
+    .open-position {
+      ul {background: @bg-orange;}
     }
   }
 }

@@ -10,6 +10,10 @@
   cursor: pointer;
   .unselectable();
 }
+.btn:focus span {
+  box-shadow: inset 0 0 5px rgba(221,221,221,.5);
+}
+
 .shadow-btn {
   &:after, &:before {
     position: absolute;
@@ -36,7 +40,7 @@
   .border-radius(3px);
   transition: background .2s ease-in-out;
   .shadow-btn();
-  .no-touch &:hover, &:focus {
+  .no-touch &:hover{
     color: white;
     background-position: 95% 50%;
   }
@@ -58,17 +62,79 @@
   position: relative;
   background-color: transparent;
   transition: all .2s ease-in-out;
+  .no-touch &:hover span, &:focus span {
+    background-color: @bg-btn;
+    color: white;
+  }
   span {
     .shadow-btn();
     .px2em(~"padding", 10px 45px, 16px);
     background-color: @yellow-primary;
     .border-radius(3px);
-    .no-touch &:hover, &:focus {
-      background-color: @bg-btn;
-      color: white;
-    }
     &:before, &:after {
       box-shadow: 0 3px 10px 3px rgba(0,0,0,.54);
+    }
+  }
+}
+
+.btn-top {
+  .size(43px,75px);
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  color: @yellow-primary;
+  background: url('@{img}icon-top-yellow.png') no-repeat bottom center;
+  position: absolute;
+  right: 25px;
+  bottom: 35px;
+  &:before {
+    content: "";
+    .size(100%,4px);
+    background-color: @yellow-primary;
+    position: absolute;
+    top: 14px;
+    left: 0;
+  }
+  &:hover {
+    .no-touch & {
+      color: @yellow-primary;
+    }
+  }
+  .green-theme & {
+    color: @green-primary;
+    background-image: url('@{img}icon-top-green.png');
+    &:before {
+      background-color: @green-primary;
+    }
+    &:hover {
+      .no-touch & {
+        color: @green-primary;
+      }
+    }
+  }
+  .orange-theme & {
+    color: @orange-primary;
+    background-image: url('@{img}icon-top-orange.png');
+    &:before {
+      background-color: @orange-primary;
+    }
+    &:hover {
+      .no-touch & {
+        color: @orange-primary;
+      }
+    }
+  }
+}
+
+@media @screen-xs-only {
+  .btn-top {
+    .size(40px,60px);
+    bottom: 10px;
+    right: 10px;
+    background-size: 80%;
+    &:before {
+      height: 2px;
+      top: 15px;
     }
   }
 }

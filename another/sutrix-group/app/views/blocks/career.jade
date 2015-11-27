@@ -1,32 +1,33 @@
-section.career.load-ajax-finish#career
-  h2.title Careers&nbsp;
-    span We are always looking for talent
+section.career.load-ajax-finish#career(data-toggle="CareerElement")
   .grid-fluid
-    .positions-apply
+    h2.title #{$i18n.career.title}&nbsp;
+      span #{$i18n.career.sub_title}
+  .grid-fluid
+    .positions-apply(data-apply)
       .row
         .col-sm-6
-          h3.title Benefits
+          h3.title #{$i18n.career.positions_apply.title}
           .content
-            p You’ll have the opportunity to work on major projects with global clients. We enable continuous learning and career development,and promote from within frequently so the opportunity for career advancement is excellent. in return, we expect that you are prepared to perform at an international standard level. 
-            p If you would like to join the Sutrix Media team we welcome you and encourage you to post your resume. We are always open to meeting new people and we offer competitive salaries to those that have the skills required to perform the position applied for.
-        .col-sm-6.open-position.custom-padding
-          h3.title Open positions
+            p!=$i18n.career.positions_apply.desc1
+            p!=$i18n.career.positions_apply.desc2
+        .col-sm-6.open-position.custom-padding(data-disable)
+          h3.title #{$i18n.career.positions_apply.open_position.title}
           .content
             ul
-              li
-                +link-1('PHP Developer - HCMC-Vietnam')
+              li(data-item="career", data-target="/data/en_EN/career-content-php.html")
+                +link-1($i18n.career.positions_apply.open_position.team1)
                   span.icon-arrow
-              li
-                +link-1('QC - HCMC-Vietnam')
+              li(data-item="career", data-target="/data/en_EN/career-content-qc.html")
+                +link-1($i18n.career.positions_apply.open_position.team2)
                   span.icon-arrow
-              li
-                +link-1('Front-ent Developer - HCMC-Vietnam')
+              li(data-item="career", data-target="/data/en_EN/career-content-frontent.html")
+                +link-1($i18n.career.positions_apply.open_position.team3)
                   span.icon-arrow
-              li
-                +link-1('Java Developer')
+              li(data-item="career", data-target="/data/en_EN/career-content-java.html")
+                +link-1($i18n.career.positions_apply.open_position.team4)
                   span.icon-arrow
-              li
-                +link-1('Project Manager')
+              li(data-item="career", data-target="/data/en_EN/career-content-project-manager.html")
+                +link-1($i18n.career.positions_apply.open_position.team5)
                   span.icon-arrow
             .ajax-overlay.hide
               +img('../images/ajax_loader.gif')

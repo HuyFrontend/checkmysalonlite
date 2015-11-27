@@ -8,7 +8,7 @@ mixin link(title, href, text)
       !=text
 mixin link-1(title, href, text)
   - if (typeof(text) === 'undefined') text = title
-  - if (typeof(href) === 'undefined') href = '#'
+  - if (typeof(href) === 'undefined') href = 'javascript:void(0)'
   a(href=href, title=title)&attributes(attributes)
     if block
       block

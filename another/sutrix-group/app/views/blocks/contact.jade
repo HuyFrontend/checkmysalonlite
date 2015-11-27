@@ -42,7 +42,7 @@
               span.error-message.hide!= $i18n.contact.errormsg.message
             .form-group.capcha
               .field-capcha
-                +img('../images/photo-capcha.jpg', '')
+                +img('../images/capcha.jpg', '')
               .field-security
                 label(data-holder) Security image
                   span.orange *
@@ -50,8 +50,6 @@
                 span.error-message.hide!= $i18n.contact.errormsg.security
             button(type="submit", name="submit").send-btn.btn.btn-color
               span Send
-          .loading.hide
-            +img('../images/ajax_loader.gif')
       .col-sm-5.col-xs-12
         .contact-info
           .green-color(data-address-france)
@@ -88,12 +86,13 @@
           if (isPage === 'solutions')
             .social-contact
               .group-link-contact
-                +link('Facebook', 'http://facebook.com/sutrixmedia').icon.icon-fb-dark(target= '_blank')
-                +link('Twitter', 'http://twitter.com/sutrixmedia').icon.icon-twitter-dark(target= '_blank')
-                +link('Linkedin', 'https://www.linkedin.com/company/sutrixmedia').icon.icon-linkedin-dark(target= '_blank')
+                //- +link('Facebook', 'http://facebook.com/sutrixmedia').icon.icon-fb-dark(target= '_blank')
+                //- +link('Twitter', 'http://twitter.com/sutrixmedia').icon.icon-twitter-dark(target= '_blank')
+                +link('Linkedin', linkedInLink).icon.icon-linkedin-dark(target= '_blank')
           else
             .social-contact
               .group-link-contact
-                +link('Facebook', 'http://facebook.com/sutrixmedia').icon.icon-fb(target= '_blank')
-                +link('Twitter', 'http://twitter.com/sutrixmedia').icon.icon-twitter-1(target= '_blank')
-                +link('Linkedin', 'https://www.linkedin.com/company/sutrixmedia').icon.icon-linkedin(target= '_blank')
+                //- +link('Facebook', 'http://facebook.com/sutrixmedia').icon.icon-fb(target= '_blank')
+                //- +link('Twitter', 'http://twitter.com/sutrixmedia').icon.icon-twitter-1(target= '_blank')
+                +link('Linkedin', linkedInLink).icon.icon-linkedin(target= '_blank')
+    +link($i18n.contact.backToTop,"javascript:void(0)").btn-top

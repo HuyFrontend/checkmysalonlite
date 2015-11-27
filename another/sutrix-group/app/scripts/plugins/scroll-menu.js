@@ -57,7 +57,7 @@
         if(elementScrollTo && elementScrollTo.length) {
           setTimeout(function (){
             $('html, body').stop().animate({
-              scrollTop: elementScrollTo.offset().top - headerHeight
+              scrollTop: elementScrollTo.offset().top - headerHeight + 8
             }, 500 );
             // $(window).off('scroll');
           },300);
@@ -65,10 +65,10 @@
       });
 
       if((!opt.scrollWhenHover || opt.scrollWhenHover === 'false') && opt.blockEffect) {
-        var headerHeight = $('.header').height(),
-            subMenuHeight = elm.height(),
-            winHeight = $(window).height();
-        if(winHeight > (subMenuHeight + headerHeight)) {
+        // var headerHeight = $('.header').height(),
+        //     subMenuHeight = elm.height(),
+        //     winHeight = $(window).height();
+        // if(winHeight > (subMenuHeight + headerHeight)) {
           if(!window.isMobileTablet) {
             body
               .off('mouseover.offBodyScroll, mouseenter.offBodyScroll')
@@ -84,13 +84,15 @@
                 $('body').off('wheel mousewheel');
               });
           }
-        }
+        // }
+
       }
       if(window.isMobileTablet) {
         body.off('touchstart touchmove touchend resize').on('touchstart touchmove touchend resize', function () {
           $(window).off('scroll').on('scroll');
         });
       }
+      // active item menu when scroll page
       var elms = elements();
       function getMiddeElement (e, elements) {
         return window.findMiddleElementOfScreenWhenScroll(e, elements);
@@ -108,20 +110,25 @@
         targetItem.parentNode.addClass(opt.classActive);
       }
 
-      window.addEventListenerOrAttachEventMultiEvent(function activeMenuWhenResize(e) {
+      function activeMenuWhenResize(e) {
         var middleBlock = getMiddeElement(e, elms);
         var menu = document.getElementById(opt.blockEffect);
         setActiveItemMenu(middleBlock, menu);
-      }, ['scroll']);
-
+      }
+      window.removeEventListenerOrDetachEventMultiEvent(activeMenuWhenResize, ['scroll']);
+      window.addEventListenerOrAttachEventMultiEvent(activeMenuWhenResize, ['scroll']);
+      // resize middle block when resize screen
       var resizeId;
-      window.addEventListenerOrAttachEventMultiEvent(function activeItemMenu(e) {
+      function activeItemMenu(e) {
         clearTimeout(resizeId);
         var middleBlock = getMiddeElement(e, elms);
         var menu = document.getElementById(opt.blockEffect);
         var setActive = setActiveItemMenu(middleBlock, menu);
-        resizeId = setTimeout(setActive, 200);
-      }, ['resize']);
+        resizeId = setTimeout(setActive, 0);
+      }
+      window.removeEventListenerOrDetachEventMultiEvent(activeItemMenu, ['resize']);
+      window.addEventListenerOrAttachEventMultiEvent(activeItemMenu, ['resize']);
+
     },
     destroy: function() {
       // remove events

@@ -144,10 +144,10 @@ fadeInFaceOut('in', 750, true);
 //fadeOut
 fadeInFaceOut('out', 750, true);
 */
-Element.prototype.fadeInFadeOut = function (type, duration, isIE) {
+Element.prototype.fadeInFadeOut = function (type, duration) {
     var el = this;
-    var isIn = type === 'in',
-    opacity = isIn ? 0 : 1,
+    var isFadeIn = type === 'in',
+    opacity = isFadeIn ? 0 : 1,
     interval = 50,
     gap = interval / duration;
 
@@ -176,20 +176,20 @@ Element.prototype.fadeInFadeOut = function (type, duration, isIE) {
       // other browser
       return false;
     }
-    var isInternetExplorer = isIE ? isIE : detectIE();
-    if(isIn) {
+    var isFadeInternetExplorer = detectIE();
+    if(isFadeIn) {
          el.style.display = 'block';
          el.style.opacity = opacity;
-         if(isInternetExplorer) {
+         if(isFadeInternetExplorer) {
             el.style.filter = 'alpha(opacity=' + opacity + ')';
             el.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + opacity + ')';
         }
     }
 
     function func() {
-        opacity = isIn ? opacity + gap : opacity - gap;
+        opacity = isFadeIn ? opacity + gap : opacity - gap;
         el.style.opacity = opacity;
-        if(isInternetExplorer) {
+        if(isFadeInternetExplorer) {
             el.style.filter = 'alpha(opacity=' + opacity * 100 + ')';
             el.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + opacity * 100 + ')';
         }
@@ -267,9 +267,28 @@ window.scrollToElement = ( function () {
 
 
 window.isMobileTablet = (function (){
-  return navigator.userAgent.match(/Android|BlackBerry|BB|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
+  return navigator.userAgent.match(/Android|BlackBerry|BB|iPhone|iPad|iPod|webOS|Opera Mini|IEMobile/i);
 }());
-
+window.isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry|BB/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
 window.getMaxOfArray = (function () {
   return function (numArray) {
     return Math.max.apply(null, numArray);
@@ -317,3 +336,4 @@ window.findMiddleElementOfScreenWhenScroll = ( function () {
 
     }
 }());
+

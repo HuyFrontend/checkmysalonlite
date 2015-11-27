@@ -20,9 +20,8 @@
     }
     .list-managers {
       .px2em(~"height", 330px);
-      display: table;
       width: 80%;
-      margin: 0 10%;
+      margin: 0 auto;
       .slick-list {
         overflow: inherit;
       }
@@ -128,6 +127,13 @@
     }
   }
 }
+
+@media @screen-md-up {
+  .management-block .manager .list-managers {
+    display: table;
+  }
+}
+
 @media @screen-xs-only {
   .management-block {
     .overview {
@@ -219,7 +225,6 @@
       .list-managers {
         display: block;
         width: 100%;
-        margin: 0;
         height: auto;
         .slick-next, .slick-prev {
           top: 35%;

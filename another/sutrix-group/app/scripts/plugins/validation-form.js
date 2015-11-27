@@ -113,69 +113,49 @@
         };
         var ajaxSubmit = function (form, calback) {
           form = $(form);
-
           var textSubmit = form.find('[type="submit"] span');
-          var text  = textSubmit.html();
+          var url = form.attr('action');
+          var data = {
+            'action': 'ajax_contact_form_process',
+            'data' : form.serialize(),
+            'ic_form_token' : form.find('[name="ic_form_token"]').val()
+          };
 
           form.find('[required="required"]').attr('disabled', true);
           form.find('[type="submit"]').attr('disabled', true);
-          textSubmit.html('sending');
-          $.ajax({
-            method: 'get',
-            dataType: 'json',
-            data: '',
-            url: form.attr('action'),
-            // url: '/me',
-            success: function (res) {
-              // res: {error: 0/1, code: 1/2..8}
-              var isError = (res.error && res.error === 1) ? true : false;
-              var message;
-              if(isError) {
-                var errorCode = (res.code) ? res.code : 0;
-                message = L10n[lang].ajax.contact.code[parseInt(errorCode) - 1];
-              }
-              var popup =  $('.' + opt.classContentPopup);
-              elm.removeClass(opt.classHidden);
-              popup.find('p').html(message);
-              popup.parent().removeClass(opt.classHidden);
+          textSubmit.html(L10n[lang].text.sending);
 
-              form.find('[required="required"]').removeAttr('disabled');
-              form.find('[type="submit"]').removeAttr('disabled');
-              textSubmit.html(text);
-
-              if(calback && typeof calback === 'function') {
-                calback;
-              }
-            },
-            error: function () {
-            }
-          });
           //real ajax
-          /*
-            $.ajax({
-                method: 'post',
-                dataType: 'json',
-                url: form.attr('action'),
-                data: {
-                  'action': 'ajax_contact_form_process',
-                  'data' : form.serialize(),
-                  'ic_form_token' : form.find('[name="ic_form_token"]').val()
-                },
-                success: function (res) {
-                  if(res) {
-                    if(res.error === 0) {
-                    }
-                    else {
-                    }
-                    if(calback) {
-                      calback;
-                    }
-                  }
-                },
-                error: function () {
+          $.ajax({
+              method: 'post',
+              dataType: 'json',
+              url: url,
+              data: data,
+              success: function (res) {
+                // res: {error: 0/1, code: 1/2..8}
+                var isError = (res.error && res.error === 1) ? true : false;
+                var message;
+                if(isError) {
+                  var errorCode = (res.code) ? res.code : 0;
+                  message = L10n[lang].ajax.contact.code[parseInt(errorCode) - 1];
                 }
-            });
-          */
+                var popup =  $('.' + opt.classContentPopup);
+                elm.removeClass(opt.classHidden);
+
+                popup.find('p').html(message);
+                popup.parent().removeClass(opt.classHidden);
+
+                form.find('[required="required"]').removeAttr('disabled');
+                form.find('[type="submit"]').removeAttr('disabled');
+
+                textSubmit.html(L10n[lang].text.send);
+                if(calback && typeof calback === 'function') {
+                  calback;
+                }
+              },
+              error: function () {
+              }
+          });
         };
 
         elm.validate({
@@ -202,55 +182,7 @@
             return false;
           },
           submitHandler: function (form) {
-            //demo
             ajaxSubmit(form);
-            // test();
-            // var loadingIcon = '';
-            // if(opt.classLoadingIcon) {
-            //   loadingIcon = elm.parent().find('.' + opt.classLoadingIcon);
-            //   loadingIcon.removeClass(opt.classHidden);
-            //   // elm.addClass(opt.classHidden);
-            //   elm.fadeOut();
-            // }
-            // setTimeout(function () {
-            //   loadingIcon.addClass(opt.classHidden);
-            //   elm.removeClass(opt.classHidden);
-            // }, 3000);
-            // // check captcha image
-            // var fieldCaptcha = elm.find('[' + opt.captchaElement + ']');
-            // var urlCaptcha = fieldCaptcha.attr(opt.captchaElement);
-            // var imgCaptcha = fieldCaptcha.find('img');
-            // var errorLabel = fieldCaptcha.find(opt.errorNoticeElement);
-
-            // // check captcha
-            /*$.ajax({
-              method: 'get',
-              data: '',
-              url: urlCaptcha,
-              success: function (data) {
-                if(data) {
-                  if(data.status === 'error') {
-                    if(loadingIcon) {
-                      loadingIcon.addClass(opt.classHidden);
-                      elm.removeClass(opt.classHidden);
-                      elm.fadeIn();
-
-                    }
-                    imgCaptcha.attr('src', data.imageSRC);
-                    errorLabel.removeClass(opt.classHidden);
-                    setTimeout(function () {
-                      errorLabel.addClass(opt.classHidden);
-                    },6000);
-                    // alert('Example, this case: wrong captcha');
-                  }
-                  else {
-
-                  }
-                }
-              },
-              error: function () {
-              }
-            });*/
           }
         });
       },
@@ -267,9 +199,116 @@
           L10n[lang].invalid.email
         );
       },
-      removeHolder: function () {
-        var me = $(this);
-        console.log('me', me);
+      validateFormApply: function () {
+        var that = this, elm = that.element, opt = that.options;
+
+        var rules = {
+            'username': {
+              required: true
+            },
+            'lastname': {
+              required: true
+            },
+            'email': {
+              required: true,
+              validEmail: true
+            },
+            'file': {
+              required: true,
+            },
+            'security': {
+              required: true
+            }
+        };
+
+        var messages = {
+            'username': {
+              required: L10n[lang].required.username
+            },
+            'lastname': {
+              required: L10n[lang].required.lastname
+            },
+            'email': {
+              required: L10n[lang].required.email,
+              validEmail: L10n[lang].invalid.email
+            },
+            'file': {
+              required: L10n[lang].required.fileUpload
+            },
+            'security': {
+              required: L10n[lang].required.capcha
+            }
+        };
+        var ajaxSubmit = function (form, calback) {
+          form = $(form);
+          var textSubmit = form.find('[type="submit"] span');
+          form.find('[required="required"]').attr('disabled', true);
+          form.find('[type="submit"]').attr('disabled', true);
+          textSubmit.html(L10n[lang].text.sending);
+
+          $.ajax({
+              method: 'post',
+              dataType: 'json',
+              url: form.attr('action'),
+              data: {
+                'action': 'ajax_contact_form_process',
+                'data' : form.serialize(),
+                'ic_form_token' : form.find('[name="ic_form_token"]').val()
+              },
+              success: function (res) {
+                // res: {error: 0/1, code: 1/2..8}
+                var isError = (res.error && res.error === 1) ? true : false;
+                var message;
+                if(isError) {
+                  var errorCode = (res.code) ? res.code : 0;
+                  message = L10n[lang].ajax.contact.code[parseInt(errorCode) - 1];
+                }
+                var popup =  $('.' + opt.classContentPopup);
+                elm.removeClass(opt.classHidden);
+
+                popup.find('p').html(message);
+                popup.parent().removeClass(opt.classHidden);
+
+                form.find('[required="required"]').removeAttr('disabled');
+                form.find('[type="submit"]').removeAttr('disabled');
+
+                textSubmit.html(L10n[lang].text.send);
+                if(calback && typeof calback === 'function') {
+                  calback;
+                }
+              },
+              error: function () {
+              }
+          });
+        };
+
+        elm.validate({
+          rules: rules,
+          messages: messages,
+          invalidHandler: function(event, validator) {
+            event.preventDefault();
+
+            elm.find(opt.errorNoticeElement).addClass(opt.classHidden);
+            var errorList = validator.errorList,
+                firstErrorElement = errorList[0].element,
+                firstErrorMessage = errorList[0].message,
+                thisGroup = $(firstErrorElement).closest('.' + opt.classFormGroup),
+                errorElement = thisGroup.find(opt.errorNoticeElement);
+
+            errorElement.html(firstErrorMessage);
+            errorElement.removeClass(opt.classHidden);
+
+            setTimeout(function () {
+              errorElement.addClass(opt.classHidden);
+            }, 4000);
+          },
+          errorPlacement: function() {
+            return false;
+          },
+          submitHandler: function (form) {
+            ajaxSubmit(form);
+          }
+        });
       },
       destroy: function() {
         $.removeData(this.element[0], pluginName);

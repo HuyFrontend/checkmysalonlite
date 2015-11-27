@@ -22,6 +22,10 @@ var L10n = {
       contact: {
         code: ['Please enter your name', 'Please enter your email', 'Please enter valid email address', 'Please enter message', 'Please enter security code', 'Your security code you have entered is not valid', 'Cannot send your information, please try again!', 'Send email successful !' ]
       }
+    },
+    text: {
+      sending: 'Sending',
+      send: 'Send'
     }
   },
   // french
@@ -40,6 +44,10 @@ var L10n = {
       contact: {
         code: ['Please enter your name', 'Please enter your email', 'Please enter valid email address', 'Please enter message', 'Please enter security code', 'Your security code you have entered is not valid', 'Cannot send your information, please try again!', 'Send email successful !' ]
       }
+    },
+    text: {
+      sending: 'Sending',
+      send: 'Send'
     }
   },
   // japan
@@ -58,6 +66,10 @@ var L10n = {
       contact: {
         code: ['Please enter your name', 'Please enter your email', 'Please enter valid email address', 'Please enter message', 'Please enter security code', 'Your security code you have entered is not valid', 'Cannot send your information, please try again!', 'Send email successful !' ]
       }
+    },
+    text: {
+      sending: 'Sending',
+      send: 'Send'
     }
   }
 };

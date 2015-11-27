@@ -1,16 +1,15 @@
 .career {
-  color: white;
+  color: @gray-primary;
+  background-color: white;
   .px2em(~"padding", 60px 0);
   .btn {font-family: @font-raleway-bold;}
-  > .title {
-    max-width: 1200px;
-    .px2em(~"font-size", 31px);
-    font-family: @font-raleway-bold;
-    .px2em(~"margin", 0 auto 15px);
-    span {font-family: @font-raleway;}
-  }
   .grid-fluid {
-    position: relative;
+    > .title {
+      .px2em(~"font-size", 31px);
+      font-family: @font-raleway-bold;
+      .px2em(~"margin", 0 auto 15px);
+      span {font-family: @font-raleway;}
+    }
   }
   .positions-apply {
     // opacity: 1;
@@ -37,7 +36,7 @@
     .px2em(~"padding-top", 25px);
     p {
       .px2em(~"margin-bottom", 8px);
-      b {
+      strong {
         .px2em(~"font-size", 15px);
         font-family: @font-raleway-bold;
       }
@@ -76,10 +75,20 @@
       .px2em(~"margin-top", -14px);
       .px2em(~"margin-left", -14px);
     }
+    &.disabled {
+      li {
+        a {pointer-events: none;}
+      }
+    }
   }
   .back-btn {
     .px2em(~"margin-top", 15px);
-    span {.px2em(~"padding", 7.5px 20px);}
+    span {
+      transition: all .2s;
+      background: url('@{img}icon-back.png') no-repeat 20px 50%;
+      background-size: 25px 15px;
+      .px2em(~"padding", 10px 25px 10px 50px, 16px);
+    }
   }
   // .positions-detail {
   //   opacity: 0;
@@ -103,30 +112,23 @@
   .career {
     .px2em(~"padding", 30px 0);
     .custom-padding {.px2em(~"padding",20px 15px 0);}
-    > .title {
-      text-align: center;
-      .px2em(~"font-size", 25px);
-      .px2em(~"padding", 0 30px);
-      span {display: block;}
+    .grid-fluid {
+      > .title {
+        text-align: center;
+        .px2em(~"font-size", 25px);
+        .px2em(~"padding", 0 20px);
+        span {display: block;}
+      }
     }
     .content {
       p {
         .title-1 {display: inline-block;}
       }
     }
-    .positions-detail {
-      text-align: center;
-      > .row {text-align: left;}
-    }
     .back-btn {
-      span {
-        &:before, &:after {box-shadow: none;}
-        background-color: transparent!important;
-        background: url('@{img}icon-back.png') no-repeat 0 50%;
-        background-size: 25px 15px;
-        color: white!important;
-        .px2em(~"padding", 0 0 0 25px);
-      }
+      display: block;
+      .px2em(~"width", 118px);
+      .px2em(~"margin", 15px auto 0);
     }
   }
 }
@@ -136,6 +138,15 @@
       .max-height {
         overflow: auto;
         .px2em(~"max-height", 335px);
+      }
+    }
+  }
+}
+@media @screen-sm-only {
+  .career {
+    .back-btn {
+      span {
+        background-position: 10px 50%;
       }
     }
   }

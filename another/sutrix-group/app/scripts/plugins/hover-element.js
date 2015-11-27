@@ -30,10 +30,6 @@
           items[i].removeEventListenerOrDetachEventMultiEvent ( self.offHoverMap, ['mouseout']);
           items[i].addEventListenerOrAttachEventMultiEvent ( self.offHoverMap, ['mouseout' ]);
         }
-        // else if ( opt.screenWidth <= 768 ) {
-        //   items[i].removeEventListenerOrDetachEventMultiEvent ( self.clickMap, ['touchstart']);
-        //   items[i].addEventListenerOrAttachEventMultiEvent ( self.clickMap, ['touchstart']);
-        // }
       }
 
       if (navigator.userAgent.match(/Android|BlackBerry|BB|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){
@@ -60,7 +56,7 @@
             }
           }
         },['click']);
-        
+
         // elm.removeEventListenerOrDetachEventMultiEvent('activeManagementTab', ['touchstart']);
       }
 

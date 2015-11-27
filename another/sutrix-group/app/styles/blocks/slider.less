@@ -1,6 +1,8 @@
 .slider-block {
   overflow: hidden;
   position: relative;
+  .px2em(~"margin-top", -3);
+  max-width: 1400px;
   .slider-for {
     color: white;
     .item {
@@ -85,6 +87,7 @@
   li {
     display: inline-block;
     margin-right: 10px;
+    height: 22px;
     button {
       .size(13px);
       .hide-text();

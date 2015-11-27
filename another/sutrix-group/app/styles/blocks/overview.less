@@ -35,7 +35,7 @@
             position: absolute;
             left: 50%;
             .px2em(~"margin-left", -37px);
-            .px2em(~"bottom", -29px);
+            .px2em(~"bottom", -28px);
           }
         }
       }
@@ -78,6 +78,7 @@
 .office {
   overflow: hidden;
   .px2em(~"margin-top", -1.5px);
+  width: 100%;
   .list-offices {
     text-align: center;
     .slick-list {
@@ -162,7 +163,7 @@
         background: rgba(239,193,83, .8);
         overflow: hidden;
         z-index: -1;
-        transition: all .3s ease-in-out;
+        transition: all .4s ease-in-out;
         .inner {
           .px2em(~"padding", 0 15px);
           position: absolute;
@@ -193,6 +194,18 @@
   .employees, .clients {
     padding: 0 40px;
   }
+  .employees {
+    .no-touch & .item:hover .img-wraper:before,
+    .item.active .img-wraper:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at center,rgba(114,114,114,.6) 0,rgba(0,0,0,.6) 100%);
+    }
+  }
   .clients, .technologies {
     .item .info-overlay .title {
       text-transform: none;
@@ -222,7 +235,6 @@
        display: block;
     }
   }
-
 }
 @media @screen-md-down {
   .overview {
@@ -238,7 +250,7 @@
   .office .list-offices {
     .item {
       .info-overlay .inner {
-        max-height: 81%;
+        max-height: 90%;
       }
       &:nth-child(5) ~ .item {
         display: none;
@@ -251,6 +263,11 @@
     .slick-list .item:nth-child(5) ~ .item  {
        display: block;
     }
+  }
+}
+@media @screen-md-only {
+  .offices-worldwide {
+    padding: 0 40px;
   }
 }
 @media @screen-sm-only {
@@ -292,7 +309,7 @@
         position: absolute;
         left: 50%;
         .px2em(~"margin-left", -37px);
-        .px2em(~"bottom", -29px);
+        .px2em(~"bottom", -28px);
       }
       .item {
         height: auto;

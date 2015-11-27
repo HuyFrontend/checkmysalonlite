@@ -22,11 +22,14 @@
     background: url('@{img}/icon-arrow.png') center no-repeat @bg-btn;
     border: 0;
     .border-radius(3px);
-    // transition: opacity .2s ease;
-    // &:hover {
-    //   .no-touch & {
-    //   }
-    // }
+    transition: all .2s ease;
+  }
+  .slick-prev,
+  .slick-next {
+    &:focus {
+      background-color: rgba(0, 0, 0, .4);
+      box-shadow: 0 0 5px rgba(221,221,221,.5);
+    }
   }
   .slick-prev {
     top: 50%;
@@ -34,6 +37,7 @@
     left: 5px;
     z-index: 5;
     transform: rotate(180deg);
+
   }
   .slick-next {
     top: 50%;

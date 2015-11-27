@@ -10,12 +10,20 @@
 }
 
 main {
-  .px2em(~"padding-top", 80px);
+  .px2em(~"padding-top", 80);
+  .green-theme &,
+  .orange-theme & {
+    .px2em(~"padding-top", 103);
+  }
 }
 
 
 @media @screen-xs-only {
   main {
-    .px2em(~"padding-top", 71px);
+    .px2em(~"padding-top", 71);
+    .green-theme &,
+    .orange-theme & {
+      .px2em(~"padding-top", 84);
+    }
   }
 }

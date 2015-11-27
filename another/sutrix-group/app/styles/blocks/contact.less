@@ -1,6 +1,7 @@
 .contact-block {
   background-color: @gray-dark-1;
   .px2em(~"padding", 50px 0 62px);
+  position: relative;
   .grid-fluid {
     > .title {
       .px2em(~"font-size", 31px);
@@ -14,7 +15,6 @@
       position: relative;
       width: 100%;
       form {
-        overflow: hidden;
         .px2em(~"padding-bottom", 40px);
       }
       input, textarea {width: 100%;}
@@ -43,7 +43,7 @@
       > a {
         margin-left: 15px;
         &:first-child {margin-left: 0;}
-        .no-touch &:hover {transform: scale(1.05, 1.05);}
+        .no-touch &:hover {transform: scale(1.2, 1.2);}
       }
     }
   }

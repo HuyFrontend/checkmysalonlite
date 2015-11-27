@@ -43,5 +43,6 @@
       "nyc" : "NYC office",
       "japan" : "Japan office",
       "office" : "Offices on world"
-    }
+    },
+    "backToTop": "Top"
   },
