@@ -1,0 +1,49 @@
+  "our_services": {
+    "main_title": "Our services&nbsp;",
+    "consulting": {
+        "item1": {
+          "title": "Services offerings",
+          "featured1": "Pre-sales support",
+          "featured2": "Requirement Analysis",
+          "featured3": "Technical Specifications",
+          "featured4": "Technical Support ",
+          "featured5": "Training"
+        },
+        "item2": {
+          "title": "Capabilities / Platforms",
+          "featured1": "Responsive Web Design",
+          "featured2": "Enterprise CMS (Adobe, Sitecore)",
+          "featured3": "Open Source CMS (Drupal, Wordpress)",
+          "featured4": "E-commerce (Hybris, Magento)",
+          "featured5": "Mobile apps (iOS, Android, Hybrid)"
+        }
+      },
+    "solutions": {
+      "item1": {
+        "title": "Web &amp; Mobile Development",
+        "featured1": "E-Commerce, CMS, Intranet",
+        "featured2": "Responsive Web Design",
+        "featured3": "Adobe AEM, Sitecore",
+        "featured4": "Drupal, Wordpress, Magento",
+        "featured5": "iPhone, iPad, Apple Watch",
+        "featured6": "Android Phone &amp; Tablet",
+        "featured7": "Windows Phone &amp; Tablet"
+      },
+      "item2": {
+        "title": "Testing",
+        "featured1": "Integration Test",
+        "featured2": "Compatibility Test",
+        "featured3": "Performance/Stress Test",
+        "featured4": "Automation Test - Cucumber",
+        "featured5": "Selenium WebDriver",
+        "featured6": "Security Test - Acunetix"
+      },
+      "item3": {
+        "title": "Support",
+        "featured1": "Level 1, Level 2, &amp; Level 3 Support",
+        "featured2": "Call Center",
+        "featured3": "Webmastering",
+        "featured4": "System monitoring"
+      }
+    }
+  },
