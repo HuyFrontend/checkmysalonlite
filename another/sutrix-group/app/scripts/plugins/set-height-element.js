@@ -18,55 +18,54 @@
   SetHeightItem.prototype = {
 
     init : function() {
-      var self = this, elm = self.element, opt = self.options;
-      var items = elm.querySelectorAll('.' + opt.classItemSetHeight);
+      var self = this, /*elm = self.element,*/ opt = self.options;
       this.actions();
-      this.resetHeight(items, this.getMaxHeight(items));
 
-      var resizeId;
-      function resetHeightWhenResize () {
-        self.beforResize(items);
-        self.resetHeight(items, self.getMaxHeight(items));
-      }
-      function resizeHeightItemSlider () {
-        clearTimeout(resizeId);
-        var functionResize = resetHeightWhenResize();
-        resizeId = setTimeout(functionResize, 0);
-      }
-      window.removeEventListenerOrDetachEventMultiEvent(resizeHeightItemSlider,['resize']);
-      window.addEventListenerOrAttachEventMultiEvent(resizeHeightItemSlider,['resize']);
+      opt.indexMaxElement = self.getMaxElement();
 
+      self.resetHeightItem();
+
+      // window.onresize = function changeHeight () {
+      //   setTimeout(function () {
+      //     self.resetHeightItem();
+      //   },10);
+      // };
+
+      window.addEventListenerOrAttachEventMultiEvent(function resizeHeightService() {
+        var orient = ( window.orientation === 90 || window.orientation === -90) ? 'landscape' : 'portrait';
+        if ( orient !== opt.orientation ) {
+          setTimeout(function () {
+            self.resetHeightItem();
+            opt.orientation = orient;
+          },10);
+        }
+       }, ['orientationchange']);
     },
 
     actions : function() {
-      var self = this/*, elm = self.element, opt = self.options*/;
-      self.getMaxHeight = function (items) {
-        var listHeight = [], listItem = [];
-        var maxHeight;
-        for (var i = 0, len = items.length; i < len; i++) {
-          var thisItemHeight = items[i].offsetHeight;
-          listHeight.push(thisItemHeight);
-          listItem.push(items[i]);
+      var self = this, elm = self.element, opt = self.options;
+      var list = elm.querySelectorAll('[' + opt.dataItem + ']');
+
+      self.getMaxElement = function () {
+        var listHeight = [];
+        var index = -1;
+        for (var i = 0, len = list.length; i < len; i++) {
+          listHeight.push(list[i].offsetHeight);
         }
         if (listHeight.length) {
           // maxHeight = Math.max(...listHeight); // new
-          maxHeight = window.getMaxOfArray(listHeight);
-
+          var maxHeight = window.getMaxOfArray(listHeight);
+          index = listHeight.indexOf(maxHeight);
         }
-        return maxHeight;
+        return index;
       };
-
-      self.resetHeight = function (items, value) {
-        for (var i = 0, len = items.length; i < len; i++) {
-          var thisItem = items[i];
-          thisItem.style.height = value + 'px';
-        }
-      };
-
-      self.beforResize = function (items) {
-        for (var i = 0, len = items.length; i < len; i++) {
-          var thisItem = items[i];
-          thisItem.style.height = 'auto';
+      self.resetHeightItem = function () {
+        var index = opt.indexMaxElement;
+        var maxHeight = list[index].clientHeight;
+        for(var i = 0, len = list.length; i < len; i++) {
+          if(i !== index) {
+            list[i].style.height = maxHeight + 'px';
+          }
         }
       };
     }
@@ -78,12 +77,11 @@
   for (var i = 0, len = SetHeightItems.length; i < len; i++ ) {
       var element = SetHeightItems[i],
           options = {
-            elementTarget: '',
-            classActive: 'active',
-            classHide: 'hide',
-            classItemSetHeight: 'item ul',
             classGroup: 'item',
-            classTitle: 'service-title'
+            classTitle: 'service-title',
+            dataItem: 'data-set-size',
+            indexMaxElement: -1,
+            orientation: (window.orientation === 0 || window.orientation === 180) ? 'portrait' : 'landscape'
           };
     new SetHeightItem(element, options);
   }

@@ -30,9 +30,16 @@
       opt.elementSelect = opt.elementSelect ? opt.elementSelect : $('[' + opt.dataLocationSelect + ']');
 
       elm.off('click.selectLocation').on('click.selectLocation', '[' + opt.dataItem + ']', function () {
-        opt.elementPopup.removeClass(opt.classHidden);
-        opt.elementPopup.find('.' + opt.classPopupTitle).html($(this).attr('data-content'));
-        opt.valueLocation = $(this).attr('data-location');
+        // opt.elementPopup.removeClass(opt.classHidden);
+        // opt.elementPopup.find('.' + opt.classPopupTitle).html($(this).attr('data-content'));
+        // opt.valueLocation = $(this).attr('data-location');
+        var thisValue = $(this).attr(opt.dataItem);
+
+        if(thisValue) {
+          opt.elementSelect.val(thisValue);
+          opt.elementSelect.trigger('change');
+          $('#username[type="text"]').focus();
+        }
       });
 
       // click body
@@ -47,6 +54,7 @@
             $(this).addClass(opt.classHidden);
           }
         });
+
       // click button cancel
       opt.elementPopup
         .off('click.cancelPopupSendMail touchstart.cancelPopupSendMail')
@@ -58,21 +66,28 @@
         .off('click.confirmPopupSendMail touchstart.confirmPopupSendMail')
         .on('click.confirmPopupSendMail touchstart.confirmPopupSendMail', '[data-send-ok]', function () {
           $(this).closest('[' + opt.dataPopup + ']').addClass(opt.classHidden);
-          if(opt.valueLocation) {
-            opt.elementSelect.val(opt.valueLocation);
-            opt.elementSelect.trigger('change');
-            $('#username[type="text"]').focus();
-          }
+            if(opt.valueLocation) {
+              opt.elementSelect.val(opt.valueLocation);
+              opt.elementSelect.trigger('change');
+              $('#username[type="text"]').focus();
+              // $('#username[type="text"]').trigger('touchstart');
+            }
         });
+
       // init select option
       var firstOptionText = $(opt.elementSelect).find('option:first').html();
-      var span = $(opt.elementSelect.closest('.custom-select').find('.' + opt.classSelectText));
+      var span = $(opt.elementSelect.closest('.' + opt.classFormGroup).find('.' + opt.classSelectText));
       span.html(firstOptionText);
       opt.elementSelect.off('change.selectLocationOffice').on('change.selectLocationOffice', function () {
         var me = $(this);
         var selectText = me.find('[value="' + me.val() + '"]').html();
-        me.closest('.custom-select').find('.' + opt.classSelectText).html(selectText);
+        me.closest('.' + opt.classFormGroup).find('.' + opt.classSelectText).html(selectText);
       });
+/*
+      $( window ).off('orientationchange.blurFormField').on('orientationchange.blurFormField', function() {
+
+      });*/
+
     },
     destroy: function() {
       // remove events
@@ -96,6 +111,7 @@
     dataPopup: 'data-popup-send-mail',
     dataLocationSelect: 'name="contact_to"',
     classSelectText: 'value-selected',
+    classFormGroup: 'form-group',
     classActive: 'active',
     classHidden: 'hide',
     classPopupTitle: 'name-office',

@@ -41,17 +41,17 @@
     },
     "employee2": {
       "title": "Dévelopement backend",
-      "address": "Notre équipe de développeurs back-end experte en programmation PHP, .Net et Java construira et assurera le suivi de vos applications  mobiles et web.",
+      "address": "Notre équipe de développeurs back-end experte en programmation PHP, .Net et Java construira et assurera le suivi de vos applications mobiles et web.",
       "phone": ""
     },
     "employee3": {
       "title": "Contrôle qualité",
-      "address": "Dès le commencement de votre projet notre équipe de contrôle qualité et présente pour assurer la sécurité et la performance de vos applications. ( à vérifier )",
+      "address": "Dès les débuts de votre projet notre équipe de contrôle qualité et présente pour assurer la sécurité et la performance de vos applications. ( à vérifier )",
       "phone": ""
     },
     "employee4": {
       "title": "Création",
-      "address": "Nos créateurs pourront adapter vos principaux design pour en développer de nouveaux. Ils seront aussi a votre service pour créer un design à partir de vote besoin et/ou de votre brief.",
+      "address": "Notre équipe de designer sera s'adapter a votre charte graphique pour la décliner sur de nouveaux supports. Ils seront aussi à votre service pour créer un design à partir de vos besoins et/ou de votre brief.",
       "phone": ""
     },
     "employee5": {
@@ -61,7 +61,7 @@
     },
     "employee6": {
       "title": "Développement mobile",
-      "address": "Nos développeurs mobile seront responsable du codage dans le langage de votre choix (IOS, Android et Windows phone) pour téléphones et tablettes. Ils ont aussi a leur disposition des outils hybride comme phonegap qui vous permettrons une utilisation multiplateforme optimale.",
+      "address": "Nos développeurs mobile seront responsable du codage dans le langage de votre choix (IOS, Android et Windows phone) pour téléphones et tablettes. Ils ont aussi a leur disposition des outils hybride comme Phonegap qui vous permettrons une utilisation multiplateforme optimale.",
       "phone": ""
     },
     "client1": {

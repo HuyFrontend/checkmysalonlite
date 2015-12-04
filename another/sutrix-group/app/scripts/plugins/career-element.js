@@ -48,9 +48,6 @@
           opt.elementApply.removeClass(opt.classHidden);
           opt.elementDetail.addClass(opt.classHidden);
           opt.elementDetail.removeClass(opt.classNoPosition);
-          opt.elementApply.parent().css({
-            'min-height': 0
-          });
 
           var careerTitlel = $('#career .grid-fluid').offset().top;
           var header = $('.header').height();
@@ -89,16 +86,13 @@
       var changeShowHide = function (hidding, showing) {
 
         showing.fadeOut(200, function () {
-
         });
 
         hidding.fadeIn(200, function () {
           showing.addClass(opt.classHidden);
           hidding.removeClass(opt.classHidden);
           hidding.addClass(opt.classNoPosition);
-          hidding.parent().css({
-            'min-height': hidding.height()
-          });
+
           var careerTitlel = $('#career .grid-fluid').offset().top;
           var header = $('.header').height();
           hidding.find('form')['validate-form']();
@@ -128,8 +122,6 @@
   };
 
   $.fn[pluginName].defaults = {
-    key: 'value',
-    onCallback: null,
     classActive: 'active',
     classHidden: 'hide',
     classDisabled: 'disabled',
@@ -150,7 +142,6 @@
       // to do
     });
 
-    // $('[data-' + pluginName + ']')[pluginName]();
     $('[data-toggle="CareerElement"]')[pluginName]();
   });
 

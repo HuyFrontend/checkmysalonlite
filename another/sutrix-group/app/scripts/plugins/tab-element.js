@@ -66,13 +66,15 @@
             }
             if(targetElement.classList) {
               targetElement.classList.remove(opt.classHide);
+            }
+            else {
+              targetElement.removeClass(opt.classHide);
+            }
+            if(!targetElement.hasClass(opt.classHide)) {
               var dtData = jQuery(targetElement);
               if(dtData.hasClass('slick-initialized')){
                 dtData.slick('setPosition');
               }
-            }
-            else {
-              targetElement.removeClass(opt.classHide);
             }
           }
           // $('[data-slider]')['slider']();

@@ -20,7 +20,7 @@
     }
     .list-managers {
       .px2em(~"height", 330px);
-      width: 80%;
+      width: 100%;
       margin: 0 auto;
       .slick-list {
         overflow: inherit;
@@ -96,6 +96,7 @@
       }
       .desc {
         .px2em(~"margin-bottom", 20px);
+        // .px2em(~"font-size", 13px);
       }
       .img-wraper {
         background-color: white;
@@ -131,6 +132,12 @@
 @media @screen-md-up {
   .management-block .manager .list-managers {
     display: table;
+  }
+}
+
+@media @screen-md-only {
+  .management-block .manager .item .desc {
+    .px2em(~"font-size", 13px)
   }
 }
 
@@ -224,7 +231,7 @@
       }
       .list-managers {
         display: block;
-        width: 100%;
+        // width: 100%;
         height: auto;
         .slick-next, .slick-prev {
           top: 35%;

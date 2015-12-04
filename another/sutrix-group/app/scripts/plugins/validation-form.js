@@ -19,6 +19,7 @@
     function Plugin(element, options) {
       this.element = $(element);
       this.options = $.extend({}, $.fn[pluginName].defaults, options);
+      this.options.elementHeader = $('.' + this.options.classHeader);
       this.init();
     }
 
@@ -43,21 +44,32 @@
         elm.find('#' + opt.idInputFile).on('change', function () {
           if(this.files.length) {
             elm.find('#' + opt.idInputText).val(this.files[0].name);
+            if($(window).width() < 768) {
+              $(this).closest('.' + opt.classFormGroup).find('[' + opt.dataHolder + ']').addClass(opt.classHidden);
+            }
           }
           else {
             elm.find('#' + opt.idInputText).val('');
+            if($(window).width() < 768) {
+              $(this).closest('.' + opt.classFormGroup).find('[' + opt.dataHolder + ']').removeClass(opt.classHidden);
+            }
+
           }
         });
 
-        body.off('focus.formField', '[required="required"], #comment, #message').on('focus.formField', '[required="required"], #comment, #message', function () {
+        body.off('focus.formField', '[required="required"], #comment, #message, [name="contact_to"]').on('focus.formField', '[required="required"], #comment, #message, [name="contact_to"]', function () {
           var me = $(this);
           if(( me.closest('[' + opt.dataRemoveHolder+ ']') && me.closest('[' + opt.dataRemoveHolder+ ']').attr(opt.dataRemoveHolder) === 'all' ) || document.documentElement.clientWidth < 768) {
             me.prev().addClass(opt.classHidden);
             me.closest('.' + opt.classFormGroup).find('[' + opt.dataHolder + ']').addClass(opt.classHidden);
           }
+          if(opt.isMobile) {
+            // scrollWhenFocus(this);
+            opt.elementHeader.addClass(opt.classHideHeader);
+          }
         });
 
-        body.off('blur.formField', '[required="required"], #comment, #message').on('blur.formField', '[required="required"], #comment, #message', function () {
+        elm.off('blur.formField', '[required="required"], #comment, #message, [name="contact_to"]').on('blur.formField', '[required="required"], #comment, #message, [name="contact_to"]', function () {
           var me = $(this);
           if(!me.val()) {
             if(( me.closest('[' + opt.dataRemoveHolder+ ']') && me.closest('[' + opt.dataRemoveHolder+ ']').attr(opt.dataRemoveHolder) === 'all' ) || document.documentElement.clientWidth < 768) {
@@ -65,15 +77,24 @@
               me.closest('.' + opt.classFormGroup).find('[' + opt.dataHolder + ']').removeClass(opt.classHidden);
             }
           }
+          opt.elementHeader.removeClass(opt.classHideHeader);
+          var currentPosition = $(window).scrollTop();
+          $('html, body').stop().animate({
+            scrollTop: currentPosition
+          });
+
         });
 
         body.off('click.holderElement', '[data-holder]').on('click.holderElement', '[data-holder]', function () {
           var me = $(this);
           if(( me.closest('[' + opt.dataRemoveHolder+ ']') && me.closest('[' + opt.dataRemoveHolder+ ']').attr(opt.dataRemoveHolder) === 'all' ) || document.documentElement.clientWidth < 768) {
             me.addClass(opt.classHidden);
-            me.next().focus();
-            me.closest('.' + opt.classFormGroup).find('input').focus();
-            me.closest('.' + opt.classFormGroup).find('textarea').focus();
+            if(me.closest('.' + opt.classFormGroup).find('input') && me.closest('.' + opt.classFormGroup).find('input').length) {
+              me.closest('.' + opt.classFormGroup).find('input').trigger('focus');
+            }
+            else if(me.closest('.' + opt.classFormGroup).find('textarea') && me.closest('.' + opt.classFormGroup).find('textarea').length) {
+              me.closest('.' + opt.classFormGroup).find('textarea').trigger('focus');
+            }
           }
         });
 
@@ -98,17 +119,12 @@
           }
         });
 
-        // check to show hide holder label
-        var holder = elm.find('[data-holder]');
-        if(holder) {
-          var next = holder.next();
-          if(next.val()) {
-            holder.addClass(opt.classHidden);
-          }
-          else {
-            holder.removeClass(opt.classHidden);
-          }
-        }
+        var resizeId = null;
+        window.onresize = function showHideLabel () {
+          clearTimeout(resizeId);
+          resizeId = that.showHideFieldLabel();
+          setTimeout(resizeId, 20);
+        };
       },
       validateForm: function () {
         var that = this, elm = that.element, opt = that.options;
@@ -206,7 +222,7 @@
               errorElement.html(firstErrorMessage);
               errorElement.removeClass(opt.classHidden);
             }
-
+            thisGroup.find('input, textarea').focus();
             setTimeout(function () {
               errorElement.addClass(opt.classHidden);
             }, 4000);
@@ -346,7 +362,7 @@
               errorElement.html(firstErrorMessage);
               errorElement.removeClass(opt.classHidden);
             }
-
+            thisGroup.find('input, textarea').focus();
             setTimeout(function () {
               errorElement.addClass(opt.classHidden);
             }, 4000);
@@ -358,6 +374,28 @@
             ajaxSubmit(form);
           }
         });
+      },
+      showHideFieldLabel: function () {
+        var that = this, elm = that.element, opt = that.options;
+        var width = document.documentElement.clientWidth;
+        if (opt.screenWidth === width) {
+          return;
+        }
+        opt.screenWidth = width;
+        var labels = $(elm).find('[' + opt.dataHolder + ']');
+
+        for(var i = 0, len = labels.length; i < len; i++) {
+          var group = labels[i].closest('.form-group');
+          var field = $(group).find('input, textarea');
+          if(field && field.length && field.val()) {
+            if(width < 768) {
+              labels[i].addClass(opt.classHidden);
+            }
+            else {
+              labels[i].removeClass(opt.classHidden);
+            }
+          }
+        }
       },
       destroy: function() {
         $.removeData(this.element[0], pluginName);
@@ -385,6 +423,8 @@
       classLoadingIcon: 'loading',
       classContentPopup: 'message-layer',
       classReset: 'reset',
+      classHideHeader: 'fix-header',
+      classHeader: 'header',
       errorNoticeElement: 'span.error-message',
       dataHolder: 'data-holder',
       dataPopup: 'data-popup-valid-form',
@@ -405,3 +445,4 @@
     });
 
 }(jQuery, window));
+

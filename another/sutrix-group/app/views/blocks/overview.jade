@@ -18,7 +18,7 @@
         text: $i18n.overview.total.text4
         })(data-item-tab, data-target="item-4")
 .office
-  .list-offices.offices-worldwide(data-slide, data-type="office", data-slidetablet="4", data-item="item-1", data-toggle="HoverElement")
+  .list-offices.offices-worldwide(data-slide, data-type="office", data-item="item-1", data-toggle="HoverElement", data-slidetoshow="4")
     +office-item({
       alt: $i18n.overview.office1.title,
       src: "../images/upload/office-1.jpg",
@@ -51,14 +51,14 @@
       class: "gray-overlay",
       phone: $i18n.overview.office4.phone
       })
-    +office-item({
-      alt: $i18n.overview.office5.title,
-      src: "../images/upload/office-5.jpg",
-      title: $i18n.overview.office5.title,
-      address: $i18n.overview.office5.address,
-      class: "gray-overlay",
-      phone: $i18n.overview.office5.phone
-      })
+    //- +office-item({
+    //-   alt: $i18n.overview.office5.title,
+    //-   src: "../images/upload/office-5.jpg",
+    //-   title: $i18n.overview.office5.title,
+    //-   address: $i18n.overview.office5.address,
+    //-   class: "gray-overlay",
+    //-   phone: $i18n.overview.office5.phone
+    //-   })
   .list-offices.employees.hide(data-slide, data-type="office", data-slidetablet="3", data-item="item-2", data-toggle="HoverElement")
     +office-item({
       alt: $i18n.overview.employee1.title,

@@ -43,53 +43,6 @@
         default:
           this.initBanner();
       }
-      //
-      // $(document).off('click.initSlider').on('click.initSlider', '[data-item-tab]', function(e) {
-      //   var target = $(e.target);
-      //   var thisTab = target.attr('data-item-tab') ? target : target.closest('[data-item-tab]');
-      //   var itemTarget = thisTab.attr('data-target');
-      //   var thisSlide = $('[data-item="'+ itemTarget + '"]');
-      //   var slideLength = thisSlide.attr('data-slidetablet');
-      //   self.initSlider(slideLength);
-      // });
-    },
-    initSlider: function (slidetablet) {
-      var optionSlick = {
-        accessibility: false,
-        autoplay: false,
-        autoplaySpeed: 10000,
-        infinite: true,
-        pauseOnHover: true,
-        slidesToShow: 5,
-        draggable: false,
-        arrows: true,
-        slidesToScroll: 5,
-        responsive: [{
-          breakpoint: 1280,
-          settings: {
-            draggable: true
-          }
-        }, {
-          breakpoint: 767,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        },{
-          breakpoint: 1025,
-          settings: {
-            slidesToShow: slidetablet ? slidetablet : 5,
-            slidesToScroll: slidetablet ? slidetablet : 5
-          }
-        }]
-      };
-
-      var officeSlider = $('[data-slide].list-offices'),
-          isInnitSlick = officeSlider.find('.slick-track').length ? true : false;
-      if(isInnitSlick) {
-        officeSlider.slick('unslick');
-      }
-      officeSlider.not('.hide').slick(optionSlick);
     },
     initOffice: function() {
       var that = this;
@@ -132,7 +85,7 @@
         infinite: true,
         pauseOnHover: true,
         draggable: false,
-        slidesToShow: 4,
+        slidesToShow: 5,
         useCSS: false,
         arrows: true,
         slidesToScroll: 1,
@@ -140,14 +93,14 @@
           breakpoint: 1280,
           settings: {
             draggable: true,
-            slidesToShow: 4,
+            slidesToShow: 5,
             slidesToScroll: 1
           }
         }, {
           breakpoint: 768,
           settings: {
             draggable: true,
-            slidesToShow: 4,
+            slidesToShow: 5,
             slidesToScroll: 1
           }
         }, {
@@ -194,7 +147,6 @@
         autoplay: false,
         infinite: true,
         pauseOnHover: true,
-        arrows: false,
         dots: true,
         mobileFirst: true,
         draggable: true,
@@ -204,14 +156,12 @@
         responsive: [{
           breakpoint: 767,
           settings: {
-            arrows: true,
             dots: false
           }
         }, {
           breakpoint: 1280,
           settings: {
             draggable: false,
-            arrows: true,
             dots: false
           }
         }]
@@ -245,23 +195,20 @@
       // this.element.slick(optionSlick);
       this.element.slick(optionSlick)
         .on ('beforeChange', function (event, slick, currentSlide, nextSlide) {
-          if(!opt.indexTargetItem) {
-            opt.elementTargetItem = $(this).find('[data-slick-index="' + nextSlide + '"]');
-            var contentHide = opt.elementTargetItem.find('.consulting.hide');
-            if (contentHide && contentHide.length) {
-              opt.indexTargetItem = nextSlide;
+          if(opt.isFirst) {
+            var target = $(this).find('[' + opt.dataSlickIndex + '="' + nextSlide +'"]' + '[' + opt.dataSlideOptional + ']');
+            if(target && target.length) {
+              opt.elementTarget = target;
+              opt.indexTargetItem = parseInt(opt.elementTarget.attr(opt.dataSlickIndex));
+              opt.isFirst = false;
             }
           }
           else {
+            if(nextSlide === opt.indexTargetItem) {
+              if ( (currentSlide === (nextSlide - 1)) || (nextSlide ===0 && currentSlide !== 1) ){
 
-            var lastItem = $(this).find('[data-slick-index]:last');
-            var lastIndex = lastItem.attr('data-slick-index');
-            if(currentSlide === (opt.indexTargetItem - 1) || ((opt.indexTargetItem === 1) && (currentSlide === lastIndex )) ) {
-              opt.elementTargetItem = $(this).find('[data-slick-index="' + opt.indexTargetItem + '"]');
-              var content = opt.elementTargetItem.find('.consulting.hide');
-              if (content && content.length) {
-                opt.elementTargetItem.find('.consulting').addClass('hide');
-                content.removeClass('hide');
+                var contents = opt.elementTarget.find('[' + opt.dataSubItem + ']');
+                contents.toggleClass(opt.classHidden);
               }
             }
           }
@@ -289,12 +236,15 @@
   $.fn[pluginName].defaults = {
     autoplayspeed: 5000,
     classSlickTrack: 'slick-track',
+    classHidden: 'hide',
     slidetoshow: 5,
     slideTablet: 'data-slidetablet',
-    indexCurentSlide: '',
-    indexNextSlide: '',
+    dataSlickIndex: 'data-slick-index',
+    dataSlideOptional: 'data-slide-optional',
+    dataSubItem: 'data-sub-item',
     indexTargetItem: '',
-    elementTargetItem : ''
+    elementTarget : '',
+    isFirst: true
   };
 
   $(function() {

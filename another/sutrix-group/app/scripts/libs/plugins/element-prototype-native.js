@@ -322,7 +322,7 @@ window.findMiddleElementOfScreenWhenScroll = ( function () {
         // elements = document.querySelectorAll('[data-block]');
         for(var i = 0, len = elements.length; i < len; i++) {
           var pos = elements[i].getBoundingClientRect().top;
-          if(pos < viewportHeight/2 ) {
+          if(pos < viewportHeight/2.5 ) {
             middleElement = elements[i];
             listElement.push(middleElement);
           }

@@ -16,6 +16,7 @@
 
   var pluginName = 'scroll-menu';
   var body = $('body');
+
   var elements = function () {
     var elements = [];
     var idElements = document.querySelectorAll('#menu-wrapper [data-target]');
@@ -27,66 +28,31 @@
     return elements;
   };
 
+  var offScrollBody = function () {
+    $('body').on('wheel mousewheel', function () {
+      return false;
+    });
+  };
+
+  var onScrollBody = function () {
+    $('body').off('wheel mousewheel');
+  };
+
   function Plugin(element, options) {
     this.element = $(element);
     this.options = $.extend({}, $.fn[pluginName].defaults, this.element.data(), options);
-    this.options.hideAterScroll = this.element.attr('data-hide-on-scroll') ? this.element.attr('data-hide-on-scroll') : this.options.hideAterScroll;
-    this.options.scrollWhenHover = this.element.attr('data-scroll-when-holver') ? this.element.attr('data-scroll-when-holver') : this.options.scrollWhenHover;
     this.init();
   }
 
   Plugin.prototype = {
-    init: function() {
-      var that = this, elm = that.element, opt = that.options;
-
-      elm.off('click.scrollMenu touchstart.scrollMenu').on('click.scrollMenu touchstart.scrollMenu', 'a[data-target]', function (e) {
-        var target = $(e.target),
-          elementScrollTo = target.attr('data-target') ? $('#' + target.data('target')) : $('#' + target.closest('[data-target]').attr('data-target')),
-          headerHeight = $('.header').height();
-
-        elm.find('.'+ opt.classActive).removeClass(opt.classActive);
-        target.closest('li').addClass(opt.classActive);
-
-        if(opt.hideAterScroll) {
-          $('#' + opt.blockEffect).removeClass(opt.classOpen);
-          $('[data-target="'+ opt.blockEffect +'"]').removeClass(opt.classActive);
-        }
-        if(!window.isMobileTablet) {
-          $(window).off('scroll');
-        }
-        if(elementScrollTo && elementScrollTo.length) {
-          setTimeout(function (){
-            $('html, body').stop().animate({
-              scrollTop: elementScrollTo.offset().top - headerHeight + 9
-            }, 500 );
-            // $(window).off('scroll');
-          },300);
-        }
-      });
-
-      if((!opt.scrollWhenHover || opt.scrollWhenHover === 'false') && opt.blockEffect) {
-        // var headerHeight = $('.header').height(),
-        //     subMenuHeight = elm.height(),
-        //     winHeight = $(window).height();
-        // if(winHeight > (subMenuHeight + headerHeight)) {
-          if(!window.isMobileTablet) {
-            body
-              .off('mouseover.offBodyScroll, mouseenter.offBodyScroll')
-              .on('mouseover.offBodyScroll, mouseenter.offBodyScroll', '#' + opt.blockEffect, function () {
-                $('body').on('wheel mousewheel', function () {
-                  return false;
-                });
-              });
-
-            body
-              .off('mouseout.onBodyScroll, mouseleave.onBodyScroll')
-              .on('mouseout.onBodyScroll, mouseleave.onBodyScroll', '#' + opt.blockEffect, function () {
-                $('body').off('wheel mousewheel');
-              });
-          }
-        // }
-
+    init: function () {
+      var that = this,/* elm = that.element,*/ opt = that.options;
+      opt.elementWrapMenu = opt.elementWrapMenu? opt.elementWrapMenu : document.getElementById(opt.idWrapMenu);
+      if(!window.isMobileTablet) {
+        opt.elementWrapMenu.addEventListenerOrAttachEventMultiEvent (offScrollBody, ['mouseenter']);
+        opt.elementWrapMenu.addEventListenerOrAttachEventMultiEvent (onScrollBody, ['mouseleave']);
       }
+
       if(window.isMobileTablet) {
         body.off('touchstart touchmove touchend resize').on('touchstart touchmove touchend resize', function () {
           $(window).off('scroll').on('scroll');
@@ -112,22 +78,23 @@
 
       function activeMenuWhenResize(e) {
         var middleBlock = getMiddeElement(e, elms);
-        var menu = document.getElementById(opt.blockEffect);
+        var menu = document.getElementById(opt.idWrapMenu);
         setActiveItemMenu(middleBlock, menu);
       }
       window.removeEventListenerOrDetachEventMultiEvent(activeMenuWhenResize, ['scroll']);
       window.addEventListenerOrAttachEventMultiEvent(activeMenuWhenResize, ['scroll']);
       // resize middle block when resize screen
       var resizeId;
-      function activeItemMenu(e) {
+      function activeItemMenu (e) {
         clearTimeout(resizeId);
         var middleBlock = getMiddeElement(e, elms);
-        var menu = document.getElementById(opt.blockEffect);
+        var menu = document.getElementById(opt.idWrapMenu);
         var setActive = setActiveItemMenu(middleBlock, menu);
-        resizeId = setTimeout(setActive, 0);
+        resizeId = setTimeout(setActive, 20);
       }
-      window.removeEventListenerOrDetachEventMultiEvent(activeItemMenu, ['resize']);
-      window.addEventListenerOrAttachEventMultiEvent(activeItemMenu, ['resize']);
+
+      window.removeEventListenerOrDetachEventMultiEvent(activeItemMenu, ['orientationchange']);
+      window.addEventListenerOrAttachEventMultiEvent(activeItemMenu, ['orientationchange']);
 
     },
     destroy: function() {
@@ -149,11 +116,9 @@
   };
 
   $.fn[pluginName].defaults = {
-    classOpen: 'collapse',
     classActive: 'active',
-    blockEffect: 'menu-wrapper',
-    hideAterScroll: false,
-    scrollWhenHover: true
+    idWrapMenu: 'menu-wrapper',
+    elementWrapMenu: ''
   };
 
   $(function() {
@@ -161,7 +126,7 @@
       // to do
     });
 
-    $('[data-toggle="ScrollMenu"]')[pluginName]();
+    $(document)[pluginName]();
   });
 
 }(jQuery, window));

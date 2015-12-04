@@ -18,11 +18,10 @@
 
     init : function() {
       var self = this, elm = self.element, opt = self.options, body = document.querySelector('body');
-      opt.targetElm =  opt.targetId ? document.querySelector('#' + this.options.targetId) : opt.targetElm;
-      opt.menuHeight = opt.targetElm ? opt.targetElm.offsetHeight : opt.menuHeight;
+      opt.elementWrapMenu =  opt.idWrapMenu ? document.querySelector('#' + this.options.idWrapMenu) : opt.elementWrapMenu;
+      opt.menuHeight = opt.elementWrapMenu ? opt.elementWrapMenu.offsetHeight : opt.menuHeight;
 
       this.actions();
-      // this.getWidth();
 
       elm.removeEventListenerOrDetachEventMultiEvent(self.toggle, ['click']);
       elm.addEventListenerOrAttachEventMultiEvent(self.toggle, ['click']);
@@ -33,12 +32,12 @@
       var resizeId;
       function setResize () {
         self.setHeight();
-        // self.getWidth();
-
       }
       function handleResize () {
-        clearTimeout(resizeId);
-        resizeId = setTimeout(setResize, 0);
+        if(elm.hasClass(opt.classActive)) {
+          clearTimeout(resizeId);
+          resizeId = setTimeout(setResize, 0);
+        }
       }
       window.removeEventListenerOrDetachEventMultiEvent(handleResize, ['resize']);
       window.addEventListenerOrAttachEventMultiEvent(handleResize, ['resize']);
@@ -64,16 +63,16 @@
           }
         }
 
-        if(opt.targetElm.classList) {
-          if(opt.targetElm.classList.contains(opt.classOpen)) {
-            opt.targetElm.classList.remove(opt.classOpen);
+        if(opt.elementWrapMenu.classList) {
+          if(opt.elementWrapMenu.classList.contains(opt.classOpen)) {
+            opt.elementWrapMenu.classList.remove(opt.classOpen);
             if(window.isMobileTablet) {
               document.body.style.overflow = 'auto';
               body.removeEventListenerOrDetachEventMultiEvent(self.bodyToggle, ['touchstart']);
             }
           }
           else {
-            opt.targetElm.classList.add(opt.classOpen);
+            opt.elementWrapMenu.classList.add(opt.classOpen);
             self.setHeight();
             if(window.isMobileTablet ) {
               document.body.style.overflow = 'hidden';
@@ -82,18 +81,18 @@
           }
         }
         else {
-          if(opt.targetElm.hasClass(opt.classOpen)) {
-            opt.targetElm.removeClass(opt.classOpen);
+          if(opt.elementWrapMenu.hasClass(opt.classOpen)) {
+            opt.elementWrapMenu.removeClass(opt.classOpen);
             if(window.isMobileTablet) {
               document.body.style.overflow = 'auto';
-              opt.targetElm.style.overflow = 'auto';
+              opt.elementWrapMenu.style.overflow = 'auto';
             }
           }
           else {
             self.setHeight();
-            opt.targetElm.addClass(opt.classOpen);
+            opt.elementWrapMenu.addClass(opt.classOpen);
              if(window.isMobileTablet) {
-              opt.targetElm.style.overflow = 'auto';
+              opt.elementWrapMenu.style.overflow = 'auto';
               document.body.style.overflow = 'hidden';
             }
           }
@@ -104,31 +103,36 @@
         var headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
 
         if((opt.menuHeight + headerHeight) > screenHeight) {
-          opt.targetElm.style.maxHeight = ( screenHeight - headerHeight + 8 ) + 'px';
-          opt.targetElm.style.overflow = 'auto';
+          opt.elementWrapMenu.style.maxHeight = ( screenHeight - headerHeight + 8 ) + 'px';
+          opt.elementWrapMenu.style.overflow = 'auto';
         }
         else {
           if(element.style.removeProperty) {
-            opt.targetElm.style.removeProperty('max-height');
-            opt.targetElm.style.removeProperty('overflow');
+            opt.elementWrapMenu.style.removeProperty('max-height');
+            opt.elementWrapMenu.style.removeProperty('overflow');
           }
           else {
-            opt.targetElm.style.maxHeight = opt.menuHeight + 'px';
-            opt.targetElm.style.overflow = 'hidden';
+            opt.elementWrapMenu.style.maxHeight = opt.menuHeight + 'px';
+            opt.elementWrapMenu.style.overflow = 'hidden';
           }
         }
       };
       self.bodyToggle = function (e) {
+        if(!elm.hasClass(opt.classActive)) {
+          return;
+        }
         var thisTarget = e.target || e.srcElement,
         isBtnMenu = ( thisTarget.hasAttribute('data-toggle') && (thisTarget.getAttribute('data-toggle') === 'ToggleMenu' )) ? thisTarget : '',
         isChildBntMenu = ( thisTarget.parentNode.hasAttribute('data-toggle') && (thisTarget.parentNode.getAttribute('data-toggle') === 'ToggleMenu' )) ? thisTarget.parentNode : '';
+        if((isBtnMenu) || (isChildBntMenu)) {
+          return;
+        }
         if(!isBtnMenu && !isChildBntMenu) {
-
           // inner submtenu
-          if(thisTarget.closestId(opt.targetId) || thisTarget.id === opt.targetId ) {
+          if(thisTarget.closestId(opt.idWrapMenu) || thisTarget.id === opt.idWrapMenu ) {
             if(window.isMobileTablet) {
               document.body.style.overflow = 'hidden';
-              opt.targetElm.style.overflow = 'auto';
+              opt.elementWrapMenu.style.overflow = 'auto';
             }
           }
           else {
@@ -145,7 +149,7 @@
                 elm.removeClass(opt.classActive);
               }
             }
-            var navigationHeader = document.querySelector('#' + opt.targetId);
+            var navigationHeader = document.querySelector('#' + opt.idWrapMenu);
             if(navigationHeader && navigationHeader.classList) {
               if(navigationHeader.classList.contains(opt.classOpen)) {
                 navigationHeader.classList.remove(opt.classOpen);
@@ -160,12 +164,11 @@
 
         }
         else {
-          // alert(123);
         }
       };
       self.getWidth = function () {
         var screenWidth = document.documentElement ? document.documentElement.clientWidth : window.innerWidth;
-        var menuWidth = document.querySelector('#' + opt.targetId).offsetWidth;
+        var menuWidth = document.querySelector('#' + opt.idWrapMenu).offsetWidth;
 
         if(menuWidth < screenWidth) {
           opt.isScrollPage = true;
@@ -185,11 +188,11 @@
   for (var i = 0, len = ToggleMenus.length; i < len; i++ ) {
       var element = ToggleMenus[i],
           options = {
-            targetId: 'menu-wrapper',
+            idWrapMenu: 'menu-wrapper',
+            elementWrapMenu: '',
             classOpen: 'collapse',
             classActive: 'active',
-            menuHeight: 0,
-            targetElm: ''
+            menuHeight: 0
           };
     new ToggleMenu(element, options);
   }

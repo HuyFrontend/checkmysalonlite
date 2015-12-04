@@ -19,13 +19,21 @@
       &:focus {box-shadow: 0 0 5px @yellow-primary;}
     }
     select {
-      .px2em(~"padding", 20px 40px 13px 15px);
+      .px2em(~"padding", 17px 40px 14px 15px);
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      opacity: 0;
       z-index: 1;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -o-appearance: none;
+      -ms-appearance: none;
+      background-color: white;
+      &::-ms-expand {
+        display: none;
+      }
     }
     .custom-select {
       .px2em(~"padding", 15px 40px 15px 15px);
@@ -35,14 +43,16 @@
         content: '';
         position: absolute;
         top: 50%;
-        .px2em(~"margin-top", -10px);
         right: 10px;
+        z-index: 2;
         .size(15px);
+        .px2em(~"margin-top", -10px);
         border-top: solid 3px @yellow-primary;
         border-right: solid 3px @yellow-primary;
         transform: rotate(135deg);
       }
       span {
+        display: none;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -87,7 +97,6 @@
     &:first-child {margin-top: 0;}
   }
   .form-select {
-    background-color: white;
     overflow: hidden;
     .px2em(~"height", 52px);
   }
@@ -106,6 +115,27 @@
         font-family: @font-raleway-bold;
         color: white;
         text-transform: uppercase;
+      }
+    }
+    textarea {height: 111px;}
+  }
+}
+.firefox {
+  .resume-form {
+    .form-group {textarea {height: 109px;}}
+  }
+}
+.ie9 {
+  .form-1 {
+    .form-group {
+      select {
+        .px2em(~"padding", 20px 40px 13px 15px);
+        opacity: 0;
+      }
+      .custom-select {
+        span {
+          display: block;
+        }
       }
     }
   }
@@ -171,8 +201,7 @@
         color: black;
         .px2em(~"font-size", 13px);
       }
-      textarea {min-height: 190px;}
-      input {.px2em(~"height", 45px);}
+      input {.px2em(~"height", 40px);}
       .upload {
         input[type="file"] {
           position: absolute;
@@ -181,7 +210,7 @@
         }
         input[type="text"] {.px2em(~"padding-right", 100px);}
         .browse {
-          .px2em(~"padding", 15px);
+          .px2em(~"padding", 12px 12px 13px);
         }
       }
       &.comment {
@@ -203,7 +232,10 @@
       }
       .send-btn {
         width: 142px;
-        span {width: 100%;}
+        span {
+          width: 100%;
+          .px2em(~"padding", 10px 25px 10px 25px, 16px);
+        }
       }
       .clear-btn {.px2em(~"margin-left", 2px);}
       &.capcha {
@@ -227,7 +259,6 @@
         left: 0;
       }
       input {height: 36px;}
-      textarea {.px2em(~"min-height", 117px);}
       &:first-child {padding-top: 0;}
       .upload {
         position: relative;
@@ -251,16 +282,12 @@
         }
       }
       &.capcha {
-        .field-capcha {.px2em(~"width", 113px);}
-        .field-security {.px2em(~"margin-left", 120px);}
+        .field-capcha {.px2em(~"width", 126px);}
+        .field-security {.px2em(~"margin-left", 132px);}
       }
       .send-btn {
         .px2em(~"margin-top", 18px);
-        span {
-          .px2em(~"padding", 7.5px 20px);
-        }
       }
-      .clear-btn {.px2em(~"margin-left", 10px);}
     }
   }
 }
@@ -277,8 +304,7 @@
   .resume-form {
     .form-group {
       input {height: 30px;}
-      textarea {.px2em(~"min-height", 95px);}
-      .send-btn {.px2em(~"width", 71px);}
+      textarea {height: 51px;}
       .error-message {.px2em(~"top", 41px);}
       .input-group {
         .error-message {
@@ -287,8 +313,37 @@
         }
       }
       &.capcha {
-        .field-capcha {.px2em(~"width", 118px);}
-        .field-security {.px2em(~"margin-left", 125px);}
+        .field-capcha {width: 105px;}
+        .field-security {
+          width: 100%;
+          margin-left: 0;
+          top: 40px;
+        }
+      }
+      &.group-btn {margin-top: 48px;}
+      .send-btn {
+        span {
+          .px2em(~"padding", 7.5px 5px);
+        }
+      }
+    }
+  }
+  .firefox {
+    .resume-form {
+      .form-group {
+        textarea {height: 49px;}
+      }
+    }
+  }
+}
+@media @screen-md-up {
+  .resume-form {
+    .form-group {
+      .clear-btn {margin-left: 5px;}
+    }
+    .send-btn {
+      span {
+        .px2em(~"padding", 7.5px 10px);
       }
     }
   }

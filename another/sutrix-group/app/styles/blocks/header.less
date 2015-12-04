@@ -9,7 +9,6 @@
     position: relative;
     // box-shadow: 0 4px 5px 0 rgba(50, 50, 50, .75);
     background: black;
-    max-width: 1400px;
     margin: 0 auto 8px;
     &:before {
       content: "";
@@ -85,6 +84,7 @@
     transition: .3s;
     transition-property: top, opacity, visibility;
     transform: translate3d(0,0,0);
+    -webkit-overflow-scrolling: touch;
     .are-here {
       .px2em(~"font-size", 25);
       font-family: 'RalewayBold';
@@ -244,6 +244,13 @@
   }
 }
 
+.fr .header .block-talk-us {
+  .px2em(~"width", 254);
+  .talk-us .icon {
+    .px2em(~"margin-right", 10, 18);
+  }
+}
+
 @media @screen-sm-only {
   .header {
     .btn-menu {
@@ -337,4 +344,4 @@
   }
 }
 
-
+.fix-header {position: absolute;}

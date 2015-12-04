@@ -2,14 +2,14 @@
   .slider.slider-for(data-slide)
     case isPage
       when 'consulting'
-        .item
-          .consulting(style="background-image: url('../images/upload/slider-2.jpg');")
+        .item(data-slide-optional)
+          .consulting(style="background-image: url('../images/upload/slider-2.jpg');", data-sub-item)
             .inner(data-toggle="ScrollMenu")
               h1.title #{$i18n.slider.slider2.title}
               p.info #{$i18n.slider.slider2.info}
               //- +link($i18n.slider.slider1.scrolling, 'javascript:;', $i18n.slider.slider1.link).btn.icon.icon-arrow-circle.hvr-hang(data-target="services")
             p.location #{$i18n.slider.slider2.location}
-          .consulting.hide(style="background-image: url('../images/upload/slider-1.jpg');")
+          .consulting.hide(style="background-image: url('../images/upload/slider-1.jpg');", data-sub-item)
             .inner(data-toggle="ScrollMenu")
               h1.title #{$i18n.slider.slider2.title}
               p.info #{$i18n.slider.slider3.info}
@@ -40,14 +40,14 @@
             p.info #{$i18n.slider.slider1.info}
             +link($i18n.slider.slider3.link, 'index.html').btn.btn-border
           p.location #{$i18n.slider.slider1.location}
-        .item
-          .consulting(style="background-image: url('../images/upload/slider-2.jpg');")
+        .item(data-slide-optional)
+          .consulting(style="background-image: url('../images/upload/slider-2.jpg');", data-sub-item)
             .inner(data-toggle="ScrollMenu")
               h1.title #{$i18n.slider.slider2.title}
               p.info #{$i18n.slider.slider2.info}
               +link($i18n.slider.slider2.link, 'consulting.html').btn.btn-border
             p.location #{$i18n.slider.slider2.location}
-          .consulting.hide(style="background-image: url('../images/upload/slider-3.jpg');")
+          .consulting.hide(style="background-image: url('../images/upload/slider-3.jpg');", data-sub-item)
             .inner(data-toggle="ScrollMenu")
               h1.title #{$i18n.slider.slider2.title}
               p.info #{$i18n.slider.slider2.info}
@@ -60,14 +60,14 @@
             p.info #{$i18n.slider.slider1.info}
             //- +link($i18n.slider.slider1.scrolling, 'javascript:;', $i18n.slider.slider1.link).btn.icon.icon-arrow-circle.hvr-hang(data-target="services")
           p.location #{$i18n.slider.slider1.location}
-        .item
-          .consulting(style="background-image: url('../images/upload/slider-2.jpg');")
+        .item(data-slide-optional)
+          .consulting(style="background-image: url('../images/upload/slider-2.jpg');", data-sub-item)
             .inner(data-toggle="ScrollMenu")
               h1.title #{$i18n.slider.slider2.title}
               p.info #{$i18n.slider.slider2.info}
               +link($i18n.slider.slider2.link, 'consulting.html').btn.btn-border
             p.location #{$i18n.slider.slider2.location}
-          .consulting.hide(style="background-image: url('../images/upload/slider-1.jpg');")
+          .consulting.hide(style="background-image: url('../images/upload/slider-1.jpg');", data-sub-item)
             .inner(data-toggle="ScrollMenu")
               h1.title #{$i18n.slider.slider2.title}
               p.info #{$i18n.slider.slider2.info}
