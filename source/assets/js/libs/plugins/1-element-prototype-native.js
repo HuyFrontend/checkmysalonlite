@@ -1,14 +1,4 @@
-/* element prototype */
-/*
-          ______________________________________
-          ______________________________________
-          ______________________________________
-          ELEMENT PROTOTYPE - VO XUAN HUY
-          0942404202 - xuanhuy@mail.com
-          ______________________________________
-          ______________________________________
-          ______________________________________
-*/
+ /*element prototype */
 Element.prototype.hasClass = function (className) {
   return new RegExp(' ' + className + ' ').test(' ' + this.className + ' ');
 };
@@ -135,44 +125,71 @@ Element.prototype.closestAttributeName = function (value) {
   return null;
 };
 Element.prototype.getCSSValue = function (cssType) {
-  /*cssType: margin, left...*/
-  var value = null;
-  if ( this.currentStyle ) {
-    value = this.currentStyle[cssType];
-  }
-  else if ( window.getComputedStyle ) {
-    value = window.getComputedStyle( this, null ).getPropertyValue( cssType );
-  }
-  return value;
+    /*cssType: margin, left...*/
+    var value = null;
+    if ( this.currentStyle ) {
+        value = this.currentStyle[cssType];
+    }
+    else if ( window.getComputedStyle ) {
+        value = window.getComputedStyle( this, null ).getPropertyValue( cssType );
+    }
+    return value;
 };
+
 /*
-name: fadeInFaceOut
+name : fadeInFadeOut
 usage:
 //fadeIn
 fadeInFaceOut('in', 750, true);
 //fadeOut
 fadeInFaceOut('out', 750, true);
 */
-Element.prototype.fadeInFaceOut = function (type, duration, isIE) {
+Element.prototype.fadeInFadeOut = function (type, duration) {
     var el = this;
-    var isIn = type === 'in',
-    opacity = isIn ? 0 : 1,
+    var isFadeIn = type === 'in',
+    opacity = isFadeIn ? 0 : 1,
     interval = 50,
     gap = interval / duration;
 
-    if(isIn) {
+    function detectIE() {
+      var ua = window.navigator.userAgent;
+
+      var msie = ua.indexOf('MSIE ');
+      if (msie > 0) {
+          // IE 10 or older => return version number
+          return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+      }
+
+      var trident = ua.indexOf('Trident/');
+      if (trident > 0) {
+          // IE 11 => return version number
+          var rv = ua.indexOf('rv:');
+          return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+      }
+
+      var edge = ua.indexOf('Edge/');
+      if (edge > 0) {
+         // IE 12 (aka Edge) => return version number
+         return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+      }
+
+      // other browser
+      return false;
+    }
+    var isFadeInternetExplorer = detectIE();
+    if(isFadeIn) {
          el.style.display = 'block';
          el.style.opacity = opacity;
-         if(isIE) {
+         if(isFadeInternetExplorer) {
             el.style.filter = 'alpha(opacity=' + opacity + ')';
             el.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + opacity + ')';
         }
     }
 
     function func() {
-        opacity = isIn ? opacity + gap : opacity - gap;
+        opacity = isFadeIn ? opacity + gap : opacity - gap;
         el.style.opacity = opacity;
-        if(isIE) {
+        if(isFadeInternetExplorer) {
             el.style.filter = 'alpha(opacity=' + opacity * 100 + ')';
             el.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + opacity * 100 + ')';
         }
@@ -183,19 +200,31 @@ Element.prototype.fadeInFaceOut = function (type, duration, isIE) {
 
     var fading = window.setInterval(func, interval);
 };
+/*
+name : clickOff
+usage:
+//elemen.clickOff to check insize or out size
+*/
+Element.prototype.clickOff = function (callback, selfDestroy) {
+  var clicked = false;
+  var parent = this;
+  var destroy = selfDestroy || true;
 
+  parent.addEventListenerOrAttachEvent(function (){
+    clicked = true;
+  },'click');
+  document.addEventListenerOrAttachEvent(function (event) {
+    if(!clicked) {
+      callback (parent, event);
+    }
+    if(destroy) {
+
+    }
+    clicked = false;
+  }, 'click');
+};
 
 /* window event */
-/*
-          ______________________________________
-          ______________________________________
-          ______________________________________
-          WINDOW FUNCTION - VO XUAN HUY
-          0942404202 - xuanhuy@mail.com
-          ______________________________________
-          ______________________________________
-          ______________________________________
-*/
 
 /*
 name: scrollToElement
@@ -237,42 +266,43 @@ window.scrollToElement = ( function () {
 }());
 
 
-/*
-name: findMiddleElementOfScreenWhenScroll
-usage:
-window.removeEventListener('scroll resize', A);
-window.addEventListener('scroll resize', function A(){
-  findMiddleElementOfScreenWhenScroll();
-});
-or
-window.addEventLisener('scroll resize', findMiddleElementOfScreenWhenScroll);
-*/
-/*
-var findMiddleElementOfScreenWhenScroll = ( function (docElm) {
-    var viewportHeight = docElm.clientHeight,
-        // here i'm using pre-cached DIV elements, but you can use anything you want.
-        // Cases where elements are generated dynamically are more CPU intense ofc.
-        elements = document.querySelecterAll('div');
-    return function (e) {
-        var middleElement;
-        if( e && e.type == 'resize' ) {
-            viewportHeight = docElm.clientHeight;
-        }
-        elements.each(function(){
-            var pos = this.getBoundingClientRect().top;
-            // if an element is more or less in the middle of the viewport
-            if( pos > viewportHeight/2.5 && pos < viewportHeight/1.5 ){
-                middleElement = this;
-                return false; // stop iteration
-            }
-        });
-
-        console.log(middleElement);
+window.isMobileTablet = (function (){
+  return navigator.userAgent.match(/Android|BlackBerry|BB|iPhone|iPad|iPod|webOS|Opera Mini|IEMobile/i);
+}());
+window.isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry|BB/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
     }
-})(document.documentElement);
-*/
+};
+window.getMaxOfArray = (function () {
+  return function (numArray) {
+    return Math.max.apply(null, numArray);
+  };
+}());
 
-/* findMiddleElementOfScreenWhenScroll
+window.getPositionMaxArray = (function (array) {
+  return function (array) {
+    var i = array.indexOf(Math.max.apply(Math, array));
+    return i;
+  };
+}());
+/* 
+name: findMiddleElementOfScreenWhenScroll
 window.onscroll( function(){
   var elements = document.queryselectorAll('li a');
   findMiddleElementOfScreenWhenScroll(elements);
@@ -280,52 +310,122 @@ window.onscroll( function(){
 */
 window.findMiddleElementOfScreenWhenScroll = ( function () {
     var viewportHeight = document.documentElement.clientHeight/*,
+        elements = document.querySelecterAll('div')*/;
         // here i'm using pre-cached DIV elements, but you can use anything you want.
         // Cases where elements are generated dynamically are more CPU intense ofc.
-        elements = document.querySelecterAll('div')*/;
     return function (e, elements) {
         var middleElement;
+        var listElement = [];
+        // alert(e.type);
         if( e && e.type === 'resize' ) {
             viewportHeight = document.documentElement.clientHeight;
         }
         // elements = document.querySelectorAll('[data-block]');
         for(var i = 0, len = elements.length; i < len; i++) {
           var pos = elements[i].getBoundingClientRect().top;
-          // console.log('pos',pos);
           if(pos < viewportHeight/2 ) {
-            // alert(elements[i].toString());
             middleElement = elements[i];
-            console.log('elements[i]',elements[i]);
+            listElement.push(middleElement);
           }
           // if an element is more or less in the middle of the viewport
-          // if( pos > viewportHeight/2.5 && pos < viewportHeight/1.5 ){
-          //     middleElement = elements[i];
-          //     return false; // stop iteration
-          // }
+          /*if( pos > viewportHeight/2.5 && pos < viewportHeight/1.5 ){
+              middleElement = elements[i];
+              return false; // stop iteration
+          }*/
         }
-        if(middleElement) {
-          // alert(middleElement);
-        }
+        return listElement[listElement.length - 1];
+
     }
 }());
 
-//clicko out size element
+/*
+name: Fade
+usage: fade in, fade out, call back
+example: 
+document.getElementById('in').addEventListener('click', function() {
+    Fade.fadeIn(document.getElementById('test'), {
+        duration: 2000,
+        complete: function() {
+            alert('Complete');
+        }
+    });
+}, false);
+*/
 
-//   function findClosest (element, fn) {
-//     if (!element) return undefined;
-//     return fn(element) ? element : findClosest(element.parentElement, fn);
-//   }
-//   document.addEventListener("click", function(event) {
-//     var target = findClosest(event.target, function(el) {
-//       return el.id == 'div3'
-//     });
-//     if (!target) {
-//       alert("outside");
-//     }
-//   }, false);
-
-// // If instead of using the element id, you want to apply this to all elements having a given class, you can use this function as second argument when calling findClosest:
-
-// function(el) {
-//   return (" " + el.className + " ").replace(/[\n\t\r]/g, " ").indexOf(" someClass ") > -1
-// }
+(function() {
+  var Fade = {
+    easing: {
+      linear: function(progress) {
+        return progress;
+      },
+      quadratic: function(progress) {
+        return Math.pow(progress, 2);
+      },
+      swing: function(progress) {
+        return 0.5 - Math.cos(progress * Math.PI) / 2;
+      },
+      circ: function(progress) {
+        return 1 - Math.sin(Math.acos(progress));
+      },
+      back: function(progress, x) {
+        return Math.pow(progress, 2) * ((x + 1) * progress - x);
+      },
+      bounce: function(progress) {
+        for (var a = 0, b = 1, result; 1; a += b, b /= 2) {
+          if (progress >= (7 - 4 * a) / 11) {
+            return -Math.pow((11 - 6 * a - 11 * progress) / 4, 2) + Math.pow(b, 2);
+          }
+        }
+      },
+      elastic: function(progress, x) {
+          return Math.pow(2, 10 * (progress - 1)) * Math.cos(20 * Math.PI * x / 3 * progress);
+      }
+    },
+    animate: function(options) {
+      var start = new Date;
+      var id = setInterval(function() {
+        var timePassed = new Date - start;
+        var progress = timePassed / options.duration;
+        if (progress > 1) {
+          progress = 1;
+        }
+        options.progress = progress;
+        var delta = options.delta(progress);
+        options.step(delta);
+        if (progress == 1) {
+          clearInterval(id);
+          options.complete();
+        }
+      }, options.delay || 10);
+    },
+    fadeOut: function(element, options) {
+      var to = 1;
+      this.animate({
+        duration: options.duration,
+        delta: function(progress) {
+          progress = this.progress;
+          return Fade.easing.swing(progress);
+        },
+        complete: options.complete,
+        step: function(delta) {
+          element.style.opacity = to - delta;
+        }
+      });
+    },
+    fadeIn: function(element, options) {
+      var to = 0;
+      this.animate({
+        duration: options.duration,
+        delta: function(progress) {
+          progress = this.progress;
+          return Fade.easing.swing(progress);
+        },
+        complete: options.complete,
+        step: function(delta) {
+          element.style.opacity = to + delta;
+        }
+      });
+    }
+  };
+  window.Fade = Fade;
+})()
