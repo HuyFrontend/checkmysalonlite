@@ -1,0 +1,21 @@
+<link href="style.css" media="all" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+<script type="text/javascript" src="scope-in-directive.js"></script>
+<div ng-app="app">
+    
+  <div class="parent" ng-controller="MainCtrl">
+    <div class="line">
+      Name inside parent scope is: <strong>{{name}}</strong>  
+      <input type="button" ng-click="reverseName()" value="Reverse name" />
+    </div> 
+    <div class="line">
+      Color inside parent scope is: <strong style="color:{{color}}">{{color|uppercase}}</strong>  
+      <input type="button" ng-click="randomColor()" value="Randomize color" />
+    </div>
+    <div class="directive" my-directive 
+      name="{{name}}" 
+      color="color" 
+      reverse="reverseName()"
+    ></div>
+  </div>
+</div>
