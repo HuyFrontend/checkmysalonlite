@@ -1,0 +1,703 @@
+{
+ "about": {
+    "introduce": {
+      "title": "About",
+      "text_default": "&nbsp;Sutrix group",
+      "text_bold": "Sutrix Group offers on-site digital consultancy and digital production services globally. Our strength is the end-to-end capability to design &amp; develop global technology platforms and provide ongoing support &amp; maintenance services.",
+      "text1": "As of 2015, Sutrix Group has over 350 staff in 5 countries to service our worldwide clients.",
+      "text2": "Sutrix Group has two subsidiaries:",
+      "text_green" :"Sutrix Consulting:&nbsp;",
+      "text_orange" :"Sutrix Solutions:&nbsp;",
+      "featured_text1" :"Provides on-site consultants for application specifications and designing complex digital technology platforms.",
+      "featured_text2" :"Provides web &amp; mobile development with ongoing support &amp; maintenance.",
+      "link_download" : "Download Sutrix presentation",
+      "alt_map" : "Sutrix map"
+    },
+    "consulting": {
+      "title": "About&nbsp;",
+      "text_bold": "Sutrix Consulting currently has 2 offices in Copenhagen and Paris. We provide technology strategy &amp; consulting for multinationals who requires scalable, maintainable, global digital systems. Our consultant will work with your team to gather requirements and design optimized digital solutions for maximum impact &amp; ROI.",
+      "text_green": "Sutrix Consulting",
+      "text1": "As companies now require global apps optimized to work across devices and regions, our consultant will tailor design your application’s UX with the appropriate front-end and back-end frameworks for your business needs.",
+      "text2": "We can also provide on-site consulting, training and development as needed."
+      },
+      "solutions": {
+        "title": "About&nbsp;",
+        "text_orange": "Sutrix Solutions",
+        "text_bold": "Sutrix Solutions is located in Ho Chi Minh City and Mauritius. We build web &amp; mobile apps for the largest global brands in the Automotive, Tire, Banking, Insurance, Hospitality and Media industry.",
+        "text1": "Sutrix Solutions have long term partnerships with top tier Digital Agencies and System Integrators in the US, France, Denmark, Australia, Japan &amp; Singapore. Our multinational management team with an experienced production team and a proven software development process ensures on-time delivery with highest possible quality and within budget.",
+        "text2": "We develop CMS, E-Commerce, Intranet, Mobile Apps, Social Media. We also test web &amp; mobile apps to ensure it works seamlessly cross-platform on desktops and mobile devices."
+      },
+    "brand": {
+      "consulting": {
+        "title": "Sutrix Consulting",
+        "item1": "Pre-sales Support",
+        "item2": "Requirements Analysis",
+        "item3": "Specifications/Tech Design",
+        "item4": "Technical Support",
+        "item5": "Training",
+        "link_discover": "More Details"
+      },
+      "solution": {
+        "title": "Sutrix Solutions",
+        "item1": "Web Development",
+        "item2": "Mobile Development",
+        "item3": "Testing",
+        "item4": "Maintenance",
+        "item5": "Call Center/Support",
+        "link_discover": "More Details"
+      }
+    }
+  },
+
+  "hello": {
+    "world": "hello word"
+  },
+
+  "career": {
+    "title": "Careers",
+    "sub_title": "We are always looking for talent",
+    "positions_apply": {
+      "title": "Benefits",
+      "desc1": "You’ll have the opportunity to work on major projects with global clients. We enable continuous learning and career development,and promote from within frequently so the opportunity for career advancement is excellent. in return, we expect that you are prepared to perform at an international standard level.",
+      "desc2": "If you would like to join the Sutrix Media team we welcome you and encourage you to post your resume. We are always open to meeting new people and we offer competitive salaries to those that have the skills required to perform the position applied for.",
+      "open_position": {
+        "title": "Open positions",
+        "team1": "PHP Developer - HCMC-Vietnam",
+        "team2": "QC - HCMC-Vietnam",
+        "team3": "Front-end Developer - HCMC-Vietnam",
+        "team4": "Java Developer",
+        "team5": "Project Manager"
+      }
+    }
+  },
+
+  "case_study": {
+    "main_title": "Case study",
+    "consulting": {
+      "case_study1": {
+        "title": "Philippines Bank",
+        "date": "2015",
+        "info": "Website",
+        "list_item": {
+          "item1": {
+            "title": "Description",
+            "content": "Front-end Consultant provided on-site training, technical design, and management for developing the Bank website."
+          },
+          "item2": {
+            "title": "Technologies",
+            "content": "HTML5, NodeJS"
+          },
+          "item3": {
+            "title": "Role",
+            "content": "Sutrix provided on-site Consultant to support the bank website development in Manila."
+          },
+          "item4": {
+            "title": "Link",
+            "content": "<a href='javascript:void(0)' title='Contact us' data-target='contact'>Contact us</a>"
+          }
+        }
+      },
+      "case_study2": {
+        "title": "French Cosmetic Retailer",
+        "date": "2015",
+        "info": "Native Application",
+        "list_item": {
+          "item1": {
+            "title": "Description",
+            "content": "Sutrix provided on-site Consultant to make storyboard specifications. Sutrix also do off-site Android development."
+          },
+          "item2": {
+            "title": "Technologies",
+            "content": "Android Native App"
+          },
+          "item3": {
+            "title": "Role",
+            "content": "Consultant developed Storyboard for an Enterprise retail store app to manage cosmetic inventory for 400 retail stores."
+          },
+          "item4": {
+            "title": "Link",
+            "content": "<a href='javascript:void(0)' title='Contact us' data-target='contact'>Contact us</a>"
+          }
+        }
+      },
+      "case_study3": {
+        "title": "Menu Card DK",
+        "date": "2015",
+        "info": "Native Application",
+        "list_item": {
+          "item1": {
+            "title": "Description",
+            "content": "Sutrix make wireframes, graphic design and storyboard specifications."
+          },
+          "item2": {
+            "title": "Technologies",
+            "content": "IOS Native App"
+          },
+          "item3": {
+            "title": "Role",
+            "content": "Consultant design & developed Storyboard for an online food delivery service in Denmark."
+          },
+          "item4": {
+            "title": "Link",
+            "content": "<a href='http://www.menucard.dk' target='_blank' title='Menu Card DK'>www.menucard.dk</a>"
+          }
+        }
+      }
+    },
+    "solutions": {
+      "case_study1": {
+        "title": "French Cosmetic Retailer",
+        "date": "2015",
+        "info": "Native Application",
+        "list_item": {
+          "item1": {
+            "title": "Description",
+            "content": "Sutrix provided on-site Consultant to make storyboard specifications. Sutrix also do off-site Android development."
+          },
+          "item2": {
+            "title": "Technologies",
+            "content": "Android Native App"
+          },
+          "item3": {
+            "title": "Role",
+            "content": "Sutrix did mobile development as well as backoffice development."
+          },
+          "item4": {
+            "title": "Link",
+            "content": "<a href='javascript:void(0)' title='Contact us' data-target='contact'>Contact us</a>"
+          }
+        }
+      },
+      "case_study2": {
+        "title": "Menu Card DK",
+        "date": "2015",
+        "info": "Native Application",
+        "list_item": {
+          "item1": {
+            "title": "Description",
+            "content": "Sutrix make wireframes, graphic design and storyboard specifications."
+          },
+          "item2": {
+            "title": "Technologies",
+            "content": "IOS Native App"
+          },
+          "item3": {
+            "title": "Role",
+            "content": "Sutrix did mobile development as well as backoffice development."
+          },
+          "item4": {
+            "title": "Link",
+            "content": "<a href='http://www.menucard.dk' target='_blank' title='Menu Card DK'>www.menucard.dk</a>"
+          }
+        }
+      },
+      "case_study3": {
+        "title": "Donut E-commerce",
+        "date": "2014",
+        "info": "Website",
+        "list_item": {
+          "item1": {
+            "title": "Description",
+            "content": "E-commerce site for ordering donuts."
+          },
+          "item2": {
+            "title": "Technologies",
+            "content": "Magento"
+          },
+          "item3": {
+            "title": "Role",
+            "content": "Sutrix did front end, back end development."
+          },
+          "item4": {
+            "title": "Link",
+            "content": "<a href='javascript:void(0)' title='Contact us' data-target='contact'>Contact us</a>"
+          }
+        }
+      },
+      "case_study4": {
+        "title": "Airline website",
+        "date": "2014 - 2015",
+        "info": "Airline Website",
+        "list_item": {
+          "item1": {
+            "title": "Description",
+            "content": "Airlines portal."
+          },
+          "item2": {
+            "title": "Technologies",
+            "content": "HTML 5, Teamsite"
+          },
+          "item3": {
+            "title": "Role",
+            "content": "Sutrix develop the front-end of the site and ensure it works on all browsers and devices."
+          },
+          "item4": {
+            "title": "Link",
+            "content": "<a href='javascript:void(0)' title='Contact us' data-target='contact'>Contact us</a>"
+          }
+        }
+      },
+      "case_study5": {
+        "title": "E-commerce Japan",
+        "date": "2015",
+        "info": "E-commerce Website",
+        "list_item": {
+          "item1": {
+            "title": "Description",
+            "content": "Maintenance of E-commerce website."
+          },
+          "item2": {
+            "title": "Technologies",
+            "content": "Adobe AEM"
+          },
+          "item3": {
+            "title": "Role",
+            "content": "Sutrix did front end, back end development."
+          },
+          "item4": {
+            "title": "Link",
+            "content": "<a href='javascript:void(0)' title='Contact us' data-target='contact'>Contact us</a>"
+          }
+        }
+      },
+      "case_study6": {
+        "title": "Car companion App",
+        "date": "2011 - 2015",
+        "info": "Native Application",
+        "list_item": {
+          "item1": {
+            "title": "Description",
+            "content": "Car app help users manage their car maintenance with calendar reminders and maintenance guide. App also help find the car in case user forgot where it was parked."
+          },
+          "item2": {
+            "title": "Technologies",
+            "content": "Native iOS & Android"
+          },
+          "item3": {
+            "title": "Role",
+            "content": "Sutrix did all the native software development."
+          },
+          "item4": {
+            "title": "Link",
+            "content": "<a href='javascript:void(0)' title='Contact us' data-target='contact'>Contact us</a>"
+          }
+        }
+      },
+      "case_study7": {
+        "title": "GlaxoSmithKline",
+        "date": "2014 - 2015",
+        "info": "Application",
+        "list_item": {
+          "item1": {
+            "title": "Description",
+            "content": "We Quit App helps user to quit smoking by motivating and rewarding smokers when they don’t smoke."
+          },
+          "item2": {
+            "title": "Technologies",
+            "content": "Phonegap for iOS & Android"
+          },
+          "item3": {
+            "title": "Role",
+            "content": "Sutrix did front end, back end development."
+          },
+          "item4": {
+            "title": "Award",
+            "content": "<a href='http://www.mediapost.com/appyawards/winners/' target='_blank' title='Best Marketing App, Appy Award 2015'>Best Marketing App, Appy Award 2015</a>"
+          },
+          "item5": {
+            "title": "Link",
+            "content": "<a href='http://wequitnow.com' target='_blank' title='GlaxoSmithKline'>wequitnow.com</a>"
+          }
+        }
+      }
+    },
+    "link_view": "View all case studies"
+  },
+
+  "contact": {
+    "title": "Contact",
+    "brand1": {
+      "name": "Sutrix consulting",
+      "country": "France",
+      "address1": "9 Bis rue du Commandant Pilot",
+      "address2": "92 200 Neuilly sur Seine, France",
+      "phone": "+33 6 42 86 88 18"
+    },
+    "brand2": {
+      "name": "Sutrix consulting",
+      "country": "Scandinavia",
+      "address1": "Kronprinsessegade 54 1306",
+      "address2": "Copenhagen K Denmark",
+      "phone": "+45 22 22 18 38"
+    },
+    "brand3": {
+      "name": "Sutrix solutions",
+      "country": "Vietnam",
+      "address1": "15th Floor, Blue Sky Tower, 1 Bach Dang Street, ",
+      "address2": "Ward 2, Tan Binh District, Ho Chi Minh City, Vietnam",
+      "phone": "+84 8 3997 5901"
+    },
+    "brand4": {
+      "name": "Sutrix group",
+      "country": "Hongkong",
+      "address1": "7/F South Seas Centre, Tower 2",
+      "address2": "75 Mody Road, Tsim Sha Tsui, Hong Kong"
+    },
+    "locations" : {
+      "consulting": "Sutrix Consulting has offices in France and Demark for on-site digital consulting and management services.",
+      "solutions": "Sutrix Solutions has office in Vietnam for digital production and support services.",
+      "paris" : "Paris office",
+      "scandinavia" : "Scandinavia office",
+      "vietnam" : "Ho Chi Minh office",
+      "mauritius" : "Mauritius office",
+      "nyc" : "Hong Kong office",
+      "japan" : "Tokyo office",
+      "japan_content": "Coming soon",
+      "office" : "Offices on world"
+    },
+    "select_notice": "You are writing to&nbsp;",
+    "select_group1": "SUTRIX GROUP - HONG KONG",
+    "select_group2": "SUTRIX CONSULTING - FRANCE",
+    "select_group3": "SUTRIX CONSULTING - SCANDINAVIA",
+    "select_group4": "SUTRIX SOLUTIONS - VIETNAM",
+    "backToTop": "Top"
+  },
+
+  "footer": "&copy; Copyright 2015. Sutrix Group. All rights reserved.",
+
+  "header": {
+    "alt_logo_group": "Sutrix Group",
+    "alt_logo_consulting": "Sutrix Consulting",
+    "alt_logo_solutions": "Sutrix Solutions",
+    "lang_fr": "FR",
+    "lang_en": "EN",
+    "lang_jp": "日本語",
+    "menu": "MENU",
+    "menu1": "About",
+    "menu2": "Services",
+    "menu3": "Management",
+    "menu4": "Contact",
+    "menu5": "Sutrix Consulting",
+    "menu6": "Sutrix Solutions",
+    "menu7": "Sutrix Group",
+    "menu8": "Case Study",
+    "menu9": "Career",
+    "menu10": "Technologies",
+    "menu11": "Testing",
+    "menu12": "Support",
+    "menu13": "Partners",
+    "talkus": "Talk to us"
+  },
+
+  "management": {
+    "title": "Management",
+    "leader1": {
+      "alt": "david pugliesi",
+      "name": "david pugliesi",
+      "position": "President",
+      "desc": "David has over 20 years of experience in IT and brings his French business and management know-how to ensure the group has the right strategies and the resources are in place to execute and deliver."
+    },
+    "leader2": {
+      "alt": "Quan Tran",
+      "name": "Quan Tran",
+      "position": "Vice President",
+      "desc": "Quan has over 20 years of experience in IT having worked for IBM and Canon in the US. He oversees the group partnerships, systems and processes so that the team has the tools to make great deliveries."
+    },
+    "leader3": {
+      "alt": "Christophe Lam",
+      "name": "Christophe Lam",
+      "position": "business development director",
+      "desc": "Christophe has over 10 years experience in International Business Development, Account Management, Consultative sales in France and Vietnam. He oversees the group new business development and also grow the existing business accounts."
+    },
+    "leader4": {
+      "alt": "Khang Phan",
+      "name": "Khang Phan",
+      "position": "Operations Director",
+      "desc": "Khang oversees all productions inside Sutrix and ensures the company’s operations, processes and policies are executing effectively in support of our vision and mission. Khang has been with the group since 2004 working up through the ranks to his current role as Operations Director."
+    }
+  },
+
+  "our_services": {
+    "main_title": "Our services&nbsp;",
+    "consulting": {
+        "item1": {
+          "title": "Services offerings",
+          "featured1": "Pre-sales support",
+          "featured2": "Requirement Analysis",
+          "featured3": "Technical Specifications",
+          "featured4": "Technical Support ",
+          "featured5": "Training"
+        },
+        "item2": {
+          "title": "Capabilities / Platforms",
+          "featured1": "Responsive Web Design",
+          "featured2": "Enterprise CMS (Adobe, Sitecore)",
+          "featured3": "Open Source CMS (Drupal, Wordpress)",
+          "featured4": "E-commerce (Hybris, Magento)",
+          "featured5": "Mobile apps (iOS, Android, Hybrid)"
+        }
+      },
+    "solutions": {
+      "item1": {
+        "title": "Web &amp; Mobile Development",
+        "featured1": "E-Commerce, CMS, Intranet",
+        "featured2": "Responsive Web Design",
+        "featured3": "Adobe AEM, Sitecore",
+        "featured4": "Drupal, Wordpress, Magento",
+        "featured5": "iPhone, iPad, Apple Watch",
+        "featured6": "Android Phone &amp; Tablet",
+        "featured7": "Windows Phone &amp; Tablet"
+      },
+      "item2": {
+        "title": "Testing",
+        "featured1": "Integration Test",
+        "featured2": "Compatibility Test",
+        "featured3": "Performance/Stress Test",
+        "featured4": "Automation Test - Cucumber",
+        "featured5": "Selenium WebDriver",
+        "featured6": "Security Test - Acunetix"
+      },
+      "item3": {
+        "title": "Support",
+        "featured1": "Level 1, Level 2, &amp; Level 3 Support",
+        "featured2": "Call Center",
+        "featured3": "Webmastering",
+        "featured4": "System monitoring"
+      }
+    }
+  },
+
+  "overview": {
+    "total": {
+      "number1": "5",
+      "text1": "offices worldwide",
+      "number2": "300+",
+      "text2": "employees",
+      "number3": "1000+",
+      "text3": "happy clients",
+      "number4": "100+",
+      "text4": "technologies"
+    },
+    "office1": {
+      "title": "Sutrix Consulting France",
+      "address": "9 Bis rue du Commandant Pilot 92 200 Neuilly sur SeinE France",
+      "phone": "+33 6 42 86 88 18"
+    },
+    "office2": {
+      "title": "Sutrix Consulting Scandinavia",
+      "address": "Kronprinsessegade 54 1306 Copenhagen K Denmark",
+      "phone": "+45 22 22 18 38"
+    },
+    "office3": {
+      "title": "Sutrix Solutions Vietnam",
+      "address": "15th Floor, Blue Sky Tower, 1 Bach Dang Street, Ward 2, Tan Binh District, Ho Chi Minh City, Vietnam",
+      "phone": "+84 8 3997 5901"
+    },
+    "office4": {
+      "title": "Sutrix Solutions Mauritius",
+      "address": "14 Avenue des Lataniers, Quatre Bornes, Mauritius",
+      "phone": ""
+    },
+    "office5": {
+      "title": "Sutrix Group LTD",
+      "address": "7/F South Seas Centre, Tower 2<br>75 Mody Road, Tsim Sha Tsui, Hong Kong",
+      "phone": ""
+    },
+    "employee1": {
+      "title": "Project management",
+      "address": "With solid methodology knowledge, our Project Managers will work closely with you to ensure your project is delivered according to spec, on time & within budget.",
+      "phone": ""
+    },
+    "employee2": {
+      "title": "Back-end development",
+      "address": "Our back-end team who is expert programming skills in PHP, .Net and Java builds and maintenance the core functional logic and operations of your web & mobile apps.",
+      "phone": ""
+    },
+    "employee3": {
+      "title": "Quality control",
+      "address": "Our QC team gets involved early in the project to prepare then handle security, performance; stress tests as well as automation testing.",
+      "phone": ""
+    },
+    "employee4": {
+      "title": "Creative",
+      "address": "Our creative team can adapt your master design to make additional designs.We can also create your master design based on your design brief.",
+      "phone": ""
+    },
+    "employee5": {
+      "title": "Front-end development",
+      "address": "Adept at HTML, JS, CSS and familiar with frameworks like Bootstrap, Backbone, AngularJS, and EmberJS, our Front end developers are responsible for a website’s user-facing code and the architecture of its immersive user experiences...",
+      "phone": ""
+    },
+    "employee6": {
+      "title": "Mobile",
+      "address": "Our Mobile developers write native code for iOS, Android &amp; Window Phone. We can develop for both phone and tablets and also develop hybrid mobile app using PhoneGap that will work on multiple mobile platforms.",
+      "phone": ""
+    },
+    "client1": {
+      "title": "TBWA",
+      "address": "",
+      "phone": ""
+    },
+    "client2": {
+      "title": "DigitasLBi",
+      "address": "",
+      "phone": ""
+    },
+    "client3": {
+      "title": "razorfish",
+      "address": "",
+      "phone": ""
+    },
+    "client4": {
+      "title": "Digital Art Network",
+      "address": "",
+      "phone": ""
+    },
+    "client5": {
+      "title": "DENTSU iX",
+      "address": "",
+      "phone": ""
+    },
+    "client6": {
+      "title": "VISEO",
+      "address": "",
+      "phone": ""
+    },
+    "client7": {
+      "title": "Awak’iT",
+      "address": "",
+      "phone": ""
+    },
+    "client8": {
+      "title": "PEARLMINE",
+      "address": "",
+      "phone": ""
+    },
+    "client9": {
+      "title": "oyez",
+      "address": "",
+      "phone": ""
+    },
+    "client10": {
+      "title": "keyneosoft",
+      "address": "",
+      "phone": ""
+    },
+    "technology1": {
+      "title": "Adobe",
+      "address": "",
+      "phone": ""
+    },
+    "technology2": {
+      "title": "Sitecore",
+      "address": "",
+      "phone": ""
+    },
+    "technology3": {
+      "title": "hybris",
+      "address": "",
+      "phone": ""
+    },
+    "technology4": {
+      "title": "MS partner",
+      "address": "",
+      "phone": ""
+    },
+    "technology5": {
+      "title": "Oracle",
+      "address": "",
+      "phone": ""
+    }
+  },
+
+  "services": {
+    "main": {
+      "title": "Services",
+      "content": "We provide integrated, end-to-end digital services so all your digital technology needs are designed, developed and managed by one technology partner only."
+    },
+    "consulting": {
+      "item_main": {
+        "title": "SUTRIX CONSULTING",
+        "desc": "Boost Sales",
+        "content": "E-Commerce, CMS, Intranet<br>Responsive Web Design<br>Adobe AEM, Sitecore<br>Drupal, Wordpress, Magento"
+      },
+      "item1": {
+        "title": "Pre-sales Support",
+        "content": "We help analyze and estimate effort. We can also help make prototypes."
+      },
+      "item2": {
+        "title": "Requirement Analysis",
+        "content": " We document requirements and design technical solutions."
+      },
+      "item3": {
+        "title": "Technical Specifications",
+        "content": "We help define and design complex applications."
+      },
+      "item4": {
+        "title": "Technical Support",
+        "content": "We advise on technical issues."
+      },
+      "item5": {
+        "title": "Training",
+        "content": "We train your team on new technology."
+      }
+    },
+    "solutions": {
+      "item_main": {
+        "title": "SUTRIX SOLUTIONS",
+        "desc": "Increase revenue",
+        "content": "E-Commerce, CMS, Intranet<br>Responsive Web Design<br>Adobe AEM, Sitecore<br>Drupal, Wordpress, Magento"
+      },
+      "item1": {
+        "title": "Web Development",
+        "content": "We make responsive front-end and back-end web application."
+      },
+      "item2": {
+        "title": "Mobile Development",
+        "content": "We make native and hybrid mobile apps."
+      },
+      "item3": {
+        "title": "Testing",
+        "content": "We test the apps on desktop and mobile devices."
+      },
+      "item4": {
+        "title": "Maintenance",
+        "content": "We enhance and upgrade your application."
+      },
+      "item5": {
+        "title": "Call Center/Support",
+        "content": "We provide customer and tech support."
+      }
+    },
+    "deployment": "DEPLOYMENT",
+    "maintenance": "24/7 MAINTENANCE"
+  },
+
+  "slider": {
+    "slider1": {
+      "title": "Sutrix group",
+      "info": "Provides digital consultancy and digital production services worldwide.",
+      "link": "Sutrix group",
+      "location": "Hong Kong",
+      "scrolling": "Srolling Down"
+    },
+    "slider2": {
+      "title": "Sutrix consulting",
+      "info": "Provides on-site consultants for application specifications and designing complex digital technology platforms.",
+      "link": "discover our services",
+      "location": "Paris, France"
+    },
+    "slider3": {
+      "title": "Sutrix solutions",
+      "info": "Provides web & mobile development with ongoing support & maintenance.",
+      "link": "discover our services",
+      "location": "Ho Chi Minh City, Vietnam"
+    }
+  },
+
+  "sutrix_group": "Sutrix Group, provides digital consultancy and digital production services worldwide",
+  "sutrix_consulting": "Sutrix Consulting, provides on-site consultants for application specifications and designing complex digital technology platforms",
+  "sutrix_solutions": "Sutrix Solutions, provides web & mobile development with ongoing support & maintenance",
+
+  "lang": "en"
+}
