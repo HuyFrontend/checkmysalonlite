@@ -1,9 +1,9 @@
 
 
 (function(factory){
-  factory();
+  var init = factory();
   if(Window) {
-    Window.RequestAjax = factory();
+    Window.RequestAjax = init;
   }
 })(function(){
 

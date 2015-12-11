@@ -5,9 +5,9 @@ example
 **/
 
 (function(factory){
-  factory();
+  var init = factory();
   if(Window) {
-    Window.HoverElement = factory();
+    Window.HoverElement = init;
   }
 })(function(){
 

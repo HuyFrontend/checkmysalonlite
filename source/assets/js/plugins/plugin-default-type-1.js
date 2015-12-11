@@ -5,9 +5,9 @@ example
 **/
 
 (function(factory){
-  factory();
+  var init = factory();
   if(Window) {
-    Window.DEFAUTMODULE = factory();
+    Window.DEFAUTMODULE = init;
   }
 })(function(){
 

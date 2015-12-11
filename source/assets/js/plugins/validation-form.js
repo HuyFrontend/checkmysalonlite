@@ -1,8 +1,8 @@
 
 (function(factory){
-  factory();
+  var init = factory();
   if(Window) {
-    Window.VALIDATIONFORM = factory();
+    Window.VALIDATIONFORM = init;
   }
 })(function(){
 
@@ -11,7 +11,7 @@
   var VALIDATIONFORM = function( element, options ) {
     options = options || {};
     this.element = typeof element === 'object' ? element : document.querySelector(element);
-    this.options = {};
+    this.options = options;
     this.options.value = !options.value ? null : options.value;
     this.options.fieldGroup = !options.fieldGroup ? '' : options.fieldGroup;
     this.options.fieldParent = !options.fieldParent ? '' : options.fieldParent;
@@ -29,9 +29,9 @@
       // ie9+
       // elm.addEventListenerOrAttachEvent(self.toggleRate, 'click', true);
       elm.noValidate = true;
-      elm.addEventListenerOrAttachEvent(self.validateForm, 'submit');
+      elm.addEventListener('submit', self.validateForm);
 
-      elm.addEventListenerOrAttachEventMultiEvent(function (event) {
+      elm.addEventListener('focusin keyup',function (event) {
         event = event || window.event;
         var thisElement = event.target || event.srcElement;
         if(!self.isValidField(thisElement)) {
@@ -40,7 +40,10 @@
         else {
           self.removeError(thisElement);
         }
-      }, ['focusin', 'keyup']);
+      });
+      window.onresize = function notiResize() {
+        alert(1);
+      };
     },
 
     actions : function() {

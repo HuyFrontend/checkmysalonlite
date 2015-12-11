@@ -1,9 +1,9 @@
 
 
 (function(factory){
-  factory();
+  var init = factory();
   if(Window) {
-    Window.DEFAULT_MODULE = factory();
+    Window.DEFAULT_MODULE = init;
   }
 })(function(){
 

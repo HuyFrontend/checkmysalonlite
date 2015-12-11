@@ -1,11 +1,10 @@
 
 (function(factory){
-  factory();
+  var init = factory();
   if(Window) {
-    Window.ManageModal = factory();
+    Window.ManageModal = init;
   }
 })(function(){
-
   // ManageModal DEFINITION
   // ===================
   var ManageModal = function( element, options ) {
