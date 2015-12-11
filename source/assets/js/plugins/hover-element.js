@@ -29,12 +29,10 @@ example
     init : function() {
       var self = this, elm = self.element/*, opt = self.options*/;
       this.actions();
-
-      elm.removeEventListenerOrDetachEventMultiEvent (self.hover, ['click', 'mouseenter']);
-      elm.addEventListenerOrAttachEventMultiEvent (self.hover, ['click', 'mouseenter']);
-
-      elm.removeEventListenerOrDetachEventMultiEvent (self.offHover, ['mouseout']);
-      elm.addEventListenerOrAttachEventMultiEvent (self.offHover, ['mouseout']);
+      elm.removeEventListener('click mouseenter', self.hover);
+      elm.addEventListener('click mouseenter', self.hover);
+      elm.removeEventListener('mouseleave', self.offHover);
+      elm.addEventListener('mouseleave', self.offHover);
     },
 
     actions : function() {

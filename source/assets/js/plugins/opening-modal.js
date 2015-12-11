@@ -30,12 +30,7 @@
     init : function() {
       var self = this;
       this.actions();
-
-      // self.element.setAttribute('data-closed', true); // Fix onblur on Chrome
-      // self.element.addEventListener('click', self.toggle, true);
       self.element.addEventListener('click', self.toggle, true);
-
-
     },
 
     actions : function() {
