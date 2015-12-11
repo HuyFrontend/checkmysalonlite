@@ -5,7 +5,10 @@ example
 **/
 
 (function(factory){
-  window.HoverElement = factory();
+  factory();
+  if(Window) {
+    Window.HoverElement = factory();
+  }
 })(function(){
 
   // HoverElement DEFINITION
@@ -29,7 +32,7 @@ example
 
       elm.removeEventListenerOrDetachEventMultiEvent (self.hover, ['click', 'mouseenter']);
       elm.addEventListenerOrAttachEventMultiEvent (self.hover, ['click', 'mouseenter']);
-      
+
       elm.removeEventListenerOrDetachEventMultiEvent (self.offHover, ['mouseout']);
       elm.addEventListenerOrAttachEventMultiEvent (self.offHover, ['mouseout']);
     },

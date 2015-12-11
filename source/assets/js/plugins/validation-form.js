@@ -1,6 +1,9 @@
 
 (function(factory){
-  window.VALIDATIONFORM = factory();
+  factory();
+  if(Window) {
+    Window.VALIDATIONFORM = factory();
+  }
 })(function(){
 
   // VALIDATIONFORM DEFINITION

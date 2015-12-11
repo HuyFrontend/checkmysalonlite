@@ -5,7 +5,10 @@ example
 **/
 
 (function(factory){
-  window.DEFAUTMODULE = factory();
+  factory();
+  if(Window) {
+    window.DEFAUTMODULE = factory();
+  }
 })(function(){
 
   // DEFAUTMODULE DEFINITION
@@ -29,7 +32,7 @@ example
 
       elm.removeEventListenerOrDetachEventMultiEvent (self.hover, ['click', 'mouseenter']);
       elm.addEventListenerOrAttachEventMultiEvent (self.hover, ['click', 'mouseenter']);
-      
+
       elm.removeEventListenerOrDetachEventMultiEvent (self.offHover, ['mouseout']);
       elm.addEventListenerOrAttachEventMultiEvent (self.offHover, ['mouseout']);
     },
@@ -37,10 +40,10 @@ example
     actions : function() {
       var self = this, /*elm = self.element, */opt = self.options;
 
-      self.hover = function (e) {        
+      self.hover = function (e) {
         console.log(e,opt);
       };
-      
+
       self.otherMethod = function () {
       };
     }
