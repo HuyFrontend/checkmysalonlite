@@ -78,6 +78,9 @@ Element.prototype.getCSSValue = function (cssType) {
     return value;
 };
 
+/*
+name: addEventListener/removeEventListener - ie 7/8
+*/
 (function() {
   if (!Event.prototype.preventDefault) {
     Event.prototype.preventDefault=function() {
@@ -284,26 +287,7 @@ Element.prototype.getCSSValue = function (cssType) {
 // window.isMobileTablet = (function (){
 //   return navigator.userAgent.match(/Android|BlackBerry|BB|iPhone|iPad|iPod|webOS|Opera Mini|IEMobile/i);
 // }());
-// window.isMobile = {
-//     Android: function() {
-//         return navigator.userAgent.match(/Android/i);
-//     },
-//     BlackBerry: function() {
-//         return navigator.userAgent.match(/BlackBerry|BB/i);
-//     },
-//     iOS: function() {
-//         return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-//     },
-//     Opera: function() {
-//         return navigator.userAgent.match(/Opera Mini/i);
-//     },
-//     Windows: function() {
-//         return navigator.userAgent.match(/IEMobile/i);
-//     },
-//     any: function() {
-//         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-//     }
-// };
+
 // window.getMaxOfArray = (function () {
 //   return function (numArray) {
 //     return Math.max.apply(null, numArray);
