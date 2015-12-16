@@ -1,4 +1,4 @@
-var L10n = {
+Window.L10n = {
   required: {
     fillEmail: 'Please fill your email address at the right format',
     email: 'Please enter email address',

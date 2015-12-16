@@ -233,7 +233,7 @@ item.addEventListener('click', function(){
   scrollToElement(document.getElementById('id-scrollToElement'), 10000);
 });
 */
-window.scrollToElement = ( function () {
+Window.scrollToElement = ( function () {
   var timer, start, factor;
 
   return function (targetElement, duration) {

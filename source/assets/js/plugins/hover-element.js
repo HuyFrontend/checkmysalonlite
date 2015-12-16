@@ -17,8 +17,6 @@ example
     options = options || {};
     this.element = typeof element === 'object' ? element : document.querySelector(element);
     this.options = typeof options === 'object' ? options : {};
-    // define new option
-    this.options.newOption = 'newOption';
     this.init();
   };
 

@@ -1,0 +1,11 @@
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+<script src="script.js"></script>
+<div ng-app="AngularApp", ng-controller="UserCtrl">
+  <form name="form" ng-submit="save(model)" novalidate>
+    <input type="text" name="username" ng-model="user.name" server-error />
+    <div class="errors" ng-show="form.username.$dirty && form.username.$invalid">
+      <span ng-show="form.username.$error.server">{{ errors.username }}</span>
+    </div>
+    <input type="submit" />
+  </form>
+</div>
