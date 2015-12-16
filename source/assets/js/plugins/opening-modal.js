@@ -10,14 +10,7 @@
   var OpeningModal = function( element, options ) {
     options = options || {};
     this.element = typeof element === 'object' ? element : document.querySelector(element);
-    // this.option = typeof option === 'string' ? option : null;
-    this.options = {};
-    this.options.target = options.target;
-    this.options.changeContent = !options.changeContent ? null : options.changeContent;
-    this.options.ajaxLink = !options.ajaxLink ? null : options.ajaxLink;
-    this.options.requestType = !options.requestType ? null : options.requestType;
-    this.options.loadLink = !options.loadLink ? null : options.loadLink;
-    this.options.backdrop = !options.backdrop ? null : options.backdrop;
+    this.options = options;
 
     this.init();
   };
