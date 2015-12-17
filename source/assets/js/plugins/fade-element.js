@@ -75,14 +75,16 @@ usage: var f = new Window.Fade();
   };
 
   Fade.prototype.fadeIn = function (element, options) {
+
     var to = 0;
     var self = this;
+    var fadeType = options.type ? options.type : 'swing';
+
     this.animate({
       duration: options.duration,
       delta: function(progress) {
         progress = this.progress;
-        return self.easing.swing(progress);
-        // return Fade.easing.swing(progress);
+        return self.easing[fadeType](progress);
       },
       complete: options.complete,
       step: function(delta) {
@@ -91,14 +93,16 @@ usage: var f = new Window.Fade();
     });
   };
   Fade.prototype.fadeOut = function(element, options) {
+
     var self = this;
     var to = 1;
+    var fadeType = options.type ? options.type : 'swing';
+
     this.animate({
       duration: options.duration,
       delta: function(progress) {
         progress = this.progress;
-        return self.easing.swing(progress);
-        // return Fade.easing.swing(progress);
+        return self.easing[fadeType](progress);
       },
       complete: options.complete,
       step: function(delta) {
@@ -109,6 +113,7 @@ usage: var f = new Window.Fade();
   // Fade DATA API
   // =================
   var Fades = document.querySelectorAll('[data-toggle="NoFade"]');
+  // var Fades = document;
   for (var i = 0, len = Fades.length; i < len; i++ ) {
     var element = Fades[i], options;
     new Fade(element, options);
