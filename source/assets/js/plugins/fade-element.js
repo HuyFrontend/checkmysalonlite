@@ -2,7 +2,7 @@
 /*
 name: Fade
 usage: var f = new Window.Fade();
-- fadein: f.fadein(document.querySelector('#id'), {'duration': 2000, complete: function() {alert(1);}})
+- fadein: f.fadein(document.querySelector('#id'), {type: 'quadratic', 'duration': 2000, complete: function() {alert(1);}})
 */
 (function(factory){
   var init = factory();
