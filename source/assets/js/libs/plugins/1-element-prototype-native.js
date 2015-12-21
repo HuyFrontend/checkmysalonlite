@@ -218,29 +218,6 @@ name: addEventListener/removeEventListener - ie 7/8
 
 //     var fading = window.setInterval(func, interval);
 // };
-// /*
-// name : clickOff
-// usage:
-// //elemen.clickOff to check insize or out size
-// */
-// Element.prototype.clickOff = function (callback, selfDestroy) {
-//   var clicked = false;
-//   var parent = this;
-//   var destroy = selfDestroy || true;
-
-//   parent.addEventListenerOrAttachEvent(function (){
-//     clicked = true;
-//   },'click');
-//   document.addEventListenerOrAttachEvent(function (event) {
-//     if(!clicked) {
-//       callback (parent, event);
-//     }
-//     if(destroy) {
-
-//     }
-//     clicked = false;
-//   }, 'click');
-// };
 
 // /* window event */
 
