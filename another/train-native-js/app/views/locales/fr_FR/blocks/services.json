@@ -1,0 +1,62 @@
+  "services": {
+    "main": {
+      "title": "Services",
+      "content": "Nous fournissons des services globaux, de sorte que tous vos besoins digitaux soient conçus, développés et gérés par un seul et même partenaire technologique."
+    },
+    "consulting": {
+      "item_main": {
+        "title": "SUTRIX CONSULTING",
+        "desc": "Boost Sales",
+        "content": "E-Commerce, CMS, Intranet<br>Responsive Web Design<br>Adobe AEM, Sitecore<br>Drupal, Wordpress, Magento"
+      },
+      "item1": {
+        "title": "Service conseil",
+        "content": "Nous vous apportons notre expertise pour l’analyse et l’estimation de votre projet ainsi que pour la création de vos prototypes."
+      },
+      "item2": {
+        "title": "Analyse des besoins",
+        "content": "Nous analysons et formalisons vos demandes."
+      },
+      "item3": {
+        "title": "Spécifications techniques",
+        "content": "Nous vous apportons des solutions d’architecture et de design pour vos applications."
+      },
+      "item4": {
+        "title": "Support technique",
+        "content": "Nous vous conseillons en cas de problèmes techniques."
+      },
+      "item5": {
+        "title": "Formation",
+        "content": "Nous formons vos équipes aux nouvelles technologies."
+      }
+    },
+    "solutions": {
+      "item_main": {
+        "title": "SUTRIX SOLUTIONS",
+        "desc": "Increase revenue",
+        "content": "E-Commerce, CMS, Intranet<br>Responsive Web Design<br>Adobe AEM, Sitecore<br>Drupal, Wordpress, Magento"
+      },
+      "item1": {
+        "title": "Développement web",
+        "content": "Nous créons des applications web interactives (front-end et back-end)."
+      },
+      "item2": {
+        "title": "Dévelopement mobile",
+        "content": "Nous développons des applications mobiles natives et hybrides."
+      },
+      "item3": {
+        "title": "Contrôle de qualité",
+        "content": "Nous testons nos développements sur différents supports (mobiles, tablettes, ordinateurs)."
+      },
+      "item4": {
+        "title": "Maintenance",
+        "content": "Nous améliorons et développons le potentiel de votre application."
+      },
+      "item5": {
+        "title": "Centre d’Appel / de Support",
+        "content": "Nous fournissons un service après-vente pour vos produits."
+      }
+    },
+    "deployment": "DEPLOYMENT",
+    "maintenance": "24/7 MAINTENANCE"
+  },

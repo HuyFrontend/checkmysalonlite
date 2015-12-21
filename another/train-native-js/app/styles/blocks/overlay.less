@@ -1,0 +1,73 @@
+.message-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 50%;
+  margin: auto;
+  padding: 50px 20px;
+  background-color: #d8d8d8;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #464646;
+  text-align: center;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
+  .close {
+    .size(25px);
+    padding: 0;
+    background-color: black;
+    border: 2px solid white;
+    line-height: 24px;
+    text-align: center;
+    font-weight: normal;
+    color: white;
+    cursor: pointer;
+    border-radius: 14px;
+    box-shadow: 1px 1px 5px #000;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    &:hover {
+      .no-touch & {
+        background-color: #F9A31B;
+        color: black;
+      }
+    }
+  }
+  p, span {
+    font-weight: bold;
+    .px2em(~"line-height", 22px);
+  }
+  .group-btn-mail {
+    .px2em(~"margin-top", 20px);
+    .btn {
+      .px2em(~"margin-left", 10px);
+      span {.px2em(~"padding", 5px 20px);}
+      &:first-child {margin-left: 0;}
+    }
+  }
+}
+
+.sm-overlay {
+  .size(100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, .5);
+}
+@media @screen-sm-only {
+  .message-layer {width: 70%;}
+}
+@media @screen-xs-only {
+  .message-layer {
+    width: 90%;
+    .group-btn-mail {      
+      .btn {
+        span {
+          .px2em(~"font-size", 13px);
+        }
+      }
+    }
+  }
+}
