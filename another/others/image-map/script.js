@@ -2,6 +2,7 @@
 design in html
 example
 <a data-toggle="MapArea", data-item="true", data-target="MapAreaTarget">MapArea</a>
+generator image to map: http://imagemap-generator.dariodomi.de/
 **/
 
 (function(factory){
