@@ -1,0 +1,26 @@
+<style>
+  .div{
+    position:relative;
+    height:150px;
+  }
+  .div img {
+    position:absolute;
+    left:0;
+    transition: all 1s linear;
+  }
+  .div .active {
+    left:100%;
+    transform:translate(-100%,0);
+  }
+</style>
+<div class="div">
+  <img id="img" src="http://placehold.it/150x150">
+</div>
+<button id ="button">click</button>
+<script>
+  var button = document.getElementById('button');
+  var block = document.querySelector('#img');
+  button.addEventListener('click', function() {
+   block.classList.add('active');
+  });
+</script>
