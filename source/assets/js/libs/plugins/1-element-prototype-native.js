@@ -154,6 +154,71 @@ name: addEventListener/removeEventListener - ie 7/8
   }
 })();
 
+// /*
+// name : fadeInFadeOut
+// usage:
+// //fadeIn
+// fadeInFaceOut('in', 750, true);
+// //fadeOut
+// fadeInFaceOut('out', 750, true);
+// */
+// Element.prototype.fadeInFadeOut = function (type, duration) {
+//     var el = this;
+//     var isFadeIn = type === 'in',
+//     opacity = isFadeIn ? 0 : 1,
+//     interval = 50,
+//     gap = interval / duration;
+
+//     function detectIE() {
+//       var ua = window.navigator.userAgent;
+
+//       var msie = ua.indexOf('MSIE ');
+//       if (msie > 0) {
+//           // IE 10 or older => return version number
+//           return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+//       }
+
+//       var trident = ua.indexOf('Trident/');
+//       if (trident > 0) {
+//           // IE 11 => return version number
+//           var rv = ua.indexOf('rv:');
+//           return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+//       }
+
+//       var edge = ua.indexOf('Edge/');
+//       if (edge > 0) {
+//          // IE 12 (aka Edge) => return version number
+//          return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+//       }
+
+//       // other browser
+//       return false;
+//     }
+//     var isFadeInternetExplorer = detectIE();
+//     if(isFadeIn) {
+//          el.style.display = 'block';
+//          el.style.opacity = opacity;
+//          if(isFadeInternetExplorer) {
+//             el.style.filter = 'alpha(opacity=' + opacity + ')';
+//             el.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + opacity + ')';
+//         }
+//     }
+
+//     function func() {
+//         opacity = isFadeIn ? opacity + gap : opacity - gap;
+//         el.style.opacity = opacity;
+//         if(isFadeInternetExplorer) {
+//             el.style.filter = 'alpha(opacity=' + opacity * 100 + ')';
+//             el.style.filter = 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + opacity * 100 + ')';
+//         }
+
+//         if(opacity <= 0 || opacity >= 1) window.clearInterval(fading);
+//         if(opacity <= 0) el.style.display = 'none';
+//     }
+
+//     var fading = window.setInterval(func, interval);
+// };
+
 // /* window event */
 
 // /*
