@@ -14,13 +14,22 @@
   }
 </style>
 <div class="div">
-  <img id="img" src="http://placehold.it/150x150">
+  <img id="img" name="myImage" src="http://placehold.it/150x150">
 </div>
 <button id ="button">click</button>
 <script>
+
   var button = document.getElementById('button');
   var block = document.querySelector('#img');
+
   button.addEventListener('click', function() {
-   block.classList.add('active');
+    // block.classList.add('active');
+    if (document.myImage.classList.contains('active')) {
+      document.myImage.classList.remove('active');
+    }
+    else {
+      document.myImage.classList.add('active');
+    }
   });
+
 </script>
