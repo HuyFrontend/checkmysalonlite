@@ -1,0 +1,11 @@
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<div ng-app="AngularApp" ng-controller="customersCtrl">
+<table>
+  <tr ng-repeat="name in names">
+    <td>{{ name.Name }}</td>
+    <td>{{ name.City }}</td>
+    <td>{{ name.Country }}</td>
+  </tr>
+</table>
+</div>
+<script src="service.js"></script>

@@ -1,5 +1,7 @@
 var app = angular.module('AngularApp', []);
 
+/* SERVICES*/
+
 /*app.factory('notify', ['$window', function(win) {
   var msgs = [];
   return function(msg) {
@@ -34,7 +36,6 @@ app.service('customService', function () {
   return function () {
     alert(123);
   };
-
 });
 
 app.service('myFactory', function ($http, $q) {
@@ -71,6 +72,30 @@ app.service('myFactory', function ($http, $q) {
   return service;
 });
 
+app.service('getAjax', ['$http', '$q', function ($http , $q) {
+  var service = {};
+  service.getNames = function () {
+    var url = 'http://www.w3schools.com/angular/customers_mysql.php';
+    var deferred = $q.defer();
+    $http({
+      url: url
+    }).success (function(res) {
+      deferred.resolve(res);
+    }).error (function () {
+      deferred.reject('error');
+    });
+    return deferred.promise;
+  };
+  return service;
+}]);
+
+// app.controller('customersCtrl', function ( $scope, $http ) {
+//   $http.get('http://www.w3schools.com/angular/customers_mysql.php')
+//   .then( function ( response ) {
+//     $scope.names = response.data.records;
+//   });
+// });
+/* CONTROLLERS */
 // controller use notify/customService
 app.controller('MyController', ['$scope','customService', function ($scope, customService) {
   $scope.callNotify = function(msg) {
@@ -91,4 +116,14 @@ app.controller('myFactoryCtrl', function ($scope, myFactory) {
       alert(data);
     });
   };
+});
+
+app.controller('customersCtrl', function ( $scope, $http, getAjax ) {
+  // $scope.names = getAjax.getNames();
+  getAjax.getNames()
+  .then(function (data) {
+    $scope.names = data.records;
+  }, function (res) {
+    alert(res);
+  });
 });
