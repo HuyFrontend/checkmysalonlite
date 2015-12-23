@@ -20,6 +20,7 @@ app.directive("myDirective", function(){
     restrict: "EAC",
     scope: {
       name: "@",
+      // name: "=",
       color: "=",
       reverse: "&"
     },
