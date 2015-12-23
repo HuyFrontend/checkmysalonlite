@@ -89,12 +89,7 @@ app.service('getAjax', ['$http', '$q', function ($http , $q) {
   return service;
 }]);
 
-// app.controller('customersCtrl', function ( $scope, $http ) {
-//   $http.get('http://www.w3schools.com/angular/customers_mysql.php')
-//   .then( function ( response ) {
-//     $scope.names = response.data.records;
-//   });
-// });
+
 /* CONTROLLERS */
 // controller use notify/customService
 app.controller('MyController', ['$scope','customService', function ($scope, customService) {
@@ -126,4 +121,73 @@ app.controller('customersCtrl', function ( $scope, $http, getAjax ) {
   }, function (res) {
     alert(res);
   });
+});
+// app.controller('customersCtrl', function ( $scope, $http ) {
+//   $http.get('http://www.w3schools.com/angular/customers_mysql.php')
+//   .then( function ( response ) {
+//     $scope.names = response.data.records;
+//   });
+// });
+app.controller('postCtrl', function ($scope, $http) {
+  $scope.hello = {name: 'Boaz'};
+  $scope.newName = '';
+  $scope.sendPost = function() {
+    var data = $.param({
+      json: JSON.stringify({
+          name: $scope.newName
+      })
+    });
+    $http.post('/echo/json/', data).success(function(data, status) {
+      $scope.hello = data;
+    });
+    /*$http.post({
+      url: '/echo/json/',
+      method: 'post',
+      headers: {
+        'Content-Type': undefined
+      },
+      data: {
+        'name': $scope.name
+      }
+    }).success(function(data, status) {
+      $scope.hello = data;
+    });*/
+  }
+});
+
+app.controller('MovieController', function($scope, $http) {
+    var pendingTask;
+
+    if ($scope.search === undefined) {
+      $scope.search = "Sherlock Holmes";
+      fetch();
+    }
+
+    $scope.change = function() {
+      if (pendingTask) {
+        clearTimeout(pendingTask);
+      }
+      pendingTask = setTimeout(fetch, 800);
+    };
+
+    function fetch() {
+      $http.get("http://www.omdbapi.com/?t=" + $scope.search + "&tomatoes=true&plot=full")
+        .success(function(response) {
+          $scope.details = response;
+        });
+
+      $http.get("http://www.omdbapi.com/?s=" + $scope.search)
+        .success(function(response) {
+          $scope.related = response;
+        });
+    }
+
+    $scope.update = function(movie) {
+      $scope.search = movie.Title;
+      $scope.change();
+    };
+
+    $scope.select = function() {
+      this.setSelectionRange(0, this.value.length);
+    }
 });
