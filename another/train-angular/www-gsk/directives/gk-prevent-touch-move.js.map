@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "gk-prevent-touch-move.js",
+  "sourceRoot": "..\\..\\source\\directives\\",
+  "sources": [
+    "gk-prevent-touch-move.coffee"
+  ],
+  "names": [],
+  "mappings": "AAEA,OAAO,CAAC,MAAR,CAAe,MAAf,CACA,CAAC,SADD,CACW,oBADX,EACiC,SAAC,SAAD,GAAA;SAC/B;AAAA,IAAA,IAAA,EAAM,SAAC,MAAD,EAAS,QAAT,EAAmB,MAAnB,GAAA;aACJ,QAAQ,CAAC,EAAT,CAAY,WAAZ,EAAyB,SAAC,CAAD,GAAA;AACvB,QAAA,CAAC,CAAC,cAAF,CAAA,CAAA,CADuB;MAAA,CAAzB,EADI;IAAA,CAAN;IAD+B;AAAA,CADjC,CAAA,CAAA"
+}

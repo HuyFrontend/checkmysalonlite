@@ -1,0 +1,38 @@
+
+<main id="main" class="product-detail-page">
+  <div class="inner">
+    <div class="intro-product">
+      <div class="preview">
+        <p class="name-product">{{productChild.name}}</p><img src="{{productChild.picture}}" alt="product niquitin patch"/>
+      </div>
+      <div class="info-block">
+        <p ng-bind-html="productChild.description"></p>
+      </div>
+    </div><a title="Add product to profile" href="" class="section-item section-type-2 " ng-click="addProductProfile()"><i class="icon-1 icon-plus"></i><span class="text">Add product to profile</span></a>
+  </div>
+</main>
+<section gk-required-notification="gk-required-notification" ng-model="notiProduct" data-overlay="overlay-2" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 product-popup overlay-white type-2 hidden">
+  <div class="inner">
+    <div class="content">
+      <p><span ng-bind-html="l10n.popup.informationTop"></span><span>{{product.name}}</span><span ng-bind-html="l10n.popup.informationBottom"></span></p>
+    </div>
+    <div class="button-box"><a href="javascript:;" title="{{l10n.button.yes}}" class="btn btn-6 go-btn" data-hide="data-hide" ng-click="productClose()"><span>{{l10n.button.yes}}</span></a><a href="javascript:;" title="Skip" class="btn btn-6 skip-btn" data-hide="data-hide" ng-click="nav(&quot;/landing-page&quot;)"><span>Skip</span></a>
+    </div>
+  </div>
+</section>
+<section gk-required-notification="gk-required-notification" ng-model="notiChange" data-overlay="overlay-1" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 change-popup overlay-white type-2 hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.popup.change"></p>
+    </div>
+    <div class="button-box"><a href="javascript:;" title="{{l10n.button.yes}}" class="btn btn-6 go-btn" data-hide="data-hide" ng-click="nav(&quot;/account-settings&quot;)"><span>{{l10n.button.yes}}</span></a><a href="javascript:;" title="{{l10n.button.skip}}" class="btn btn-6 skip-btn" data-hide="data-hide" ng-click="habitClose()"><span>{{l10n.button.skip}}</span></a>
+    </div>
+  </div>
+</section>
+<section gk-notification="gk-notification" ng-model="notiRecommend" data-overlay="overlay-1" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 recommend-popup overlay-white type-2 hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.popup.recommend"></p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "gk-clock-block.js",
+  "sourceRoot": "..\\..\\source\\directives\\",
+  "sources": [
+    "gk-clock-block.coffee"
+  ],
+  "names": [],
+  "mappings": "AAEA,OAAO,CAAC,MAAR,CAAe,MAAf,CACA,CAAC,SADD,CACW,cADX,EAC2B,SAAC,SAAD,EAAY,UAAZ,GAAA;SACzB;AAAA,IAAA,IAAA,EAAM,SAAC,MAAD,EAAS,QAAT,EAAmB,MAAnB,GAAA,CAAN;IADyB;AAAA,CAD3B,CAAA,CAAA"
+}

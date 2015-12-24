@@ -1,0 +1,19 @@
+
+<main id="main" class="quitpoint-page">
+  <div class="inner container-bgd courage-content">
+    <div class="courage-outer">
+      <div class="inner">
+        <div gk-max-height-block="gk-max-height-block" class="block-1">
+          <h3 class="title">{{model.title}}</h3><a href="javascript:;" ng-click="share()" class="share">text</a>
+          <div class="badge"><img id="courage-step-1" title="model.badge.title" src="model.badge.src" class="badge-img"/>
+            <div id="courage-step-2" class="point"><span>+{{model.badge.point}}</span></div>
+          </div>
+          <div class="info">
+            <p>{{model.desc}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="group-btn notice"><a href="javascript:;" title="{{model.note1.title}}" ng-click="nav(model.note1.click)" class="icon-text"><i class="note-type-1"></i><span>{{model.note1.span}}</span></a><a href="javascript:;" title="{{model.note2.title}}" ng-click="nav(model.note2.click)" class="icon-text"><i class="note-type-2"></i><span>{{model.note2.span}}</span></a></section><a href="{{model.submitLink}}" title="OK" class="btn btn-1 uppercase"><span>{{l10n.button.ok}}</span></a>
+  </div>
+</main>

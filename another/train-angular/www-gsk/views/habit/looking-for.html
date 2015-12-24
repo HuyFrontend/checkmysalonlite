@@ -1,0 +1,15 @@
+
+<main id="main" class="habit-page">
+  <div class="inner container-bgd hblook-content">
+    <div class="block-1">
+      <ul gk-panel-selector="gk-panel-selector" ng-model="looking">
+        <li class="time-group active" data-value="{{secondQuestion[&quot;answer-list&quot;][0].path}}">
+          <div class="inner"><a href="javascript:;"><span>{{secondQuestion['answer-list'][0].content}}</span></a></div>
+        </li>
+        <li class="time-group" data-value="{{secondQuestion[&quot;answer-list&quot;][1].path}}">
+          <div class="inner"><a href="javascript:;"><span>{{secondQuestion['answer-list'][1].content}}</span></a></div>
+        </li>
+      </ul>
+    </div>
+  </div><a href="javascript:;" title="" ng-click="next()" class="btn btn-2 btn-arrow-1"><span>{{l10n.button.next}}</span></a>
+</main>

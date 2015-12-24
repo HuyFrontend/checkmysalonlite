@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "keys.js",
+  "sourceRoot": "..\\..\\source\\commons\\",
+  "sources": [
+    "keys.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA,YAAA,CAAA;AAAA,OAEO,CAAC,MAAR,CAAe,MAAf,CAAsB,CAAC,QAAvB,CAAgC,MAAhC,EACE;AAAA,EAAA,aAAA,EAAe,eAAf;AAAA,EAEA,cAAA,EAAgB,gBAFhB;AAAA,EAGA,YAAA,EAAc,cAHd;AAAA,EAIA,YAAA,EAAc,cAJd;AAAA,EAKA,oBAAA,EAAsB,sBALtB;AAAA,EAMA,cAAA,EAAgB,gBANhB;AAAA,EAOA,oBAAA,EAAsB,sBAPtB;CADF,CAFA,CAAA"
+}

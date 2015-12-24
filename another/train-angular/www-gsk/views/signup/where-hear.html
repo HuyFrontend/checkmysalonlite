@@ -1,0 +1,30 @@
+
+<main id="main" class="register-page">
+  <div class="inner container-bgd wherehere-content">
+    <div class="block-1">
+      <h3 class="title">{{l10n.signUp.whereHere}}</h3>
+      <div gk-national-selector="gk-national-selector" ng-model="whereHear.place" data-signup-select="data-signup-select" class="select-1">
+        <select>
+          <option disabled="" value="">Please select...</option>
+          <option value="From a friend">From a friend</option>
+          <option value="In-store">In-store</option>
+          <option value="Online">Online</option>
+          <option value="Other">Other</option>
+          <option value="NiQuitin Website">NiQuitin Website</option>
+          <option value="E-mail">E-mail</option>
+          <optgroup label=""></optgroup>
+        </select><span>{{l10n.signUp.valueDefault}}</span>
+      </div>
+    </div>
+    <div class="group-checkbox">
+      <div class="checkbox-1">
+        <input type="checkbox" name="news" id="news" value="news" ng-model="whereHear.isReceiveNews"/>
+        <label for="news" ng-bind-html="l10n.signUp.cbReceive"></label>
+      </div>
+      <div class="checkbox-1">
+        <input type="checkbox" name="terms" id="terms" value="terms" ng-model="whereHear.isAccept"/>
+        <label for="terms">{{l10n.signUp.cbTerm}}</label>
+      </div>
+    </div>
+  </div><a href="javascript:;" title="" ng-click="done()" class="btn btn-2">{{l10n.button.done}}</a>
+</main>

@@ -1,0 +1,25 @@
+
+<main id="main" class="reason-page">
+  <div class="inner">
+    <div class="reason-list">
+      <h3>We all have a reason to quit. </h3>
+      <div ng-if="reasonToQuit.memo" class="memo">
+        <p>Your Memo</p>
+        <p>{{reasonToQuit.memo}}</p>
+      </div>
+      <div ng-if="movie.src" class="video">
+        <p>Your Video</p>
+        <video ng-src="{{trustSrc(movie.src)}}" controls="controls" width="640" height="320"></video>
+      </div>
+      <div ng-if="reasonToQuit.audio" class="audio">
+        <p>Your Audio</p>
+        <audio controls="controls">
+          <source ng-src="{{reasonToQuit.audio}}"/>
+        </audio>
+      </div>
+      <div ng-if="reasonToQuit.photo" class="photo">
+        <p>Your Photo</p><img ng-src="data:image/jpeg;base64,{{reasonToQuit.photo}}" alt=""/>
+      </div>
+    </div>
+  </div>
+</main>

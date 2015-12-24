@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "thank-donation.js",
+  "sourceRoot": "..\\..\\..\\source\\controllers\\quitpoint\\",
+  "sources": [
+    "thank-donation.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA,YAAA,CAAA;AAAA,OAEO,CAAC,MAAR,CAAe,gBAAf,CACA,CAAC,MADD,CACQ,SAAC,cAAD,GAAA;SACN,cAAc,CAAC,IAAf,CAAoB,2BAApB,EACE;AAAA,IAAA,UAAA,EAAY,4BAAZ;AAAA,IACA,WAAA,EAAa,qCADb;GADF,EADM;AAAA,CADR,CAMA,CAAC,UAND,CAMY,4BANZ,EAM0C,SAAC,MAAD,EAAS,UAAT,GAAA;AACxC,EAAA,OAAO,CAAC,GAAR,CAAY,4BAAZ,CAAA,CAAA;SACA,UAAU,CAAC,MAAX,GACE;AAAA,IAAA,SAAA,EAAW,GAAX;IAHsC;AAAA,CAN1C,CAFA,CAAA"
+}

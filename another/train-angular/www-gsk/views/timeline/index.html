@@ -1,0 +1,78 @@
+
+<section gk-required-notification="gk-required-notification" ng-model="notiBadgeDetail" data-name="badge-detail-popup" class="popup-1 badge-detail-popup overlay hidden">
+  <div class="inner container-bgd courage-content">
+    <div class="courage-outer individual">
+      <div class="inner">
+        <div gk-height-badge-detail="gk-height-badge-detail" class="block-1">
+          <h3 class="title">{{currentBadge.title}}</h3>
+          <div class="badge"><img id="courage-step-1" src="{{currentBadge.imgURL}}" alt="{{currentBadge.title}}" class="badge-img"/>
+            <div id="courage-step-2" class="point"><span>+{{currentBadge.points}}</span></div>
+          </div>
+          <div class="info">
+            <p ng-bind-html="currentBadge.description"></p>
+          </div>
+        </div>
+      </div>
+    </div><a hide-data="hide-data" href="javascript:;" title="ok" ng-click="badgeDetailClose()" class="btn btn-1 uppercase"><span>ok</span></a>
+  </div>
+</section>
+<main id="main" data-showheader="data-showheader">
+  <button type="button" class="jump-to">{{l10n.button.jumpToDay}}</button>
+  <div id="hammer" style="height:1390px" class="inner">
+    <div data-group="waiting" class="week-timeline">
+      <div style="top:0px" class="timeline-desc">
+        <div class="inner">
+          <p ng-bind-html="l10n.timeline.descHtml" class="portrait"></p>
+          <p ng-bind-html="l10n.timeline.descNoneHtml" class="landscape"></p>
+        </div>
+        <div class="month-block">
+          <div class="month-out">
+            <p data-name="month-out-desc">2014</p>
+          </div>
+          <div class="months-out">
+            <p data-name="month-out-desc">2014</p>
+          </div>
+        </div>
+      </div>
+      <div gk-timeline="gk-timeline" class="preview">
+        <div class="progress-bar"></div>
+        <ul id="dayline" data-name="dayline" style="width:128px" class="dayline">
+          <li class="current-date">
+            <div class="outer">
+              <div class="inner">
+                <div class="date"><span class="dayweek">Mon</span><span class="daymonth">Apr 7th</span></div>
+                <div data-intro-follow="step-1" class="add-badge"><span class="icon-add"><a href="javascript:void(0);" title="Add badge" class="icon-add-badge">Add badge</a></span></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div data-group="waiting" gk-prevent-event="gk-prevent-event" data-ng-show="personalChallenges.data &amp;&amp; timelinePage.tabTimeline" class="tabs tabs-timeline"><span class="arrow-top"></span>
+      <section data-intro-step="1" ng-click="selectChallengeCategory(category)" class="nav-tabs"><a href="javascript:void(0);" title="{{category.name}}" ng-repeat="category in personalChallenges.list" ng-click="personalChallenges.data.category = category.name" ng-class="{&quot;active&quot;: personalChallenges.data.category == category.name}" data-type="{{getChallengesTab(category.name)}}" data-intro-follow="{{$first?&quot;step-2&quot;:&quot;&quot;}}">{{category.name}}</a></section>
+      <div ng-hide="personalChallenges.data.category" ng-bind="l10n.timeline.chooseCategory" class="text-mesg text-category"></div>
+      <div ng-show="personalChallenges.data.category" class="tab-content">
+        <div ng-repeat="category in personalChallenges.list" ng-class="getChallengesTab(category.name)" ng-show="personalChallenges.data.category == category.name" class="tab-pane">
+          <div class="outer">
+            <div class="inner">
+              <ul gk-max-height="gk-max-height" gk-horizontal-scroll="gk-horizontal-scroll" class="slide slide-sroll">
+                <li ng-repeat="item in category.childs" ng-class="{&quot;active&quot;: personalChallenges.data.id == item.id}"><a href="javascript:void(0);" title="{{item.name}}" data-intro-follow="{{$first?&quot;step-2&quot;:&quot;&quot;}}" ng-click="setPersonalChallenge(item)">{{item.name}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-intro-step="2" ng-show="personalChallenges.data.id" class="clock-block"><i class="icon-bottom-tabs"></i>
+        <ul gk-clock-block="gk-clock-block">
+          <li ng-class="{'active': personalChallenges.data.date == 'morning' }"><a href="javascript:void(0);" title="Morning" ng-click="personalChallenges.data.date = 'morning'" data-intro-follow="order-2" class="morning"><span ng-bind="l10n.timeline.morning" class="text"></span></a></li>
+          <li ng-class="{'active': personalChallenges.data.date == 'noon' }"><a href="javascript:void(0);" title="Noon" ng-click="personalChallenges.data.date = 'noon'" class="noon"><span ng-bind="l10n.timeline.noon" class="text"></span></a></li>
+          <li ng-class="{'active': personalChallenges.data.date == 'afternoon' }"><a href="javascript:void(0);" title="Afternoon" ng-click="personalChallenges.data.date = 'afternoon'" class="afternoon"><span ng-bind="l10n.timeline.afternoon" class="text"></span></a></li>
+          <li ng-class="{'active': personalChallenges.data.date == 'evening' }"><a href="javascript:void(0);" title="Evening" ng-click="personalChallenges.data.date = 'evening'" class="evening"><span ng-bind="l10n.timeline.evening" class="text"></span></a></li>
+        </ul>
+      </div>
+      <div ng-show="!personalChallenges.data.date &amp;&amp; personalChallenges.data.id" ng-bind="l10n.timeline.whatTime" data-name="text-clock-message" class="text-mesg text-clock"></div>
+      <div ng-show="personalChallenges.data.date" gk-prevent-event="gk-prevent-event" class="badge-review"><img ng-src="{{personalChallenges.data.badge.imgURL}}"/></div><a href="javascript:void(0);" title="{{l10n.button.createChallenge}}" class="btn btn-timeline" ng-click="createChallenge()" ng-show="personalChallenges.data.date"><span>{{l10n.button.createChallenge}}</span></a>
+    </div>
+  </div>
+</main>

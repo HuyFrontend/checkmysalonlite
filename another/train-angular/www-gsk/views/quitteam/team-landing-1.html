@@ -1,0 +1,106 @@
+
+<section gk-notification="gk-notification" ng-model="notiSendCheer" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 send-cheer-popup overlay-white hidden">
+  <div class="inner">
+    <div class="content">
+      <p>You sent {{members['user-name']}} a cheer!</p><img src="{{USER['small-avatar']}}" alt="avatar" class="avatar"/>
+    </div>
+    <div class="cheer">
+      <p>{{cheer}}</p>
+    </div>
+  </div>
+</section>
+<section gk-notification="gk-notification" ng-model="notiSendSmiley" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 send-smiley-popup overlay-white hidden">
+  <div class="inner">
+    <div class="content">
+      <p>You sent {{members['user-name']}} a smiley!</p><img src="{{smile}}" alt="Donation"/>
+    </div>
+  </div>
+</section>
+<main id="main" class="team-landing-1">
+  <div class="inner">
+    <div data-group-thumbs="data-group-thumbs" class="group-thumbs">
+      <div class="thumbs">
+        <div class="thumbnails"><span style="background-image : url({{members['profile-avatar']}})" class="avatar"></span><i class="img-flag flag-{{flag}}"></i>
+        </div>
+        <p class="desc">{{members['user-name']}}</p>
+      </div>
+    </div>
+    <div data-plan-time="data-plan-time" class="plan-time type-1">
+      <ul class="status">
+        <li><a href="javascript:;" title="" class="total-days"><span class="number">{{totalDay}}</span><span ng-if="badges &gt; 1" class="text">Total days</span><span ng-if="badges &lt;= 1" class="text">Total day</span></a></li>
+        <li><a href="javascript:;" title="" class="badges"><span class="number">{{badges}}</span><span ng-if="badges &gt; 1" class="text">Badges</span><span ng-if="badges &lt;= 1" class="text">Badge</span></a></li>
+        <li><a href="javascript:;" title="" class="quit-points"><span class="number">{{quitPoint}}</span><span ng-if="quitpoint &gt; 1" class="text">QuitPoints</span><span ng-if="quitpoint &lt;= 1" class="text">QuitPoint</span></a></li>
+      </ul>
+    </div>
+    <div data-latest-badges="data-latest-badges" class="latest-badges">
+      <h4>{{l10n.team.latestBadges}}</h4>
+      <ul>
+        <li ng-repeat="bad in listBadget" class="bgd-shadow"><span style="background-image : url({{bad.thumbPath}})"></span></li>
+        <li ng-repeat="nonBad in nonBadget"></li>
+      </ul>
+    </div><a href="javascript:;" title="send" ng-click="showSend()" ng-show="hideSendCheer" class="btn send-btn"><span>
+        {{l10n.button.qSend}}
+        '{{members['user-name']}}'
+        {{l10n.button.qACheer}}</span></a>
+    <ul data-name="list-activities" ng-show="hideSendCheer" class="list activity-feed">
+      <li ng-repeat="acti in listYouSend">
+        <div class="thumbnail"><img alt="" src="{{acti.member['small-avatar']}}"/></div>
+        <div class="content">
+          <p ng-bind-html="acti.activity.value" class="name-feed"></p>
+        </div>
+      </li>
+    </ul><a href="javascript:;" title="{{l10n.button.cancel}}" class="btn send-btn" ng-click="hideSend()" ng-show="!hideSendCheer"><span>{{l10n.button.cancel}}</span></a>
+    <div gk-tab="gk-tab" ng-show="!hideSendCheer" class="tabs member-team">
+      <ul class="nav-tabs">
+        <li id="nav-tabs"><a href="javascript:;" title="{{l10n.team.cheers}}" class="btn">{{l10n.team.cheers}}</a>
+        </li>
+        <li><a href="javascript:;" title="{{l10n.team.smileys}}" class="btn">{{l10n.team.smileys}}</a>
+        </li>
+      </ul>
+      <div class="tab-content type-1">
+        <div class="tab-pane">
+          <div gk-send-selector="gk-send-selector" ng-model="cheer" class="content">
+            <ul class="list-cheer">
+              <li><a href="javascript:;" title="Way to go!">Way to go!</a></li>
+              <li><a href="javascript:;" title="Going strong!">Going strong!</a></li>
+              <li><a href="javascript:;" title="I'm proud of you!">I'm proud of you!</a></li>
+              <li><a href="javascript:;" title="Let's keep this train moving!">Let's keep this train moving!</a></li>
+              <li><a href="javascript:;" title="You're the boss!">You're the boss!</a></li>
+              <li><a href="javascript:;" title="Keep up the good work!">Keep up the good work!</a></li>
+              <li><a href="javascript:;" title="We can do this!">We can do this!</a></li>
+              <li><a href="javascript:;" title="You're doing so well!">You're doing so well!</a></li>
+              <li><a href="javascript:;" title="Keep going. It just gets easier">Keep going. It just gets easier</a></li>
+              <li><a href="javascript:;" title="You're doing great. You should be proud of you.">You're doing great. You should be proud of you.</a></li>
+              <li><a href="javascript:;" title="You are the wind beneath your quit wings.">You are the wind beneath your quit wings.</a></li>
+              <li><a href="javascript:;" title="You are a rock. And rocks never smoke.">You are a rock. And rocks never smoke.</a></li>
+              <li><a href="javascript:;" title="You are totally going to make this happen.">You are totally going to make this happen.</a></li>
+              <li><a href="javascript:;" title="Watching you quit is a privilege. Well done, sir/madame.">Watching you quit is a privilege. Well done, sir/madame.</a></li>
+              <li><a href="javascript:;" title="You are showing everyone how it's done.">You are showing everyone how it's done.</a></li>
+              <li><a href="javascript:;" title="Take a selfie because you are the quitting poster child.">Take a selfie because you are the quitting poster child.</a></li>
+              <li><a href="javascript:;" title="Keep going. It just gets easier">Keep going. It just gets easier</a></li>
+            </ul><a href="javascript:;" title="{{l10n.button.sendCheer}}" class="btn btn-cheer" ng-click="sendCheer()"><span>{{l10n.button.sendCheer}}</span></a>
+          </div>
+        </div>
+        <div class="tab-pane">
+          <ul rn-carousel="rn-carousel" rn-carousel-indicator="rn-carousel-indicator" class="carousel-smileys">
+            <li>
+              <ul gk-panel-selector="gk-panel-selector" ng-model="smile" class="smileys">
+                <li gk-on-last-repeat="gk-on-last-repeat" ng-repeat="item in smileList[0]" data-value="{{item.smile}}"><a href="javascript:;" title="{{item.title}}" style="background-image : url({{item.smile}})"></a></li>
+              </ul>
+            </li>
+            <li>
+              <ul gk-panel-selector="gk-panel-selector" ng-model="smile" class="smileys">
+                <li gk-on-last-repeat="gk-on-last-repeat" ng-repeat="item in smileList[1]" data-value="{{item.smile}}"><a href="javascript:;" title="{{item.title}}" style="background-image : url({{item.smile}})"></a></li>
+              </ul>
+            </li>
+            <li>
+              <ul gk-panel-selector="gk-panel-selector" ng-model="smile" class="smileys">
+                <li gk-on-last-repeat="gk-on-last-repeat" ng-repeat="item in smileList[2]" data-value="{{item.smile}}"><a href="javascript:;" title="{{item.title}}" style="background-image : url({{item.smile}})"></a></li>
+              </ul>
+            </li>
+          </ul><a href="javascript:;" title="{{l10n.button.sendSmiley}}" class="btn btn-smile" ng-click="sendSmile(&quot;#/quitteam/team-landing-2&quot;)"><span>{{l10n.button.sendSmiley}}</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

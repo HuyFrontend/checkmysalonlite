@@ -1,0 +1,32 @@
+
+<main id="main" class="your-badge-page">
+  <div class="inner badge-content">
+    <p ng-bind-html="l10n.quitPoint.yBadgesText" class="info"></p>
+    <ul class="your-badge">
+      <li>
+        <h3>Time Challenges</h3>
+        <ul class="list-item list-badge">
+          <li ng-repeat="item in challenges | filter: {type:&quot;Time Challenges&quot;}" ng-class="{&quot;none-active&quot;: item.count==0}"><a href="javascript:;" title="{{item.name}}" ng-if="item.count == 0"><span style="background-image : url({{item.thumbPath}})" class="image"></span><span class="desc">{{item.name}}</span><span ng-if="item.count &amp;&amp; item.count&gt;1" class="count">{{item.count}}x</span></a><a href="javascript:;" title="{{item.name}}" ng-if="item.count != 0" ng-click="navToDetail(&quot;/quitpoint/individual-badge&quot;, item)"><span style="background-image : url({{item.thumbPath}})" class="image"></span><span class="desc">{{item.name}}</span><span ng-if="item.count &amp;&amp; item.count&gt;1" class="count">{{item.count}}x</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>Science</h3>
+        <ul class="list-item list-badge">
+          <li ng-repeat="item in challenges | filter: {type:&quot;Science&quot;}" ng-class="{&quot;none-active&quot;: item.count==0}"><a href="javascript:;" title="{{item.name}}" ng-if="item.count == 0"><span style="background-image : url({{item.thumbPath}})" class="image"></span><span class="desc">{{item.name}}</span><span ng-if="item.count &amp;&amp; item.count&gt;1" class="count">{{item.count}}x</span></a><a href="javascript:;" title="{{item.name}}" ng-if="item.count != 0" ng-click="navToDetail(&quot;/quitpoint/individual-badge&quot;, item)"><span style="background-image : url({{item.thumbPath}})" class="image"></span><span class="desc">{{item.name}}</span><span ng-if="item.count &amp;&amp; item.count&gt;1" class="count">{{item.count}}x</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>Personal</h3>
+        <ul class="list-item list-badge">
+          <li ng-repeat="item in challenges | filter: {type: &quot;Personal&quot;}" ng-class="{&quot;none-active&quot;: item.count==0}"><a href="javascript:;" title="{{item.name}}" ng-if="item.count == 0"><span style="background-image : url({{item.thumbPath}})" class="image"></span><span class="desc">{{item.name}}</span><span ng-if="item.count &amp;&amp; item.count&gt;1" class="count">{{item.count}}x</span></a><a href="javascript:;" title="{{item.name}}" ng-if="item.count != 0" ng-click="navToDetail(&quot;/quitpoint/individual-badge&quot;, item)"><span style="background-image : url({{item.thumbPath}})" class="image"></span><span class="desc">{{item.name}}</span><span ng-if="item.count &amp;&amp; item.count&gt;1" class="count">{{item.count}}x</span></a></li>
+        </ul>
+      </li>
+      <li>
+        <h3>Calendar Bonus</h3>
+        <ul class="list-item list-badge">
+          <li ng-repeat="item in challenges | filter: {type:&quot;Calendar Bonus&quot;}" ng-class="{&quot;none-active&quot;: item.count==0}"><a href="javascript:;" title="{{item.name}}" ng-if="item.count == 0"><span style="background-image : url({{item.thumbPath}})" class="image"></span><span class="desc">{{item.name}}</span><span ng-if="item.count &amp;&amp; item.count&gt;1" class="count">{{item.count}}x</span></a><a href="javascript:;" title="{{item.name}}" ng-if="item.count != 0" ng-click="navToDetail(&quot;/quitpoint/individual-badge&quot;, item)"><span style="background-image : url({{item.thumbPath}})" class="image"></span><span class="desc">{{item.name}}</span><span ng-if="item.count &amp;&amp; item.count&gt;1" class="count">{{item.count}}x</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</main>

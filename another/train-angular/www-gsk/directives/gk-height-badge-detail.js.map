@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "gk-height-badge-detail.js",
+  "sourceRoot": "..\\..\\source\\directives\\",
+  "sources": [
+    "gk-height-badge-detail.coffee"
+  ],
+  "names": [],
+  "mappings": "AAEA,OAAO,CAAC,MAAR,CAAe,MAAf,CACA,CAAC,SADD,CACW,qBADX,EACkC,SAAC,UAAD,EAAa,QAAb,GAAA;SAChC;AAAA,IAAA,IAAA,EAAM,SAAC,KAAD,EAAQ,OAAR,EAAiB,KAAjB,GAAA;AACJ,MAAA,QAAA,CAAS,SAAA,GAAA;eACP,OAAO,CAAC,GAAR,CACE;AAAA,UAAA,QAAA,EAAU,CAAA,CAAE,MAAF,CAAS,CAAC,MAAV,CAAA,CAAA,GAAqB,GAA/B;SADF,EADO;MAAA,CAAT,EAGE,GAHF,CAAA,CADI;IAAA,CAAN;IADgC;AAAA,CADlC,CAAA,CAAA"
+}

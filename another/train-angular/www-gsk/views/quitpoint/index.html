@@ -1,0 +1,33 @@
+
+<section gk-notification="gk-notification" ng-model="notiReminder" data-name="reminder-popup" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 reminder-popup overlay-white hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.popup.reminder"></p>
+    </div>
+  </div>
+</section>
+<main id="main" class="quitpoint-page">
+  <div class="inner container-bgd startq-content">
+    <div class="block-1">
+      <p ng-bind-html="l10n.quitPoint.title" class="title"></p><a href="javascript:;" ng-click="startJourney()" class="start-journey">
+        <div class="inner badge"><span ng-bind-html="l10n.quitPoint.startJourney"></span></div></a>
+      <p ng-bind-html="l10n.quitPoint.info" class="info"></p>
+    </div>
+    <form class="select-1">
+      <div gk-national-selector="gk-national-selector" ng-model="startTime" class="content">
+        <select id="reminder_select">
+          <option disabled="disabled" value="">Get started in...</option>
+          <option value="2">In 2 Days</option>
+          <option value="3">In 3 Days</option>
+          <option value="4">In 4 Days</option>
+          <option value="5">In 5 Days</option>
+          <option value="6">In 6 Days</option>
+          <optgroup label=""></optgroup>
+        </select><span>Get started in...</span><a href="javascript:;" ng-click="next()" class="add-media take-photo reminder-start-journey-btn">
+          <div class="midle">
+            <p>{{l10n.button.remindMe}}</p>
+          </div></a>
+      </div>
+    </form>
+  </div>
+</main>

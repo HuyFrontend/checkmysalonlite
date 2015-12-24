@@ -1,0 +1,23 @@
+
+<section gk-notification="gk-notification" ng-model="notiDonation" data-lead-back="/landing-page" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 donation-popup overlay-white hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.thank.donation"></p><img src="images/upload/image-donation.png" alt="Donation"/>
+    </div>
+  </div>
+</section>
+<main id="main" class="quitpoint-page">
+  <div class="inner donation-content">
+    <div class="block-3">
+      <div class="dona-box">
+        <p>{{l10n.quitPoint.donationText}}<br/><span>{{l10n.quitPoint.donationTextColor}}</span><br/><span class="desc">{{l10n.quitPoint.donationUnderline}}</span></p><img src="images/upload/image-donation.png" alt="Donation"/>
+      </div>
+      <div class="section-item">
+        <div class="donate"><span>I’d like to donate</span>
+          <input type="text" name="point" placeholder="XX" class="input-1"/><span>points</span>
+        </div>
+        <p>{{l10n.quitPoint.donationSection}}</p>
+      </div>
+    </div><a href="javascript:;" title="{{l10n.button.donate}}" class="btn btn-6" ng-click="donateClicked()"><span>{{l10n.button.donate}}</span></a>
+  </div>
+</main>

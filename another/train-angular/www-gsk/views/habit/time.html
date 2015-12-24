@@ -1,0 +1,16 @@
+
+<main id="main" class="habit-page">
+  <div class="inner container-bgd hbtime-content">
+    <div class="block-1">
+      <h3 class="title">{{thirdQuestion.question}}</h3>
+      <ul gk-panel-selector="gk-panel-selector" ng-model="time">
+        <li class="time-group active" data-value="{{thirdQuestion[&quot;answer-list&quot;][0].path}}">
+          <div class="inner"><a href="javascript:;"><span>{{thirdQuestion['answer-list'][0].content}}</span></a></div>
+        </li>
+        <li class="time-group" data-value="{{thirdQuestion[&quot;answer-list&quot;][1].path}}">
+          <div class="inner"><a href="javascript:;"><span>{{thirdQuestion['answer-list'][1].content}}</span></a></div>
+        </li>
+      </ul>
+    </div>
+  </div><a href="javascript:;" title="" ng-click="next()" class="btn btn-2 btn-arrow-1"><span>{{l10n.button.done}}</span></a>
+</main>

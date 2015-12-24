@@ -1,0 +1,133 @@
+
+<section gk-required-notification="gk-required-notification" ng-model="notiHabit" data-overlay="overlay-1" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 habit-popup overlay-white type-2 hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.popup.toHabit"></p>
+    </div>
+    <div class="button-box"><a href="#/habit" title="{{l10n.button.ok}}" class="btn btn-6 go-btn" data-hide="data-hide"><span>{{l10n.button.ok}}</span></a><a href="javascript:;" title="{{l10n.button.skip}}" class="btn btn-6 skip-btn" data-hide="data-hide" ng-click="habitClose()"><span>{{l10n.button.skip}}</span></a>
+    </div>
+  </div>
+</section>
+<div gk-required-notification="gk-required-notification" ng-model="notiWelcomeBack" class="popup-1 overlay-white type-2 welcome-back hidden">
+  <div class="inner">
+    <div class="content"><img src="images/upload/welcome-back.png" alt="welcome back"/>
+      <p ng-bind-html="l10n.login.welcomeBack"></p>
+      <div class="button-box"><a href="javascript:;" title="{{l10n.button.continue}}" class="btn btn-8" data-hide="data-hide"><span>{{l10n.button.continue}}</span></a><a href="javascript:;" title="{{l10n.button.startFresh}}" class="btn btn-8" data-hide="data-hide" ng-click="startFresh()"><span>{{l10n.button.startFresh}}</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<section gk-required-notification="gk-required-notification" ng-model="notiCreateProfile" data-overlay="overlay-create-profile" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 creat-profile-popup overlay hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.popup.creatProfile"></p>
+    </div><a href="javascript:;" title="{{l10n.button.go}}" class="btn btn-6" data-hide="data-hide" ng-click="go(&quot;/login&quot;)"><span>{{l10n.button.go}}</span></a>
+  </div>
+</section>
+<section gk-required-notification="gk-required-notification" ng-model="notiChallenge" data-overlay="overlay-challenge" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 challenge-popup overlay-white type-2 hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.popup.challenge"></p>
+    </div>
+    <div class="button-box"><a href="javascript:;" title="{{l10n.button.setChallenges}}" class="btn btn-6 go-btn" data-hide="data-hide" ng-click="setChallenges()"><span>{{l10n.button.setChallenges}}</span></a><a href="javascript:;" title="{{l10n.button.skip}}" class="btn btn-6 skip-btn" data-hide="data-hide" ng-click="skip()"><span>{{l10n.button.skip}}</span></a>
+    </div>
+  </div>
+</section>
+<section gk-required-notification="gk-required-notification" data-overlay="overlay-rateapp" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 rate-app-popup overlay hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.popup.rateAppTitle" class="strong"></p>
+      <p ng-bind-html="l10n.popup.rateAppContent"></p>
+    </div><a href="javascript:;" title="{{l10n.button.rateApp}}" class="btn btn-6 go-btn-2" data-hide="data-hide" ng-click="rateApp()"><span>{{l10n.button.rateApp}}</span></a><a href="javascript:;" title="{{l10n.button.remindLater}}" class="btn btn-6 go-btn" data-hide="data-hide" ng-click="remindRateApp()"><span>{{l10n.button.remindLater}}</span></a><a href="javascript:;" title="{{l10n.button.noThanks}}" class="btn btn-6 skip-btn" data-hide="data-hide" ng-click="cancelRateApp()"><span>{{l10n.button.noThanks}}</span></a>
+  </div>
+</section>
+<main id="main" class="landing-page">
+  <div class="inner">
+    <div id="time-challenge-block" class="time-challenge-block">
+      <figure><img src="images/badge-landing.png" alt="badge landing"/></figure>
+      <div class="content-challenge">
+        <div class="time-challenge">
+          <p>{{l10n.landing.timeChallenge}}</p>
+          <p class="date">3 Days</p>
+        </div>
+        <div class="time-completed">
+          <p><span class="first-num">0</span><span class="text-of">{{l10n.landing.ofText}}</span><span class="last-num">72</span></p>
+          <p>{{l10n.landing.hourCompleted}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="group-btn"><a id="btn-distract-me" href="javascript:;" title="{{l10n.button.distractMe}}" ng-click="doNothing()" class="icon-text"><i class="icon-distract"></i><span>{{l10n.button.distractMe}}</span></a><a id="btn-slipped" href="javascript:;" title="{{l10n.button.iSlip}}" ng-click="doNothing()" class="icon-text"><i class="icon-slip"></i><span>{{l10n.button.iSlip}}</span></a></div>
+    <div ng-show="showTeamActive" class="landing-activity">
+      <div class="inner">
+        <div class="activity-title">
+          <p>{{l10n.landing.title1}}</p>
+        </div>
+        <div class="tab-pane">
+          <ul ng-click="doNothing()" class="list activity-feed">
+            <li>
+              <div class="thumbnail"><span class="count">{{teamActivity['count-cheer']}}</span></div>
+              <div class="content">
+                <p>{{l10n.landing.youHave}}<span class="bold">{{teamActivity['count-cheer']}}</span>{{l10n.landing.cheers}}</p>
+              </div>
+            </li>
+            <li ng-show="perSmile">
+              <div class="thumbnail"><img alt="" src="{{perSmile.member.avatar}}"/></div>
+              <div class="content">
+                <p><span class="name">{{perSmile.member.name}}</span><span> has sent a smiley.</span></p>
+              </div>
+            </li>
+            <li ng-show="perCheer">
+              <div class="thumbnail"><img alt="" src="{{perCheer.member.avatar}}"/></div>
+              <div class="content">
+                <p><span class="name">{{perCheer.member.name}}</span><span> has cheered you on.</span></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div><a title="Go to your team page" href="javascript:;" ng-click="doNothing()" class="section-item arrow arrow-1"><span class="text">{{l10n.landing.goToTeam}}</span></a>
+    </div>
+    <div class="motivation-block motivation-bg-2">
+      <div class="inner">
+        <div class="title">
+          <p>{{l10n.landing.title2}}</p>
+        </div>
+        <ul data-snap-ignore="true" rn-carousel="rn-carousel" rn-carousel-indicator="rn-carousel-indicator" class="motivation-carousel">
+          <li ng-repeat="item in Items" id="{{$first?&quot;#rn-carousel-1&quot;:&quot;&quot;}}" class="rn-carousel-slide">
+            <div ng-if="(($index &lt; (Items.length - 1)) &amp;&amp; ($index == 0))" class="content">
+              <h2 translate="{{item.title}}"></h2>
+              <div class="text-intro">
+                <p ng-bind-html="item.text"></p>
+              </div>
+              <div class="image-motivation"><img src="{{item.src}}" alt=""/></div>
+            </div>
+            <div ng-if="(($index &lt; (Items.length - 1)) &amp;&amp; ($index != 0))" class="content">
+              <h2 translate="{{item.title}}"></h2>
+              <div class="text-intro">
+                <p ng-bind-html="item.text"></p>
+              </div>
+              <div class="image-motivation"><img src="{{item.src}}" alt=""/></div>
+            </div>
+            <div ng-if="$index == (Items.length - 1)" class="show-gallery"><a href="javascript:;" title="see all gallery" ng-click="doNothing()"><img src="images/upload/all-motivation.png" alt="see all gallery"/></a></div>
+          </li>
+        </ul><a href="javascript:;" title="share friend" ng-click="doNothing()" class="icon icon-share share-motivation">share friend</a>
+        <div class="group-link arrow arrow-2"><a title="Read the science behind" href="javascript:;" ng-show="!showVideo" class="science-link">{{l10n.motivation.readScience}}</a></div>
+      </div>
+    </div><a id="quit-team" title="Quiting can be easier together!" href="javascript:;" ng-click="doNothing()" ng-show="!showTeamActive" class="section-item arrow arrow-1 row-2"><span class="text"><span class="color-orange">{{l10n.landing.QTbtn}}</span>{{l10n.landing.QTcaption}}</span></a><a title="It’s time! Check out your daily reminder" href="javascript:;" ng-click="doNothing()" class="section-item arrow arrow-1 row-2"><span class="text"><span class="color-orange">{{l10n.landing.PRbtn}}</span>{{l10n.landing.PRcaption}}</span></a><a title="Get to know out products" href="javascript:;" ng-click="doNothing()" class="section-item arrow arrow-1 row-2"><span class="text"><span class="color-orange">{{l10n.landing.needExtra}}</span>{{l10n.landing.getToProduct}}</span></a>
+    <footer id="footer">
+      <div class="inner">
+        <div class="footer-title">
+          <p>{{l10n.footer.title}}</p>
+        </div>
+        <div class="content-footer">
+          <div class="message">
+            <p ng-bind-html="l10n.footer.messages"></p>
+          </div>
+          <div class="logo-footer"><a href="javascript:;" title="logo niquitin" class="logo-niquitin"><img src="images/logo-niquitin.png" alt="logo niquitin"/></a><a href="javascript:;" title="logo gsk" class="logo-gsk"><img src="images/logo-gsk-large.png" alt="logo gsk"/></a>
+          </div>
+          <div class="text-footer"><a href="#/privacy-policy" title="{{l10n.footer.link}}" class="link-policy" ng-click="nav('/privacy-policy')">{{l10n.footer.link}}</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</main>

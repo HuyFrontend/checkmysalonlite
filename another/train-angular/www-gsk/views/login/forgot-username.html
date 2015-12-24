@@ -1,0 +1,24 @@
+
+<section gk-notification="gk-notification" ng-model="notiForgotPass" data-name="forgot-pass-popup" class="popup-1 overlay-white type-table forgot-pass-popup hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.popup.getPass"></p>
+    </div>
+  </div>
+</section>
+<main id="main" class="forgot-pass-page">
+  <div class="inner">
+    <form id="get-pass-form" name="forgotUsername" class="get-pass-form">
+      <ul class="form-group">
+        <li>
+          <p ng-bind-html="l10n.login.forgotUsernameMess"></p>
+        </li>
+        <li>
+          <input type="email" name="youremail" placeholder="{{l10n.login.placeEmail}}" required="required" ng-model="email" class="input-text"/>
+          <label for="youremail" class="alert-layer">Please enter username</label>
+        </li>
+      </ul>
+      <button type="submit" ng-click="submit()" class="btn btn-submit">{{l10n.button.submit}}</button>
+    </form>
+  </div>
+</main>

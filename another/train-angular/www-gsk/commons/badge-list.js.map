@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "badge-list.js",
+  "sourceRoot": "..\\..\\source\\commons\\",
+  "sources": [
+    "badge-list.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA,YAAA,CAAA;AAAA,OAEO,CAAC,MAAR,CAAe,MAAf,CAAsB,CAAC,QAAvB,CAAgC,WAAhC,EACE;AAAA,EAAA,cAAA,EAAgB,wBAAhB;AAAA,EACA,YAAA,EAAc,sBADd;AAAA,EAEA,YAAA,EAAc,sBAFd;AAAA,EAGA,oBAAA,EAAsB,8BAHtB;AAAA,EAIA,cAAA,EAAgB,wBAJhB;AAAA,EAKA,oBAAA,EAAsB,8BALtB;CADF,CAFA,CAAA"
+}

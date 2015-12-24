@@ -1,0 +1,45 @@
+
+<main id="main">
+  <div class="inner">
+    <ul gk-panel-selector="gk-panel-selector" ng-model="proChild" ng-class="typeChild" class="weight-product">
+      <li gk-on-last-repeat="gk-on-last-repeat" ng-repeat="pro in productChilds" data-value="{{pro.path}}"><a href="javascript:;" title="{{pro.type}}">{{pro.type}}</a></li>
+    </ul>
+    <div class="intro-product">
+      <div class="preview">
+        <p class="name-product">{{productChild['product-name']}}</p><img src="{{productChild['picture']}}" alt="product niquitin patch"/>
+      </div>
+      <div class="info-block">
+        <p ng-bind-html="productChild.description"></p>
+      </div>
+    </div><a title="Detailed Product Information" href="" class="section-item arrow arrow-1" ng-click="goToProductDetail()"><span class="text">Detailed Product Information</span></a><a title="Add product to profile" href="" class="section-item section-type-2 " ng-click="addProductProfile()"><i class="icon-1 icon-plus"></i><span class="text">Add product to profile</span></a>
+    <div class="product-overview">
+      <div class="review-rating">
+        <div class="rating-container">
+          <p>{{l10n.product.averageRating}}</p>
+          <div class="rating"><span class="rating-empty"></span><span style="width: 92%;" class="rating-full"></span></div>
+        </div>
+        <p class="total-review">3 Reviews</p>
+      </div>
+      <div class="review-content">
+        <div class="rating-container">
+          <div class="rating"><span class="rating-empty"></span><span style="width: 92%;" class="rating-full"></span></div>
+          <p>Love the patch!</p>
+        </div>
+        <div class="content">
+          <p><strong class="name">Laura</strong>1/3/2014</p>
+          <p>These are great. You take one when you would normally have a cigarette - they stop you from wanting to rip off peoples heads during a bad craving moment</p>
+        </div>
+      </div>
+      <section class="group-btn"><a href="javascript:;" title="{{l10n.product.showMore}}">{{l10n.product.showMore}}</a><a href="javascript:;" title="{{l10n.product.writeReview}}" ng-click="nav(&quot;/products/post-review&quot;)">{{l10n.product.writeReview}}</a>
+      </section>
+    </div>
+    <ul class="product-section">
+      <li ng-repeat="product in listProduct"><a title="{{product.name}}" href="javascript:;" class="section-item section-type-1 arrow arrow-1" ng-click="getProduct(product[&quot;path&quot;])">
+          <figure><img alt="icon strips" src="{{product.picture}}"/></figure><span class="text">{{product.name}}</span></a>
+      </li><a title="My Product" href="javascript:;" class="section-item  arrow arrow-1" ng-click="nav(&quot;/products/my-product&quot;)"><span class="text">{{l10n.product.myProduct}}</span></a>
+    </ul>
+    <div class="notice-footer">
+      <p ng-bind-html="l10n.product.noticeFooter"></p>
+    </div>
+  </div>
+</main>
