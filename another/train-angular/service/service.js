@@ -1,7 +1,27 @@
 var app = angular.module('AngularApp', []);
+//1.  co 5 cach tao 1 service
+ //    - Sử dụng service() method
+ //    - Sử dụng factory () method
+ //    - Sử dụng provider() method
+ //    - Sử dụng value() method
+ //    - Sử dụng constant() method
+
+//2.  co 2 cach khoi tao service, dung $provide va khong dung provide vi du:
+app.factory('movie', function () {
+  return {
+    title: 'The Matrix';
+  }
+});
+// cach 2
+app.config(function ($provide) {
+  $provide.factory('movie', function () {
+    return {
+      title: 'The Matrix';
+    }
+  });
+});
 
 /* SERVICES*/
-
 /*app.factory('notify', ['$window', function(win) {
   var msgs = [];
   return function(msg) {
