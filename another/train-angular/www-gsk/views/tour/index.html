@@ -1,0 +1,16 @@
+
+<main id="main" class="tour-page">
+  <div class="inner">
+    <div class="carousel-tour">
+      <div class="loader"></div>
+      <ul rn-carousel="rn-carousel" rn-carousel-indicator="rn-carousel-indicator">
+        <li ng-repeat="item in data"><span><img alt="{{item.alt}}" src="{{item.src}}" class="{{item.class}}"/>
+            <div class="caption">
+              <h4 translate="{{item.title}}"></h4>
+              <div translate="{{item.desc}}" class="desc"></div>
+            </div></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,11 @@
+
+<main id="main" class="register-page">
+  <div class="inner container-bgd character-content">
+    <div class="block-1">
+      <h3 class="title">{{l10n.account.title}}</h3>
+      <ul gk-panel-selector="gk-panel-selector" ng-model="character" class="list-item list-character">
+        <li gk-on-last-repeat="gk-on-last-repeat" ng-repeat="item in avatarList" data-value="{{item.path}}"><a href="javascript:;" title="{{item.title || item.path}}"><span style="background-image : url({{item[&quot;small-img-path&quot;]}})" class="image"></span></a></li>
+      </ul>
+    </div>
+  </div><a href="javascript:;" ng-click="next()" class="btn btn-2 btn-arrow-1"><span>{{l10n.button.next}}</span></a>
+</main>

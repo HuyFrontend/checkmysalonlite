@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "environment-service.js",
+  "sourceRoot": "..\\..\\source\\models\\",
+  "sources": [
+    "environment-service.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA,YAAA,CAAA;AAAA,OAEO,CAAC,MAAR,CAAe,MAAf,CAAsB,CAAC,OAAvB,CAA+B,aAA/B,EAA8C,SAAA,GAAA;SAC5C;AAAA,IAAA,SAAA,EAAW,IAAX;AAAA,IAGA,MAAA,EAAQ,YAHR;AAAA,IAIA,KAAA,EAAO,SAAA,GAAA;AACL,MAAA,IAAe,IAAI,CAAC,MAAL,KAAe,aAA9B;AAAA,eAAO,IAAP,CAAA;OAAA;AACA,aAAO,KAAP,CAFK;IAAA,CAJP;IAD4C;AAAA,CAA9C,CAFA,CAAA"
+}

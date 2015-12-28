@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" manifest="wequit.appcache" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>weQuit</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" ng-meta>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body>
+    <div id="container" ng-controller="mainCtrl" ng-class="model.containerClass">
+      <section gk-prevent-touch-move class="splashscreen">
+        <div class="screen-bgd"></div>
+        <div class="must-age-block overlay-white type-1">
+          <div class="inner">
+            <div ng-bind-html="l10n.login.mustAge" class="content"></div>
+            <div class="button-box"><a href="" title="{{l10n.button.ok}}" class="btn btn-6 uppercase"><span>{{l10n.button.ok}}</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="loading-block"><span class="loader">&nbsp;</span><span id="percent-loading">&nbsp;</span></div>
+        <div class="app-information">
+          <p ng-bind-html="appVersion"></p>
+          <p ng-bind-html="appEnvironment"></p>
+        </div>
+      </section>
+      <div class="peel-block">&nbsp;</div>
+      <div style="display:none" class="snap-drawers">
+        <div ng-controller="sidebarLeftCtrl" class="snap-drawer snap-drawer-left">
+          <aside id="sidebar" class="sidebar-left">
+            <header>
+              <div class="top-header"></div>
+                        <button type="button" class="icon-btn icon-setting" ng-click="navFromLeft(&quot;/account-settings&quot;)">Setting</button>
+            </header>
+            <div class="content">
+              <div id="info-profile" class="info-profile">
+                <div class="thumbnail">
+                  <div style="background-image : url({{avatar}})" class="avatar"></div>
+                  <h4>{{USER.userName}}</h4>
+                </div>
+                <ul class="status">
+                  <li><a href="javascript:;" title="" ng-click="navFromLeft('/timeline')" class="total-days"><span class="number">{{totalDays}}</span><span ng-if="badges &gt; 1" class="text">Total days</span><span ng-if="badges &lt;= 1" class="text">Total day</span></a></li>
+                  <li><a href="javascript:;" title="" ng-click="nav('/quitpoint/your-badge')" class="badges"><span class="number">{{badges}}</span><span ng-if="badges &gt; 1" class="text">Badges</span><span ng-if="badges &lt;= 1" class="text">Badge</span></a></li>
+                  <li><a href="javascript:;" title="" ng-click="nav('/quitpoint/your-point')" class="quit-points"><span class="number">{{quitpoint}}</span><span ng-if="quitpoint &gt; 1" class="text">QuitPoints</span><span ng-if="quitpoint &lt;= 1" class="text">QuitPoint</span></a></li>
+                </ul>
+              </div>
+              <nav gk-sidebar-left class="menu-sidebar">
+                <ul>
+                  <li id="nav-overview"><a href="javascript:;" title="The Overview" ng-click="navFromLeft(&quot;/landing-page&quot;)">The Overview</a>
+                  </li>
+                  <li id="nav-quit-team"><a href="javascript:;" title="The Quit Team" ng-click="navToQuitteam()">The Quit Team</a>
+                  </li>
+                  <li id="nav-the-product"><a href="javascript:;" title="The Products" ng-click="navFromLeft(&quot;/products&quot;)">The Products</a>
+                  </li>
+                  <li id="nav-your-quitpoint"><a href="javascript:;" title="Use Your Quit Points" ng-click="navFromLeft(&quot;/quitpoint/your-point&quot;)">Use Your Quit Points</a>
+                  </li>
+                  <li id="nav-your-badges"><a href="javascript:;" title="Your Badges" ng-click="navFromLeft(&quot;/quitpoint/your-badge&quot;)">Your Badges</a>
+                  </li>
+                  <li id="nav-dist-games"><a href="javascript:;" title="Distraction Games" ng-click="navToDistractionGame()">Distraction Games</a>
+                  </li>
+                  <li id="nav-slipped"><a href="javascript:;" title="I Slipped" ng-click="addSlipOnClick(&quot;/landing-page/add-slip&quot;)">I Slipped</a>
+                  </li>
+                  <li id="nav-motivation"><a href="javascript:;" title="Motivation Gallery" ng-click="navFromLeft(&quot;/landing-page/motivation-gallery&quot;)">Motivation Gallery</a>
+                  </li>
+                  <li id="nav-timline"><a href="javascript:;" title="Full Timeline" ng-click="navFromLeft(&quot;/timeline&quot;)">Full Timeline</a>
+                  </li>
+                  <li id="nav-terms"><a href="javascript:;" title="Terms &amp; Conditions" ng-click="navFromLeft(&quot;/terms-conditions&quot;)">Terms & Conditions</a>
+                  </li>
+                  <li id="nav-privacy"><a href="javascript:;" title="Privacy Policy" ng-click="navFromLeft(&quot;/privacy-policy&quot;)">Privacy Policy</a>
+                  </li>
+                  <li id="nav-give-feedback"><a href="javascript:;" title="Give Us Feedback" ng-click="navFromLeft(&quot;/feedback&quot;)">Give Us Feedback</a>
+                  </li>
+                  <li id="help"><a href="javascript:;" title="Help" ng-click="navFromLeft(&quot;/help&quot;)">Help</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </aside>
+          <aside id="sidebar" class="sidebar-notification">
+            <header>
+              <h2 class="title">Notifications</h2>
+                        <button type="button" class="icon-btn icon-return" ng-click="navToSidebarLeft()">back</button>
+            </header>
+            <section>
+              <ul class="list list-desc">
+                          <li>
+                            <div class="thumbnail"><img alt="" src="images/upload/notification/notification-1.png"></div>
+                            <div class="content">
+                              <p>Congratulations!</p>
+                              <p>Your first badge for just having the courage to begin. It will be the first of many to come.</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="thumbnail"><img alt="" src="images/upload/notification/notification-2.png"></div>
+                            <div class="content">
+                              <p>Tom has sent you a smiley.</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="thumbnail"><img alt="" src="images/upload/notification/notification-3.png"></div>
+                            <div class="content">
+                              <p>Great! Challenge completed.</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="thumbnail"><img alt="" src="images/upload/notification/notification-1.png"></div>
+                            <div class="content">
+                              <p>Congratulations!</p>
+                              <p>Your first badge for just having the courage to begin. It will be the first of many to come.</p>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="thumbnail"><img alt="" src="images/upload/notification/notification-4.png"></div>
+                            <div class="content">
+                              <p>Casey cheered you up!</p>
+                            </div>
+                          </li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+        <div class="snap-drawer snap-drawer-right">
+          <aside id="sidebar" class="sidebar-right">
+            <header ng-click="closeSidebarRight()">
+              <h2 ng-bind-html="l10n.sidebarRight.title" class="title"></h2>
+            </header>
+            <section>
+              <div class="plan-head"><img src="images/img-sidebar-right.png" alt="this way">
+                <p ng-bind-html="l10n.sidebarRight.planHead"></p>
+              </div>
+              <ul class="list list-weeks">
+                          <li ng-repeat="item in weekdays" ng-click="navFromRight(&quot;/timeline&quot;, {{$index}})" ng-class="{active: ($index == 0)}"><a href="javascript:;" title=""><span class="weekdays">{{item.dayOfWeek}}</span><span class="days">{{item.month +" "+ item.dateInOrder}}</span></a></li>
+              </ul>
+              <div gk-height-desc class="desc">
+                <p ng-bind-html="l10n.sidebarRight.desc"></p>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+      <div id="inner" class="snap-content">
+        <header id="header">
+          <div class="top-header">&nbsp;</div>
+          <div class="container">
+            <div class="inner">
+                      <button type="button" class="icon" id="icon-left" ng-class="model.leftIcon" ng-click="left()" ng-if="!model.hideLeftIcon"></button>
+                      <h2 class="title">{{model.pageTitle}}</h2>
+              <div gk-progress data-progress-status="0" ng-model="progress" class="badge-line">
+                <div id="progress-bar" data-name="progress-bar" class="widget">
+                  <div class="range"><span data-name="icon-handle" class="icon-handle"></span></div>
+                </div><span data-name="icon-arrow-at-progressbar" id="arrow-progressbar" class="icon-arrow"></span>
+              </div>
+                      <button type="button" class="icon" id="icon-right" ng-show="model.rightIcon" ng-class="model.rightIcon" ng-click="right()"></button>
+            </div>
+          </div>
+        </header>
+        <div ng-view ng-class="slide" gk-hide-header class="wrapper"></div>
+        <div id="overlay-show-nav" gk-prevent-touch-move class="overlay">&nbsp;</div>
+      </div>
+      <div id="overlay-loading-data" gk-prevent-touch-move data-loading-data="data-loading-data" class="overlay">
+        <div class="loader">&nbsp;</div>
+      </div>
+    </div>
+    <script src="cordova.js"></script>
+    <script src="i18n/en.js"></script>
+    <script src="js/l10n.js"></script>
+    <script src="js/libs.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

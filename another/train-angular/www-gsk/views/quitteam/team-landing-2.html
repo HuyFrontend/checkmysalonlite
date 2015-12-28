@@ -1,0 +1,112 @@
+
+<section gk-notification="gk-notification" data-timeout="3000" ng-model="notiFirstOne" class="popup-1 first-one-popup overlay-white hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.popup.firstOne"></p><img src="images/upload/img-quitteam.png" alt="join team"/>
+    </div>
+  </div>
+</section>
+<section gk-notification="gk-notification" data-timeout="3000" ng-model="notiNotFull" class="popup-1 not-full-popup overlay-white hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.popup.notFull"></p><img src="images/upload/img-quitteam.png" alt="join team"/>
+    </div>
+  </div>
+</section>
+<main id="main">
+  <div class="inner">
+    <div class="group-thumbs group-thumbs-1">
+      <ul>
+        <li>
+          <div class="thumbs" ng-click="viewTeamMember(listTeamMem[0].id)" id="step1">
+            <div class="thumbnails"><span style="background-image : url({{listTeamMem[0]['small-avatar']}})" class="avatar"></span><i class="img-flag flag-{{listTeamMem[0].country}}"></i>
+            </div>
+            <p class="desc">{{listTeamMem[0]['user-name']}}</p>
+          </div>
+          <div class="thumbs" ng-click="viewTeamMember(listTeamMem[3].id)">
+            <div class="thumbnails"><span style="background-image : url({{listTeamMem[3]['small-avatar']}})" class="avatar"></span><i class="img-flag flag-{{listTeamMem[3].country}}"></i>
+            </div>
+            <p class="desc">{{listTeamMem[3]['user-name']}}</p>
+          </div>
+        </li>
+        <li>
+          <div class="thumbs" ng-click="viewTeamMember(listTeamMem[1].id)">
+            <div class="thumbnails"><span style="background-image : url({{listTeamMem[1]['small-avatar']}})" class="avatar"></span><i class="img-flag flag-{{listTeamMem[1].country}}"></i>
+            </div>
+            <p class="desc">{{listTeamMem[1]['user-name']}}</p>
+          </div>
+          <div class="thumbs" ng-click="viewTeamMember(listTeamMem[4].id)">
+            <div class="thumbnails"><span style="background-image : url({{listTeamMem[4]['small-avatar']}})" class="avatar"></span><i class="img-flag flag-{{listTeamMem[4].country}}"></i>
+            </div>
+            <p class="desc">{{listTeamMem[4]['user-name']}}</p>
+          </div>
+        </li>
+        <li>
+          <div class="thumbs" ng-click="viewTeamMember(listTeamMem[2].id)">
+            <div class="thumbnails"><span style="background-image : url({{listTeamMem[2]['small-avatar']}})" class="avatar"></span><i class="img-flag flag-{{listTeamMem[2].country}}"></i>
+            </div>
+            <p class="desc">{{listTeamMem[2]['user-name']}}</p>
+          </div>
+          <div class="thumbs" ng-click="viewTeamMember(listTeamMem[5].id)">
+            <div class="thumbnails"><span style="background-image : url({{listTeamMem[5]['small-avatar']}})" class="avatar"></span><i class="img-flag flag-{{listTeamMem[5].country}}"></i>
+            </div>
+            <p class="desc">{{listTeamMem[5]['user-name']}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="plan-time">
+      <h4>{{l10n.team.teamStat}}</h4>
+      <ul class="status">
+        <li><a href="javascript:;" title="" class="total-days"><span class="number">{{totalPoint['total-days']}}</span><span class="text">Total days</span></a></li>
+        <li><a href="javascript:;" title="" class="badges"><span class="number">{{totalPoint['total-badges']}}</span><span class="text">Badges</span></a></li>
+        <li><a href="javascript:;" title="" class="quit-points"><span class="number">{{totalPoint['total-point']}}</span><span class="text">QuitPoints</span></a></li>
+      </ul>
+    </div>
+    <div gk-tab="gk-tab" class="tabs tabs-1">
+      <ul id="nav-tabs" class="nav-tabs">
+        <li><a href="javascript:void(0);" title="{{l10n.team.teamActivity}}" class="btn">{{l10n.team.teamActivity}}</a>
+        </li>
+        <li class="cheerTab"><a href="javascript:void(0);" title="Cheer" ng-click="readCheer()" id="btn-cheers" class="btn">{{l10n.team.receiveCheer}}</a></li>
+      </ul>
+      <div class="tab-content">
+        <div data-name="pane-feeds" class="tab-pane tab-activity-feed">
+          <div id="activity-feed">
+            <ul data-name="list-activities" class="list activity-feed">
+              <li ng-repeat="acti in nonActiFeed">
+                <div class="thumbnail"><img alt="" src="{{acti.member['small-avatar']}}"/></div>
+                <div class="content">
+                  <p ng-bind-html="acti.activity.value" class="name-feed"></p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <ul class="list type-2">
+            <li>
+              <div class="thumbnail"><img alt="" src="images/upload/quit-team/quit-team-4.png"/></div>
+              <div class="content">
+                <p>{{activityFeed[0].activity.value}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div data-name="pane-cheers" class="tab-pane">
+          <ul data-name="list-cheers" class="list received-cheers">
+            <li ng-repeat="cheer in activityCheers">
+              <div class="thumbnail"><img src="{{cheer.member['small-avatar']}}" alt=""/><span class="name">{{cheer.member.name}}</span>
+              </div>
+              <div ng-if="cheer.activity.type == 'SMILEY'" class="content">
+                <div class="inner smiley"><img src="{{cheer.activity.value}}" alt="" class="img-status"/>
+                </div>
+              </div>
+              <div ng-if="cheer.activity.type == 'CHEER'" class="content cheer-content">
+                <div class="inner"><span>{{cheer.activity.value}}</span></div>
+              </div>
+            </li>
+          </ul>
+          <p ng-if="showCheer == 0" class="no-cheer">No news yet</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

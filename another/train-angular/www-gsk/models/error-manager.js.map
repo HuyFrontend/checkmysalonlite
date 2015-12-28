@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "error-manager.js",
+  "sourceRoot": "..\\..\\source\\models\\",
+  "sources": [
+    "error-manager.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA,YAAA,CAAA;AAAA,OAEO,CAAC,MAAR,CAAe,MAAf,CAAsB,CAAC,OAAvB,CAA+B,cAA/B,EAA+C,SAAA,GAAA;AAC7C,MAAA,SAAA;AAAA,EAAA,SAAA,GAAY,EAAZ,CAAA;SAEA;AAAA,IAAA,aAAA,EAAe,SAAC,IAAD,GAAA;AACb,aAAO,4BAAP,CADa;IAAA,CAAf;IAH6C;AAAA,CAA/C,CAFA,CAAA"
+}

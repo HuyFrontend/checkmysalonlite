@@ -1,0 +1,23 @@
+
+<main id="main" class="quitpoint-page">
+  <div gk-your-coupons="gk-your-coupons" class="inner coupons-content">
+    <ul>
+      <li ng-repeat="item in data" gk-on-last-repeat="gk-on-last-repeat">
+        <div class="coupons-block">
+          <div class="product-box">
+            <figure><img src="{{item.picture}}" alt="{{item.title}}"/></figure>
+            <div class="desc">
+              <p>{{item.title}}<span class="large">{{item["big-title"]}}</span></p>
+            </div>
+          </div>
+          <div class="detail">
+            <h3>{{item["sub-title"]}}</h3>
+            <div ng-bind-html="item.intro"></div><a href="javascript:;" class="btn-details"><span>{{l10n.quitPoint.seeOffer}}</span></a>
+          </div>
+        </div>
+        <div ng-bind-html="item.description" class="offer-details">
+        </div>
+      </li>
+    </ul>
+  </div>
+</main><a href="javascript:;" title="{{l10n.button.emailCoupon}}" class="btn btn-email-coupons btn-6" ng-click="emailCoupon()"><span>{{l10n.button.emailCoupon}}</span></a><a href="javascript:;" title="{{l10n.button.backToHome}}" class="btn btn-back-homepage btn-6" style="display:none" ng-click="nav(&quot;/landing-page&quot;)"><span>{{l10n.button.backToHome}}</span></a>

@@ -1,0 +1,15 @@
+
+<main id="main" class="register-page">
+  <div class="inner container-bgd">
+    <div class="block-1">
+      <h3 ng-bind-html="l10n.habit.quest3" class="title"></h3>
+      <div gk-national-selector="gk-national-selector" ng-model="replace" class="select-1">
+        <select data-signup-select="data-signup-select">
+          <option disabled="" value="">{{l10n.signUp.valueDefault}}</option>
+          <option gk-on-last-repeat="gk-on-last-repeat" value="{{product.path}}" ng-repeat="product in productList">{{product.content}}</option>
+          <optgroup label=""></optgroup>
+        </select><span>{{l10n.signUp.valueDefault}}</span>
+      </div>
+    </div>
+  </div><a href="javascript:;" ng-click="next()" class="btn btn-2 btn-arrow-1"><span>{{l10n.button.next}}</span></a>
+</main>

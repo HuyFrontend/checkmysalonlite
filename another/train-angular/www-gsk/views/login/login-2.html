@@ -1,0 +1,28 @@
+
+<main id="main" class="login login-2">
+  <div class="content">
+    <div class="login-frm">
+      <form id="login-form" method="POST" action="" name="loginform">
+        <div ng-class="{&quot;error&quot;: err.userName}" class="field-group">
+          <input type="userName" name="userName" id="userName" placeholder="{{l10n.login.placeUserName}}" class="input" ng-model="credential.userName" required="required"/>
+          <label for="username" class="alert-layer">{{l10n.message.alertUserName}}</label>
+        </div>
+        <div ng-class="{&quot;error&quot;: err.password}" class="field-group">
+          <input type="password" name="password" id="password" placeholder="{{l10n.login.placeEnterPass}}" class="input" ng-model="credential.password" ng-trim="false" required="required" maxlength="12"/>
+          <label for="password" class="alert-layer">{{l10n.message.alertPassSignIn}}</label>
+        </div>
+        <div class="field-group field-checkbox">
+          <input type="checkbox" name="checkbox" id="chk-signed" class="checkbox" ng-model="credential.isRemember" ng-checked="true" ng-true-value="true" ng-false-value="false"/>
+          <label for="chk-signed">{{l10n.login.rememberMe}}</label><a href="javascript:;" title="{{l10n.login.forgotPass}}" class="forgot-pass" ng-click="nav(&quot;/login/forgot-pass&quot;)">{{l10n.login.forgotPass}}</a>
+        </div>
+        <input type="submit" name="submit" id="submit" value="{{l10n.button.ok}}" class="btn-default btn-login uppercase" ng-click="submit()"/>
+      </form>
+      <p>{{l10n.login.signUp2}}<a title="{{l10n.login.signUp}}" href="#/signup" class="forgot-pass">{{l10n.login.signUp}}</a></p>
+    </div>
+    <div class="group-bottom"><a href="#/tour" title="{{l10n.login.tour}}" class="tour">{{l10n.login.tour}}</a>
+      <div class="content">
+        <p><a title="{{l10n.login.viewPrivaceyPolicy}}" href="javascript:;" ng-click="nav(&quot;/privacy-policy&quot;)">{{l10n.login.viewPrivaceyPolicy}}</a></p>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,17 @@
+
+<main id="main" data-showheader="data-showheader" class="product-page">
+  <div class="inner">
+    <div class="content">
+      <div class="preview"><img src="images/upload/image-niquitin.png" alt="Niquitin patch"/>
+      </div><a title="Get product recommendations" href="javascript:;" class="section-item  arrow arrow-1" ng-click="getRecommentdations()"><span class="text">{{l10n.product.getProduct}}</span></a>
+      <ul class="product-section">
+        <li ng-repeat="product in listProduct"><a title="{{product.name}}" href="javascript:;" class="section-item section-type-1 arrow arrow-1" ng-click="getProduct(product[&quot;path&quot;])">
+            <figure><img alt="icon strips" src="{{product.picture}}"/></figure><span class="text">{{product.name}}</span></a>
+        </li>
+      </ul><a title="My Product" href="javascript:;" class="section-item  arrow arrow-1" ng-click="nav(&quot;/products/my-product&quot;)"><span class="text">{{l10n.product.myProduct}}</span></a>
+      <div class="notice-footer">
+        <p ng-bind-html="l10n.product.noticeFooter"></p>
+      </div>
+    </div>
+  </div>
+</main>

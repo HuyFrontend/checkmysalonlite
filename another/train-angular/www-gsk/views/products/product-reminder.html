@@ -1,0 +1,18 @@
+
+<main id="main" class="product-reminder-page">
+  <div class="inner">
+    <div class="intro-product">
+      <div class="preview"><img src="{{product.picture}}" alt="product reminder"/>
+      </div>
+      <div class="info-block">
+        <p ng-bind-html="productMemind.message"></p>
+      </div>
+    </div>
+    <div class="block-info"><a href="javascript:;" title="Read More" class="read-more arrow arrow-2">Read More</a>
+      <div ng-bind-html="product.content" class="block-detail"></div>
+    </div>
+  </div>
+  <div class="notice-footer">
+    <p ng-bind-html="l10n.product.noticeFooter"></p>
+  </div>
+</main>

@@ -1,0 +1,32 @@
+
+<main id="main" class="register-page">
+  <div class="inner container-bgd profile-content">
+    <form name="signupform" ng-submit="next()" class="form-1">
+      <ul>
+        <li ng-class="{&quot;error&quot;: err.fullName}">
+          <input id="fullName" type="text" name="fullName" placeholder="{{l10n.login.placeName}}" ng-model="credential.fullName" required="required" class="input-1"/>
+          <label for="fullName" class="alert-layer">{{l10n.message.alertName}}</label>
+        </li>
+        <li ng-class="{&quot;error&quot;: err.userName}">
+          <input id="useName" type="text" name="userName" ng-model="credential.userName" placeholder="{{l10n.login.placeUserName}}" required="required" class="input-1"/>
+          <label for="userName" class="alert-layer">{{l10n.message.alertUserName}}</label>
+          <label for="userName" class="instructions">{{l10n.login.instructionsName}}</label>
+        </li>
+        <li ng-class="{&quot;error&quot;: err.email}">
+          <input id="email" name="email" placeholder="{{l10n.account.email}}" ng-model="credential.email" ng-pattern="/^null|$/" required="required" type="email" class="input-1"/>
+          <label for="email" class="alert-layer">{{l10n.message.alertEmail}}</label>
+        </li>
+        <li ng-class="{&quot;error&quot;: err.password}">
+          <input id="password" type="password" name="password" placeholder="{{l10n.login.placePass}}" ng-model="credential.password" ng-trim="false" required="required" maxlength="12" class="input-1"/>
+          <label for="password" class="alert-layer">{{l10n.message.alertPass}}</label>
+        </li>
+        <li ng-class="{&quot;error&quot;: err.confirmPass}">
+          <input id="confirmPass" type="password" name="confirmPass" placeholder="{{l10n.login.placeRePass}}" ng-model="credential.confirmPass" ng-trim="false" required="required" maxlength="12" class="input-1"/>
+          <label for="confirmPass" class="alert-layer">{{l10n.message.alertRePass}}</label>
+          <label for="confirmPass" class="instructions">{{l10n.login.instructionsPass}}</label>
+        </li>
+      </ul>
+      <button type="submit" ng-click="next()" class="btn btn-2">{{l10n.button.next}}</button>
+    </form>
+  </div>
+</main>

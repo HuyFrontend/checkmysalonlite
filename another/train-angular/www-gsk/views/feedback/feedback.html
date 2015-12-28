@@ -1,0 +1,23 @@
+
+<section gk-notification="gk-notification" ng-model="notiFeedback" data-lead-back="/landing-page" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 feedback-popup overlay-white hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.thank.feedback"></p><img src="images/img-thank.png" alt="thank"/>
+    </div>
+  </div>
+</section>
+<main id="main" class="feedback-page">
+  <div class="inner">
+    <form ng-submit="submit()" id="frm-feedback" name="form-feedback" class="form-feedback">
+      <div class="form-group">
+        <textarea name="your-feedback" id="your-feedback" placeholder="{{l10n.feedBack.caption}}" ng-model="message"></textarea>
+      </div>
+      <div class="message-text">
+        <p ng-bind-html="l10n.feedBack.message"></p>
+      </div>
+      <div class="rate-app"><img src="images/app-store.png" alt="icon rate"/><a href="#" title="{{l10n.feedBack.rate}}">{{l10n.feedBack.rate}}</a>
+      </div>
+      <button type="submit" ng-click="submit()" class="btn btn-2">{{l10n.button.send}}</button>
+    </form>
+  </div>
+</main>

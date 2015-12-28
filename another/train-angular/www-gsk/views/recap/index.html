@@ -1,0 +1,17 @@
+
+<section gk-notification="gk-notification" ng-model="notiGreat" data-lead-back="/landing-page" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 great-popup overlay-white hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.recap.info"></p><img src="images/upload/image-recap-great.png" alt="add slip"/>
+    </div>
+  </div>
+</section>
+<main id="main" class="recap-page container-bgd">
+  <div class="inner">
+    <div class="add-slip"><img src="images/upload/image-recap.png" alt="add slip"/>
+      <p ng-bind-html="l10n.recap.text"></p>
+    </div>
+    <div class="btn-group"><a href="javascript:;" title="{{l10n.button.yes}}" class="btn btn-8" ng-click="yes()"><span>{{l10n.button.yes}}</span></a><a href="javascript:;" title="{{l10n.button.no}}" class="btn btn-8" ng-click="no()"><span>{{l10n.button.no}}</span></a>
+    </div>
+  </div>
+</main>

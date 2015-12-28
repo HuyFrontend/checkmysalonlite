@@ -1,0 +1,19 @@
+
+<section gk-notification="gk-notification" ng-model="notiNewCharacter" data-timeout="2000" data-lead-back="/landing-page" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 new-character-popup overlay-white hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.quitPoint.characterSay"></p><img src="{{avatarRedeem['profile-avatar']}}" alt="Donation"/>
+    </div>
+  </div>
+</section>
+<main id="main" class="register-page">
+  <div class="inner container-bgd character-content">
+    <div class="block-1">
+      <h3 ng-bind-html="l10n.account.title" class="title"></h3>
+      <ul gk-panel-selector="gk-panel-selector" ng-model="character" class="list-item list-character">
+        <li gk-on-last-repeat="gk-on-last-repeat" data-value="{{avatar[&quot;profile-img-path&quot;]}}" ng-repeat="avatar in avatarList"><a href="javascript:;" title="Panda"><span style="background-image : url({{avatar['small-img-path']}})" class="image"></span><span class="name">{{avatar.point}}pts</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main><a href="javascript:;" ng-click="submit(&quot;/quitpoint/character-detail&quot;)" class="btn btn-submit"><span>Redeem</span></a>

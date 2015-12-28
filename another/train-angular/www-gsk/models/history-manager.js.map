@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "history-manager.js",
+  "sourceRoot": "..\\..\\source\\models\\",
+  "sources": [
+    "history-manager.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA,YAAA,CAAA;AAAA,OAEO,CAAC,MAAR,CAAe,MAAf,CAAsB,CAAC,OAAvB,CAA+B,gBAA/B,EAAiD,SAAA,GAAA;AAC/C,MAAA,OAAA;AAAA,EAAA,OAAA,GAAU,EAAV,CAAA;AAEA,SAAO,OAAP,CAH+C;AAAA,CAAjD,CAFA,CAAA"
+}

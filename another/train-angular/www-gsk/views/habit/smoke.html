@@ -1,0 +1,15 @@
+
+<main id="main" class="habit-page">
+  <div class="inner container-bgd">
+    <div class="block-1">
+      <h3 class="title">{{thirdQuestion.question}}</h3>
+      <div gk-national-selector="gk-national-selector" ng-model="cigarettes" class="select-1">
+        <select>
+          <option disabled="" value="">{{l10n.signUp.valueDefault}}</option>
+          <option value="{{habit.path}}" ng-repeat="habit in answerHabitThird">{{habit.content}}</option>
+          <optgroup label=""></optgroup>
+        </select><span>{{l10n.signUp.valueDefault}}</span>
+      </div>
+    </div>
+  </div><a href="javascript:;" ng-click="next()" class="btn btn-2 btn-arrow-1"><span>{{l10n.button.done}}</span></a>
+</main>

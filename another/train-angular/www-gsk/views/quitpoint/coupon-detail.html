@@ -1,0 +1,18 @@
+
+<main id="main" class="quitpoint-page">
+  <div class="inner coupons-content coupon-detail">
+    <div class="coupons-block">
+      <div class="product-box">
+        <figure><img src="{{item.picture}}" alt="{{item.title}}"/></figure>
+        <div class="desc">
+          <p>{{item.title}}<span class="large">{{item["big-title"]}}</span></p>
+        </div>
+      </div>
+      <div class="detail">
+        <h3>{{item["sub-title"]}}</h3>
+        <p ng-bind-html="item.intro"></p><a href="javascript:;" class="btn-details"><span>{{l10n.quitPoint.seeOffer}}</span></a>
+      </div>
+    </div>
+    <div ng-bind-html="item.description" class="offer-details"></div>
+  </div>
+</main><a href="javascript:;" title="{{l10n.button.backToHome}}" class="btn btn-back-homepage btn-6" ng-click="nav(&quot;/landing-page&quot;)"><span>{{l10n.button.backToHome}}</span></a>

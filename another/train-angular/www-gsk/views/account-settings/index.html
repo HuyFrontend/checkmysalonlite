@@ -1,0 +1,201 @@
+
+<section data-overlay="overlay-media" gk-popup="gk-popup" ng-show="showPopup" class="popup-1 media-popup overlay">
+  <div class="inner">
+    <div class="content">
+      <p><a href="javascript:;" title="Take Photo" ng-click="getPhotoFromCamera()">Take Photo</a>
+      </p>
+      <p><a href="javascript:;" title="Take Video" ng-click="captureVideo()">Take Video</a>
+      </p>
+      <p><a href="javascript:;" title="Choose Existing Photo" ng-click="getPhotoFromLibrary()">Choose Existing Photo</a>
+      </p>
+      <p><a href="javascript:;" title="Choose Existing Video" ng-click="getVideoFromLibrary()">Choose Existing Video</a>
+      </p>
+      <p><a href="javascript:;" title="Record a Voice Note" ng-click="captureAudio()">Record a Voice Note</a>
+      </p>
+      <p><a href="javascript:;" title="Write a Memo" ng-click="memoPopup()">Write a Memo</a>
+      </p>
+    </div><a href="javascript:;" title="{{l10n.button.cancel}}" class="btn btn-6 skip-btn" ng-click="closePopup()"><span>{{l10n.button.cancel}}</span></a>
+  </div>
+</section>
+<main id="main" class="account-settings-page">
+  <div class="inner">
+    <div class="accordion">
+      <ul gk-accordion="gk-accordion" ng-model="panel">
+        <li class="account-item"><a title="my info" href="javascript:;" class="heading">
+            <h3>{{l10n.account.group1}}</h3><span class="edit">Edit</span></a>
+          <div class="content">
+            <form id="my-info" name="my-info" method="post" action="#" class="form-myinfo">
+              <ul class="list-info">
+                <li data-input-focus="data-input-focus">
+                  <label for="username">{{l10n.account.yourName}}</label>
+                  <div class="table-cell">
+                    <input type="text" name="username" id="username" value="Janedoe" ng-model="user.name" ng-blur="updateProfile()"/>
+                  </div>
+                </li>
+                <li class="notedit">
+                  <label for="">{{l10n.account.userName}}</label>
+                  <div class="table-cell"><span>{{USER.userName}}</span></div>
+                </li>
+                <li data-output-blur="data-output-blur">
+                  <label for="email">{{l10n.account.email}}</label>
+                  <div class="table-cell">
+                    <input type="email" name="email" id="email" value="Jane@email.com" ng-model="user.email" ng-blur="updateEmail()"/>
+                  </div>
+                </li>
+                <li ng-click="nav(&quot;/account-settings/avatar&quot;)" class="type-1">
+                  <label for="avatar">{{l10n.account.avatar}}</label>
+                  <div class="table-cell"><a href="javascript:;" class="avatar"><img src="{{user.avatar}}"/></a></div>
+                </li>
+                <li ng-click="changePassClicked()">
+                  <label for="password">{{l10n.account.password}}</label>
+                  <div class="table-cell">
+                    <input type="password" name="password" id="password" value="password123" disabled="disabled" maxlength="12" minlength="4"/>
+                  </div>
+                </li>
+                <li data-name="change-pass-content" class="change-pass">
+                  <ul>
+                    <li>
+                      <label for="currentPass">{{l10n.account.currentPass}}</label>
+                      <div class="table-cell">
+                        <input type="password" name="currentPass" id="currentPass" value="" class="input-1" ng-model="passModel.current" ng-trim="false" maxlength="12" minlength="4"/>
+                      </div>
+                    </li>
+                    <li>
+                      <label for="newpassword">{{l10n.account.newPass}}</label>
+                      <div class="table-cell">
+                        <input type="password" name="newpassword" id="newpassword" value="" class="input-1" ng-model="passModel.newPassword" ng-trim="false" maxlength="12" minlength="4"/>
+                      </div>
+                    </li>
+                    <li>
+                      <label for="confirmpassword">{{l10n.account.confirmPass}}</label>
+                      <div class="table-cell">
+                        <input type="password" name="confirmpassword" id="confirmpassword" value="" class="input-1" ng-model="passModel.confirmPass" ng-trim="false" maxlength="12" minlength="4"/>
+                      </div>
+                    </li>
+                  </ul>
+                  <button type="button" ng-click="changePassword()" class="btn-change-pass">{{l10n.button.done}}</button>
+                </li>
+                <li>
+                  <label for="">{{l10n.account.country}}</label>
+                  <div gk-national-selector="gk-national-selector" ng-model="user.country" ng-change="updateProfile()" class="table-cell">
+                    <select>
+                      <option disabled="" value="">{{l10n.signUp.valueDefault}}</option>
+                      <option value="UK">United Kingdom</option>
+                      <optgroup label=""></optgroup>
+                    </select><span></span>
+                  </div>
+                </li>
+                <li>
+                  <label for="">{{l10n.account.language}}</label>
+                  <div gk-national-selector="gk-national-selector" ng-model="user.language" ng-change="updateProfile()" class="table-cell">
+                    <select>
+                      <option disabled="" value="">{{l10n.signUp.valueDefault}}</option>
+                      <option value="en_US">English</option>
+                      <optgroup label=""></optgroup>
+                    </select><span></span>
+                  </div>
+                </li>
+                <li data-input-focus="data-input-focus">
+                  <label for="">{{l10n.account.time}}</label>
+                  <div class="table-cell">
+                    <input type="time" name="time area" ng-model="timeRecap" data-name="recap-time"/><span>{{timeTranform}}</span>
+                  </div>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </li>
+        <li class="account-item"><a title="my old habit" href="javascript:;" class="heading">
+            <h3>{{l10n.account.group2}}</h3><span class="edit">Edit</span></a>
+          <div class="content">
+            <form id="old-habit" name="old-habit" method="post" action="#" class="old-habit">
+              <ul class="list-info">
+                <li>
+                  <label for="">{{l10n.account.habit1}}</label>
+                  <div gk-national-selector="gk-national-selector" ng-model="answerTime" ng-change="updateHabit1(answerTime)" class="table-cell">
+                    <select>
+                      <option disabled="" value="">{{l10n.signUp.valueDefault}}</option>
+                      <option gk-on-last-repeat="gk-on-last-repeat" value="{{time.path}}" ng-repeat="time in smokeFor">{{time.content}}</option>
+                      <optgroup label=""></optgroup>
+                    </select><span>{{l10n.signUp.valueDefault}}</span>
+                  </div>
+                </li>
+                <li>
+                  <label for=""></label>
+                  <div gk-national-selector="gk-national-selector" ng-model="answerYear" ng-change="updateHabit2(answerYear)" class="table-cell">
+                    <select ng-show="activeHabit2">
+                      <option disabled="" value="">{{l10n.signUp.valueDefault}}</option>
+                      <option value="{{year.path}}" ng-repeat="year in craving">{{year.content}}</option>
+                      <optgroup label=""></optgroup>
+                    </select><span class="type-1">{{l10n.signUp.valueDefault}}</span>
+                  </div>
+                </li>
+                <li>
+                  <label for="">{{l10n.account.habit3}}</label>
+                  <div gk-national-selector="gk-national-selector" ng-model="answerProduct" ng-change="updateHabit3(answerProduct)" class="table-cell">
+                    <select ng-show="activeHabit3">
+                      <option disabled="" value="">{{l10n.signUp.valueDefault}}</option>
+                      <option value="{{product.path}}" ng-repeat="product in youSmoke">{{product.content}}</option>
+                      <optgroup label=""></optgroup>
+                    </select><span>{{l10n.signUp.valueDefault}}</span>
+                  </div>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </li>
+        <li class="account-item"><a title="my reason to quit" href="javascript:;" class="heading">
+            <h3>{{l10n.account.group3}}</h3><span class="edit">Edit</span></a>
+          <div class="content">
+            <div class="block-reason">
+              <p ng-bind-html="l10n.account.reason"></p>
+              <div data-name="reason-to-quit" gk-reason-to-quit="gk-reason-to-quit" ng-model="reason" ng-change="reasonChanged()" class="select-1 reason">
+                <select class="slect-reason">
+                  <option disabled="" value="">{{l10n.signUp.valueDefault}}</option>
+                  <option value="Live longer">Live longer</option>
+                  <option value="A healthier life">A healthier life</option>
+                  <option value="My family">My family</option>
+                  <option value="Get physically fit">Get physically fit</option>
+                  <option value="Reduce my risk of illnesses">Reduce my risk of illnesses</option>
+                  <option value="Save money">Save money</option>
+                  <optgroup label=""></optgroup>
+                </select><span class="value-reason">{{reason || l10n.signUp.valueDefault}}</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="account-item"><a title="restart my journey" href="javascript:;" class="heading">
+            <h3>{{l10n.account.group4}}</h3></a>
+          <div class="content">
+            <div class="block-my-journey">
+              <p>{{l10n.account.restart}}</p>
+            </div><a href="javascript:;" title="{{l10n.button.restart}}" class="btn btn-restart" ng-click="restartJourney('/quitpoint')">{{l10n.button.restart}}</a><a href="javascript:;" title="{{l10n.button.cancel}}" class="btn btn-cancel" data-close-btn="data-close-btn">{{l10n.button.cancel}}</a>
+          </div>
+        </li>
+        <li ng-show="showLeaveTeam" class="account-item"><a title="leave quit team" href="#/account-settings/leaving-1" class="heading">
+            <h3>{{l10n.account.group5}}</h3><span class="edit">Edit</span></a>
+        </li>
+        <li class="account-item logout"><a title="logout" href="javascript:;" class="heading">
+            <h3>{{l10n.account.logout}}</h3><span class="edit">Edit</span></a>
+          <div class="content">
+            <div class="block-my-journey">
+              <p>{{l10n.account.logoutText}}</p>
+            </div><a href="javascript:;" title="{{l10n.button.yes}}" class="btn btn-restart" ng-click="logoutApp()">{{l10n.button.yes}}</a><a href="javascript:;" title="{{l10n.button.cancel}}" class="btn btn-cancel" data-close-btn="data-close-btn">{{l10n.button.cancel}}</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>
+<div gk-popup="gk-popup" ng-show="showMemoPopup" data-enable-touchmove="data-enable-touchmove" class="write-memo overlay">
+  <div class="header">
+    <h2>Write Memo</h2>
+    <button type="button" ng-click="closePopup()" class="icon-close">&nbsp;</button>
+  </div>
+  <form id="form-memo" name="form-memo" novalidate="novalidate" class="form-feedback">
+    <div class="form-group">
+      <textarea name="message-memo" id="message-memo" placeholder="Write what's your reason to quit here..." gk-write-memo="gk-write-memo" required="required"></textarea>
+    </div>
+    <button type="submit" ng-click="updateMemo()" class="btn btn-2">Use Memo</button>
+  </form>
+</div>

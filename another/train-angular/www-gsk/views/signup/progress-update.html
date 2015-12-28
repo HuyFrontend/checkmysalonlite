@@ -1,0 +1,19 @@
+
+<main id="main" class="register-page">
+  <div class="inner container-bgd progress-content">
+    <div class="block-1">
+      <h3 ng-bind-html="l10n.signUp.progress" class="title"></h3>
+      <ul gk-panel-selector="gk-panel-selector" ng-model="progressUpdate">
+        <li data-value="DAILY" class="time-group">
+          <div class="inner"><a href="javascript:;" title=""><span ng-bind-html="l10n.signUp.daily"></span></a></div>
+        </li>
+        <li data-value="OTHERS" class="time-group">
+          <div class="inner"><a href="javascript:;" title=""><span ng-bind-html="l10n.signUp.orther"></span></a></div>
+        </li>
+        <li data-value="WEEKLY" class="time-group">
+          <div class="inner"><a href="javascript:;" title=""><span ng-bind-html="l10n.signUp.weekly"></span></a></div>
+        </li>
+      </ul>
+    </div>
+  </div><a href="javascript:;" title="" ng-click="next()" class="btn btn-1 btn-arrow"><span>{{l10n.button.next}}</span></a>
+</main>

@@ -1,0 +1,22 @@
+
+<main id="main" class="habit-page">
+  <div class="inner">
+    <ul class="quest-list">
+      <li><a href="#/habit" title="">
+          <p ng-bind-html="l10n.habit.quest1" class="question"></p>
+          <p class="answer">{{model.cigarettesData}}{{l10n.habit.answer1}}</p></a></li>
+      <li><a href="#/habit/time" title="">
+          <p ng-bind-html="l10n.habit.quest4" class="question"></p>
+          <p class="answer">{{model.timeData}}{{l10n.habit.answer2}}</p></a></li>
+      <li><a href="#/habit/year" title="">
+          <p ng-bind-html="l10n.habit.quest5" class="question"></p>
+          <p class="answer">{{model.yearData}}</p></a></li>
+      <li><a href="#/habit/replace" title="">
+          <p ng-bind-html="l10n.habit.quest3" class="question"></p>
+          <p class="answer">{{model.replaceData}}</p></a></li>
+      <li><a href="#/habit/reason" title="">
+          <p ng-bind-html="l10n.habit.quest2" class="question"></p>
+          <p class="answer">{{model.reason}}</p></a></li>
+    </ul>
+  </div>
+</main><a href="javascript:;" ng-click="done()" class="btn btn-1">{{l10n.button.done}}</a>

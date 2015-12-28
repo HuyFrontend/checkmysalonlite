@@ -1,0 +1,46 @@
+
+<section gk-notification="gk-notification" ng-model="notiThankRating" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 thank-rating-popup overlay-white hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.thank.productRating"></p><img src="images/img-thank.png" alt="thank"/>
+    </div>
+  </div>
+</section>
+<main id="main">
+  <div class="inner">
+    <div class="preview"><img src="images/upload/image-niquitin-3.png" alt="image niquitin patch"/>
+      <div class="text-preview">
+        <p class="name">NiQuitin Patch</p><a href="javascript:;" title="Full Description" ng-click="nav(&quot;/products/product-overview&quot;)" class="desc">{{l10n.product.fullDesc}}</a>
+      </div>
+    </div>
+    <form id="frm-review" name="form review" action="#" method="post" class="frm-review">
+      <div class="form-group">
+        <label for="overall-rating">{{l10n.product.rating}}</label>
+        <ul class="rating-block" gk-rating="gk-rating" ng-model="model.rating">
+          <li data-value='0'><a href="javascript:;" title="rating">rating</a>
+          </li>
+          <li data-value='1'><a href="javascript:;" title="rating">rating</a>
+          </li>
+          <li data-value='2'><a href="javascript:;" title="rating">rating</a>
+          </li>
+          <li data-value='3'><a href="javascript:;" title="rating">rating</a>
+          </li>
+          <li data-value='4'><a href="javascript:;" title="rating">rating</a>
+          </li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="nickname">{{l10n.product.nickname}}</label>
+        <p>Jane Doe</p>
+      </div>
+      <div class="form-group">
+        <label for="title-review">{{l10n.product.titleReview}}</label>
+        <input type="text" name="Title" id="title-review" value="" ng-model="model.title"/>
+      </div>
+      <div class="form-group">
+        <label for="your-review">{{l10n.product.yourReview}}</label>
+        <textarea name="your-review" id="your-review" ng-model="model.content"></textarea>
+      </div><a href="javascript:;" title="{{l10n.button.post}}" class="btn btn-2" ng-click="postReview()"><span>{{l10n.button.post}}</span></a>
+    </form>
+  </div>
+</main>

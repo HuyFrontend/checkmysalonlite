@@ -1,0 +1,20 @@
+
+<main id="main" class="quitpoint-page">
+  <div class="inner container-bgd courage-content">
+    <div class="courage-outer">
+      <div class="inner">
+        <div gk-max-height-block="gk-max-height-block" class="block-1">
+          <h3 class="title">{{model.title}}</h3><a href="javascript:;" ng-click="shareBadge()" class="share">text</a>
+          <div class="badge-wrapper">
+            <div id="courage-step-1" class="badge"></div>
+          </div>
+          <div id="courage-step-2" class="point"><span>+{{model.points}}</span></div>
+          <div class="info">
+            <p ng-bind-html="model.description"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="group-btn notice"><a href="javascript:;" title="13 Badges" ng-click="nav(&quot;/quitpoint/your-badge&quot;)" class="icon-text"><i class="note-type-1"></i><span ng-if="USER[&quot;user-total-badges&quot;] &gt; 1">{{USER['user-total-badges']}} Badges</span><span ng-if="USER[&quot;user-total-badges&quot;] &lt;= 1">{{USER['user-total-badges']}} Badge</span></a><a href="javascript:;" title="462 Quit points" ng-click="nav(&quot;/quitpoint/your-point&quot;)" class="icon-text"><i class="note-type-2"></i><span>{{USER['user-total-points']}} Quit points</span></a></section><a href="javascript:;" title="{{l10n.button.ok}}" ng-click="ok()" class="btn btn-1"><span>{{l10n.button.ok}}</span></a>
+  </div>
+</main>

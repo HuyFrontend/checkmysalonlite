@@ -1,0 +1,27 @@
+
+<section gk-required-notification="gk-required-notification" ng-model="notiSlipUp" gk-prevent-touch-move="gk-prevent-touch-move" class="popup-1 alert-slip-popup overlay-white type-2 hidden">
+  <div class="inner">
+    <div class="content">
+      <p ng-bind-html="l10n.popup.alertSlip"></p>
+    </div>
+    <div class="button-box"><a href="javascript:;" title="{{l10n.button.restart}}" class="btn btn-6 go-btn" data-hide="data-hide" ng-click="restartJourney()"><span>{{l10n.button.restart}}</span></a><a href="#/landing-page" title="{{l10n.button.cancel}}" class="btn btn-6" data-hide="data-hide"><span>{{l10n.button.cancel}}</span></a>
+    </div>
+  </div>
+</section>
+<main id="main" class="slip-up-page">
+  <div class="inner container-bgd courage-content">
+    <div class="courage-outer">
+      <div class="inner">
+        <div gk-max-height-block="gk-max-height-block" class="block-1">
+          <h3 class="title">{{l10n.courage.title}}</h3><a href="javascript:;" title="" ng-click="share()" class="share">text</a>
+          <div style="background-image: url(images/upload/badges/badge-slip.png)" class="badge badge-slipup"></div>
+          <div id="courage-step-2" class="point"><span>+1</span></div>
+          <div class="info">
+            <p ng-bind-html="data[&quot;message-badge&quot;]"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="group-btn notice"><a href="javascript:;" title="13 Badges" ng-click="nav(&quot;/quitpoint/your-badge&quot;)" class="icon-text"><i class="note-type-1"></i><span>{{USER['user-total-badges']}} Badges</span></a><a href="javascript:;" title="462 Quit points" ng-click="nav(&quot;/quitpoint/your-point&quot;)" class="icon-text"><i class="note-type-2"></i><span>{{USER['user-total-points']}} Quit points</span></a></section><a href="javascript:;" title="{{l10n.button.ok}}" ng-click="ok(&quot;/landing-page&quot;)" class="btn btn-1"><span>{{l10n.button.ok}}</span></a>
+  </div>
+</main>

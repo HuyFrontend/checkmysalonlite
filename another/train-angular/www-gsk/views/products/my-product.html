@@ -1,0 +1,14 @@
+
+<main id="main">
+  <div class="inner">
+    <div class="content scroll-y my-product-content">
+      <div class="inner">
+        <p ng-bind-html="l10n.product.guideText" class="guide-text"></p>
+        <ul gk-panel-selector="gk-panel-selector" ng-model="pathProduct" class="list-item">
+          <li ng-repeat="pro in listProDetail" gk-on-last-repeat="gk-on-last-repeat" data-value="{{pro.path}}"><a href="javascript:;" title="{{pro.name}}"><span style="background-image : url({{pro.picture}})" class="image"></span><span class="name">{{pro.name}}</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>

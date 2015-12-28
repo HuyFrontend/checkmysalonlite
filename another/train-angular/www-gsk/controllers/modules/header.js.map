@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "header.js",
+  "sourceRoot": "..\\..\\..\\source\\controllers\\modules\\",
+  "sources": [
+    "header.coffee"
+  ],
+  "names": [],
+  "mappings": "AAEA,OAAO,CAAC,MAAR,CAAe,MAAf,CACA,CAAC,UADD,CACY,YADZ,EAC0B,SAAC,MAAD,EAAS,UAAT,GAAA;AACxB,EAAA,IAA6B,CAAA,CAAE,4BAAD,CAA9B;AAAA,IAAA,UAAU,CAAC,SAAX,GAAuB,EAAvB,CAAA;GAAA;AAAA,EACA,OAAO,CAAC,GAAR,CAAY,UAAU,CAAC,SAAvB,CADA,CAAA;SAGA,MAAM,CAAC,aAAP,GAAuB,SAAA,GAAA;WACrB,MAAM,CAAC,OAAO,CAAC,IAAf,CAAA,EADqB;EAAA,EAJC;AAAA,CAD1B,CAAA,CAAA"
+}

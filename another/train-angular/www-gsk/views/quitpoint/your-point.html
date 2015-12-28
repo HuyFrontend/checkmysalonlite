@@ -1,0 +1,16 @@
+
+<main id="main" class="quitpoint-page">
+  <div gk-your-quitpoint="gk-your-quitpoint" data-progress="{{userPoint}}" class="inner container your-point-content">
+    <div class="block-2">
+      <div class="desc"><span class="point">{{userPoint}}</span><span class="quitpoint">{{l10n.quitPoint.point}}</span>
+      </div>
+      <div class="content">
+        <p class="info">{{l10n.quitPoint.yPointInfo}}<br/>{{l10n.quitPoint.yPointInfoA}}
+          {{constants.REAL_DISCOUNT - userPoint}}
+          {{l10n.quitPoint.yPointInfoB}}
+        </p>
+        <p class="note">{{l10n.quitPoint.yPointNote}}</p>
+      </div>
+    </div><a href="javascript:;" ng-click="nav(&quot;/quitpoint/your-point-detail&quot;)" class="btn btn-6 redeem"><span>{{l10n.button.redeem}}</span></a><a href="javascript:;" ng-click="nav(&quot;/landing-page&quot;)" class="btn btn-6 ok"><span>{{l10n.button.ok}}</span></a>
+  </div>
+</main>

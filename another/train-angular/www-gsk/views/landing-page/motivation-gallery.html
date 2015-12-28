@@ -1,0 +1,21 @@
+
+<main id="main" class="motivation-gallery-page">
+  <div class="inner">
+    <div gk-motivation-gallery="gk-motivation-gallery" class="motivation-gallery">
+      <div ng-class="mov.backgroundColor" ng-repeat="mov in motivatAll" gk-on-last-repeat="gk-on-last-repeat" class="motivation-block">
+        <div ng-class="mov.backgroundColor" class="bgd-motivation">
+          <div class="title hidden">
+            <p>July 23rd 2014</p>
+          </div>
+          <div class="content">
+            <h2>{{mov.title}}</h2>
+            <div ng-bind-html="mov.descriptioin" class="text-intro"></div>
+            <div class="image-motivation"><img src="{{mov.piture}}" alt="{{mov.title}}"/></div>
+          </div>
+          <div class="group-link"><a ng-click="shareMotivation(mov)" href="javascript:;" title="share friend" class="icon icon-share share-gallery">share friend</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
