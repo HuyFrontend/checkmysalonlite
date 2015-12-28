@@ -3,30 +3,32 @@
     {{data.time}}
   <br/>
   <button ng-click="updateTime()">update time - ng-click</button>
-  <button id="updateTimeButton"  >update time</button>
+  <button id="updateTimeButton"  >Update Time - Add Event</button>
 </div>
 <script>
-  var module       = angular.module("AngularApp", []);
-  var myController1 = module.controller("myController", function($scope) {
+  var module = angular.module('AngularApp', []);
+  var myController1 = module.controller('myController', function($scope) {
     $scope.data = { time : new Date() };
+
     $scope.updateTime = function() {
       $scope.data.time = new Date();
     }
+
     var btnUp = document.getElementById('updateTimeButton');
-    // no digest, digest
-    // btnUp.addEventListener('click', function() {
-    //   alert(123);
-    //   console.log("update time clicked");
-    //   $scope.data.time = new Date();
-    //   $scope.$digest();
-    // });
-    // or
+    // no digest - scope.data.time updated, button model data.time on view not updata
+    // digest  - scope.data.time updated, and change value of time on view
     btnUp.addEventListener('click', function() {
-      $scope.$apply(function() {
-        console.log("update time clicked");
-        $scope.data.time = new Date();
-      });
+      $scope.data.time = new Date();
+      console.log($scope.data.time);
+      $scope.$digest();
     });
+    // or , apply auto call digest at the end of apply function
+    // btnUp.addEventListener('click', function() {
+    //   $scope.$apply(function() {
+    //     console.log("update time clicked");
+    //     $scope.data.time = new Date();
+    //   });
+    // });
 
   });
 </script>
