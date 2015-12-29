@@ -1,0 +1,51 @@
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<div ng-app="AngularApp" ng-controller="myController">
+    {{data.time}}
+  <br/>
+  <button ng-click="updateTime()">update time - ng-click</button>
+  <button id="updateTimeButton"  >Update Time - Add Event</button>
+
+  <a> {{data.myVar}}</a>
+  <div class="inner"> </div>
+</div>
+<script>
+  var module = angular.module('AngularApp', []);
+  var myController1 = module.controller('myController', function($scope) {
+    $scope.data = {
+      time : new Date(),
+      myVar: 'Hello watch me'
+    };
+
+    $scope.updateTime = function() {
+      $scope.data.time = new Date();
+    }
+
+    var btnUp = document.getElementById('updateTimeButton');
+    // no digest - scope.data.time updated, button model data.time on view not updata
+    // digest  - scope.data.time updated, and change value of time on view
+    // btnUp.addEventListener('click', function() {
+    //   $scope.data.time = new Date();
+    //   console.log($scope.data.time);
+    //   $scope.$digest();
+    // });
+    // or , apply auto call digest at the end of apply function
+    // btnUp.addEventListener('click', function() {
+    //   $scope.$apply(function() {
+    //     $scope.data.time = new Date();
+    //   });
+    // });
+
+    // watch
+    $scope.$watch(
+      function(scope) {
+        scope.data.myVar = 'hihi';
+        return scope.data.myVar
+      },
+      function(newValue, oldValue) {
+        console.log('new', newValue);
+        console.log('old', oldValue);
+        document.querySelector('.inner').innerHTML = '' + newValue + '';
+      }
+    );
+  });
+</script>
