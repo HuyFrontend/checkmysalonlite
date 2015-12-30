@@ -1,5 +1,7 @@
 (function() {
-  angular.module('app', []).controller('ParseController', ParseController);
+
+  var app = angular.module('app', []);
+  app.controller('ParseController', ParseController);
 
   function ParseController($scope, $parse) {
     this.libs = {};
@@ -10,4 +12,5 @@
     var template = $parse("'This example uses AngularJS ' + libs.angular.version");
     this.parsedMsg = template(this);
   }
+
 })();
